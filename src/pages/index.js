@@ -25,6 +25,9 @@ const getTires = async() => {
 }
 
 
+
+
+
 console.log(tires,'jasdhsadg')
 
 useEffect(() => {

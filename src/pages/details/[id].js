@@ -1,0 +1,118 @@
+import React from "react";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import ProductLargeDescription from "@/components/ProductLargeDescription/ProductLargeDescription";
+import ProductInfo from "@/components/ProductInfo/ProductInfo";
+import DescriptionServices from "@/components/DescriptionServices/DescriptionServices";
+import DescriptionSpecs from "@/components/DescriptionSpecs/DescriptionSpecs";
+import DescriptionCalc from "@/components/DescriptionCalc/DescriptionCalc";
+import AlternativeProductsSlider from "@/components/AlternativeProductsSlider/AlternativeProductsSlider";
+import { baseUrl } from "../api/api";
+
+const Description = ({product}) => {
+
+
+console.log(product , 'ajsdgsygdsygydsagdygsads')
+
+  return (
+    <>
+      <Header />
+      <div class="site__body">
+        <div class="block-header block-header--has-breadcrumb">
+          <div class="container">
+            <div class="block-header__body">
+              <nav
+                class="breadcrumb block-header__breadcrumb"
+                aria-label="breadcrumb"
+              ></nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-split">
+        <div class="container container--max--xl">
+          <div class="block-split__row row no-gutters">
+            <div class="block-split__item block-split__item-content col-auto">
+              <div class="product product--layout--full">
+                <div class="product__body">
+                  <div class="product__card product__card--one"></div>
+                  <div class="product__card product__card--two"></div>
+                  <ProductLargeDescription product={product}/>
+                  <div class="product__info">
+                    <div class="product__info-card">
+                      <div class="product-form product__form">
+                        <ProductInfo />
+                      </div>
+
+                      <DescriptionServices />
+
+                      <div class="product-form product__form"></div>
+                      <DescriptionSpecs />
+                      <div class="product-form product__form"></div>
+
+                      <div class="product__actions">
+                        <div class="product__actions-item product__actions-item--addtocart">
+                          <button
+                            class="btn btn-primary btn-lg btn-block adding-to-card"
+                            data-id="39083"
+                          >
+                            Səbətə at
+                          </button>
+                        </div>
+                        <div class="product__actions-divider"></div>
+                      </div>
+                      <div class="product-form product__form"></div>
+                      <div class="product__actions">
+                        <div>
+                          <img height="70px" src="/static/images/birkart.png" />
+                          <img height="70px" src="/static/images/albali.png" />
+                          <img height="70px" src="/static/images/tamkart.png" />
+                          <img height="70px" src="/static/images/bolkart.png" />
+                        </div>
+
+                        <h5 class="product__title">
+                          {" "}
+                          Taksit kartları ilə alış
+                        </h5>
+                        <div
+                          class="shop-features__item-subtitle"
+                          style={{ "font-size": "16px" }}
+                        >
+                          2 aylıq taksit ilə aya 150
+                          <img
+                            style={{ height: "8px !important" }}
+                            class="manatt"
+                            src="/static/images/manat.png"
+                          />
+                        </div>
+                        <div class="product__actions-divider"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="spec"></div>
+
+                  <DescriptionCalc />
+                </div>
+              </div>
+              <AlternativeProductsSlider />
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+};
+
+export default Description;
+
+
+export async function getServerSideProps(context) {
+    const {id} = context.query
+    const {data} = await baseUrl.get(`/tyres_detail/${id}/`)
+    return {
+      props: {
+        product:data
+      }
+    }
+  }
