@@ -1,9 +1,13 @@
 import React from "react";
 import Link from "next/link";
+import { useSelector, useDispatch } from "react-redux";
 
 const Product = ({ tire }) => {
 
-  console.log(tire, 'asjhdysgd')
+  const dispatch = useDispatch()
+
+  const cart = useSelector(state => state.cart)
+
 
   return (
     <Link href={`/details/${tire?.id}`}>
@@ -158,6 +162,7 @@ const Product = ({ tire }) => {
               data-id="38970"
               type="button"
               aria-label="Add to cart"
+              onClick={() => dispatch({type: 'ADD_ITEM', payload: tire})}
             >
               <svg width="20" height="20">
                 <circle cx="7" cy="17" r="2" />
