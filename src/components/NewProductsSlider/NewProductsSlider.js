@@ -30,10 +30,8 @@ const NewProductsSlider = ({tires}) => {
         </div>
         <Slider {...settings}>
           {tires?.map((tire) => (
-
             <Product tire={tire}/>
           ))}
-            
         </Slider>
       </div>
     </div>
