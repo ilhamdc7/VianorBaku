@@ -1,6 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
+import Slider from "react-slick";
+import styles from "./calcSlider.module.css";
 
 const CalcSlider = () => {
+
+
+  const [filterBy, setFilterBy] = useState('forTire')
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <div class="block block-slideshow">
       <div class="container">
@@ -13,16 +27,18 @@ const CalcSlider = () => {
               >
                 <div class="btn-area ">
                   <button
+                  onClick={() => setFilterBy('forTire')}
                     id="btn1"
-                    style={{ padding: "8px" }}
+                    style={filterBy === 'forTire' ? {padding: "6px", backgroundColor: 'rgb(242, 89, 0)', height: '125%'} : {padding: '8px', backgroundColor: 'rgb(255, 255, 255)', height: '100%' }}
                     type="button"
                     class="btn btn-primary btn-lg "
                   >
                     Təkərə görə axtarış
                   </button>
                   <button
+                    onClick={() => setFilterBy('forCar')}
                     id="btn2"
-                    style={{ padding: "6px" }}
+                    style={filterBy === 'forCar' ? {padding: "6px", backgroundColor: 'rgb(242, 89, 0)', height: '125%'} : {padding: '8px', backgroundColor: 'rgb(255, 255, 255)', height: '100%' }}
                     type="button"
                     class="btn btn-primary btn-lg "
                   >
@@ -38,11 +54,7 @@ const CalcSlider = () => {
                 <div
                   id="block1"
                   class="block-1 h-100"
-                  style={{
-                    display: "block",
-                    "align-items": "flex-start",
-                    "flex-direction": "column",
-                  }}
+                  style={filterBy === 'forTire' ? {display:'block',alignItems: "flex-start",flexDirection: "column"} : {display:'none',alignItems: "flex-start",flexDirection: "column"}}
                 >
                   <div class="block-finder__body container container--max--xl">
                     <form class="block-finder__form" method="get">
@@ -57,63 +69,66 @@ const CalcSlider = () => {
                           style={{ position: "relative" }}
                         >
                           <div class="col-lg-6 col-12 filter-inputs">
-                            <div class="block-finder__form-control block-finder__form-control--select">
+                            <div style={{ width: "100%", height: "40px" }}>
                               <select
-                                id="12-width"
-                                class="select_search en"
-                                style={{ border: "1px solid grey" }}
+                                style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  outline: "none",
+                                }}
                               >
-                                <option value="">En (mm)</option>
-                                <option value="">Hamısı</option>
-
-                                <option name="width" class="width" value="10">
-                                  10
-                                </option>
-
-                                <input
-                                  id="width"
-                                  hidden
-                                  name="width"
-                                  value=""
-                                />
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
                               </select>
                             </div>
                           </div>
                           <div class="col-lg-6  col-12 filter-inputs">
-                            <div class="block-finder__form-control block-finder__form-control--select">
+                            <div style={{ width: "100%", height: "40px" }}>
                               <select
-                                id="12-height"
-                                class="height"
-                                aria-label="Vehicle Make"
+                                style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  outline: "none",
+                                }}
                               >
-                                <option value="">Hündürlük (%)</option>
-                                <option value="">Hamısı</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
                               </select>
                             </div>
                           </div>
-                          <div class="col-lg-6  col-12 filter-inputs">
-                            <div class="block-finder__form-control block-finder__form-control--select">
+                          <div class="col-lg-6  col-12 filter-inputs mt-3">
+                            <div style={{ width: "100%", height: "40px" }}>
                               <select
-                                class="radius"
-                                id="12-radius"
-                                aria-label="Vehicle Model"
+                                style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  outline: "none",
+                                }}
                               >
-                                <option value="">Diametr (düym)</option>
-                                <option value="">Hamısı</option>
-
-                                <input
-                                  id="radius"
-                                  hidden
-                                  name="radius"
-                                  value=""
-                                />
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
                               </select>
                             </div>
                           </div>
 
                           <div class="col-lg-6  col-12 filter-inputs">
                             <button
-                              class="block-finder__form-control block-finder__form-control--button tyres_filter "
+                              class="block-finder__form-control block-finder__form-control--button tyres_filter mt-3"
                               type="submit"
                               style={{ width: "100%" }}
                             >
@@ -124,16 +139,12 @@ const CalcSlider = () => {
                       </div>
                     </form>
                   </div>
-                  <div class="container container--max--xl text-center">
-                    <img height="100px" src="/static/images/tyre.svg" />
-                    <img height="100px" src="/static/images/tyre2.svg" />
-                  </div>
                 </div>
 
                 <div
                   id="block2"
                   class="block-2 h-100 "
-                  style={{ display: "none", flexDirection: "column" }}
+                  style={filterBy === 'forCar' ? {display:'block',alignItems: "flex-start",flexDirection: "column"} : {display:'none',alignItems: "flex-start",flexDirection: "column"}}
                 >
                   <div class="block-finder__body container a container--max--xl">
                     <input
@@ -144,54 +155,82 @@ const CalcSlider = () => {
                     <div class="container-fluid">
                       <div class="row " style={{ position: "relative" }}>
                         <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2">
-                          <div class="block-finder__form-control block-finder__form-control--select select_form">
-                            <select
-                              name="vendor_name"
-                              id="vendor_name"
-                              class="select_search marka"
-                            >
-                              <option selected="selected" disabled="">
-                                Markanı seçin
-                              </option>
-
-                              <option value="167">УАЗ</option>
-                            </select>
-                          </div>
+                        <div style={{ width: "100%", height: "40px" }}>
+                              <select
+                                style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  outline: "none",
+                                }}
+                              >
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                              </select>
+                            </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2">
-                          <div class="block-finder__form-control block-finder__form-control--select select_form">
-                            <select
-                              name="model_name"
-                              id="model_name"
-                              class="select_search model"
-                            >
-                              <option value="">Model seçin</option>
-                            </select>
-                          </div>
+                        <div style={{ width: "100%", height: "40px" }}>
+                              <select
+                                style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  outline: "none",
+                                }}
+                              >
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                              </select>
+                            </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2">
-                          <div class="block-finder__form-control block-finder__form-control--select select_form">
-                            <select
-                              name="year"
-                              id="year"
-                              class="select_search year"
-                            >
-                              <option value="">İli seçin</option>
-                            </select>
-                          </div>
+                        <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2 mt-3">
+                        <div style={{ width: "100%", height: "40px" }}>
+                              <select
+                                style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  outline: "none",
+                                }}
+                              >
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                              </select>
+                            </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2">
-                          <div class="block-finder__form-control block-finder__form-control--select select_form">
-                            <select
-                              name="modification_name"
-                              id="modification_name"
-                              class="select_search motor"
-                            >
-                              <option value="">Motor seçin</option>
-                            </select>
-                          </div>
+                        <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2 mt-3">
+                        <div style={{ width: "100%", height: "40px" }}>
+                              <select
+                                style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  outline: "none",
+                                }}
+                              >
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                                <option>asdasdsa</option>
+                              </select>
+                            </div>
                         </div>
-                        <div class="col-12">
+                        {/* <div class="col-12">
                           <div
                             class="row cleaned  h-md-100 "
                             style={{
@@ -206,18 +245,93 @@ const CalcSlider = () => {
                               <div class="row carTyreClassSecond w-100"></div>
                             </div>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
-                  <div class="container container--max--xl text-center">
-                    <img height="100px" src="/static/images/car.gif" />
-                  </div>
+
                 </div>
+
+
               </div>
             </div>
           </div>
-          <div class="col-lg-8 col-12 for-slide">{/* // For slider // */}</div>
+          <div class="col-lg-8 col-12 for-slide" style={{ marginTop: "20px" }}>
+            <Slider {...settings}>
+              <div
+                className={styles.sliderContainer}
+                style={{ width: "500px", height: "120px", overflow: "hidden" }}
+              >
+                <img
+                  src="https://wallpapercave.com/wp/wp2099569.jpg"
+                  width={"100%"}
+                />
+              </div>
+              <div
+                className={styles.sliderContainer}
+                style={{ width: "500px", height: "120px", overflow: "hidden" }}
+              >
+                <img
+                  src="https://wallpapercave.com/wp/wp2099569.jpg"
+                  width={"100%"}
+                />
+              </div>
+              <div
+                className={styles.sliderContainer}
+                style={{ width: "500px", height: "120px", overflow: "hidden" }}
+              >
+                <img
+                  src="https://wallpapercave.com/wp/wp2099569.jpg"
+                  width={"100%"}
+                />
+              </div>
+              <div
+                className={styles.sliderContainer}
+                style={{ width: "500px", height: "120px", overflow: "hidden" }}
+              >
+                <img
+                  src="https://wallpapercave.com/wp/wp2099569.jpg"
+                  width={"100%"}
+                />
+              </div>
+              <div
+                className={styles.sliderContainer}
+                style={{ width: "500px", height: "120px", overflow: "hidden" }}
+              >
+                <img
+                  src="https://wallpapercave.com/wp/wp2099569.jpg"
+                  width={"100%"}
+                />
+              </div>
+              <div
+                className={styles.sliderContainer}
+                style={{ width: "500px", height: "120px", overflow: "hidden" }}
+              >
+                <img
+                  src="https://wallpapercave.com/wp/wp2099569.jpg"
+                  width={"100%"}
+                />
+              </div>
+              <div
+                className={styles.sliderContainer}
+                style={{ width: "500px", height: "120px", overflow: "hidden" }}
+              >
+                <img
+                  src="https://wallpapercave.com/wp/wp2099569.jpg"
+                  width={"100%"}
+                />
+              </div>
+              <div
+                className={styles.sliderContainer}
+                style={{ width: "500px", height: "120px", overflow: "hidden" }}
+              >
+                <img
+                  src="https://wallpapercave.com/wp/wp2099569.jpg"
+                  width={"100%"}
+                />
+              </div>
+            </Slider>
+          </div>
         </div>
       </div>
     </div>

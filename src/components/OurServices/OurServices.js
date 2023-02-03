@@ -107,7 +107,7 @@ c0.865,1.414,0.61,3.243-0.524,4.383L10.586,4.788C12.12,4.295,13.864,4.903,14.728
         <li class="block-features__item">
             <div class="block-features__item-icon">
 
-                <img src="/static/images/icon.svg" style={{"width": "53px"}} alt=""/>
+                <img src="	http://www.vianorbaku.az/static/images/icon.svg" style={{"width": "53px"}} alt=""/>
             </div>
             <div class="block-features__item-info">
                 <div class="block-features__item-title">Kartmane ilə 1% cashback</div>
@@ -117,7 +117,7 @@ c0.865,1.414,0.61,3.243-0.524,4.383L10.586,4.788C12.12,4.295,13.864,4.903,14.728
         <li class="block-features__item">
             <div class="block-features__item-icon">
 
-                <img src="/static/images/fast-time.svg" style={{"width": "53px"}} alt=""/>
+                <img src="http://www.vianorbaku.az/static/images/fast-time.svg" style={{"width": "53px"}} alt=""/>
             </div>
             <div class="block-features__item-info">
                 <div class="block-features__item-title">İş vaxtı</div>

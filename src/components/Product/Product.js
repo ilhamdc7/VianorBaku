@@ -7,14 +7,14 @@ const Product = ({ tire }) => {
   const dispatch = useDispatch()
 
   const cart = useSelector(state => state.cart)
-
+  console.log(tire, 'askdjisahdusahdu')
 
   return (
-    <Link href={`/details/${tire?.id}`}>
-    <div class="block-products-carousel__column" id="card-hover">
+    <div class="block-products-carousel__column" id="card-hover" style={{width:'300px'}}>
       <div
         class="block-products-carousel__cell"
         style={{ flexDirection: "column", justifyContent: "start" }}
+      
       >
         <div
           style={{
@@ -33,23 +33,23 @@ const Product = ({ tire }) => {
         </div>
 
         <div class="product-card product-card--layout--grid">
-          <a
-            style={{ height: "70px", display: "flex", alignItems: "center" }}
-            href="/tyresdetail/38970/"
-          >
+          
+            
             <img
               style={{ width: "50%", margin: "10px auto" }}
               src={tire?.model?.brend?.brand_image}
             />
-          </a>
+      
           <div class="product-card__image">
             <div class="image image--type--product">
               <a href="/tyresdetail/38970/" class="image__body">
+              <Link href={`/details/${tire?.id}`}>
                 <img
                   class="image__tag"
                   src={tire?.model?.model_image[0]?.tyre_images}
                   alt=""
                 />
+                </Link>
               </a>
             </div>
             <div
@@ -124,7 +124,7 @@ const Product = ({ tire }) => {
                 title="Koreya"
                 alt="Koreya"
                 class="mr-2 flag-img"
-                src="/media/country/flag-korea.png"
+                src={`https://vianor.efgroup.az${tire?.model?.brend?.country?.flag}`}
               />
             </div>
             <div
@@ -186,7 +186,6 @@ const Product = ({ tire }) => {
       </div>
     </div>
 
-    </Link>
   );
 };
 

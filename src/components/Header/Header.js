@@ -70,7 +70,7 @@ const Header = () => {
               <img
                 height="70px"
                 class="p-1"
-                src="https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg"
+                src="http://www.vianorbaku.az/static/images/vianorLogo.jpg"
                 alt=""
               />
             </a>
@@ -96,13 +96,13 @@ const Header = () => {
                 placeholder="Açar söz və ya hissə nömrəsini daxil edin"
               />
 
-              <button class="search__button search__button--end" type="submit">
+              <button class="search__button search__button--end" type="submit" style={{right: '20px'}}>
                 <span class="search__button-icon">
-                  <svg width="20" height="20">
+                  <svg width="20" height="20" >
                     <path
                       d="M19.2,17.8c0,0-0.2,0.5-0.5,0.8c-0.4,0.4-0.9,0.6-0.9,0.6s-0.9,0.7-2.8-1.6c-1.1-1.4-2.2-2.8-3.1-3.9C10.9,14.5,9.5,15,8,15
-            c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7c0,1.5-0.5,2.9-1.3,4c1.1,0.8,2.5,2,4,3.1C20,16.8,19.2,17.8,19.2,17.8z M8,3C5.2,3,3,5.2,3,8
-            c0,2.8,2.2,5,5,5c2.8,0,5-2.2,5-5C13,5.2,10.8,3,8,3z"
+                      c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7c0,1.5-0.5,2.9-1.3,4c1.1,0.8,2.5,2,4,3.1C20,16.8,19.2,17.8,19.2,17.8z M8,3C5.2,3,3,5.2,3,8
+                      c0,2.8,2.2,5,5,5c2.8,0,5-2.2,5-5C13,5.2,10.8,3,8,3z"
                     />
                   </svg>
                 </span>
@@ -132,14 +132,14 @@ const Header = () => {
         >
           <img
             style={{"width": "100px","position": "absolute"}}
-            src="/static/images/az.png"
+            src="http://www.vianorbaku.az/static/images/az.png"
           />
         </a>
 
-        <div class="indicators">
+        <div class="indicators" style={{textDecoration: 'none'}}>
           <div class="indicator indicator--trigger--click">
             <a href="#" class="indicator__button">
-              <span class="indicator__icon">
+              <span class="indicator__icon" style={{left: '0px'}}>
                 <svg width="32" height="32">
                   <circle cx="10.5" cy="27.5" r="2.5" />
                   <circle cx="23.5" cy="27.5" r="2.5" />
@@ -149,10 +149,10 @@ const Header = () => {
             c-0.6,0-1-0.4-1-1s0.4-1,1-1h15.5c0.8,0,1.5,0.4,2,1c0.5,0.6,0.6,1.5,0.4,2.2l-3.1,10C28.5,20.3,27.5,21,26.4,21z"
                   />
                 </svg>
-                <span class="indicator__counter">0</span>
+                <span class="indicator__counter" style={{background:'orange', marginLeft: '20px'}}>0</span>
               </span>
-              <span class="indicator__title">Səbət</span>
-              <span class="d-flex indicator__value align-items-baseline">
+              <span class="indicator__title" style={{marginLeft: '50px'}}>Səbət</span>
+              <span class="d-flex indicator__value align-items-baseline" style={{marginLeft: '50px'}}>
                 0
                 <img class="manatt" src="/static/images/manat.png" />
               </span>
@@ -186,7 +186,7 @@ const Header = () => {
           <div style={{"align-items": "center"}}>
             <div class="header__navbar-menu">
               <div class="main-menu">
-                <ul class="main-menu__list">
+                <ul class="main-menu__list" style={{textDecoration: 'none'}}>
                   <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
                     <a href="/" class="main-menu__link second-url">
                       ƏSAS SƏHİFƏ

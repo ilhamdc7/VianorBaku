@@ -106,7 +106,7 @@ const DescriptionServices = () => {
                                                     <li class="shop-features__divider" role="presentation"></li>
                                                     <li class="shop-features__item">
                                                         <div class="shop-features__item-icon">
-                                                            <img src="/static/images/icon.svg" style={{ "width": "48px" }} alt="" />
+                                                            <img src="http://www.vianorbaku.az/static/images/icon.svg" style={{ "width": "48px" }} alt="" />
                                                         </div>
                                                         <div class="shop-features__info">
                                                             <div class="shop-features__item-title">Kartmane ilə 1% cashback

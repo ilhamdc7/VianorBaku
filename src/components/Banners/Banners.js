@@ -9,8 +9,8 @@ const Banners = () => {
     <div class="block-banners block">
         <div class="container">
             <div class="block-banners__list">
-                <a href="/tyresservices/?serviceName=Yağdəyişmə" class="block-banners__item block-banners__item--style--one">
-                    <span class="block-banners__item-image"><img src="https://wallpapercave.com/wp/wp3056683.jpg" alt=""/></span>
+                <a href="/tyresservices/?serviceName=Yağdəyişmə" style={{textDecoration:'none'}} class="block-banners__item block-banners__item--style--one">
+                    <span class="block-banners__item-image"  ><img src="https://wallpapercave.com/wp/wp3056683.jpg" alt=""/></span>
                                 <span class="block-banners__item-image block-banners__item-image--blur"><img
                             src="https://wallpapercave.com/wp/wp3056683.jpg" alt=""/></span>
                                 <span class="block-banners__item-title">Yağ dəyişmə</span>
@@ -23,7 +23,7 @@ const Banners = () => {
                         İndi al
                             </span> 
                                 </a>
-                                <a href="/tyresservices/?serviceName=Təkərlərin balansı" class="block-banners__item block-banners__item--style--two">
+                                <a href="/tyresservices/?serviceName=Təkərlərin balansı" style={{textDecoration:'none'}} class="block-banners__item block-banners__item--style--two">
                     <span class="block-banners__item-image"><img src="https://wallpapercave.com/wp/wp3056683.jpg" alt=""/></span>
                     <span class="block-banners__item-image block-banners__item-image--blur"><img
                             src="https://wallpapercave.com/wp/wp3056683.jpg" alt=""/></span>
