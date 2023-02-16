@@ -11,9 +11,6 @@ import { baseUrl } from "../api/api";
 
 const Description = ({product}) => {
 
-
-console.log(product , 'ajsdgsygdsygydsagdygsads')
-
   return (
     <>
       <Header />

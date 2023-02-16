@@ -7,7 +7,6 @@ const Product = ({ tire }) => {
   const dispatch = useDispatch()
 
   const cart = useSelector(state => state.cart)
-  console.log(tire, 'askdjisahdusahdu')
 
   return (
     <div class="block-products-carousel__column" id="card-hover" style={{width:'300px'}}>
@@ -84,22 +83,22 @@ const Product = ({ tire }) => {
 
                 <div class="display-flex">
                   <div class="product__name">
-                    <a href="/tyresdetail/38970/">Kinergy eco2 K435</a>
+                    <a href="/tyresdetail/38970/">{`${tire?.model?.brend?.title} ${tire?.model?.name}`}</a>
                     <br />
-                    <b> 195/65R15 91T</b>
+                    <b>{`${tire?.en?.size}/${tire?.hundurluk?.size}${tire?.radius?.size ? `/R${tire?.radius?.size}` : ''} ${tire?.load_index?.name ?? ''}${tire?.speed_index?.name ?? ''}`}</b>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <ul class="product-card__info">
+          {/* <ul class="product-card__info">
             <li class="product-card__meta" style={{ padding: "6px 0px" }}>
               <span class="product-card__meta-title">Ölkə :</span>
-              Koreya
+              {tire?.model?.brend?.country?.name ?? ''}
             </li>
             <li class="product-card__meta" style={{ padding: "6px 0px" }}>
               <span class="product-card__meta-title">Ölçü :</span>
-              195/65R15
+              {`${tire?.en?.size}/${tire?.hundurluk?.size}${tire?.radius?.size ? `/R${tire?.radius?.size}` : ''}`}
             </li>
             <li class="product-card__meta" style={{ padding: "6px 0px" }}>
               <span class="product-card__meta-title">Miqdar :</span>4
@@ -112,7 +111,7 @@ const Product = ({ tire }) => {
               <span class="product-card__meta-title">Tipi: </span>
               Minik
             </li>
-          </ul>
+          </ul> */}
           <div class="d-flex " style={{ justifyContent: "space-between;" }}>
             <div
               class="d-flex"
@@ -124,7 +123,7 @@ const Product = ({ tire }) => {
                 title="Koreya"
                 alt="Koreya"
                 class="mr-2 flag-img"
-                src={`https://vianor.efgroup.az${tire?.model?.brend?.country?.flag}`}
+                src={`${tire?.model?.brend?.country?.flag}`}
               />
             </div>
             <div
@@ -134,8 +133,8 @@ const Product = ({ tire }) => {
               <span
                 style={{ fontSize: "12px", color: "#000", textAlign: "center" }}
               >
-                {" "}
-                Mövcuddur : 4{" "}
+                
+                Mövcuddur : {tire?.stock ?? 0} 
               </span>
               <div style={{ display: "flex" }}>
                 <span style={{ visibility: "hidden" }} value="4" class="stock">
@@ -153,7 +152,7 @@ const Product = ({ tire }) => {
           <div class="product-card__footer">
             <div class="product-card__prices">
               <div class="d-flex product-card__price product-card__price--current align-items-baseline ">
-                115 <img class="manatt" src="/static/images/manat.png" />
+                {`${tire?.price} ₼`}
               </div>
             </div>
 

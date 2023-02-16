@@ -3,6 +3,7 @@
 @import '../../assests/css/style.mobile-header-variant-one.css';
 @import "~slick-carousel/slick/slick.css"; 
 @import "~slick-carousel/slick/slick-theme.css";
+@import "@fortawesome/fontawesome-svg-core/styles.css"; 
 
 * {
   box-sizing: border-box;

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -188,36 +189,36 @@ const Header = () => {
               <div class="main-menu">
                 <ul class="main-menu__list" style={{textDecoration: 'none'}}>
                   <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                    <a href="/" class="main-menu__link second-url">
+                    <Link href="/" class="main-menu__link second-url">
                       ƏSAS SƏHİFƏ
-                    </a>
+                    </Link>
                   </li>
 
                   <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                    <a href="/news-list" class="main-menu__link second-url">
+                    <Link href="/news" class="main-menu__link second-url">
                       XƏBƏRLƏR
-                    </a>
+                    </Link>
                   </li>
 
                   <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                    <a href="/blogs-list" class="main-menu__link second-url">
+                    <Link href="/blog-list" class="main-menu__link second-url">
                       TƏKƏRLƏRİN SINAQ TESTLƏRİ
-                    </a>
+                    </Link>
                   </li>
 
                   <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                    <a
-                      href="/tyresservices-list"
+                    <Link
+                      href="/services"
                       class="main-menu__link second-url"
                     >
                       XİDMƏTLƏR
-                    </a>
+                    </Link>
                   </li>
 
                   <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                    <a href="/brands" class="main-menu__link second-url">
+                    <Link href="/marka" class="main-menu__link second-url">
                       MARKALAR
-                    </a>
+                    </Link>
                   </li>
 
                   <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
