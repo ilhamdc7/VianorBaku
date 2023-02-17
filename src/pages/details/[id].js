@@ -36,7 +36,7 @@ const Description = ({product}) => {
                   <ProductLargeDescription product={product}/>
                   <div class="product__info">
                     <div class="product__info-card">
-                      <div class="product-form product__form">
+                      <div class="product-form product__form bg-whi">
                         <ProductInfo />
                       </div>
 

@@ -1,13 +1,39 @@
 import React from "react";
 
-const ProductLargeDescription = ({product}) => {
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
+// import { Carousel } from 'react-responsive-carousel';
+// import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
+
+// import ImageGallery from 'react-image-gallery';
+import Carousel from 'react-gallery-carousel';
+import 'react-gallery-carousel/dist/index.css';
+const ProductLargeDescription = ({ product }) => {
+  // const images = [9, 8, 7, 6, 5].map((number) => ({
+  //   src: `https://placedog.net/${number}00/${number}00?id=${number}`
+  // }));
+  const images = [
+    {
+      original: "http://vianorbaku.az/media/tyres/1_zcLnFy1.png",
+      thumbnail: "http://vianorbaku.az/media/tyres/1_zcLnFy1.png",
+    },
+    {
+      original: "http://vianorbaku.az/media/tyres/1_SVHmmAm.jpg",
+      thumbnail: "http://vianorbaku.az/media/tyres/1_SVHmmAm.jpg",
+    },
+    {
+      original: "http://vianorbaku.az/media/tyres/1_zcLnFy1.png",
+      thumbnail: "http://vianorbaku.az/media/tyres/1_zcLnFy1.png",
+    },
+  ];
   return (
     <>
       <div
         class="product-gallery product-gallery--layout--product-full product__gallery"
         data-layout="product-full"
       >
-        <div class="product-gallery__featured">
+        <Carousel images={images} />
+     
+        {/* <div class="product-gallery__featured">
           <button type="button" class="product-gallery__zoom">
             <svg width="24" height="24">
               <path
@@ -32,7 +58,7 @@ const ProductLargeDescription = ({product}) => {
             </div>
             product slider asagi h
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div class="product__header">
