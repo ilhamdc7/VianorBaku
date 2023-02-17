@@ -25,8 +25,7 @@ const Description = ({product}) => {
             </div>
           </div>
         </div>
-      </div>
-      <div class="block-split">
+        <div class="block-split">
         <div class="container container--max--xl">
           <div class="block-split__row row no-gutters">
             <div class="block-split__item block-split__item-content col-auto">
@@ -96,6 +95,9 @@ const Description = ({product}) => {
           </div>
         </div>
       </div>
+      <div class="block-space block-space--layout--before-footer"></div>
+      </div>
+  
       <Footer />
     </>
   );

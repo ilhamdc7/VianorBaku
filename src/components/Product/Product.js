@@ -9,7 +9,7 @@ const Product = ({ tire }) => {
   const cart = useSelector(state => state.cart)
 
   return (
-    <div class="block-products-carousel__column" id="card-hover" style={{width:'300px'}}>
+    <div class="block-products-carousel__column single_product" id="card-hover" >
       <div
         class="block-products-carousel__cell"
         style={{ flexDirection: "column", justifyContent: "start" }}
@@ -84,7 +84,7 @@ const Product = ({ tire }) => {
                 <div class="display-flex">
                   <div class="product__name">
                     <a href="/tyresdetail/38970/">{`${tire?.model?.brend?.title} ${tire?.model?.name}`}</a>
-                    <br />
+                    {/* <br /> */}
                     <b>{`${tire?.en?.size}/${tire?.hundurluk?.size}${tire?.radius?.size ? `/R${tire?.radius?.size}` : ''} ${tire?.load_index?.name ?? ''}${tire?.speed_index?.name ?? ''}`}</b>
                   </div>
                 </div>
@@ -112,7 +112,7 @@ const Product = ({ tire }) => {
               Minik
             </li>
           </ul> */}
-          <div class="d-flex " style={{ justifyContent: "space-between;" }}>
+          <div class="d-flex " style={{ 'justifyContent': "space-between", 'margin':'10px 0' }}>
             <div
               class="d-flex"
               style={{ marginLeft: "15px", alignItems: "flex-end" }}
@@ -173,13 +173,13 @@ const Product = ({ tire }) => {
                 />
               </svg>
             </button>
-            <p
+            {/* <p
               data-toggle="tooltip"
               data-placement="top"
               title="Tooltip on top"
             >
               Tooltip on top
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
