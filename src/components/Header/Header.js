@@ -1,14 +1,15 @@
-import React from "react";
+import { React, useState } from "react";
 import Link from "next/link";
 
 const Header = () => {
+  const [show, setShow] = useState();
   return (
-    <header class=" header-site" style={{"background-color": "#FFF","z-index": "10"}}>
-      <div style={{"background": "#fff","border-bottom": "1px solid #ebebeb"}}>
+    <header class=" header-site" style={{ "background-color": "#FFF", "z-index": "10" }}>
+      <div style={{ "background": "#fff", "border-bottom": "1px solid #ebebeb" }}>
         <div class="container">
           <div
             class="d-flex justify-content-between"
-            style={{"align-items": "center","height": "50px"}}
+            style={{ "align-items": "center", "height": "50px" }}
           >
             <div class="topbar--classic d-flex ">
               <div class="topbar__item-text ">
@@ -24,10 +25,11 @@ const Header = () => {
               </div>
             </div>
 
-            <div class="topbar__menu">
+            <div  className={`topbar__menu ${show ? "topbar__menu--open" : ""}`} >
               <button
                 class="topbar__button topbar__button--has-arrow topbar__menu-button"
                 type="button"
+                onClick={() => setShow(!show)}
               >
                 <span class="topbar__button-title language-span">AZ</span>
                 <span class="topbar__button-arrow">
@@ -38,7 +40,7 @@ const Header = () => {
               </button>
               <div class="topbar__menu-body">
                 <a
-                  style={{" white-space": "nowrap"}}
+                  style={{ " white-space": "nowrap" }}
                   class="topbar__menu-item language-button"
                   id=""
                   href="/"
@@ -48,7 +50,7 @@ const Header = () => {
                 </a>
 
                 <a
-                  style={{" white-space": "nowrap"}}
+                  style={{ " white-space": "nowrap" }}
                   class="topbar__menu-item language-button"
                   id=""
                   href="/ru/"
@@ -63,7 +65,7 @@ const Header = () => {
       </div>
       <div
         class="container d-flex justify-content-between;"
-        style={{"position": "relative", "align-items":"center","justify-content": "space-between"}}
+        style={{ "position": "relative", "align-items": "center", "justify-content": "space-between" }}
       >
         <div class="logo">
           <div class="logo__image">
@@ -80,10 +82,10 @@ const Header = () => {
         <div class="search w-100">
           <div
             class="search translate_search"
-            style={{"position": "absolute","z-index": "15","width": "47%","top":"50%","left": "50%", "transform": "translate(-50%, -50%)"}}
+            style={{ "position": "absolute", "z-index": "15", "width": "47%", "top": "50%", "left": "50%", "transform": "translate(-50%, -50%)" }}
           >
             <form
-              style={{"margin":"0 auto"}}
+              style={{ "margin": "0 auto" }}
               action="/tyre/filter/?page=1&sort=ASC/"
               class="search__body"
             >
@@ -97,7 +99,7 @@ const Header = () => {
                 placeholder="Açar söz və ya hissə nömrəsini daxil edin"
               />
 
-              <button class="search__button search__button--end" type="submit" style={{right: '20px'}}>
+              <button class="search__button search__button--end" type="submit" style={{ right: '20px' }}>
                 <span class="search__button-icon">
                   <svg width="20" height="20" >
                     <path
@@ -128,19 +130,19 @@ const Header = () => {
 
         <a
           class="d-flex"
-          style={{"height": "38px","position": "relative","width": "100px","right":"6%"}}
+          style={{ "height": "38px", "position": "relative", "width": "100px", "right": "6%" }}
           href="http://www.vianorbaku.az/calculator/"
         >
           <img
-            style={{"width": "100px","position": "absolute"}}
+            style={{ "width": "100px", "position": "absolute" }}
             src="http://www.vianorbaku.az/static/images/az.png"
           />
         </a>
 
-        <div class="indicators" style={{textDecoration: 'none'}}>
+        <div class="indicators" style={{ textDecoration: 'none' }}>
           <div class="indicator indicator--trigger--click">
             <a href="#" class="indicator__button">
-              <span class="indicator__icon" style={{left: '0px'}}>
+              <span class="indicator__icon" style={{ left: '0px' }}>
                 <svg width="32" height="32">
                   <circle cx="10.5" cy="27.5" r="2.5" />
                   <circle cx="23.5" cy="27.5" r="2.5" />
@@ -150,17 +152,17 @@ const Header = () => {
             c-0.6,0-1-0.4-1-1s0.4-1,1-1h15.5c0.8,0,1.5,0.4,2,1c0.5,0.6,0.6,1.5,0.4,2.2l-3.1,10C28.5,20.3,27.5,21,26.4,21z"
                   />
                 </svg>
-                <span class="indicator__counter" style={{background:'orange', marginLeft: '20px'}}>0</span>
+                <span class="indicator__counter" style={{ background: 'orange', marginLeft: '20px' }}>0</span>
               </span>
-              <span class="indicator__title" style={{marginLeft: '50px'}}>Səbət</span>
-              <span class="d-flex indicator__value align-items-baseline" style={{marginLeft: '50px'}}>
+              <span class="indicator__title" style={{ marginLeft: '50px' }}>Səbət</span>
+              <span class="d-flex indicator__value align-items-baseline" style={{ marginLeft: '50px' }}>
                 0
                 <img class="manatt" src="/static/images/manat.png" />
               </span>
             </a>
 
-            <div class="indicator__content" style={{"z-index": "300"}}>
-              <div class="dropcart" style={{"z-index": "200"}}>
+            <div class="indicator__content" style={{ "z-index": "300" }}>
+              <div class="dropcart" style={{ "z-index": "200" }}>
                 <ul class="dropcart__list"></ul>
                 <div class="dropcart__totals">
                   <table>
@@ -182,12 +184,12 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div style={{"border-top": "1px solid #ebebeb","height": "50px","display": "flex","align-items": "center"}}>
+      <div style={{ "border-top": "1px solid #ebebeb", "height": "50px", "display": "flex", "align-items": "center" }}>
         <div class="container">
-          <div style={{"align-items": "center"}}>
+          <div style={{ "align-items": "center" }}>
             <div class="header__navbar-menu">
               <div class="main-menu">
-                <ul class="main-menu__list" style={{textDecoration: 'none'}}>
+                <ul class="main-menu__list" style={{ textDecoration: 'none' }}>
                   <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
                     <Link href="/" class="main-menu__link second-url">
                       ƏSAS SƏHİFƏ
@@ -236,7 +238,7 @@ const Header = () => {
                   <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
                     <a
                       href="/credit-form/"
-                      style={{"color": "#f25900"}}
+                      style={{ "color": "#f25900" }}
                       class="main-menu__link second-url"
                     >
                       ONLİNE KREDİT MÜRACİƏTİ

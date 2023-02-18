@@ -6,6 +6,7 @@ import { baseUrl } from '../api/api'
 import { useRouter } from 'next/router'
 import { useDebounce } from 'use-debounce';
 import { useMount, useUpdateEffect } from 'ahooks'
+import MobileHeader from '@/components/MobileHeader/MobileHeader'
 
 import $ from "jquery"
 
@@ -235,6 +236,7 @@ useEffect(()=>{
 
   return (
     <>
+        <MobileHeader/>
         <Header/>
         <SearchBody 
           range={range} 
