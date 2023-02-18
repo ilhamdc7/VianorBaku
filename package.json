@@ -9,10 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mui/material": "^5.11.9",
     "@next/font": "13.1.2",
+    "ahooks": "^3.7.4",
     "axios": "^1.2.3",
     "bootstrap": "^4.6.2",
     "cookies-next": "^2.1.1",
@@ -27,7 +31,8 @@
     "react-responsive-carousel": "^3.2.23",
     "react-slick": "^0.29.0",
     "redux": "^4.2.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "use-debounce": "^9.0.3"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.1"

@@ -14,7 +14,11 @@ import { baseUrl } from "./api/api"
 export default function Home() {
 
   const [tires, setTires] = useState([])
-
+  const [slider, setSlider] = useState([])
+  const [width, setWidth] = useState([])
+  const [height, setHeight] = useState([])
+  const [radius, setRadius] = useState([])
+  const [brands, setBrands] = useState([])
 
 const getTires = async() => {
   await baseUrl.get(`/tyres?limit=30`)
@@ -25,13 +29,40 @@ const getTires = async() => {
 }
 
 
+const getSlider = async() => {
+  await baseUrl.get(`/slider`)
+  .then(res => setSlider(res.data.results))
+}
 
 
+const getWidth = async() => {
+  await baseUrl.get(`/tyre_width`)
+  .then(res => setWidth(res.data.results))
+}
 
-console.log(tires,'jasdhsadg')
+
+const getHeight = async() => {
+  await baseUrl.get(`/tyre_height`)
+  .then(res => setHeight(res.data.results))
+}
+
+const getRadius = async() => {
+  await baseUrl.get(`/tyre_diametr`)
+  .then(res => setRadius(res.data.results))
+}
+
+const getBrands = async() => {
+  await baseUrl.get(`/brands`)
+  .then(res => setBrands(res.data))
+}
 
 useEffect(() => {
   getTires()
+  getSlider()
+  getWidth()
+  getHeight()
+  getRadius()
+  getBrands()
 },[])
 
 
@@ -42,13 +73,13 @@ useEffect(() => {
 
       <MobileHeader/>
       <Header/>
-      <CalcSlider/>
+      <CalcSlider height={height} radius={radius} width={width} slider={slider}/>
       <OurServices/>
       <Banners/>
       <NewProductsSlider tires={tires}/>
       <Campaigns/>
       <OutletSlider/>
-      <MarkaSlider/>
+      <MarkaSlider brands={brands}/>
       <Footer/>
     </div>
     </>

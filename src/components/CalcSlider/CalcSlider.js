@@ -1,11 +1,15 @@
+import Link from "next/link";
 import React, {useState} from "react";
 import Slider from "react-slick";
 import styles from "./calcSlider.module.css";
 
-const CalcSlider = () => {
+const CalcSlider = ({slider, width, height, radius}) => {
 
 
   const [filterBy, setFilterBy] = useState('forTire')
+  const [selectedWidth, setSelectedWidth] = useState(null)
+  const [selectedHeight, setSelectedHeight] = useState(null)
+  const [selectedRadius, setSelectedRadius] = useState(null)
 
   const settings = {
     dots: true,
@@ -71,69 +75,66 @@ const CalcSlider = () => {
                           <div class="col-lg-6 col-12 filter-inputs">
                             <div style={{ width: "100%", height: "40px" }}>
                               <select
+                                onChange={(e) => setSelectedWidth(e.target.value)}
                                 style={{
                                   width: "100%",
                                   height: "100%",
                                   outline: "none",
                                 }}
                               >
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
+                                <option value={''}>En(mm)</option>
+                                {width?.map((wth) => (
+                                  <option value={wth?.size}>{wth?.size}</option>
+                                ))}
+                                
                               </select>
                             </div>
                           </div>
                           <div class="col-lg-6  col-12 filter-inputs">
                             <div style={{ width: "100%", height: "40px" }}>
                               <select
+                                onChange={(e) => setSelectedHeight(e.target.value)}
                                 style={{
                                   width: "100%",
                                   height: "100%",
                                   outline: "none",
                                 }}
                               >
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
+                                <option value={''}>Hündürlük(%)</option>
+                                {height?.map((hgt) => (
+                                    <option value={hgt?.size}>{hgt?.size}</option>
+                                ))}
                               </select>
                             </div>
                           </div>
                           <div class="col-lg-6  col-12 filter-inputs mt-3">
                             <div style={{ width: "100%", height: "40px" }}>
                               <select
+                                onChange={(e) => setSelectedRadius(e.target.value)}
                                 style={{
                                   width: "100%",
                                   height: "100%",
                                   outline: "none",
                                 }}
                               >
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
-                                <option>asdasdsa</option>
+                                <option value={''}>Diametr(düym)</option>
+                                {radius?.map((rds) => (
+                                  <option value={rds?.size}>{rds?.size}</option>
+                                ))}
+                                
                               </select>
                             </div>
                           </div>
 
                           <div class="col-lg-6  col-12 filter-inputs">
+                            <Link href={`/search?width=${selectedWidth}&height=${selectedHeight}&diametr=${selectedRadius}`}>
                             <button
                               class="block-finder__form-control block-finder__form-control--button tyres_filter mt-3"
-                              type="submit"
                               style={{ width: "100%" }}
                             >
                               Axtar
                             </button>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -258,78 +259,19 @@ const CalcSlider = () => {
           </div>
           <div class="col-lg-8 col-12 for-slide" style={{ marginTop: "20px" }}>
             <Slider {...settings}>
+              {slider?.map((sld) => (
+
               <div
                 className={styles.sliderContainer}
                 style={{ width: "500px", height: "120px", overflow: "hidden" }}
               >
                 <img
-                  src="https://wallpapercave.com/wp/wp2099569.jpg"
+                  src={sld?.image}
                   width={"100%"}
                 />
               </div>
-              <div
-                className={styles.sliderContainer}
-                style={{ width: "500px", height: "120px", overflow: "hidden" }}
-              >
-                <img
-                  src="https://wallpapercave.com/wp/wp2099569.jpg"
-                  width={"100%"}
-                />
-              </div>
-              <div
-                className={styles.sliderContainer}
-                style={{ width: "500px", height: "120px", overflow: "hidden" }}
-              >
-                <img
-                  src="https://wallpapercave.com/wp/wp2099569.jpg"
-                  width={"100%"}
-                />
-              </div>
-              <div
-                className={styles.sliderContainer}
-                style={{ width: "500px", height: "120px", overflow: "hidden" }}
-              >
-                <img
-                  src="https://wallpapercave.com/wp/wp2099569.jpg"
-                  width={"100%"}
-                />
-              </div>
-              <div
-                className={styles.sliderContainer}
-                style={{ width: "500px", height: "120px", overflow: "hidden" }}
-              >
-                <img
-                  src="https://wallpapercave.com/wp/wp2099569.jpg"
-                  width={"100%"}
-                />
-              </div>
-              <div
-                className={styles.sliderContainer}
-                style={{ width: "500px", height: "120px", overflow: "hidden" }}
-              >
-                <img
-                  src="https://wallpapercave.com/wp/wp2099569.jpg"
-                  width={"100%"}
-                />
-              </div>
-              <div
-                className={styles.sliderContainer}
-                style={{ width: "500px", height: "120px", overflow: "hidden" }}
-              >
-                <img
-                  src="https://wallpapercave.com/wp/wp2099569.jpg"
-                  width={"100%"}
-                />
-              </div>
-              <div
-                className={styles.sliderContainer}
-                style={{ width: "500px", height: "120px", overflow: "hidden" }}
-              >
-                <img
-                  src="https://wallpapercave.com/wp/wp2099569.jpg"
-                  width={"100%"}
-                />
-              </div>
+              ))}
+              
             </Slider>
           </div>
         </div>

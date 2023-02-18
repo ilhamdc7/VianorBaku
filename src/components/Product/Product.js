@@ -84,8 +84,8 @@ const Product = ({ tire }) => {
                 <div class="display-flex">
                   <div class="product__name">
                     <a href="/tyresdetail/38970/">{`${tire?.model?.brend?.title} ${tire?.model?.name}`}</a>
-                    {/* <br /> */}
-                    <b>{`${tire?.en?.size}/${tire?.hundurluk?.size}${tire?.radius?.size ? `/R${tire?.radius?.size}` : ''} ${tire?.load_index?.name ?? ''}${tire?.speed_index?.name ?? ''}`}</b>
+                    <br />
+                    <b>{`${tire?.en?.size}/${tire?.hundurluk?.size}${tire?.radius?.size ? `/R${tire?.diametr?.size}` : ''} ${tire?.load_index?.name ?? ''}${tire?.speed_index?.name ?? ''}`}</b>
                   </div>
                 </div>
               </div>

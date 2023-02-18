@@ -4,6 +4,9 @@ import Footer from '@/components/Footer/Footer'
 import SearchBody from '@/components/SearchBody/SearchBody'
 import { baseUrl } from '../api/api'
 import { useRouter } from 'next/router'
+import { useDebounce } from 'use-debounce';
+import { useMount, useUpdateEffect } from 'ahooks'
+
 import $ from "jquery"
 
 const index = () => {
@@ -103,24 +106,45 @@ useEffect(()=>{
 })
   const [tyres, setTyres] = useState([])
   const [brands, setBrands] = useState([])
-  const [width, setWitdh] = useState([])
+  const [width, setWitdh] = useState([])  
+  const [height, setHeight] = useState([])
+  const [radius, setRadius] = useState([])
 
 
   const [selectedBrands, setSelectedBrands] = useState([])
   const [selectedWidth, setSelectedWidth] = useState([])
+  const [selectedHeight, setSelectedHeight] = useState([])
+  const [selectedRadius, setSelectedRadius] = useState([])
+  const [range, setRange] = React.useState([0, 2000]);
+  const [minPrice] = useDebounce(range[0], 400)
+  const [maxPrice] = useDebounce(range[1], 400)
+  const [sortPrice, setSortPrice] = useState('')
+  const [selectedSeason, setSelectedSeason] = useState('')
 
-  console.log(selectedBrands, 'ashdushadusa')
+
 
   const {query} = useRouter()
   useEffect(() => {
     if(query?.brand?.length >= 1){
       setSelectedBrands(query.brand.split(','))
     }
-  },[query?.brand])
+    if(query?.width?.length >= 1){
+      setSelectedWidth(query.width.split(','))
+    }
+    if(query?.height?.length >= 1){
+      setSelectedHeight(query.height.split(','))
+    }
+    if(query?.diametr?.length >= 1){
+      setSelectedRadius(query.diametr.split(','))
+    }
+    if(query?.season?.length >= 1){
+      setSelectedSeason(query?.season)
+    }
+  },[query?.brand,query?.width,query?.height,query?.radius])
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     getFilteredProducts()
-  },[selectedBrands, selectedWidth])
+  },[selectedBrands, selectedWidth,selectedHeight,minPrice, maxPrice,selectedRadius, sortPrice, selectedSeason])
 
   const getSelectedBrandsData = (data) =>{
     const results = selectedBrands?.find(item => item === data)
@@ -132,7 +156,6 @@ useEffect(()=>{
     }
     
   }
-  console.log(tyres)
 
   const getSelectedWidthData = (data) => {
     const results = selectedWidth?.find(item => item === data)
@@ -143,9 +166,31 @@ useEffect(()=>{
       setSelectedWidth(newSelectedList)
     }
   }
+
+  const getSelectedHeightData = (data) => {
+    const results = selectedHeight?.find(item => item === data)
+    if(results == undefined){
+      setSelectedHeight([...selectedHeight, data])
+    }else{
+      const newSelectedList = selectedHeight.filter(item => item !==data)
+      setSelectedHeight(newSelectedList)
+    }
+  }
+
+
+
+  const getSelectedRadiusData = (data) => {
+    const results = selectedRadius?.find(item => item === data)
+    if(results == undefined){
+      setSelectedRadius([...selectedRadius, data])
+    }else{
+      const newSelectedList = selectedRadius.filter(item => item !==data)
+      setSelectedRadius(newSelectedList)
+    }
+  }
   
   const getFilteredProducts = async() => {
-    await baseUrl.get(`/tyre-filter?brand=${String(selectedBrands ?? '')}&width=${String(selectedWidth)}`)
+    await baseUrl.get(`/tyre-filter?brand=${String(selectedBrands ?? '')}&width=${String(selectedWidth)}&height=${String(selectedHeight)}&min_price=${minPrice}&max_price=${maxPrice}&diametr=${String(selectedRadius)}&sort_price=${sortPrice}&season=${selectedSeason}`)
     .then(res => {
       const {data,status} = res
       if(status>=200 && status<=300 ){
@@ -157,6 +202,8 @@ useEffect(()=>{
   useEffect(() => {
     getBrands()
     getWidth()
+    getHeight()
+    getRadius()
   },[])
 
   const getBrands = async() => {
@@ -167,7 +214,6 @@ useEffect(()=>{
     })
   }
 
-  // console.log(selectedWidth,'asdhsaygdsa')
 
   const getWidth = async() =>{
     await baseUrl.get(`tyre_width`)
@@ -177,10 +223,41 @@ useEffect(()=>{
     })
   } 
 
+  const getHeight = async() => {
+    await baseUrl.get(`tyre_height`)
+    .then(res => setHeight(res.data.results))
+  }
+
+  const getRadius = async() => {
+    await baseUrl.get(`/tyre_diametr`)
+    .then(res => setRadius(res?.data?.results))
+  }
+
   return (
     <>
         <Header/>
-        <SearchBody tyres={tyres} selectedBrands={selectedBrands} brands={brands} getSelectedWidthData={getSelectedWidthData} width={width} getSelectedBrandsData={getSelectedBrandsData}/>
+        <SearchBody 
+          range={range} 
+          setRange={setRange} 
+          getSelectedHeightData={getSelectedHeightData} 
+          selectedHeight={selectedHeight} 
+          tyres={tyres} 
+          height={height} 
+          selectedBrands={selectedBrands} 
+          brands={brands} 
+          getSelectedWidthData={getSelectedWidthData} 
+          width={width} 
+          getSelectedBrandsData={getSelectedBrandsData}
+          getSelectedRadiusData={getSelectedRadiusData}
+          radius={radius}
+          setSelectedBrands={setSelectedBrands}
+          setSelectedHeight={setSelectedHeight}
+          setSelectedRadius={setSelectedRadius}
+          setSelectedWidth={setSelectedWidth}
+          setSortPrice={setSortPrice}
+          selectedWidth={selectedWidth}
+          selectedRadius={selectedRadius}
+        />
         <Footer/>
     </>
   )

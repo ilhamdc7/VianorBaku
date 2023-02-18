@@ -1,8 +1,9 @@
+import Link from "next/link";
 import React from "react";
 import Slider from "react-slick";
 
 
-const MarkaSlider = () => {
+const MarkaSlider = ({brands}) => {
 
     const settings = {
         dots: false,
@@ -28,128 +29,21 @@ const MarkaSlider = () => {
           </div>
           <div class="brands-images">
             <Slider {...settings}>
+            {brands?.map((brand)=> (
 
-              <a
-                href="/tyre/filter/?page=1&brand=BF GOODRICH"
+              <Link
+                href={`/search?brand=${brand?.title}`}
                 class="image__body block-brands__item brand d-flex flex-column"
                 style={{ width: "100%", cursor: "pointer" }}
               >
                 <img
                   class="image__tag brand-image"
-                  src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/082018/lassa-logo-1.png?T2ou2aTXHq6xs.oFTGVBFg0NPvJIDhpD&itok=hBnQtgPZ"
+                  src={`https://vianor.efgroup.az${brand?.brand_image}`}
                   alt=""
                 />
-              </a>
-              <a
-                href="/tyre/filter/?page=1&brand=BF GOODRICH"
-                class="image__body block-brands__item brand d-flex flex-column"
-                style={{ width: "100%", cursor: "pointer" }}
-              >
-                <img
-                  class="image__tag brand-image"
-                  src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/082018/lassa-logo-1.png?T2ou2aTXHq6xs.oFTGVBFg0NPvJIDhpD&itok=hBnQtgPZ"
-                  alt=""
-                />
-              </a>
-              <a
-                href="/tyre/filter/?page=1&brand=BF GOODRICH"
-                class="image__body block-brands__item brand d-flex flex-column"
-                style={{ width: "100%", cursor: "pointer" }}
-              >
-                <img
-                  class="image__tag brand-image"
-                  src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/082018/lassa-logo-1.png?T2ou2aTXHq6xs.oFTGVBFg0NPvJIDhpD&itok=hBnQtgPZ"
-                  alt=""
-                />
-              </a>
-              <a
-                href="/tyre/filter/?page=1&brand=BF GOODRICH"
-                class="image__body block-brands__item brand d-flex flex-column"
-                style={{ width: "100%", cursor: "pointer" }}
-              >
-                <img
-                  class="image__tag brand-image"
-                  src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/082018/lassa-logo-1.png?T2ou2aTXHq6xs.oFTGVBFg0NPvJIDhpD&itok=hBnQtgPZ"
-                  alt=""
-                />
-              </a>
-              <a
-                href="/tyre/filter/?page=1&brand=BF GOODRICH"
-                class="image__body block-brands__item brand d-flex flex-column"
-                style={{ width: "100%", cursor: "pointer" }}
-              >
-                <img
-                  class="image__tag brand-image"
-                  src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/082018/lassa-logo-1.png?T2ou2aTXHq6xs.oFTGVBFg0NPvJIDhpD&itok=hBnQtgPZ"
-                  alt=""
-                />
-              </a>
-              <a
-                href="/tyre/filter/?page=1&brand=BF GOODRICH"
-                class="image__body block-brands__item brand d-flex flex-column"
-                style={{ width: "100%", cursor: "pointer" }}
-              >
-                <img
-                  class="image__tag brand-image"
-                  src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/082018/lassa-logo-1.png?T2ou2aTXHq6xs.oFTGVBFg0NPvJIDhpD&itok=hBnQtgPZ"
-                  alt=""
-                />
-              </a>
-              <a
-                href="/tyre/filter/?page=1&brand=BF GOODRICH"
-                class="image__body block-brands__item brand d-flex flex-column"
-                style={{ width: "100%", cursor: "pointer" }}
-              >
-                <img
-                  class="image__tag brand-image"
-                  src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/082018/lassa-logo-1.png?T2ou2aTXHq6xs.oFTGVBFg0NPvJIDhpD&itok=hBnQtgPZ"
-                  alt=""
-                />
-              </a>
-              <a
-                href="/tyre/filter/?page=1&brand=BF GOODRICH"
-                class="image__body block-brands__item brand d-flex flex-column"
-                style={{ width: "100%", cursor: "pointer" }}
-              >
-                <img
-                  class="image__tag brand-image"
-                  src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/082018/lassa-logo-1.png?T2ou2aTXHq6xs.oFTGVBFg0NPvJIDhpD&itok=hBnQtgPZ"
-                  alt=""
-                />
-              </a>
-              <a
-                href="/tyre/filter/?page=1&brand=BF GOODRICH"
-                class="image__body block-brands__item brand d-flex flex-column"
-                style={{ width: "100%", cursor: "pointer" }}
-              >
-                <img
-                  class="image__tag brand-image"
-                  src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/082018/lassa-logo-1.png?T2ou2aTXHq6xs.oFTGVBFg0NPvJIDhpD&itok=hBnQtgPZ"
-                  alt=""
-                />
-              </a>
-              <a
-                href="/tyre/filter/?page=1&brand=BF GOODRICH"
-                class="image__body block-brands__item brand d-flex flex-column"
-                style={{ width: "100%", cursor: "pointer" }}
-              >
-                <img
-                  class="image__tag brand-image"
-                  src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/082018/lassa-logo-1.png?T2ou2aTXHq6xs.oFTGVBFg0NPvJIDhpD&itok=hBnQtgPZ"
-                  alt=""
-                />
-              </a>
-              <a
-                href="/tyre/filter/?page=1&brand=BF GOODRICH"
-                class="image__body block-brands__item brand d-flex flex-column"
-                style={{ width: "100%", cursor: "pointer" }}
-              >
-                <img
-                  class="image__tag brand-image"
-                  src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/082018/lassa-logo-1.png?T2ou2aTXHq6xs.oFTGVBFg0NPvJIDhpD&itok=hBnQtgPZ"
-                  alt=""
-                />
-              </a>
+              </Link>
+            ) )}
+              
             </Slider>
            
           </div>

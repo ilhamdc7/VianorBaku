@@ -1,11 +1,49 @@
 import React from "react";
 import Product from "../Product/Product";
 import Slider from "@mui/material/Slider";
-const SearchBody = ({ tyres, brands, getSelectedBrandsData, width, getSelectedWidthData, selectedBrands }) => {
-  const [range, setRange] = React.useState([0, 1000]);
+
+const SearchBody = ({ 
+  radius,
+  tyres,
+  brands, 
+  getSelectedBrandsData, 
+  width, 
+  getSelectedWidthData, 
+  selectedBrands, 
+  height, 
+  getSelectedHeightData,
+  selectedHeight, 
+  range, 
+  setRange,
+  getSelectedRadiusData,
+  setSelectedBrands,
+  setSelectedWidth,
+  setSelectedHeight,
+  setSelectedRadius,
+  setSortPrice,
+  selectedWidth,
+  selectedRadius
+ }) => {
   function handleChanges(event, newValue) {
     setRange(newValue);
   }
+
+
+  const changeWidth = (e) => {
+    setSelectedWidth([e])
+  }
+  const changeHeight = (e) => {
+    setSelectedHeight([e])
+  }
+  const changeMarka = (e) => {
+    setSelectedBrands([e])
+  }
+  const changeRadius = (e) => {
+    setSelectedRadius([e])
+  }
+
+
+
   return (
     <div class="site__body">
       <div class="block-header block-header--has-breadcrumb block-header--has-title">
@@ -91,7 +129,7 @@ const SearchBody = ({ tyres, brands, getSelectedBrandsData, width, getSelectedWi
                           <div class="filter__body" data-collapse-content>
                             <div class="filter__container">
                               <div style={{ width: "14rem", padding: "20px" }}>
-                                <Slider value={range} onChange={handleChanges} valueLabelDisplay="auto" />
+                                <Slider max={2000} min={0} value={range} onChange={handleChanges} valueLabelDisplay="auto" />
                              {range[0]} M - {range[1]} M
                               </div>
                             </div>
@@ -136,7 +174,7 @@ const SearchBody = ({ tyres, brands, getSelectedBrandsData, width, getSelectedWi
                                             type="checkbox"
                                             data-brand="APOLLO"
                                             value={brand?.title}
-                                            checked={selectedBrands.find(item => item === brand.title) ?? false}
+                                            checked={selectedBrands?.find(item => item === brand.title) ?? false}
                                           />
                                           <span class="input-check__box"></span>
                                           <span class="input-check__icon">
@@ -187,6 +225,7 @@ const SearchBody = ({ tyres, brands, getSelectedBrandsData, width, getSelectedWi
                                             class="input-check__input change_filter input_width"
                                             name="width"
                                             type="checkbox"
+                                            checked={selectedWidth?.find(item => item === wt.size) ?? false}
                                             data-width="10"
                                             value={wt.size}
                                           />
@@ -230,15 +269,19 @@ const SearchBody = ({ tyres, brands, getSelectedBrandsData, width, getSelectedWi
                             <div class="filter__container">
                               <div class="filter-list">
                                 <div class="filter-list__list">
+                                  {height?.map((hgt) => (
+
                                   <label class="filter-list__item">
                                     <span class="input-check filter-list__input">
                                       <span class="input-check__body">
                                         <input
+                                          onChange={(e) => getSelectedHeightData(e.target.value)}
                                           class="input-check__input change_filter input_height"
                                           name="height"
                                           type="checkbox"
+                                          checked={selectedHeight.find(item => item === hgt.size) ?? false}
                                           data-height="10.5"
-                                          value="10.5"
+                                          value={hgt?.size}
                                         />
                                         <span class="input-check__box"></span>
                                         <span class="input-check__icon">
@@ -250,9 +293,10 @@ const SearchBody = ({ tyres, brands, getSelectedBrandsData, width, getSelectedWi
                                     </span>
 
                                     <span class="filter-list__title">
-                                      10.5
+                                      {hgt?.size}
                                     </span>
                                   </label>
+                                  ))}
                                 </div>
                               </div>
                             </div>
@@ -281,15 +325,19 @@ const SearchBody = ({ tyres, brands, getSelectedBrandsData, width, getSelectedWi
                             <div class="filter__container">
                               <div class="filter-list">
                                 <div class="filter-list__list">
+                                  {radius?.map((rds) => (
+
                                   <label class="filter-list__item">
                                     <span class="input-check filter-list__input">
                                       <span class="input-check__body">
                                         <input
+                                          onChange={(e) => getSelectedRadiusData(e.target.value)}
                                           class="input-check__input change_filter input_radius"
                                           name="radius"
                                           type="checkbox"
                                           data-radius="13"
-                                          value="13"
+                                          checked={selectedRadius?.find(item => item === rds.size) ?? false}
+                                          value={rds?.size}
                                         />
                                         <span class="input-check__box"></span>
                                         <span class="input-check__icon">
@@ -300,9 +348,10 @@ const SearchBody = ({ tyres, brands, getSelectedBrandsData, width, getSelectedWi
                                       </span>
                                     </span>
                                     <span class="filter-list__title">
-                                      13
+                                      {rds?.size}
                                     </span>
                                   </label>
+                                  ))}
                                 </div>
                               </div>
                             </div>
@@ -358,46 +407,37 @@ const SearchBody = ({ tyres, brands, getSelectedBrandsData, width, getSelectedWi
 
                 <div className=" filter_area">
 
-                  <select onChange={(e) => getSelectedWidthData(e.target.value)} className="form-control form-control-sm w-15">
+                  <select onChange={(e) => changeWidth(e.target.value)} className="form-control form-control-sm w-15">
                     <option value={''}>En</option>
                     {width?.map((wt) => (
                       <option value={wt.size}>{wt.size}</option>
                     ))}
 
                   </select>
-                  <select className="form-control form-control-sm w-15">
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
+                  <select onChange={(e) => changeHeight(e.target.value)} className="form-control form-control-sm w-15">
+                    <option value={''}>Hündürlük</option>
+                    {height?.map((hgt) => (
+                      <option>{hgt?.size}</option>
+                    ))}
+                    
                   </select>
-                  <select className="form-control form-control-sm w-15">
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
+                  <select onChange={(e) => changeRadius(e.target.value)} className="form-control form-control-sm w-15">
+                    <option value={''}>Radius</option>
+                    {radius?.map((rds) => (
+                      <option>{rds?.size}</option>
+                    ))}
+                    
                   </select>
-                  <select className="form-control form-control-sm w-15">
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
-                    <option>asdasdsa</option>
+                  <select onChange={(e) => changeMarka(e.target.value)} className="form-control form-control-sm w-15">
+                    <option value={''}>Marka</option>
+                    {brands?.map((brand) => (
+                      <option value={brand?.title}>{brand?.title}</option>
+                    ))}
+                    
                   </select>
-                  <button className="main-filter-btn" style={{ width: '100px', height: '40px', marginLeft: '40px', backgroundColor: '#f25900', color: 'white', borderRadius: '10px', borderStyle: 'none' }}>
-                    Axtar
-                  </button>
-                  <select className="form-control form-control-sm w-15 form-sort">
-                    <option>Yuxaridan Asagi</option>
-                    <option>Asagidan Yuxari </option>
+                  <select onChange={(e) => setSortPrice(e.target.value)} className="form-control form-control-sm w-15 form-sort">
+                    <option value={'False'}>Yuxaridan Asagi</option>
+                    <option value={'True'}>Asagidan Yuxari </option>
                   </select>
                 </div>
               </div>
