@@ -8,11 +8,12 @@ import DescriptionSpecs from "@/components/DescriptionSpecs/DescriptionSpecs";
 import DescriptionCalc from "@/components/DescriptionCalc/DescriptionCalc";
 import AlternativeProductsSlider from "@/components/AlternativeProductsSlider/AlternativeProductsSlider";
 import { baseUrl } from "../api/api";
-
+import MobileHeader from '@/components/MobileHeader/MobileHeader'
 const Description = ({product}) => {
 
   return (
     <>
+    <MobileHeader/>
       <Header />
       <div class="site__body">
         <div class="block-header block-header--has-breadcrumb">
