@@ -22160,6 +22160,12 @@ select.form-control {
 .product--layout--full .product__info {
     margin-left: var(--product-gutter);
 }
+.view-options__filters-button {
+    padding: 10px;
+}
+.filters-button__title {
+    padding: 1px 5px;
+}
 @media(max-width:1200px){
     .view-options__filters-button{
         margin-left: 20px;
@@ -22174,7 +22180,7 @@ select.form-control {
         display: none;
     }
     .poducts-area-left{
-        width: 100%;
+        width: 100% !important;
     }
       .sidebar--offcanvas--mobile.sidebar--open {
         width: unset;
