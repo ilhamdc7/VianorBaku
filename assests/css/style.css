@@ -23006,4 +23006,7 @@ select.form-control {
   .product__info-body {
     padding: 28px 0;
 }
+.block-features__item-icon {
+  margin-right: 18px;
+}
 }
