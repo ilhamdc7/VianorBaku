@@ -22939,8 +22939,9 @@ select.form-control {
     margin-right: 5px;
 }
 .search__input {
-    padding: 10px;
+    padding: 10px !important;
 }
+
 @media (max-width: 1200px) {
   .mobile-search__button--search {
     right: 0;
