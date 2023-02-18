@@ -22993,6 +22993,9 @@ select.form-control {
   .mobile-search__input ~ .mobile-search__button--close {
     border-left: 1px solid #ebebeb;
   }
+  .product--layout--full .product__gallery {
+    padding-left: 0;
+}
 }
 
 @media (max-width: 576px) {
@@ -23000,4 +23003,7 @@ select.form-control {
     margin: 8px;
     width: calc((100% - 16px) / 1);
   }
+  .product__info-body {
+    padding: 28px 0;
+}
 }
