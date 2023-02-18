@@ -22171,6 +22171,14 @@ select.form-control {
     }
     .sidebar--offcanvas--mobile {
         width: unset;
+        display: none;
+    }
+    .poducts-area-left{
+        width: 100%;
+    }
+      .sidebar--offcanvas--mobile.sidebar--open {
+        width: unset;
+        display: block;
     }
     .form-sort{
         float: unset;
