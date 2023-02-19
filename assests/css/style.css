@@ -8112,6 +8112,15 @@ select.form-control::-ms-expand {
 .block-finder__form-control--button:focus {
   outline: none;
 }
+.block-finder__form-control--select select, .block-finder__form-control--select .select2-selection--single {
+  height: 44px;
+  border-radius: 2px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: 5px 10px;
+  -webkit-transition: opacity .25s ease-in-out, color .25s ease-in-out;
+  transition: opacity .25s ease-in-out, color .25s ease-in-out;
+}
 
 @media (max-width: 1199.98px) {
   .block-finder {
@@ -8206,6 +8215,12 @@ select.form-control::-ms-expand {
   }
   .block-finder__form-control--button {
     margin-top: 35px;
+  }
+  .block-finder__form-control--button.tyres_filter{
+    margin-top: 10px;
+  }
+  #btn1, #btn2{
+    font-size: 16px !important;
   }
 }
 
@@ -22520,6 +22535,15 @@ select.form-control::-ms-expand {
   width: 100% !important;
   max-width: 100%;
 }
+.filter-inputs select{
+  height: 44px;
+  border-radius: 2px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: 5px 10px;
+  -webkit-transition: opacity .25s ease-in-out, color .25s ease-in-out;
+  transition: opacity .25s ease-in-out, color .25s ease-in-out;
+}
 
 @media screen and (min-width: 989) and (max-width: 1200) {
   .resp-for-slide {
@@ -22532,10 +22556,13 @@ select.form-control::-ms-expand {
   padding-left: 70px !important;
 } */
 }
-
+.filter-inputs {
+  margin-top: 15px;
+}
 @media (max-width: 992px) {
   .filter-inputs {
     padding-left: 0px !important;
+    padding-right: 0 !important;
   }
 }
 
@@ -23008,5 +23035,9 @@ select.form-control {
 }
 .block-features__item-icon {
   margin-right: 18px;
+}
+.tyres_filter_a {
+  width: 100% !important;
+  flex-basis: 100%;
 }
 }

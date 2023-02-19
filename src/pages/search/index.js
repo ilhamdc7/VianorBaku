@@ -105,6 +105,8 @@ useEffect(()=>{
   });
 
 })
+
+
   const [tyres, setTyres] = useState([])
   const [brands, setBrands] = useState([])
   const [width, setWitdh] = useState([])  
