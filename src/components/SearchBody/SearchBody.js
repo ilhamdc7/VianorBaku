@@ -1,6 +1,7 @@
 import React from "react";
 import Product from "../Product/Product";
 import Slider from "@mui/material/Slider";
+import { useEffect } from "react";
 
 const SearchBody = ({ 
   radius,

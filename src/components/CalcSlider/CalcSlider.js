@@ -33,7 +33,7 @@ const CalcSlider = ({slider, width, height, radius}) => {
                   <button
                   onClick={() => setFilterBy('forTire')}
                     id="btn1"
-                    style={filterBy === 'forTire' ? {padding: "6px", backgroundColor: 'rgb(242, 89, 0)', height: '125%'} : {padding: '8px', backgroundColor: 'rgb(255, 255, 255)', height: '100%' }}
+                    style={filterBy === 'forTire' ? {padding: "6px", backgroundColor: 'rgb(242, 89, 0)', height: '100%'} : {padding: '8px', backgroundColor: 'rgb(255, 255, 255)', height: '100%' }}
                     type="button"
                     class="btn btn-primary btn-lg "
                   >
@@ -107,7 +107,7 @@ const CalcSlider = ({slider, width, height, radius}) => {
                               </select>
                             </div>
                           </div>
-                          <div class="col-lg-6  col-12 filter-inputs mt-3">
+                          <div class="col-lg-6  col-12 filter-inputs">
                             <div style={{ width: "100%", height: "40px" }}>
                               <select
                                 onChange={(e) => setSelectedRadius(e.target.value)}
@@ -127,9 +127,9 @@ const CalcSlider = ({slider, width, height, radius}) => {
                           </div>
 
                           <div class="col-lg-6  col-12 filter-inputs">
-                            <Link href={`/search?width=${selectedWidth}&height=${selectedHeight}&diametr=${selectedRadius}`}>
+                            <Link href={`/search?width=${selectedWidth}&height=${selectedHeight}&diametr=${selectedRadius}`} className="tyres_filter_a">
                             <button
-                              class="block-finder__form-control block-finder__form-control--button tyres_filter mt-3"
+                              class="block-finder__form-control block-finder__form-control--button tyres_filter "
                               style={{ width: "100%" }}
                             >
                               Axtar

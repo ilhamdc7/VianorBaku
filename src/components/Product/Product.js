@@ -13,7 +13,7 @@ const Product = ({ tire }) => {
       <div
         class="block-products-carousel__cell"
         style={{ flexDirection: "column", justifyContent: "start" }}
-      
+
       >
         <div
           style={{
@@ -30,24 +30,41 @@ const Product = ({ tire }) => {
         >
           {" "}
         </div>
+        {/* If else  */}
+        {/* <div
+          style={{
+            height: "40px",
+            backgroundColor: "#f25900",
+            justifyContent: "center",
+            color: "#000",
+            display: "flex",
+            alignItems: "center",
+            textAlign: "center",
+            fontSize: "14px",
+            fontWeight:'bold',
+            alignItems: "center",
+          }}
+        >
+          {" TÖVSİYYƏ EDİRİK"}
+        </div> */}
 
         <div class="product-card product-card--layout--grid">
-          
-            
-            <img
-              style={{ width: "50%", margin: "10px auto" }}
-              src={tire?.model?.brend?.brand_image}
-            />
-      
+
+
+          <img
+            style={{ width: "50%", margin: "10px auto" }}
+            src={tire?.model?.brend?.brand_image}
+          />
+
           <div class="product-card__image">
             <div class="image image--type--product">
               <a href="/tyresdetail/38970/" class="image__body">
-              <Link href={`/details/${tire?.id}`}>
-                <img
-                  class="image__tag"
-                  src={tire?.model?.model_image[0]?.tyre_images}
-                  alt=""
-                />
+                <Link href={`/details/${tire?.id}`}>
+                  <img
+                    class="image__tag"
+                    src={tire?.model?.model_image[0]?.tyre_images}
+                    alt=""
+                  />
                 </Link>
               </a>
             </div>
@@ -78,13 +95,16 @@ const Product = ({ tire }) => {
             <div class="product-card__name">
               <div>
                 <div class="product-card__badges">
+                  <div class="tag-badge tag-badge--sale">
+                    -16%
+                  </div>
+                  <div class="tag-badge tag-badge--new">2 Taksit </div>
                   <div class="tag-badge tag-badge--hot">Kredit </div>
                 </div>
 
                 <div class="display-flex">
                   <div class="product__name">
                     <a href="/tyresdetail/38970/">{`${tire?.model?.brend?.title} ${tire?.model?.name}`}</a>
-                    <br />
                     <b>{`${tire?.en?.size}/${tire?.hundurluk?.size}${tire?.radius?.size ? `/R${tire?.diametr?.size}` : ''} ${tire?.load_index?.name ?? ''}${tire?.speed_index?.name ?? ''}`}</b>
                   </div>
                 </div>
@@ -112,7 +132,7 @@ const Product = ({ tire }) => {
               Minik
             </li>
           </ul> */}
-          <div class="d-flex " style={{ 'justifyContent': "space-between", 'margin':'10px 0' }}>
+          <div class="d-flex " style={{ 'justifyContent': "space-between", 'margin': '10px 0' }}>
             <div
               class="d-flex"
               style={{ marginLeft: "15px", alignItems: "flex-end" }}
@@ -133,8 +153,8 @@ const Product = ({ tire }) => {
               <span
                 style={{ fontSize: "12px", color: "#000", textAlign: "center" }}
               >
-                
-                Mövcuddur : {tire?.stock ?? 0} 
+
+                Mövcuddur : {tire?.stock ?? 0}
               </span>
               <div style={{ display: "flex" }}>
                 <span style={{ visibility: "hidden" }} value="4" class="stock">
@@ -150,9 +170,11 @@ const Product = ({ tire }) => {
           </div>
 
           <div class="product-card__footer">
-            <div class="product-card__prices">
-              <div class="d-flex product-card__price product-card__price--current align-items-baseline ">
-                {`${tire?.price} ₼`}
+                <div class="product-card__prices">
+                <span class="d-flex product-card__price product-card__price--current align-items-baseline  discount_pricee ">78  <i className="azn">₼</i></span>
+
+            <div class="d-flex product-card__price product-card__price--current align-items-baseline ">
+                {`${tire?.price} `} <i className="azn">₼</i>
               </div>
             </div>
 
@@ -161,7 +183,7 @@ const Product = ({ tire }) => {
               data-id="38970"
               type="button"
               aria-label="Add to cart"
-              onClick={() => dispatch({type: 'ADD_ITEM', payload: tire})}
+              onClick={() => dispatch({ type: 'ADD_ITEM', payload: tire })}
             >
               <svg width="20" height="20">
                 <circle cx="7" cy="17" r="2" />
@@ -181,6 +203,11 @@ const Product = ({ tire }) => {
               Tooltip on top
             </p> */}
           </div>
+          <div className="prod-foot">
+            {'YAG ALANA YAGDƏYİŞMƏ PULSUZ'}
+          </div>
+          {/* If else */}
+          {/* <div class="mytest prod-foot"  >06/11/2022</div> */}
         </div>
       </div>
     </div>

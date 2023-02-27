@@ -7,6 +7,7 @@ import { baseUrl } from '../api/api'
 import { useRouter } from 'next/router'
 import { useDebounce } from 'use-debounce';
 import { useMount, useUpdateEffect } from 'ahooks'
+import MobileHeader from '@/components/MobileHeader/MobileHeader'
 
 import $ from "jquery"
 
@@ -105,6 +106,8 @@ useEffect(()=>{
   });
 
 })
+
+
   const [tyres, setTyres] = useState([])
   const [brands, setBrands] = useState([])
   const [width, setWitdh] = useState([])  
@@ -236,6 +239,7 @@ useEffect(()=>{
 
   return (
     <>
+        <MobileHeader/>
         <Header/>
         <MobileHeader/>
         <SearchBody 
