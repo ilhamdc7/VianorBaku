@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
+import MobileHeader from '@/components/MobileHeader/MobileHeader'
 import SearchBody from '@/components/SearchBody/SearchBody'
 import { baseUrl } from '../api/api'
 import { useRouter } from 'next/router'
@@ -236,6 +237,7 @@ useEffect(()=>{
   return (
     <>
         <Header/>
+        <MobileHeader/>
         <SearchBody 
           range={range} 
           setRange={setRange} 
