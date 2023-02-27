@@ -40,9 +40,7 @@ const Description = ({product}) => {
                       <div class="product-form product__form bg-whi">
                         <ProductInfo />
                       </div>
-
                       <DescriptionServices />
-
                       <div class="product-form product__form"></div>
                       <DescriptionSpecs />
                       <div class="product-form product__form"></div>
@@ -87,7 +85,6 @@ const Description = ({product}) => {
                     </div>
                   </div>
                   <div class="spec"></div>
-
                   <DescriptionCalc />
                 </div>
               </div>

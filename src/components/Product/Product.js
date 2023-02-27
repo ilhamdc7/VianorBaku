@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
+import { isEmpty } from "lodash";
+import dynamic from 'next/dynamic'
+const DateCountdown = dynamic(() => import('react-date-countdown-timer'), {
+  loading: () => 'Loading...',
+  ssr:false
+})
 
-const Product = ({ tire }) => {
+
+const Product = ({ tire, companie }) => {
+
+  const [date, setDate] = useState(null)
 
   const dispatch = useDispatch()
 
   const cart = useSelector(state => state.cart)
+useEffect(() => {
+    setDate(new Date(companie?.end_date))
+},[])
+
+
 
   return (
+    
     <div class="block-products-carousel__column single_product" id="card-hover" >
       <div
         class="block-products-carousel__cell"
@@ -31,7 +46,7 @@ const Product = ({ tire }) => {
           {" "}
         </div>
         {/* If else  */}
-        {/* <div
+        <div
           style={{
             height: "40px",
             backgroundColor: "#f25900",
@@ -45,15 +60,15 @@ const Product = ({ tire }) => {
             alignItems: "center",
           }}
         >
-          {" TÖVSİYYƏ EDİRİK"}
-        </div> */}
+          {companie?.name}
+        </div>
 
         <div class="product-card product-card--layout--grid">
 
 
           <img
             style={{ width: "50%", margin: "10px auto" }}
-            src={tire?.model?.brend?.brand_image}
+            src={tire?.model?.brend?.brand_image.slice(0,6) !== '/media' ?  tire?.model?.brend?.brand_image : `https://vianor.efgroup.az${tire?.model?.brend?.brand_image}`}
           />
 
           <div class="product-card__image">
@@ -62,7 +77,7 @@ const Product = ({ tire }) => {
                 <Link href={`/details/${tire?.id}`}>
                   <img
                     class="image__tag"
-                    src={tire?.model?.model_image[0]?.tyre_images}
+                    src={tire?.model?.model_image[0]?.tyre_images.slice(0,6) !== '/media' ? tire?.model?.model_image[0]?.tyre_images : `https://vianor.efgroup.az${tire?.model?.model_image[0]?.tyre_images}`}
                     alt=""
                   />
                 </Link>
@@ -171,10 +186,16 @@ const Product = ({ tire }) => {
 
           <div class="product-card__footer">
                 <div class="product-card__prices">
-                <span class="d-flex product-card__price product-card__price--current align-items-baseline  discount_pricee ">78  <i className="azn">₼</i></span>
+                  {(companie?.manat_discount > 0 || companie?.percent_discount > 0) && 
+                  
+                <span class="d-flex product-card__price product-card__price--current align-items-baseline  discount_pricee ">{tire?.price}  <i className="azn">₼</i></span>
+                  }
 
             <div class="d-flex product-card__price product-card__price--current align-items-baseline ">
-                {`${tire?.price} `} <i className="azn">₼</i>
+                {companie?.manat_discount > 0 && tire?.price - companie?.manat_discount} 
+                {companie?.percent_discount > 0 ? (tire?.price) - tire?.price * companie?.percent_discount / 100 : ''} 
+                {companie?.percent_discount === undefined && companie?.manat_discount === undefined ? tire?.price : ''} 
+                <i className="azn">₼</i>
               </div>
             </div>
 
@@ -207,7 +228,14 @@ const Product = ({ tire }) => {
             {'YAG ALANA YAGDƏYİŞMƏ PULSUZ'}
           </div>
           {/* If else */}
-          {/* <div class="mytest prod-foot"  >06/11/2022</div> */}
+          {companie?.end_date && 
+          
+          <div class="mytest prod-foot">
+            
+            <DateCountdown dateTo={date}/>
+          
+          </div>
+          }
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ import OutletSlider from "@/components/OutletSlider/OutletSlider"
 import MarkaSlider from "@/components/MarkaSlider/MarkaSlider"
 import Footer from "@/components/Footer/Footer"
 import { baseUrl } from "./api/api"
+import CompaniesSlider from "@/components/CompaniesSlider/CompaniesSlider"
 
 export default function Home() {
 
@@ -19,6 +20,9 @@ export default function Home() {
   const [height, setHeight] = useState([])
   const [radius, setRadius] = useState([])
   const [brands, setBrands] = useState([])
+  const [marka, setMarka] = useState([])
+  const [discountTyres, setDiscountTyres] = useState([])
+
 
 const getTires = async() => {
   await baseUrl.get(`/tyres?limit=30`)
@@ -26,7 +30,20 @@ const getTires = async() => {
     const {data} = res
     setTires(data?.results)
   })
+  await baseUrl.get(`/discount`)
+  .then(res => {
+    const {data} = res
+    setDiscountTyres(data)
+  })
 }
+
+console.log(discountTyres, 'jsuhduasd')
+
+const getMarka = async() => {
+  await baseUrl.get(`/markas`)
+  .then(res => setMarka(res.data.results))
+}
+
 
 
 const getSlider = async() => {
@@ -63,6 +80,7 @@ useEffect(() => {
   getHeight()
   getRadius()
   getBrands()
+  getMarka()
 },[])
 
 
@@ -73,8 +91,9 @@ useEffect(() => {
 
       <MobileHeader/>
       <Header/>
-      <CalcSlider height={height} radius={radius} width={width} slider={slider}/>
+      <CalcSlider markas={marka} height={height} radius={radius} width={width} slider={slider}/>
       <OurServices/>
+      <CompaniesSlider compaines={discountTyres}/>
       <Banners/>
       <NewProductsSlider tires={tires}/>
       <Campaigns/>

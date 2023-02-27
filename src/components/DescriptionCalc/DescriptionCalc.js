@@ -6,27 +6,27 @@ const DescriptionCalc = () => {
       <h2 class="text-center p-3 m-0 credit-title">Kredit ilə hesablama</h2>
       <ul class="product-tabs__list  prog_wrapp">
         <li class="product-tabs__item product-tabs__item--active">
-          <a href="#3">3</a>
+          <a>3</a>
         </li>
 
         <li class="product-tabs__item ">
-          <a href="#6">6</a>
+          <a>6</a>
         </li>
 
         <li class="product-tabs__item ">
-          <a href="#9">9</a>
+          <a>9</a>
         </li>
 
         <li class="product-tabs__item ">
-          <a href="#12">12</a>
+          <a>12</a>
         </li>
 
         <li class="product-tabs__item ">
-          <a href="#15">15</a>
+          <a>15</a>
         </li>
 
         <li class="product-tabs__item ">
-          <a href="#18">18</a>
+          <a>18</a>
         </li>
       </ul>
       <div class="product-tabs__content p-0">

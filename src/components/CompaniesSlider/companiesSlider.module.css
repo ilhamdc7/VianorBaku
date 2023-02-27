@@ -1,0 +1,10 @@
+.sliderContainer img{
+    height: 408px;
+}
+
+@media (max-width:1000px){
+    .sliderContainer img{
+        height: auto;
+    }
+}
+
