@@ -1,33 +1,27 @@
-import React,{useState, useEffect} from 'react'
-import Header from '@/components/Header/Header'
-import Footer from '@/components/Footer/Footer'
-import MarkaBody from '@/components/MarkaBody/MarkaBody'
-import { baseUrl } from '../api/api'
+import React, { useState, useEffect } from "react";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import MarkaBody from "@/components/MarkaBody/MarkaBody";
+import { baseUrl } from "../api/api";
 
 const index = () => {
+  const [markas, setMarkas] = useState([]);
 
-  const [markas, setMarkas] = useState([])
-
-
-
-  const getMarka = async() => {
-    await baseUrl.get(`/brands`)
-    .then(res => setMarkas(res.data))
-  }
-
+  const getMarka = async () => {
+    await baseUrl.get(`/brands`).then((res) => setMarkas(res.data));
+  };
 
   useEffect(() => {
-    getMarka()
-  },[])
+    getMarka();
+  }, []);
 
   return (
     <>
-    
-    <Header/>
-    <MarkaBody markas={markas}/>
-    <Footer/>
+      <Header />
+      <MarkaBody markas={markas} />
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default index
+export default index;

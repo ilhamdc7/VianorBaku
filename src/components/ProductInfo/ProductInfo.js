@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductInfo = () => {
+const ProductInfo = ({product}) => {
   return (
     <div class="product__info-body">
       <div class="tag-badge tag-badge--sale">-5%</div>
@@ -11,7 +11,7 @@ const ProductInfo = () => {
 
       <div style={{ textAlign: "right" }}>
         <img
-          src="/static/images/4_seasons.png"
+          src={product?.executive_country?.contains('https://') ? product?.executive_country : `https://vianor.efgroup.az${product?.executive_country}`}
           style={{ width: "40px", display: "inline" }}
           alt=""
           data-toggle="tooltip"
@@ -58,14 +58,17 @@ const ProductInfo = () => {
         </table>
       </div>
       <div class="d-flex">
+        {product?.model.brend?.country?.flag !== null && 
+        
         <img
           alt="Tayvan"
           data-toggle="tooltip"
           data-placement="top"
           title="Tayvan"
           class="mr-2 flag-img"
-          src="/media/country/taiwan-flag-png-large.png"
+          src={`https://vianor.efgroup.az${product?.model.brend?.country?.flag}`}
         />
+        }
       </div>
     </div>
   );

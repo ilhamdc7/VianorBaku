@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import ProductLargeDescription from "@/components/ProductLargeDescription/ProductLargeDescription";
@@ -10,6 +10,32 @@ import AlternativeProductsSlider from "@/components/AlternativeProductsSlider/Al
 import { baseUrl } from "../api/api";
 import MobileHeader from '@/components/MobileHeader/MobileHeader'
 const Description = ({product}) => {
+
+  console.log(product,'hsaudhuisauidsh')
+
+const [width, setWidth] = useState('')
+const [height, setHeight] = useState('')
+const [diametr, setDiametr] = useState('')
+const [similarTyres, setSimilarTyres] = useState([])
+
+
+
+ const getSimilarTyres = async() => {
+  await baseUrl.get(`/tyre-filter?width=${width}&height=${height}&diametr=${diametr}`)
+  .then(res => setSimilarTyres(res.data.results))
+}
+
+
+useEffect(() => {
+  setWidth(product?.en?.size)
+  setHeight(product?.hundurluk?.size)
+  setDiametr(product?.diametr?.size)
+},[])
+
+
+useEffect(() => {
+  getSimilarTyres()
+},[width, height, diametr])
 
   return (
     <>
@@ -38,7 +64,7 @@ const Description = ({product}) => {
                   <div class="product__info">
                     <div class="product__info-card">
                       <div class="product-form product__form bg-whi">
-                        <ProductInfo />
+                        <ProductInfo product={product} />
                       </div>
                       <DescriptionServices />
                       <div class="product-form product__form"></div>
@@ -59,10 +85,10 @@ const Description = ({product}) => {
                       <div class="product-form product__form"></div>
                       <div class="product__actions">
                         <div>
-                          <img height="70px" src="/static/images/birkart.png" />
-                          <img height="70px" src="/static/images/albali.png" />
-                          <img height="70px" src="/static/images/tamkart.png" />
-                          <img height="70px" src="/static/images/bolkart.png" />
+                          {product?.taksitCards?.map((card) => (
+                          <img className="mb-3" width={'65px'} height="35px" style={{margin:'0px 5px'}} src={`https://vianor.efgroup.az${card?.image}`} />
+                          ))}
+                          
                         </div>
 
                         <h5 class="product__title">
@@ -88,7 +114,8 @@ const Description = ({product}) => {
                   <DescriptionCalc />
                 </div>
               </div>
-              <AlternativeProductsSlider />
+              
+              <AlternativeProductsSlider tyres={similarTyres}/>
             </div>
           </div>
         </div>

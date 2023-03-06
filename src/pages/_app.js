@@ -4,14 +4,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.bundle.min";
 import "react-image-gallery/styles/css/image-gallery.css";
 import { Provider } from 'react-redux'
-import store from '../store/index'
+import {store, persistor} from '../redux/store/store'
 import { config } from "@fortawesome/fontawesome-svg-core";
+import { PersistGate } from 'redux-persist/integration/react';
+
 
 config.autoAddCss = false; 
 export default function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
       <Component {...pageProps} />
+      </PersistGate>
     </Provider>
   )
 }

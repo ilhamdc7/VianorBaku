@@ -37,39 +37,37 @@ const getTires = async() => {
   })
 }
 
-console.log(discountTyres, 'jsuhduasd')
-
 const getMarka = async() => {
-  await baseUrl.get(`/markas`)
+  await baseUrl.get(`/markas?limit=100000000`)
   .then(res => setMarka(res.data.results))
 }
 
 
 
 const getSlider = async() => {
-  await baseUrl.get(`/slider`)
+  await baseUrl.get(`/slider?limit=100000000`)
   .then(res => setSlider(res.data.results))
 }
 
 
 const getWidth = async() => {
-  await baseUrl.get(`/tyre_width`)
+  await baseUrl.get(`/tyre_width?limit=100000000`)
   .then(res => setWidth(res.data.results))
 }
 
 
 const getHeight = async() => {
-  await baseUrl.get(`/tyre_height`)
+  await baseUrl.get(`/tyre_height?limit=100000000`)
   .then(res => setHeight(res.data.results))
 }
 
 const getRadius = async() => {
-  await baseUrl.get(`/tyre_diametr`)
+  await baseUrl.get(`/tyre_diametr?limit=100000000`)
   .then(res => setRadius(res.data.results))
 }
 
 const getBrands = async() => {
-  await baseUrl.get(`/brands`)
+  await baseUrl.get(`/brands?limit=100000000`)
   .then(res => setBrands(res.data))
 }
 

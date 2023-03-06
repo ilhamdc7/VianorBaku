@@ -2,13 +2,13 @@ import React from "react";
 import Product from "@/components/Product/Product";
 import Slider from "react-slick";
 
-const AlternativeProductsSlider = () => {
+const AlternativeProductsSlider = ({tyres}) => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 3,
+    slidesToScroll: 3, 
     responsive: [
       {
         breakpoint: 1200,
@@ -76,12 +76,10 @@ const AlternativeProductsSlider = () => {
             </div>
           </div>
           <Slider {...settings}>
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
+            {tyres?.map((tyre) => (
+            <Product tire={tyre} />
+            ))}
+            
           </Slider>
         </div>
       </div>

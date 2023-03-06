@@ -43,7 +43,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
 
 
   const getYears = async() => {
-    await baseUrl.get(`/years`)
+    await baseUrl.get(`/years?limit=100000000`)
     .then(res => setYears(res.data.results))
   }
 
@@ -52,7 +52,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
   },[])
 
   const getEngines = async() => {
-    await baseUrl.get(`engines`)
+    await baseUrl.get(`engines?limit=100000000`)
     .then(res => setEngines(res.data.results))
   }
 

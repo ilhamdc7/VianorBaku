@@ -1,8 +1,21 @@
-import { React, useState } from "react";
+import React ,{ useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Link from "next/link";
 
 const Header = () => {
   const [show, setShow] = useState();
+  const [sumOfPriceProduct, setSumOfPriceProduct] = useState(null)
+  const cart = useSelector(state => state.cart)
+  const [searchInput ,setSearchInput] = useState('')
+
+  useEffect(() => {
+    setSumOfPriceProduct(null)
+    cart?.forEach((tire) => {
+     setSumOfPriceProduct(sumOfPriceProduct => (Number(tire?.price) * tire?.quantity) + sumOfPriceProduct )
+    })
+  },[cart])
+
+
   return (
     <header class=" header-site" style={{ "background-color": "#FFF", "z-index": "10" }}>
       <div style={{ "background": "#fff", "border-bottom": "1px solid #ebebeb" }}>
@@ -86,22 +99,18 @@ const Header = () => {
           >
             <form
               style={{ "margin": "0 auto" }}
-              action="/tyre/filter/?page=1&sort=ASC/"
               class="search__body"
             >
               <div class="search__shadow"></div>
               <input
-                id="search"
-                name="filterData"
                 class="search__input"
-                autocomplete="off"
-                type="text"
                 placeholder="Açar söz və ya hissə nömrəsini daxil edin"
+                onChange={(e) => setSearchInput(e.target.value)}
+                value={searchInput}
               />
-
-              <button class="search__button search__button--end" type="submit" style={{ right: '20px' }}>
-                <span class="search__button-icon">
-                  <svg width="20" height="20" >
+              <a style={{right:'20px'}} class="search__button search__button--end" href={`/search?sbrand=${searchInput}`}>
+                <span  class="search__button-icon">
+                  <svg  width="20" height="20" >
                     <path
                       d="M19.2,17.8c0,0-0.2,0.5-0.5,0.8c-0.4,0.4-0.9,0.6-0.9,0.6s-0.9,0.7-2.8-1.6c-1.1-1.4-2.2-2.8-3.1-3.9C10.9,14.5,9.5,15,8,15
                       c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7c0,1.5-0.5,2.9-1.3,4c1.1,0.8,2.5,2,4,3.1C20,16.8,19.2,17.8,19.2,17.8z M8,3C5.2,3,3,5.2,3,8
@@ -109,7 +118,7 @@ const Header = () => {
                     />
                   </svg>
                 </span>
-              </button>
+              </a>
 
               <div class="search__box"></div>
               <div class="search__decor">
@@ -141,7 +150,7 @@ const Header = () => {
 
         <div class="indicators" style={{ textDecoration: 'none' }}>
           <div class="indicator indicator--trigger--click">
-            <a href="#" class="indicator__button">
+            <Link href={`/cart`} class="indicator__button">
               <span class="indicator__icon" style={{ left: '0px' }}>
                 <svg width="32" height="32">
                   <circle cx="10.5" cy="27.5" r="2.5" />
@@ -152,14 +161,13 @@ const Header = () => {
             c-0.6,0-1-0.4-1-1s0.4-1,1-1h15.5c0.8,0,1.5,0.4,2,1c0.5,0.6,0.6,1.5,0.4,2.2l-3.1,10C28.5,20.3,27.5,21,26.4,21z"
                   />
                 </svg>
-                <span class="indicator__counter" style={{ background: 'orange', marginLeft: '20px' }}>0</span>
+                <span class="indicator__counter" style={{ background: 'orange', marginLeft: '20px' }}>{cart?.length}</span>
               </span>
               <span class="indicator__title" style={{ marginLeft: '50px' }}>Səbət</span>
-              <span class="d-flex indicator__value align-items-baseline" style={{ marginLeft: '50px' }}>
-                0
-                <img class="manatt" src="/static/images/manat.png" />
+              <span class="d-flex indicator__value align-items-baseline" style={{ marginLeft: '50px', fontSize:'16px' }}>
+                {sumOfPriceProduct} AZN
               </span>
-            </a>
+            </Link>
 
             <div class="indicator__content" style={{ "z-index": "300" }}>
               <div class="dropcart" style={{ "z-index": "200" }}>

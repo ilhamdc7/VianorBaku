@@ -119,7 +119,7 @@ const DescriptionServices = () => {
                                                     <li class="shop-features__item">
                                                         <div class="shop-features__item-icon">
 
-                                                            <img src="/static/images/fast-time.svg" style={{ "width": "50px" }} alt="" />
+                                                            <img src="http://www.vianorbaku.az/static/images/fast-time.svg" style={{ "width": "50px" }} alt="" />
                                                         </div>
                                                         <div class="shop-features__info">
                                                             <div class="shop-features__item-title">İş vaxtı
