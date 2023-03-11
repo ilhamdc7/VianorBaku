@@ -10,9 +10,11 @@ const Header = () => {
 
   useEffect(() => {
     setSumOfPriceProduct(null)
-    cart?.forEach((tire) => {
-     setSumOfPriceProduct(sumOfPriceProduct => (Number(tire?.price) * tire?.quantity) + sumOfPriceProduct )
-    })
+    if(cart?.length >= 1){
+      cart?.forEach((tire) => {
+       setSumOfPriceProduct(sumOfPriceProduct => (Number(tire?.price) * tire?.quantity) + sumOfPriceProduct )
+      })
+    }
   },[cart])
 
 
@@ -68,7 +70,7 @@ const Header = () => {
                   id=""
                   href="/ru/"
                 >
-                  <img src="/static/flags/ru.gif" alt="" />
+                  {/* <img src="/static/flags/ru.gif" alt="" /> */}
                   <span class="choosed-language">Русский </span>
                 </a>
               </div>
@@ -108,7 +110,7 @@ const Header = () => {
                 onChange={(e) => setSearchInput(e.target.value)}
                 value={searchInput}
               />
-              <a style={{right:'20px'}} class="search__button search__button--end" href={`/search?sbrand=${searchInput}`}>
+              <Link style={{right:'20px'}} class="search__button search__button--end" href={`/search?sbrand=${searchInput ?? ''}`}>
                 <span  class="search__button-icon">
                   <svg  width="20" height="20" >
                     <path
@@ -118,7 +120,7 @@ const Header = () => {
                     />
                   </svg>
                 </span>
-              </a>
+              </Link>
 
               <div class="search__box"></div>
               <div class="search__decor">
@@ -137,16 +139,16 @@ const Header = () => {
           </div>
         </div>
 
-        <a
+        <Link
           class="d-flex"
           style={{ "height": "38px", "position": "relative", "width": "100px", "right": "6%" }}
-          href="http://www.vianorbaku.az/calculator/"
+          href={`/wheel-calculator`}
         >
           <img
             style={{ "width": "100px", "position": "absolute" }}
             src="http://www.vianorbaku.az/static/images/az.png"
           />
-        </a>
+        </Link>
 
         <div class="indicators" style={{ textDecoration: 'none' }}>
           <div class="indicator indicator--trigger--click">
@@ -161,7 +163,7 @@ const Header = () => {
             c-0.6,0-1-0.4-1-1s0.4-1,1-1h15.5c0.8,0,1.5,0.4,2,1c0.5,0.6,0.6,1.5,0.4,2.2l-3.1,10C28.5,20.3,27.5,21,26.4,21z"
                   />
                 </svg>
-                <span class="indicator__counter" style={{ background: 'orange', marginLeft: '20px' }}>{cart?.length}</span>
+                <span class="indicator__counter" style={{ background: 'orange', marginLeft: '20px' }}>{cart?.length ?? 0}</span>
               </span>
               <span class="indicator__title" style={{ marginLeft: '50px' }}>Səbət</span>
               <span class="d-flex indicator__value align-items-baseline" style={{ marginLeft: '50px', fontSize:'16px' }}>
@@ -177,7 +179,7 @@ const Header = () => {
                     <tr>
                       <th>Ümumi</th>
                       <td class="total-price align-items-baseline">
-                        0 <img class="manatt" src="/static/images/manat.png" />{" "}
+                        {/* 0 <img class="manatt" src="/static/images/manat.png" />{" "} */}
                       </td>
                     </tr>
                   </table>
@@ -238,19 +240,19 @@ const Header = () => {
                   </li>
 
                   <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                    <a href="/my-videos/" class="main-menu__link second-url">
+                    <Link href="/my-videos/" class="main-menu__link second-url">
                       VİDEO BLOG
-                    </a>
+                    </Link>
                   </li>
 
                   <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                    <a
+                    <Link
                       href="/credit-form/"
                       style={{ "color": "#f25900" }}
                       class="main-menu__link second-url"
                     >
                       ONLİNE KREDİT MÜRACİƏTİ
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

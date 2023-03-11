@@ -20,7 +20,7 @@ const Header = () => {
                             </button>
                             <a class="mobile-header__logo" href="/">
 
-                                <img class="p-1" src="/static/images/vianorLogo.jpg" alt="" />
+                                {/* <img class="p-1" src="/static/images/vianorLogo.jpg" alt="" /> */}
 
                             </a>
                             <div className={` mobile-header__search mobile-search ${search ? "mobile-header__search--open" : ""}`}>
@@ -48,7 +48,7 @@ const Header = () => {
 
 
                             <a class="d-flex" style={{ "height": "38px", "position": "relative", "width": "100px", "left": "2%", "top": "12%" }} href="http://www.vianorbaku.az/calculator/">
-                                <img style={{ "width": "100px", "position": "absolute;" }} src="/static/images/az.png" />
+                                {/* <img style={{ "width": "100px", "position": "absolute;" }} src="/static/images/az.png" /> */}
                             </a>
 
 
@@ -186,7 +186,7 @@ const Header = () => {
                                 <li data-mobile-menu-item="">
                                     <a type="button" class="" href="/" data-mobile-menu-trigger="">
                                         <div class="mobile-menu__links-image">
-                                            <img src="/static/flags/az.gif" alt="" />
+                                            {/* <img src="/static/flags/az.gif" alt="" /> */}
                                         </div>
                                         Azərbaycanca
                                     </a>
@@ -196,7 +196,7 @@ const Header = () => {
                                 <li data-mobile-menu-item="">
                                     <a type="button" class="" href="/ru" data-mobile-menu-trigger="">
                                         <div class="mobile-menu__links-image">
-                                            <img src="/static/flags/ru.gif" alt="" />
+                                            {/* <img src="/static/flags/ru.gif" alt="" /> */}
                                         </div>
                                         Русский
                                     </a>

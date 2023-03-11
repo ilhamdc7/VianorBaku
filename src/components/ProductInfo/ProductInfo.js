@@ -11,7 +11,7 @@ const ProductInfo = ({product}) => {
 
       <div style={{ textAlign: "right" }}>
         <img
-          src={product?.executive_country?.contains('https://') ? product?.executive_country : `https://vianor.efgroup.az${product?.executive_country}`}
+          src={product?.executive_country}
           style={{ width: "40px", display: "inline" }}
           alt=""
           data-toggle="tooltip"
@@ -66,7 +66,7 @@ const ProductInfo = ({product}) => {
           data-placement="top"
           title="Tayvan"
           class="mr-2 flag-img"
-          src={`https://vianor.efgroup.az${product?.model.brend?.country?.flag}`}
+          src={product?.model.brend?.country?.flag}
         />
         }
       </div>

@@ -14,6 +14,9 @@ const DateCountdown = dynamic(() => import("react-date-countdown-timer"), {
 const Product = ({ tire, companie }) => {
   const [api, contextHolder] = notification.useNotification();
 
+
+  console.log(tire, 'iyugytuafgytfty')
+
   const openNotification = (placement) => {
     api.info({
       message: `Səbətə əlavə olundu`,
@@ -86,9 +89,7 @@ const Product = ({ tire, companie }) => {
             <img
               style={{ width: "50%", margin: "10px auto" }}
               src={
-                tire?.model?.brend?.brand_image.slice(0, 6) !== "/media"
-                  ? tire?.model?.brend?.brand_image
-                  : `https://vianor.efgroup.az${tire?.model?.brend?.brand_image}`
+                tire?.model?.brend?.brand_image
               }
             />
 
@@ -98,10 +99,7 @@ const Product = ({ tire, companie }) => {
                     <img
                       class="image__tag"
                       src={
-                        tire?.model?.model_image[0]?.tyre_images.slice(0, 6) !==
-                        "/media"
-                          ? tire?.model?.model_image[0]?.tyre_images
-                          : `https://vianor.efgroup.az${tire?.model?.model_image[0]?.tyre_images}`
+                        tire?.model?.model_image[0]?.tyre_images
                       }
                       alt=""
                     />
@@ -185,15 +183,26 @@ const Product = ({ tire, companie }) => {
               <div
                 class="d-flex"
                 style={{ marginLeft: "15px", alignItems: "flex-end" }}
-              >
+              >{tire?.model?.brend?.country?.flag && 
                 <img
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Koreya"
                   alt="Koreya"
                   class="mr-2 flag-img"
-                  src={`${tire?.model?.brend?.country?.flag}`}
+                  src={tire?.model?.brend?.country?.flag}
                 />
+              }
+              {tire?.executive_country?.flag && 
+                <img
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Koreya"
+                  alt="Koreya"
+                  class="mr-2 flag-img"
+                  src={tire?.executive_country?.flag}
+                />
+              }
               </div>
               <div
                 class="d-flex"

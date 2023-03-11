@@ -15,8 +15,6 @@ const index = () => {
     .then(res => setServices(res.data))
   }
 
-  console.log(services)
-
   useEffect(() => {
     getServices()
   },[])

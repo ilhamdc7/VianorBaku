@@ -42,7 +42,8 @@ const DescriptionServices = () => {
                                                         <div class="shop-features__info">
                                                             <div class="shop-features__item-title">Pulsuz çatdırılma
                                                             </div>
-                                                            <div class="shop-features__item-subtitle">399 <img style={{ "height": "8px !important" }} class="manatt ml-0" src="/static/images/manat.png" /> dən yuxarı
+                                                            <div class="shop-features__item-subtitle">399 
+                                                            <img style={{ "height": "8px !important" }} class="manatt ml-0" src="/static/images/manat.png" /> dən yuxarı
                                                             </div>
                                                         </div>
                                                     </li>

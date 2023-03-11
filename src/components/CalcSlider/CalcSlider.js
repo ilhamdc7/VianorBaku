@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import styles from "./calcSlider.module.css";
 import { baseUrl } from "@/pages/api/api";
+import { useRouter } from "next/router";
 
 const CalcSlider = ({ slider, width, height, radius, markas }) => {
   const [filterBy, setFilterBy] = useState("forTire");
@@ -18,6 +19,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
   const [selectedEngine, setSelectedEngine] = useState(null);
   const [mPackageInputs, setMPackageInputs] = useState(getEmptyPostInputs())
 
+  const router = useRouter()
 
 
   const settings = {
@@ -68,6 +70,13 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
     }
   }
 
+
+  const handleSearchMPackage = () => {
+    router.push({
+      pathname: '/pair',
+      query: mPackageInputs
+    })
+  }
 
 
   return (
@@ -146,9 +155,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                   </button>
                 </div>
                 <div class="m-paket">
-                  <a href="/filterAdditional/" class="btn btn-success">
-                    M paket axtarish
-                  </a>
+                  
                 </div>
 
                 <div
@@ -421,16 +428,48 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                         }
                   }>
                   <div className="d-flex alig-items-center">
-                    <input onChange={(e) => setMPackageInputs({...mPackageInputs, firstWidth: e.target.value})} placeholder="En" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}/>
-                    <input onChange={(e) => setMPackageInputs({...mPackageInputs, firstHeight: e.target.value})} placeholder="Hündürlük" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}/>
-                    <input onChange={(e) => setMPackageInputs({...mPackageInputs, firstDiametr: e.target.value})} placeholder="Diametr" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}/>
+                    <select onChange={(e) => setMPackageInputs({...mPackageInputs, firstWidth: e.target.value})} placeholder="En" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}>
+                    <option value={''}>En</option>
+                      {width?.map((wdt) => (
+                        <option value={wdt?.size}>{wdt?.size}</option>
+                      ))}
+                    </select>
+                    <select onChange={(e) => setMPackageInputs({...mPackageInputs, firstHeight: e.target.value})} placeholder="Hündürlük" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}>
+                      <option value={''}>Hündürlük</option>
+                      {height?.map((hgt) => (
+                      <option value={hgt?.size}>{hgt?.size}</option>
+                      ))}
+                    </select>
+                    <select onChange={(e) => setMPackageInputs({...mPackageInputs, firstDiametr: e.target.value})} placeholder="Diametr" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}>
+                      <option value={''}>Diametr</option>
+                      {radius?.map((rds) => (
+
+                      <option value={rds?.size}>{rds?.size}</option>
+                      ))}
+                    </select>
                   </div>
                   <div className="d-flex alig-items-center mt-3">
-                    <input onChange={(e) => setMPackageInputs({...mPackageInputs, secondWidth: e.target.value})} placeholder="En" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}/>
-                    <input onChange={(e) => setMPackageInputs({...mPackageInputs, secondHeight: e.target.value})} placeholder="Hündürlük" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}/>
-                    <input onChange={(e) => setMPackageInputs({...mPackageInputs, secondDiametr: e.target.value})} placeholder="Diametr" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}/>
+                    <select onChange={(e) => setMPackageInputs({...mPackageInputs, secondWidth: e.target.value})} placeholder="En" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}>
+                    <option value={''}>En</option>
+                      {width?.map((wdt) => (
+                        <option value={wdt?.size}>{wdt?.size}</option>
+                      ))}
+                    </select>
+                    <select onChange={(e) => setMPackageInputs({...mPackageInputs, secondHeight: e.target.value})} placeholder="Hündürlük" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}>
+                    <option value={''}>Hündürlük</option>
+                      {height?.map((hgt) => (
+                      <option value={hgt?.size}>{hgt?.size}</option>
+                      ))}
+                    </select>
+                    <select onChange={(e) => setMPackageInputs({...mPackageInputs, secondDiametr: e.target.value})} placeholder="Diametr" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}>
+                    <option value={''}>Diametr</option>
+                      {radius?.map((rds) => (
+
+                      <option value={rds?.size}>{rds?.size}</option>
+                      ))}
+                    </select>
                   </div>
-                  <button style={{marginLeft:'auto', marginRight:'auto', width:'30%', height:'40px', backgroundColor:'#f25900', color:'white', marginTop:'40px', marginLeft:'35%'}}>Axtar</button>
+                  <button onClick={handleSearchMPackage} style={{marginLeft:'auto', marginRight:'auto', width:'30%', height:'40px', backgroundColor:'#f25900', color:'white', marginTop:'40px', marginLeft:'35%'}}>Axtar</button>
                 </div>
 
 

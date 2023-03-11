@@ -1,4 +1,5 @@
 import React from "react";
+import styles from './myVideos.module.css'
 
 const MyVideos = ({ videos }) => {
   return (
@@ -9,15 +10,11 @@ const MyVideos = ({ videos }) => {
             <div class="post-view__item post-view__item-post">
               <div class="post-view__card post">
                 <div class="block-banners__list mt-5 row">
-                  {videos?.map((video) => (
-                    <div
-                      class="posts-list__item col-12 col-md-6 col-xl-4 mb-4 w-30"
-                      style={{ marginLeft: "50px" }}
-                    >
-                      <div class="typography" style={{ textAlign: "center" }}>
+                {videos?.map((video) => (
+                      <div className={styles.videoBox}>
                         <iframe
-                          width="500px"
-                          height="315"
+                          width="100%"
+                          height="315px"
                           src={video?.video_url}
                           title="YouTube video player"
                           frameborder="0"
@@ -28,8 +25,8 @@ const MyVideos = ({ videos }) => {
                           {video?.description}
                         </h5>
                       </div>
-                    </div>
-                  ))}
+                    ))
+                  }
                 </div>
               </div>
             </div>
@@ -43,3 +40,5 @@ const MyVideos = ({ videos }) => {
 };
 
 export default MyVideos;
+
+

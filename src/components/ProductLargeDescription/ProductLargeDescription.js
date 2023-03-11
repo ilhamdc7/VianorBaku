@@ -38,7 +38,7 @@ const ProductLargeDescription = ({ product }) => {
         <a>
           <img
             style={{ width: "50%", margin: "10px auto" }}
-            src={`https://vianor.efgroup.az${product?.model?.brend?.brand_image}`}
+            src={product?.model?.brend?.brand_image}
           />
         </a>
         <h1 class="product__title">{product?.model?.name}</h1>

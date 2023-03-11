@@ -86,7 +86,7 @@ useEffect(() => {
                       <div class="product__actions">
                         <div>
                           {product?.taksitCards?.map((card) => (
-                          <img className="mb-3" width={'65px'} height="35px" style={{margin:'0px 5px'}} src={`https://vianor.efgroup.az${card?.image}`} />
+                          <img className="mb-3" width={'65px'} height="35px" style={{margin:'0px 5px'}} src={card?.image} />
                           ))}
                           
                         </div>
@@ -111,7 +111,7 @@ useEffect(() => {
                     </div>
                   </div>
                   <div class="spec"></div>
-                  <DescriptionCalc />
+                  <DescriptionCalc product={product}/>
                 </div>
               </div>
               
