@@ -33,13 +33,13 @@ const NewsBody = ({ post }) => {
                 <div class="posts-view__list posts-list posts-list--layout--list">
                   <div class="posts-list__body row">
                     {post?.map((pst) => (
-                      <div class="col-12 col-xl-4 ">
+                      <div class="col-12 col-xl-4 mb-4">
                         <div class="posts-list__item ">
                           <div class="post-card post-card--layout--list">
                             <div class="row">
-                              <div class="post-card__image  col-12" style={{marginLeft:'auto', marginRight:'auto'}}>
-                                <Link href={`/news/${pst?.id}`} style={{display:'flex', justifyContent:'center',alignItems:'center'}} >
-                                  <img src={pst?.image} alt="" style={{objectFit:'cover'}} width={'410px'} height={'300px'}/>
+                              <div class="post-card__image  col-12" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                                <Link href={`/news/${pst?.id}`} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                                  <img src={pst?.image} alt="" style={{ objectFit: 'cover' }} width={'410px'} height={'300px'} />
                                 </Link>
                               </div>
                               <div class="post-card__content  col-12">
@@ -56,7 +56,6 @@ const NewsBody = ({ post }) => {
                                 </div>
                                 <div
                                   class="post-card__date"
-                                  style={{ marginLeft: "300px" }}
                                 >
                                   {pst?.date}
                                 </div>
@@ -73,11 +72,13 @@ const NewsBody = ({ post }) => {
                                   >
                                     Ətraflı
                                   </Link>
-                                  <FontAwesomeIcon
-                                    style={{ marginLeft: "10px" }}
-                                    icon={faEye}
-                                  />
-                                  {pst?.view_count}
+                                  <div className="view-area btn btn-secondary btn-sm ml-2">
+                                    <FontAwesomeIcon
+                                      icon={faEye}
+                                    />
+                                    {pst?.view_count}
+                                  </div>
+
                                 </div>
                               </div>
                             </div>

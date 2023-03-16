@@ -87,7 +87,7 @@ const Product = ({ tire, companie }) => {
 
           <div class="product-card product-card--layout--grid">
             <img
-              style={{ width: "50%", margin: "10px auto" }}
+              style={{ width: "50%", margin: "10px auto",height:'50px' }}
               src={
                 tire?.model?.brend?.brand_image
               }

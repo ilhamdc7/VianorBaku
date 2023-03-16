@@ -1677,6 +1677,10 @@
 
 .main-menu .main-menu__item:hover .main-menu__link {
     background-color: #f2f2f2;
+    text-decoration: none;
+    color: #f25900;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 /*

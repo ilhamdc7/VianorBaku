@@ -11,7 +11,7 @@ import MarkaSlider from "@/components/MarkaSlider/MarkaSlider"
 import Footer from "@/components/Footer/Footer"
 import { baseUrl } from "./api/api"
 import CompaniesSlider from "@/components/CompaniesSlider/CompaniesSlider"
-
+import ScrollTop from "./scrollTop/scroll"
 export default function Home() {
 
   const [tires, setTires] = useState([])
@@ -86,7 +86,6 @@ useEffect(() => {
   return (
     <>
     <div class="site">
-
       <MobileHeader/>
       <Header/>
       <CalcSlider markas={marka} height={height} radius={radius} width={width} slider={slider}/>

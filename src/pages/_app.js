@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import {store, persistor} from '../redux/store/store'
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { PersistGate } from 'redux-persist/integration/react';
-
+import ScrollTop from './scrollTop/scroll';
 
 config.autoAddCss = false; 
 export default function App({ Component, pageProps }) {

@@ -249,7 +249,7 @@ useEffect(()=>{
 
   return (
     <>
-        <MobileHeader/>
+     
         <Header/>
         <MobileHeader/>
         <SearchBody 
