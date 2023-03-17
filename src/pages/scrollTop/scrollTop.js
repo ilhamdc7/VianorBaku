@@ -24,7 +24,6 @@ const ScrollTopView = (props) => {
                     <FontAwesomeIcon icon={faArrowAltCircleUp} />
                 </button>
             </div>
-            <h1 style={{ position: 'fixed', bottom: 25, left: '40%', display: visible ? 'inline-block' : 'none' }}>End Scroll</h1>
         </>
     )
 }
