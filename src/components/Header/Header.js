@@ -28,15 +28,15 @@ const Header = () => {
           >
             <div class="topbar--classic d-flex ">
               <div class="topbar__item-text ">
-                <a class="topbar__link first-url" href="/about_us">
+                <Link class="topbar__link first-url" href="/about-us">
                   HAQQIMIZDA
-                </a>
+                </Link>
               </div>
 
               <div class="topbar__item-text ">
-                <a class="topbar__link first-url" href="/contact">
+                <Link class="topbar__link first-url" href="/contact">
                   ƏLAQƏ
-                </a>
+                </Link>
               </div>
             </div>
 

@@ -14,9 +14,6 @@ const DateCountdown = dynamic(() => import("react-date-countdown-timer"), {
 const Product = ({ tire, companie }) => {
   const [api, contextHolder] = notification.useNotification();
 
-
-  console.log(tire, 'iyugytuafgytfty')
-
   const openNotification = (placement) => {
     api.info({
       message: `Səbətə əlavə olundu`,
@@ -65,8 +62,7 @@ const Product = ({ tire, companie }) => {
             {" "}
           </div>
           {/* If else  */}
-          {companie &&
-
+          {companie && (
             <div
               style={{
                 height: "40px",
@@ -83,14 +79,12 @@ const Product = ({ tire, companie }) => {
             >
               {companie?.name}
             </div>
-          }
+          )}
 
           <div class="product-card product-card--layout--grid">
             <img
-              style={{ width: '80%', height: '50px', margin: '10px auto'}}
-              src={
-                tire?.model?.brend?.brand_image
-              }
+              style={{ width: "80%", height: "50px", margin: "10px auto" }}
+              src={tire?.model?.brend?.brand_image}
             />
 
             <div class="product-card__image">
@@ -98,13 +92,10 @@ const Product = ({ tire, companie }) => {
                 <Link class="image__body" href={`/details/${tire?.id}`}>
                   <img
                     class="image__tag"
-                    src={
-                      tire?.model?.model_image[0]?.tyre_images
-                    }
+                    src={tire?.model?.model_image[0]?.tyre_images}
                     alt=""
                   />
                 </Link>
-
               </div>
               <div
                 style={{ position: "absolute", bottom: "15px", right: "15px" }}
@@ -136,7 +127,7 @@ const Product = ({ tire, companie }) => {
                 <div>
                   <div class="product-card__badges">
                     <div class="tag-badge tag-badge--sale">-16%</div>
-                    <div class="tag-badge tag-badge--new">2 Taksit </div>
+                    <div class="tag-badge tag-badge--new">Taksit </div>
                     <div class="tag-badge tag-badge--hot">Kredit </div>
                   </div>
 
@@ -144,9 +135,11 @@ const Product = ({ tire, companie }) => {
                     <div class="product__name">
                       <a href="/tyresdetail/38970/">{`${tire?.model?.brend?.title} ${tire?.model?.name}`}</a>
                       <span style={{ marginLeft: "3%" }}>
-                        <b>{`${tire?.en?.size}/${tire?.hundurluk?.size}${tire?.radius?.size ? `/R${tire?.diametr?.size}` : ""
-                          } ${tire?.load_index?.name ?? ""}${tire?.speed_index?.name ?? ""
-                          }`}</b>
+                        <b>{`${tire?.en?.size}/${tire?.hundurluk?.size}${
+                          tire?.radius?.size ? `/R${tire?.diametr?.size}` : ""
+                        } ${tire?.load_index?.name ?? ""}${
+                          tire?.speed_index?.name ?? ""
+                        }`}</b>
                       </span>
                     </div>
                   </div>
@@ -181,26 +174,27 @@ const Product = ({ tire, companie }) => {
               <div
                 class="d-flex"
                 style={{ marginLeft: "15px", alignItems: "flex-end" }}
-              >{tire?.model?.brend?.country?.flag &&
-                <img
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Koreya"
-                  alt="Koreya"
-                  class="mr-2 flag-img"
-                  src={tire?.model?.brend?.country?.flag}
-                />
-                }
-                {tire?.executive_country?.flag &&
+              >
+                {tire?.model?.brend?.country?.flag && (
                   <img
                     data-toggle="tooltip"
                     data-placement="top"
-                    title="Koreya"
-                    alt="Koreya"
+                    title={`${tire?.model?.brend?.country?.name}`}
+                    alt={`${tire?.model?.brend?.country?.name}`}
+                    class="mr-2 flag-img"
+                    src={tire?.model?.brend?.country?.flag}
+                  />
+                )}
+                {tire?.executive_country?.flag && (
+                  <img
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title={`${tire?.executive_country?.name}`}
+                    alt={`${tire?.executive_country?.name}`}
                     class="mr-2 flag-img"
                     src={tire?.executive_country?.flag}
                   />
-                }
+                )}
               </div>
               <div
                 class="d-flex"
@@ -236,20 +230,20 @@ const Product = ({ tire, companie }) => {
               <div class="product-card__prices">
                 {(companie?.manat_discount > 0 ||
                   companie?.percent_discount > 0) && (
-                    <span class="d-flex product-card__price product-card__price--current align-items-baseline  discount_pricee ">
-                      {tire?.price} <i className="azn">₼</i>
-                    </span>
-                  )}
+                  <span class="d-flex product-card__price product-card__price--current align-items-baseline  discount_pricee ">
+                    {tire?.price} <i className="azn">₼</i>
+                  </span>
+                )}
 
                 <div class="d-flex product-card__price product-card__price--current align-items-baseline ">
                   {companie?.manat_discount > 0 &&
                     tire?.price - companie?.manat_discount}
                   {companie?.percent_discount > 0
                     ? tire?.price -
-                    (tire?.price * companie?.percent_discount) / 100
+                      (tire?.price * companie?.percent_discount) / 100
                     : ""}
                   {companie?.percent_discount === undefined &&
-                    companie?.manat_discount === undefined
+                  companie?.manat_discount === undefined
                     ? tire?.price
                     : ""}
                   <i className="azn">₼</i>
