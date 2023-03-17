@@ -16807,6 +16807,7 @@ select.form-control::-ms-expand {
 .product-card--layout--grid .product-card__image {
   display: block;
   position: relative;
+  margin-bottom: 15px;
 }
 
 .product-card--layout--grid .product-card__fit {
@@ -19257,7 +19258,7 @@ select.form-control::-ms-expand {
   text-align: center;
 }
 .product__name > span {
-  display: block;
+  /* display: block; */
 }
 .products-view__options {
   background-color: #fff;
@@ -22874,9 +22875,10 @@ select.form-control {
 }
 .product-gallery ._Pfcmb img {
   /* height: 450px; */
-  aspect-ratio: 1/1.2;
+  aspect-ratio: 1/1.1;
   display: block;
   object-fit: fill;
+  padding:50px
 }
 .product-gallery ._3q7r8 {
   background-color: transparent;
@@ -22908,7 +22910,7 @@ select.form-control {
   height: 100%;
   overflow: hidden;
   position: relative;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   flex: 0 1 auto;
 }
 .block-products-carousel .slick-dots {
@@ -23098,4 +23100,15 @@ body {
 .btn-up svg {
   font-size: 23px;
   margin-left: -3px;
+}
+
+
+.css-187mznn-MuiSlider-root{
+  color:#f25900 !important
+}
+.css-eg0mwd-MuiSlider-thumb:hover, .css-eg0mwd-MuiSlider-thumb.Mui-focusVisible {
+  box-shadow: 0px 0px 0px 8px   rgb(242 89 0 / 20%) !important;
+}
+._3WRGR{
+  width:22px
 }
