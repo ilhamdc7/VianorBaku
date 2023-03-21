@@ -30,37 +30,44 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
     slidesToScroll: 1,
   };
 
+  const calcSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
 
   useEffect(() => {
     const results = markas.filter((data) => data.name === selectedMarka)
     setModels(results[0]?.models)
     setSelectedModel(null)
-  },[selectedMarka])
+  }, [selectedMarka])
 
 
   useEffect(() => {
     getYears()
-  },[selectedModel])
+  }, [selectedModel])
 
 
-  const getYears = async() => {
+  const getYears = async () => {
     await baseUrl.get(`/years?limit=100000000`)
-    .then(res => setYears(res.data.results))
+      .then(res => setYears(res.data.results))
   }
 
   useEffect(() => {
     getEngines()
-  },[])
+  }, [])
 
-  const getEngines = async() => {
+  const getEngines = async () => {
     await baseUrl.get(`engines?limit=100000000`)
-    .then(res => setEngines(res.data.results))
+      .then(res => setEngines(res.data.results))
   }
 
 
-  function getEmptyPostInputs(){
-    return{
+  function getEmptyPostInputs() {
+    return {
       firstWidth: null,
       firstHeight: null,
       firstDiametr: null,
@@ -84,97 +91,33 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-12" style={{ height: "450px" }}>
-            <div class="my-container pr-0 ">
-              <div
-                class="h-100 bg-grey resp-for-slide"
-                style={{ border: "1px solid grey !important" }}
-              >
-                <div class="btn-area " style={{height:'75px'}}>
-                  <button
-                    onClick={() => setFilterBy("forTire")}
-                    id="btn1"
-                    style={
-                      filterBy === "forTire"
-                        ? {
-                            padding: "6px",
-                            backgroundColor: "rgb(242, 89, 0)",
-                            height: "100%",
-                          }
-                        : {
-                            padding: "8px",
-                            backgroundColor: "rgb(255, 255, 255)",
-                            height: "100%",
-                          }
-                    }
-                    type="button"
-                    class="btn btn-primary btn-lg "
-                  >
-                    Təkərə görə axtarış
-                  </button>
-                  <button
-                    onClick={() => setFilterBy("forCar")}
-                    id="btn2"
-                    style={
-                      filterBy === "forCar"
-                        ? {
-                            padding: "6px",
-                            backgroundColor: "rgb(242, 89, 0)",
-                            height: "125%",
-                          }
-                        : {
-                            padding: "8px",
-                            backgroundColor: "rgb(255, 255, 255)",
-                            height: "100%",
-                          }
-                    }
-                    type="button"
-                    class="btn btn-primary btn-lg "
-                  >
-                    Avtomobilə görə axtarış
-                  </button>
-                  <button
-                    onClick={() => setFilterBy("forMPackage")}
-                    id="btn2"
-                    style={
-                      filterBy === "forMPackage"
-                        ? {
-                            padding: "6px",
-                            backgroundColor: "rgb(242, 89, 0)",
-                            height: "125%",
-                          }
-                        : {
-                            padding: "8px",
-                            backgroundColor: "rgb(255, 255, 255)",
-                            height: "100%",
-                          }
-                    }
-                    type="button"
-                    class="btn btn-primary btn-lg "
-                  >
-                    M paket axtarışı
-                  </button>
-                </div>
-                <div class="m-paket">
-                  
-                </div>
 
-                <div
-                  id="block1"
-                  class="block-1 h-100"
+            <Slider {...calcSettings} className="calc-slider">
+              <div>
+                <button
+                  onClick={() => setFilterBy("forTire")}
+                  id="btn1"
                   style={
                     filterBy === "forTire"
                       ? {
-                          display: "block",
-                          alignItems: "flex-start",
-                          flexDirection: "column",
-                        }
+                        padding: "20px",
+                        backgroundColor: "rgb(242, 89, 0)",
+                        height: "100%",
+                      }
                       : {
-                          display: "none",
-                          alignItems: "flex-start",
-                          flexDirection: "column",
-                        }
+                        padding: "20px",
+                        backgroundColor: "rgb(255, 255, 255)",
+                        height: "100%",
+                      }
                   }
+                  type="button"
+                  class="btn btn-primary btn-lg "
                 >
+                  Təkərə görə axtarış
+                </button>
+                <div
+                  id="block1"
+                  class="block-1 h-100" >
                   <div class="block-finder__body container container--max--xl">
                     <form class="block-finder__form" method="get">
                       <input
@@ -184,7 +127,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                       />
                       <div class="container-fluid ml-lg-0">
                         <div
-                          class="row justify-content-around"
+                          class="row justify-content-around t-filter-area"
                           style={{ position: "relative" }}
                         >
                           <div class="col-lg-6 col-12 filter-inputs">
@@ -263,24 +206,32 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                     </form>
                   </div>
                 </div>
-
-                <div
-                  id="block2"
-                  class="block-2 h-100 "
+              </div>
+              <div>
+                <button
+                  onClick={() => setFilterBy("forCar")}
+                  id="btn2"
                   style={
                     filterBy === "forCar"
                       ? {
-                          display: "block",
-                          alignItems: "flex-start",
-                          flexDirection: "column",
-                        }
+                        padding: "20px",
+                        backgroundColor: "rgb(242, 89, 0)",
+                        height: "125%",
+                      }
                       : {
-                          display: "none",
-                          alignItems: "flex-start",
-                          flexDirection: "column",
-                        }
+                        padding: "20px",
+                        backgroundColor: "rgb(255, 255, 255)",
+                        height: "100%",
+                      }
                   }
+                  type="button"
+                  class="btn btn-primary btn-lg "
                 >
+                  Avtomobilə görə axtarış
+                </button>
+                <div
+                  id="block2"
+                  class="block-2 h-100 " >
                   <div class="block-finder__body container a container--max--xl">
                     <input
                       type="hidden"
@@ -289,7 +240,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                     />
                     <div class="container-fluid">
                       <div class="row " style={{ position: "relative" }}>
-                        <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2">
+                        <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2 mb-3">
                           <div style={{ width: "100%", height: "40px" }}>
                             <select
                               style={{
@@ -302,13 +253,13 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                               <option value={''}>Marka</option>
                               {markas?.map((marka) => (
 
-                              <option value={marka?.name}>{marka.name}</option>
+                                <option value={marka?.name}>{marka.name}</option>
                               ))}
-                              
+
                             </select>
                           </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2">
+                        <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2 mb-3">
                           <div style={{ width: "100%", height: "40px" }}>
                             <select
                               style={{
@@ -322,13 +273,13 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                               <option value={''}>Model</option>
                               {models?.map((model) => (
 
-                              <option value={model?.name}>{model?.name}</option>
+                                <option value={model?.name}>{model?.name}</option>
                               ))}
 
                             </select>
                           </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2 mt-3">
+                        <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2 mb-3">
                           <div style={{ width: "100%", height: "40px" }}>
                             <select
                               style={{
@@ -341,13 +292,13 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                             >
                               <option value={''}>Avtomobilin ili</option>
                               {years?.map((year) => (
-                              <option value={year?.year}>{year?.year}</option>
+                                <option value={year?.year}>{year?.year}</option>
                               ))}
-                              
+
                             </select>
                           </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2 mt-3">
+                        <div class="col-xl-6 col-lg-6 col-12 filter-inputs-2 mb-3">
                           <div style={{ width: "100%", height: "40px" }}>
                             <select
                               style={{
@@ -363,7 +314,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                                 <option value={engine?.size}>{engine?.size}</option>
 
                               ))}
-                              
+
                             </select>
                           </div>
                         </div>
@@ -375,6 +326,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                               border: "1px solid #000",
                               margin: "10px",
                               padding: "10px",
+                              height: "60px"
                             }}
                           >
                             <div class="col-12 carTyreClass "></div>
@@ -384,17 +336,18 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                                 style={{ overflowX: "auto" }}
                               >
                                 <div class="col-xl-4 col-lg-4 col-sm-4 col-6 pl-lg-0  ml-lg-0 mb-sm-0 mb-3 p-0">
-                                  <div class="mt-2">
+                                  <div 
+                                     style={{
+                                      border: "1px solid #000",
+                                      padding: "5px 0",
+                                      fontSize: "15px",
+                                    }}>
                                     <a
-                                      style={{
-                                        border: "1px solid #000",
-                                        padding: "5px 0",
-                                        fontSize: "15px",
-                                      }}
+                                   
                                     >
                                       {" "}
                                       <span
-                                        class="border my-span"
+                                        class=" my-span"
                                         style={{ color: "black" }}
                                       >
                                         {" "}
@@ -403,7 +356,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                                     </a>
                                   </div>
                                 </div>{" "}
-                               
+
                               </div>{" "}
                             </div>
                           </div>
@@ -413,69 +366,79 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                   </div>
                 </div>
 
-                
-                <div className="block-3" style={
+              </div>
+              <div>
+
+                <button
+                  onClick={() => setFilterBy("forMPackage")}
+                  id="btn2"
+                  style={
                     filterBy === "forMPackage"
                       ? {
-                          display: "block",
-                          alignItems: "flex-start",
-                          flexDirection: "column",
-                        }
+                        padding: "20px",
+                        backgroundColor: "rgb(242, 89, 0)",
+                        height: "125%",
+                      }
                       : {
-                          display: "none",
-                          alignItems: "flex-start",
-                          flexDirection: "column",
-                        }
-                  }>
+                        padding: "20px",
+                        backgroundColor: "rgb(255, 255, 255)",
+                        height: "100%",
+                      }
+                  }
+                  type="button"
+                  class="btn btn-primary btn-lg "
+                >
+                  M paket axtarışı
+                </button>
+
+                <div className="block-3"  >
                   <div className="d-flex alig-items-center">
-                    <select onChange={(e) => setMPackageInputs({...mPackageInputs, firstWidth: e.target.value})} placeholder="En" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}>
-                    <option value={''}>En</option>
+                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, firstWidth: e.target.value })} placeholder="En" style={{ width: '30%', height: '40px', marginLeft: '3%' }} type={'text'}>
+                      <option value={''}>En</option>
                       {width?.map((wdt) => (
                         <option value={wdt?.size}>{wdt?.size}</option>
                       ))}
                     </select>
-                    <select onChange={(e) => setMPackageInputs({...mPackageInputs, firstHeight: e.target.value})} placeholder="Hündürlük" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}>
+                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, firstHeight: e.target.value })} placeholder="Hündürlük" style={{ width: '30%', height: '40px', marginLeft: '3%' }} type={'text'}>
                       <option value={''}>Hündürlük</option>
                       {height?.map((hgt) => (
-                      <option value={hgt?.size}>{hgt?.size}</option>
+                        <option value={hgt?.size}>{hgt?.size}</option>
                       ))}
                     </select>
-                    <select onChange={(e) => setMPackageInputs({...mPackageInputs, firstDiametr: e.target.value})} placeholder="Diametr" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}>
+                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, firstDiametr: e.target.value })} placeholder="Diametr" style={{ width: '30%', height: '40px', marginLeft: '3%' }} type={'text'}>
                       <option value={''}>Diametr</option>
                       {radius?.map((rds) => (
 
-                      <option value={rds?.size}>{rds?.size}</option>
+                        <option value={rds?.size}>{rds?.size}</option>
                       ))}
                     </select>
                   </div>
-                  <div className="d-flex alig-items-center mt-3">
-                    <select onChange={(e) => setMPackageInputs({...mPackageInputs, secondWidth: e.target.value})} placeholder="En" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}>
-                    <option value={''}>En</option>
+                  <div className="d-flex alig-items-center block-second">
+                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, secondWidth: e.target.value })} placeholder="En" style={{ width: '30%', height: '40px', marginLeft: '3%' }} type={'text'}>
+                      <option value={''}>En</option>
                       {width?.map((wdt) => (
                         <option value={wdt?.size}>{wdt?.size}</option>
                       ))}
                     </select>
-                    <select onChange={(e) => setMPackageInputs({...mPackageInputs, secondHeight: e.target.value})} placeholder="Hündürlük" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}>
-                    <option value={''}>Hündürlük</option>
+                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, secondHeight: e.target.value })} placeholder="Hündürlük" style={{ width: '30%', height: '40px', marginLeft: '3%' }} type={'text'}>
+                      <option value={''}>Hündürlük</option>
                       {height?.map((hgt) => (
-                      <option value={hgt?.size}>{hgt?.size}</option>
+                        <option value={hgt?.size}>{hgt?.size}</option>
                       ))}
                     </select>
-                    <select onChange={(e) => setMPackageInputs({...mPackageInputs, secondDiametr: e.target.value})} placeholder="Diametr" style={{width:'30%', height:'30px', marginLeft:'3%'}} type={'text'}>
-                    <option value={''}>Diametr</option>
+                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, secondDiametr: e.target.value })} placeholder="Diametr" style={{ width: '30%', height: '40px', marginLeft: '3%' }} type={'text'}>
+                      <option value={''}>Diametr</option>
                       {radius?.map((rds) => (
 
-                      <option value={rds?.size}>{rds?.size}</option>
+                        <option value={rds?.size}>{rds?.size}</option>
                       ))}
                     </select>
                   </div>
-                  <button onClick={handleSearchMPackage} style={{marginLeft:'auto', marginRight:'auto', width:'30%', height:'40px', backgroundColor:'#f25900', color:'white', marginTop:'40px', marginLeft:'35%'}}>Axtar</button>
+                  <button onClick={handleSearchMPackage} className="m-search">Axtar</button>
                 </div>
-
-
-
               </div>
-            </div>
+            </Slider>
+
           </div>
           <div class="col-lg-8 col-12 for-slide" style={{ marginTop: "20px" }}>
             <Slider {...settings}>
