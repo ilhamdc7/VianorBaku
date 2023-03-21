@@ -86,7 +86,10 @@ useEffect(() => {
                       <div class="product__actions">
                         <div>
                           {product?.taksitCards?.map((card) => (
-                          <img className="mb-3" width={'65px'} height="35px" style={{margin:'0px 5px'}} src={card?.image} />
+                            <>
+                            <span>{`${card?.taksit} ay taksit`}</span>
+                            <img className="mb-3" width={'65px'} height="35px" style={{margin:'0px 5px'}} src={card?.image} /><br/>
+                            </>
                           ))}
                           
                         </div>
@@ -99,7 +102,6 @@ useEffect(() => {
                           class="shop-features__item-subtitle"
                           style={{ "font-size": "16px" }}
                         >
-                          2 aylıq taksit ilə aya 150
                           <img
                             style={{ height: "8px !important" }}
                             class="manatt"
