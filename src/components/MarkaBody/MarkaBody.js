@@ -35,7 +35,7 @@ const MarkaBody = ({ markas }) => {
                             >
                               <img
                                 class="neeeded"
-                                src={`https://vianor.efgroup.az${marka?.brand_image}`}
+                                src={`${marka?.brand_image}`}
                                 alt=""
                               />
                             </Link>

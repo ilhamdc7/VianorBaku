@@ -17,7 +17,7 @@ const ServicesBody = ({services}) => {
                     <div class="post-card post-card--layout--grid-sm">
                         <div class="post-card__image">
                             <Link href={'/services/register'}>
-                        <img style={{"padding": "10px", "width": "430px", "height": "300px"}} src={`https://vianor.efgroup.az${service?.image}`} alt=""/>
+                        <img style={{"padding": "10px", "width": "430px", "height": "300px"}} src={`${service?.image}`} alt=""/>
                     </Link>
                         </div>
                         <div class="post-card__content">
