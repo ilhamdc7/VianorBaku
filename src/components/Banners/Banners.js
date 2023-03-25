@@ -29,7 +29,7 @@ const Banners = () => {
                 İndi al
               </span>
             </Link>
-            <Link
+            {/* <Link
               href="/services/register"
               style={{ textDecoration: "none" }}
               class="block-banners__item block-banners__item--style--two"
@@ -48,7 +48,7 @@ const Banners = () => {
               <span class="block-banners__item-button btn btn-primary btn-sm">
                 İndi al
               </span>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

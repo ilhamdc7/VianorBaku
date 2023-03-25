@@ -2411,7 +2411,7 @@ h6 {
 select.form-control {
   padding-right: 27px;
   background-position: right 10px center;
-}
+}np
 .form-control::-webkit-input-placeholder {
   color: #6c757d;
 }
@@ -7189,6 +7189,7 @@ select.form-control::-ms-expand {
 .block-banners__item,
 .block-banners__item:hover {
   color: #fff;
+  text-decoration: none;
 }
 
 .block-banners__item:before {

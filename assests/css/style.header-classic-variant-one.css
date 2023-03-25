@@ -1676,9 +1676,9 @@
 }
 
 .main-menu .main-menu__item:hover .main-menu__link {
-    background-color: #f2f2f2;
+    background-color: #f25900;
     text-decoration: none;
-    color: #f25900;
+    color: white !important;
     padding-top: 3px;
     padding-bottom: 3px;
 }

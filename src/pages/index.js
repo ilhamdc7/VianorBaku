@@ -91,7 +91,7 @@ useEffect(() => {
       <CalcSlider markas={marka} height={height} radius={radius} width={width} slider={slider}/>
       <OurServices/>
       <CompaniesSlider compaines={discountTyres}/>
-      <Banners/>
+      {/* <Banners/> */}
       <NewProductsSlider tires={tires}/>
       <Campaigns/>
       <OutletSlider/>
