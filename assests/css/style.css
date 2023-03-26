@@ -2411,8 +2411,8 @@ h6 {
 select.form-control {
   padding-right: 27px;
   background-position: right 10px center;
-}np
-.form-control::-webkit-input-placeholder {
+}
+np .form-control::-webkit-input-placeholder {
   color: #6c757d;
 }
 
@@ -23161,6 +23161,9 @@ select.form-control {
   .tyres_filter_a {
     width: 100% !important;
     flex-basis: 100%;
+  }
+  .block.block-slideshow .col-lg-4 {
+    height: auto;
   }
 }
 
