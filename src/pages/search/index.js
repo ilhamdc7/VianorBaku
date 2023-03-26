@@ -155,6 +155,10 @@ useEffect(()=>{
 
 
 
+  useMount(() => {
+    getFilteredProducts()
+  })
+
   useUpdateEffect(() => {
     getFilteredProducts()
   },[selectedBrands, selectedWidth,selectedHeight,minPrice, maxPrice,selectedRadius, sortPrice, selectedSeason, query?.sbrand])
@@ -190,9 +194,6 @@ useEffect(()=>{
     }
   }
 
-
-  console.log(query, 'hasyudgyusagd')
-
   const getSelectedRadiusData = (data) => {
     const results = selectedRadius?.find(item => item === data)
     if(results == undefined){
@@ -221,7 +222,7 @@ useEffect(()=>{
   },[])
 
   const getBrands = async() => {
-    await baseUrl.get(`/brands`)
+    await baseUrl.get(`/brands?limit=1000000`)
     .then(res => {
       const {data} = res
       setBrands(data)
@@ -230,7 +231,7 @@ useEffect(()=>{
 
 
   const getWidth = async() =>{
-    await baseUrl.get(`tyre_width`)
+    await baseUrl.get(`tyre_width?limit=100000000000000`)
     .then(res => {
       const {data} = res
       setWitdh(data.results)
@@ -238,12 +239,12 @@ useEffect(()=>{
   } 
 
   const getHeight = async() => {
-    await baseUrl.get(`tyre_height`)
+    await baseUrl.get(`tyre_height?limit=100000000000000`)
     .then(res => setHeight(res.data.results))
   }
 
   const getRadius = async() => {
-    await baseUrl.get(`/tyre_diametr`)
+    await baseUrl.get(`/tyre_diametr?limit=100000000000000`)
     .then(res => setRadius(res?.data?.results))
   }
 

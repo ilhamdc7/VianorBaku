@@ -94,8 +94,8 @@ useEffect(() => {
       {/* <Banners/> */}
       <NewProductsSlider tires={tires}/>
       <Campaigns/>
-      <OutletSlider/>
-      <MarkaSlider brands={brands}/>
+      {/* <OutletSlider/>
+      <MarkaSlider brands={brands}/> */}
       <Footer/>
     </div>
     </>

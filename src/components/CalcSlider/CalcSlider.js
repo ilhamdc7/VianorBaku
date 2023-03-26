@@ -140,6 +140,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                                   width: "100%",
                                   height: "100%",
                                   outline: "none",
+                                  color:'black'
                                 }}
                               >
                                 <option value={""}>En(mm)</option>
@@ -159,6 +160,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                                   width: "100%",
                                   height: "100%",
                                   outline: "none",
+                                  color:'black'
                                 }}
                               >
                                 <option value={""}>Hündürlük(%)</option>
@@ -178,6 +180,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                                   width: "100%",
                                   height: "100%",
                                   outline: "none",
+                                  color:'black'
                                 }}
                               >
                                 <option value={""}>Diametr(düym)</option>
