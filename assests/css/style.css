@@ -23133,6 +23133,9 @@ select.form-control {
   .poducts-area-left {
     width: 100%;
   }
+  .block.block-slideshow .col-lg-4 {
+    height: auto !important;
+  }
 }
 @media (max-width: 768px) {
   .mobile-search__input {
