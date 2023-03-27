@@ -22889,9 +22889,9 @@ select.form-control {
 .btn-primary,
 .btn-primary.disabled,
 .btn-primary:disabled {
-  /* border-color: #f25900 !important;
-  background: #f25900 !important; */
-  /* color: #fff !important; */
+  border-color: #f25900 !important;
+  background: #f25900 !important; 
+   color: #fff !important;
 }
 .btn-secondary,
 .btn-secondary.disabled,

@@ -116,7 +116,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                         }
                   }
                   type="button"
-                  class="btn btn-primary btn-lg "
+                  class="btn  btn-lg "
                 >
                   Təkərə görə axtarış
                 </button>
@@ -138,7 +138,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                         }
                   }
                   type="button"
-                  class="btn btn-primary btn-lg "
+                  class="btn  btn-lg "
                 >
                   Avtomobilə görə axtarış
                 </button>
@@ -160,7 +160,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                         }
                   }
                   type="button"
-                  class="btn btn-primary btn-lg "
+                  class="btn  btn-lg "
                 >
                   M paket axtarışı
                 </button>
