@@ -21,26 +21,40 @@ const ProductInfo = ({product}) => {
       </div>
       <div class="product__prices-stock">
         <div class="product__prices">
-          {product?.discount > 0 &&
-          
+          {product?.discount_type === 'manat'  &&
+          <>
           <div class="d-flex product__price product__price--current align-items-baseline  discount_pricee ">
             {product?.price}
             <img class="manatt" src="/static/images/manat.png" />
           </div>
+          <span class="d-flex mr-1 discount_font_up">
+          {product?.price - product?.discount}
+
+            <img class="manat" src="/static/images/manat.png" />
+          </span>
+          </>
           }
-          {!product?.discount ?
+          {!product?.discount  &&
           
           <span class="d-flex mr-1 discount_font_up">
           {product?.price}
 
             <img class="manat" src="/static/images/manat.png" />
           </span>
-          : 
+          }
+          {product?.discount_type === 'percentage' && 
+          <>
+          <div class="d-flex product__price product__price--current align-items-baseline  discount_pricee ">
+            {product?.price}
+            <img class="manatt" src="/static/images/manat.png" />
+          </div>
           <span class="d-flex mr-1 discount_font_up">
-          {product?.price}
+          {product?.price - (product?.price * product?.discount / 100)}
 
             <img class="manat" src="/static/images/manat.png" />
           </span>
+          </>
+          
           }
         </div>
         <div class="status-badge status-badge--style--success product__stock status-badge--has-text">
