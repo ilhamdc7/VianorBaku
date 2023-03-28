@@ -1,9 +1,16 @@
 .sliderContainer img{
-    height: 408px;
+    height: 355px;
+    border: 1px solid rgb(242, 89, 0);
+
 }
 
 @media (max-width:1000px){
     .sliderContainer img{
-        height: auto;
+        /* height: auto; */
+    }
+}
+@media (max-width:576px){
+    .sliderContainer img{
+        height: 300px;
     }
 }

@@ -431,7 +431,7 @@ body {
   .cleaned {
     /* height: 50% !important; */
   }
-  .cleaned.h-md-100{
+  .cleaned.h-md-100 {
     height: 55px;
   }
   #block2 {
@@ -536,9 +536,12 @@ body {
   min-height: 80%;
   background-color: #f25900;
   color: black;
-  border: 1px solid grey !important;
+  /* border-left: 1px solid grey !important;
+  border-right: 1px solid grey !important; */
+  border-bottom: 1px solid #000 !important;
+  border-top: 1px solid #000 !important;
   border-top: 0;
-  border-bottom:0;
+  border-bottom: 0;
   width: 50%;
   margin: 0;
   height: 100%;
@@ -546,20 +549,23 @@ body {
   border-radius: initial;
   box-shadow: none;
   /* border-radius: 50px; */
-
+}
+#btn1,
+#btn1:focus {
+  border-top: 0px solid #000 !important;
 }
 #btn2,
-#btn2:focus{
+#btn2:focus {
   min-width: 100%;
   min-height: 80%;
   background-color: #f25900;
   color: black;
-  border-left: 1px solid grey !important;
-  border-right: 1px solid grey !important;
+  /* border-left: 1px solid grey !important;
+  border-right: 1px solid grey !important; */
   border-bottom: 0px solid #000 !important;
   border-top: 0px solid #000 !important;
   border-top: 0;
-  border-bottom:0;
+  border-bottom: 0;
   width: 50%;
   margin: 0;
   height: 100%;
@@ -633,7 +639,8 @@ body {
 .block-second {
   margin-top: 16px;
 }
-.resp-for-slide select, .resp-for-slide input{
+.resp-for-slide select,
+.resp-for-slide input {
   padding: 0 8px;
   -webkit-appearance: none;
 }
@@ -673,10 +680,11 @@ body {
   .for-slide {
     margin-top: 55px !important;
   }
-  .block-3 .d-flex.alig-items-center.mt-3{
+  .block-3 .d-flex.alig-items-center.mt-3 {
     margin-top: 0 !important;
   }
-  #block1, .block-3{
+  #block1,
+  .block-3 {
     padding: 0 15px;
   }
 }
@@ -8082,11 +8090,10 @@ select.form-control::-ms-expand {
   height: 44px;
   min-height: 44px;
 }
-.block-finder__form-control.tyres_filter{
+.block-finder__form-control.tyres_filter {
   height: 40px;
   min-height: 40px;
 }
-
 
 .block-finder__form-control:focus {
   outline: none;
@@ -8279,7 +8286,7 @@ select.form-control::-ms-expand {
     height: 83% !important;
   }
   .resp-for-slide {
-    height: 100% !important;
+    /* height: 100% !important; */
     /* padding-top: 40px; */
   }
   .filter-inputs {
@@ -8347,7 +8354,7 @@ select.form-control::-ms-expand {
   }
   #btn1,
   #btn2,
-  #btn3{
+  #btn3 {
     font-size: 16px !important;
   }
 }
@@ -22890,8 +22897,8 @@ select.form-control {
 .btn-primary.disabled,
 .btn-primary:disabled {
   border-color: #f25900 !important;
-  background: #f25900 !important; 
-   color: #fff !important;
+  background: #f25900 !important;
+  color: #fff !important;
 }
 .btn-secondary,
 .btn-secondary.disabled,
@@ -23167,10 +23174,9 @@ select.form-control {
   .block.block-slideshow .col-lg-4 {
     height: auto !important;
   }
-  .marka{
-    margin-bottom: 1rem!important;
+  .marka {
+    margin-bottom: 1rem !important;
   }
-
 }
 @media (max-width: 768px) {
   .mobile-search__input {
@@ -23203,7 +23209,6 @@ select.form-control {
   .block.block-slideshow .col-lg-4 {
     height: auto;
   }
-
 }
 
 .view-area {
@@ -23244,3 +23249,22 @@ body {
 ._3WRGR {
   width: 22px;
 }
+
+.resp-for-slide {
+  border: 1px solid rgb(242, 89, 0);
+  height: 355px;
+}
+.for-slide img {
+  /* border: 1px solid rgb(242, 89, 0); */
+}
+
+@media (max-width: 992px) {
+  .resp-for-slide {
+    height: auto;
+  }
+}
+/* @media (max-width: 576px) {
+  .for-slide img {
+    border: 1px solid rgb(242, 89, 0);
+  }
+} */
