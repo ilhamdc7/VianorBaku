@@ -1,30 +1,30 @@
 import React from "react";
 
-const DescriptionSpecs = () => {
+const DescriptionSpecs = ({product}) => {
   return (
     <div class="product__actions">
       <h5>Xüsusiyyətlər:</h5>
       <ul>
         <li>
-          En: <span>265</span>
+          En: <span>{product?.en?.size}</span>
         </li>
         <li>
-          Hündürlük: <span>70</span>
+          Hündürlük: <span>{product?.hundurluk?.size}</span>
         </li>
         <li>
-          Diametr: <span>16</span>
+          Diametr: <span>{product?.diametr?.size}</span>
         </li>
         <li>
-          Marka: <span>NANKANG</span>
+          Marka: <span>{product?.model?.brend?.title}</span>
         </li>
         <li>
-          Klas: <span>SUV 4X4</span>
+          Klas: <span>{product?.klass?.name}</span>
         </li>
         <li>
-          Buraxılış ili: <span>None</span>
+          Buraxılış ili: <span>{product?.year?.year}</span>
         </li>
         <li>
-          Ölkə: <span>None</span>
+          Ölkə: <span>{product?.model?.brend?.country?.name}</span>
         </li>
       </ul>
       <div class="product__actions-divider"></div>

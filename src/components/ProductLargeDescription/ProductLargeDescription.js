@@ -1,30 +1,37 @@
-import React from "react";
-
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import { Carousel } from 'react-responsive-carousel';
-// import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
-
-// import ImageGallery from 'react-image-gallery';
+import React, {useEffect, useState} from "react";
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 const ProductLargeDescription = ({ product }) => {
-  // const images = [9, 8, 7, 6, 5].map((number) => ({
-  //   src: `https://placedog.net/${number}00/${number}00?id=${number}`
-  // }));
-  const images = [
-    {
-      original: "http://vianorbaku.az/media/tyres/1_zcLnFy1.png",
-      thumbnail: "http://vianorbaku.az/media/tyres/1_zcLnFy1.png",
-    },
-    {
-      original: "http://vianorbaku.az/media/tyres/1_SVHmmAm.jpg",
-      thumbnail: "http://vianorbaku.az/media/tyres/1_SVHmmAm.jpg",
-    },
-    {
-      original: "http://vianorbaku.az/media/tyres/1_zcLnFy1.png",
-      thumbnail: "http://vianorbaku.az/media/tyres/1_zcLnFy1.png",
-    },
-  ];
+  
+  const [images, setImages] = useState([])
+
+  useEffect(() => {
+    setImages([])
+    product?.model?.model_image?.map((image) => {
+      setImages(images => [...images, {original: image?.tyre_images, thumbnail: image?.tyre_images}])
+    })
+  },[])
+
+
+
+ 
+
+  console.log(product, 'weqwewew')
+
+  // const images = [
+  //   {
+  //     original: "http://vianorbaku.az/media/tyres/1_zcLnFy1.png",
+  //     thumbnail: "http://vianorbaku.az/media/tyres/1_zcLnFy1.png",
+  //   },
+  //   {
+  //     original: "http://vianorbaku.az/media/tyres/1_SVHmmAm.jpg",
+  //     thumbnail: "http://vianorbaku.az/media/tyres/1_SVHmmAm.jpg",
+  //   },
+  //   {
+  //     original: "http://vianorbaku.az/media/tyres/1_zcLnFy1.png",
+  //     thumbnail: "http://vianorbaku.az/media/tyres/1_zcLnFy1.png",
+  //   },
+  // ];
   return (
     <>
       <div
@@ -44,7 +51,7 @@ const ProductLargeDescription = ({ product }) => {
         <h1 class="product__title">{product?.model?.name}</h1>
       </div>
       <div class="product__main">
-        <div class="product__excerpt">None</div>
+        {/* <div class="product__excerpt">None</div> */}
         <div class="product__features">
           <div class="product__features-title">Əsas xüsusiyyətlər:</div>
           <ul>
@@ -61,15 +68,15 @@ const ProductLargeDescription = ({ product }) => {
             </li>
 
             <li>
-              Miqdar: <span>{product?.model?.stock}</span>
+              Miqdar: <span>{product?.stock}</span>
             </li>
 
             <li>
-              Klas: <span> SUV 4X4</span>
+              Klas: <span> {product?.klass?.name}</span>
             </li>
 
             <li>
-              Fəsil :<span> Dörd Fəsil</span>
+              Fəsil :<span> {product?.model?.season?.name}</span>
             </li>
           </ul>
         </div>

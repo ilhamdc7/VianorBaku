@@ -68,7 +68,7 @@ useEffect(() => {
                       </div>
                       <DescriptionServices />
                       <div class="product-form product__form"></div>
-                      <DescriptionSpecs />
+                      <DescriptionSpecs product={product}/>
                       <div class="product-form product__form"></div>
 
                       <div class="product__actions">
