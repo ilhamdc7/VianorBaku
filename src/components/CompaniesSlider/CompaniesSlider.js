@@ -34,7 +34,7 @@ const CompaniesSlider = ({compaines}) => {
         ],
       };
 
-
+      console.log(compaines, 'ashduhsuadsh')
 
   return (
     <>

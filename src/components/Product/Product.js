@@ -141,7 +141,12 @@ const Product = ({ tire, companie }) => {
               <div class="product-card__name">
                 <div>
                   <div class="product-card__badges">
-                    <div class="tag-badge tag-badge--sale">-16%</div>
+                    {companie?.manat_discount >= 1 && 
+                    <div class="tag-badge tag-badge--sale">-{companie?.manat_discount}₼</div>
+                    }
+                    {companie?.percent_discount >= 1 && 
+                    <div class="tag-badge tag-badge--sale">-{companie?.percent_discount}%</div>
+                    }
                     <div class="tag-badge tag-badge--new">Taksit </div>
                     <div class="tag-badge tag-badge--hot">Kredit </div>
                   </div>
@@ -232,11 +237,11 @@ const Product = ({ tire, companie }) => {
                   >
                     4
                   </span>
-                  <button class="count_change change2">-</button>
+                  {/* <button class="count_change change2">-</button>
                   <span id="change_count" class="mr-2 ml-2 count_change_span">
                     1
                   </span>
-                  <button class="count_change  change">+</button>
+                  <button class="count_change  change">+</button> */}
                 </div>
               </div>
             </div>
