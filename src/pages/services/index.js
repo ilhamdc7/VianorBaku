@@ -3,6 +3,7 @@ import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import ServicesBody from '@/components/ServicesBody/ServicesBody'
 import { baseUrl } from '../api/api'
+import MobileHeader from '@/components/MobileHeader/MobileHeader'
 
 
 
@@ -22,6 +23,7 @@ const index = () => {
 
   return (
     <>
+    <MobileHeader/>
     <Header/>
     <ServicesBody services={services}/>
     <Footer/>

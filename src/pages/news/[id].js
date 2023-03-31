@@ -3,13 +3,14 @@ import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import NewsDetail from '@/components/NewsDetail/NewsDetail'
 import { baseUrl } from '../api/api'
+import MobileHeader from '@/components/MobileHeader/MobileHeader'
 
 const NewsDetails = ({news}) => {
 
-  console.log(news)
 
   return (
-    <>
+    <>  
+    <MobileHeader/>
         <Header/>
         <NewsDetail post={news}/>
         <Footer/>

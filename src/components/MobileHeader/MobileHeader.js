@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link';
+import { useSelector } from "react-redux";
 
 
 
@@ -6,6 +8,22 @@ const Header = () => {
     const [show, setShow] = useState(false);
 
     const [search, setSearch] = useState(false);
+    const [searchInput, setSearchInput] = useState('');
+
+
+    const [sumOfPriceProduct, setSumOfPriceProduct] = useState(null)
+    const cart = useSelector(state => state.cart)
+
+
+
+    useEffect(() => {
+        setSumOfPriceProduct(null)
+        if(cart?.length >= 1){
+          cart?.forEach((tire) => {
+           setSumOfPriceProduct(sumOfPriceProduct => (Number(tire?.price) * tire?.quantity) + sumOfPriceProduct )
+          })
+        }
+      },[cart])
     return (
         <div>
             <header class="site__mobile-header"  >
@@ -24,16 +42,17 @@ const Header = () => {
 
                             </a>
                             <div className={` mobile-header__search mobile-search ${search ? "mobile-header__search--open" : ""}`}>
-                                <form class="mobile-search__body" action="/tyre/filter/?page=1&sort=ASC/">
-                                    <input name="filterData" type="text" id="mobile-search" autocomplete="off" class="mobile-search__input" placeholder="Enter keyword or part number" />
+                                <form class="mobile-search__body">
+                                    <input onChange={(e) => setSearchInput(e.target.value)} name="filterData" type="text" id="mobile-search" autocomplete="off" class="mobile-search__input" placeholder="Enter keyword or part number" />
 
-                                    <a id="for-submitting" href="#" class="mobile-search__button mobile-search__button--search">
+                                    <Link id="for-submitting" href={`/search?sbrand=${searchInput ?? ''}`} class="mobile-search__button mobile-search__button--search">
                                         <svg width="20" height="20">
                                             <path d="M19.2,17.8c0,0-0.2,0.5-0.5,0.8c-0.4,0.4-0.9,0.6-0.9,0.6s-0.9,0.7-2.8-1.6c-1.1-1.4-2.2-2.8-3.1-3.9C10.9,14.5,9.5,15,8,15
 	c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7c0,1.5-0.5,2.9-1.3,4c1.1,0.8,2.5,2,4,3.1C20,16.8,19.2,17.8,19.2,17.8z M8,3C5.2,3,3,5.2,3,8
 	c0,2.8,2.2,5,5,5c2.8,0,5-2.2,5-5C13,5.2,10.8,3,8,3z" />
                                         </svg>
-                                    </a>
+                                        </Link>
+                                  
                                     <button type="button" class="mobile-search__button mobile-search__button--close"    onClick={() => setSearch(false)}>
                                         <svg width="20" height="20">
                                             <path d="M16.7,16.7L16.7,16.7c-0.4,0.4-1,0.4-1.4,0L10,11.4l-5.3,5.3c-0.4,0.4-1,0.4-1.4,0l0,0c-0.4-0.4-0.4-1,0-1.4L8.6,10L3.3,4.7
@@ -83,7 +102,7 @@ const Header = () => {
                                     </a>
                                 </div>
                                 <div class="mobile-indicator">
-                                    <a href="/cart/" class="mobile-indicator__button">
+                                    <Link href="/cart/" class="mobile-indicator__button">
                                         <span class="mobile-indicator__icon">
                                             <svg width="20" height="20">
                                                 <circle cx="7" cy="17" r="2" />
@@ -92,9 +111,9 @@ const Header = () => {
 	V1.4C0,1.2,0.2,1,0.4,1h2.5c1,0,1.8,0.6,2.1,1.6L5.1,3l2.3,6.8c0,0.1,0.2,0.2,0.3,0.2h8.6c0.1,0,0.3-0.1,0.3-0.2l1.3-4.4
 	C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z" />
                                             </svg>
-                                            <span class="mobile-indicator__counter">0</span>
+                                            <span class="mobile-indicator__counter">{cart?.length ?? 0}</span>
                                         </span>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -183,25 +202,7 @@ const Header = () => {
 
 
 
-                                <li data-mobile-menu-item="">
-                                    <a type="button" class="" href="/" data-mobile-menu-trigger="">
-                                        <div class="mobile-menu__links-image">
-                                            {/* <img src="/static/flags/az.gif" alt="" /> */}
-                                        </div>
-                                        Azərbaycanca
-                                    </a>
-                                </li>
-
-
-                                <li data-mobile-menu-item="">
-                                    <a type="button" class="" href="/ru" data-mobile-menu-trigger="">
-                                        <div class="mobile-menu__links-image">
-                                            {/* <img src="/static/flags/ru.gif" alt="" /> */}
-                                        </div>
-                                        Русский
-                                    </a>
-                                </li>
-
+                              {/* Dil ucun yer */}
 
 
                             </ul>
@@ -226,7 +227,7 @@ const Header = () => {
 
 
                                 </a><li data-mobile-menu-item=""><a href="/" class="" data-mobile-menu-trigger="">
-                                </a><a href="/news-list" class="" data-mobile-menu-trigger="">
+                                </a><a href="/news" class="" data-mobile-menu-trigger="">
                                         XƏBƏRLƏR
 
                                     </a></li><a href="/news-list" class="" data-mobile-menu-trigger="">
@@ -236,7 +237,7 @@ const Header = () => {
 
 
                                 </a><li data-mobile-menu-item=""><a href="/news-list" class="" data-mobile-menu-trigger="">
-                                </a><a href="/blogs-list" class="" data-mobile-menu-trigger="">
+                                </a><a href="/blog-list" class="" data-mobile-menu-trigger="">
                                         TƏKƏRLƏRİN SINAQ TESTLƏRİ
 
                                     </a></li><a href="/blogs-list" class="" data-mobile-menu-trigger="">
@@ -246,7 +247,7 @@ const Header = () => {
 
 
                                 </a><li data-mobile-menu-item=""><a href="/blogs-list" class="" data-mobile-menu-trigger="">
-                                </a><a href="/tyresservices-list" class="" data-mobile-menu-trigger="">
+                                </a><a href="/services" class="" data-mobile-menu-trigger="">
                                         XİDMƏTLƏR
 
                                     </a></li><a href="/tyresservices-list" class="" data-mobile-menu-trigger="">
@@ -256,7 +257,7 @@ const Header = () => {
 
 
                                 </a><li data-mobile-menu-item=""><a href="/tyresservices-list" class="" data-mobile-menu-trigger="">
-                                </a><a href="/brands" class="" data-mobile-menu-trigger="">
+                                </a><a href="/marka" class="" data-mobile-menu-trigger="">
                                         MARKALAR
 
                                     </a></li><a href="/brands" class="" data-mobile-menu-trigger="">
@@ -294,7 +295,7 @@ const Header = () => {
 
 
                                 </a><li data-mobile-menu-item=""><a href="/credit-form/" class="" data-mobile-menu-trigger="">
-                                </a><a href="/about_us" class="" data-mobile-menu-trigger="">
+                                </a><a href="/about-us" class="" data-mobile-menu-trigger="">
                                         HAQQIMIZDA
 
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Product from "../Product/Product";
 import Slider from "react-slick";
 import styles from './companiesSlider.module.css'
@@ -34,7 +34,18 @@ const CompaniesSlider = ({compaines}) => {
         ],
       };
 
-      console.log(compaines, 'ashduhsuadsh')
+
+      const [length, setLength] = useState(3)
+      console.log(length, 'ashduhsuadsh')
+
+      // useEffect(() => {
+      //   compaines?.forEach(element => {
+      //     setLength(element?.products?.length)
+      //   });
+      // },[])
+
+
+      console.log(window.screen, 'asbdsgahyudgsa')
 
   return (
     <>
@@ -50,13 +61,24 @@ const CompaniesSlider = ({compaines}) => {
             <div class="section-header__divider"></div>
           </div>
         </div>
+        {length >= 4 && window?.screen?.width >= 1201 || length >= 3 && window?.screen?.width <= 1200 && window?.screen?.width > 800 || length >= 1 && window?.screen?.width <= 800 ?
         <Slider {...settings} className={styles.slider} >
           {compaines?.map((tyres) => (
             tyres?.products?.map((tyre) => (
-              <Product tire={tyre} companie={tyres?.company}/>
+                <Product tire={tyre} companie={tyres?.company}/>
             ))
           ))}
         </Slider>
+        :
+         
+          <div className='d-flex align-items-center w-100'>
+             {compaines?.map((tyres) => (
+            tyres?.products?.map((tyre) => (
+                <Product tire={tyre} companie={tyres?.company} forSlider={true}/>
+            ))
+          ))}
+          </div>
+        }
       </div>
     </div>
     </>

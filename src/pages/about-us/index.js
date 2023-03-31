@@ -3,7 +3,7 @@ import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import AboutUs from '@/components/AboutUs/AboutUs'
 import { baseUrl } from '../api/api'
-
+import MobileHeader from '@/components/MobileHeader/MobileHeader'
 
 const index = () => {
 
@@ -23,6 +23,7 @@ useEffect(() => {
 
   return (
     <>
+    <MobileHeader/>
         <Header/>
         <AboutUs about={about}/>
         <Footer/>

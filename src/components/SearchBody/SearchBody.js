@@ -1,7 +1,8 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import Product from "../Product/Product";
 import Slider from "@mui/material/Slider";
-import { useEffect } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import LoaderComponent from "../LoaderComponent/LoaderComponent";
 
 const SearchBody = ({ 
   radius,
@@ -23,8 +24,12 @@ const SearchBody = ({
   setSelectedRadius,
   setSortPrice,
   selectedWidth,
-  selectedRadius
+  selectedRadius,
+  setLimit,
+  limit
  }) => {
+
+
   function handleChanges(event, newValue) {
     setRange(newValue);
   }
@@ -443,11 +448,28 @@ const SearchBody = ({
                 </div>
               </div>
             </div>
+              {tyres?.length >= 1 ? 
+              
             <div className="d-flex flex-wrap all-products" style={{ width: '100%' }}>
+              <InfiniteScroll 
+                dataLength={limit}
+                next={() => setLimit(limit => limit + 40)}
+                hasMore={true || false}
+                // loader={<h3>Loading...</h3>}
+                style={{display:'flex', flexWrap:'wrap'}}
+              >
               {tyres?.map((tyre) => (
-                <Product tire={tyre} />
+
+                  <Product tire={tyre} />
               ))}
+              </InfiniteScroll>
             </div>
+          :
+          <div style={{display:'flex', justifyContent:'center', alignItems:'center', width:'100%'}}>
+          <LoaderComponent/>  
+          </div>
+          }
+            
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import MarkaBody from "@/components/MarkaBody/MarkaBody";
 import { baseUrl } from "../api/api";
+import MobileHeader from '@/components/MobileHeader/MobileHeader'
 
 const index = () => {
   const [markas, setMarkas] = useState([]);
@@ -17,6 +18,7 @@ const index = () => {
 
   return (
     <>
+    <MobileHeader/>
       <Header />
       <MarkaBody markas={markas} />
       <Footer />

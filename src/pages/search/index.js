@@ -114,7 +114,7 @@ useEffect(()=>{
   const [height, setHeight] = useState([])
   const [radius, setRadius] = useState([])
 
-  const [sBrand, setSBrand] = useState('')
+  const [limit, setLimit] = useState(40)
   const [selectedBrands, setSelectedBrands] = useState([])
   const [selectedWidth, setSelectedWidth] = useState([])
   const [selectedHeight, setSelectedHeight] = useState([])
@@ -125,7 +125,9 @@ useEffect(()=>{
   const [sortPrice, setSortPrice] = useState('')
   const [selectedSeason, setSelectedSeason] = useState('')
 
-
+  // const getMoreLimit = () => {
+  //   setLimit(limit => limit + 16)
+  // }
 
   const {query} = useRouter()
   useEffect(() => {
@@ -161,7 +163,10 @@ useEffect(()=>{
 
   useUpdateEffect(() => {
     getFilteredProducts()
-  },[selectedBrands, selectedWidth,selectedHeight,minPrice, maxPrice,selectedRadius, sortPrice, selectedSeason, query?.sbrand])
+  },[selectedBrands, selectedWidth,selectedHeight,minPrice, maxPrice,selectedRadius, sortPrice, selectedSeason, query?.sbrand,limit])
+
+
+  console.log(limit, 'kasdjsijd')
 
   const getSelectedBrandsData = (data) =>{
     const results = selectedBrands?.find(item => item === data)
@@ -203,9 +208,14 @@ useEffect(()=>{
       setSelectedRadius(newSelectedList)
     }
   }
+
+  useUpdateEffect(() => {
+    setLimit(40)
+    setTyres([])
+  },[selectedBrands, selectedWidth,selectedHeight,minPrice, maxPrice,selectedRadius, sortPrice, selectedSeason, query?.sbrand])
   
   const getFilteredProducts = async() => {
-    await baseUrl.get(`/tyre-filter?search_brand=${query?.sbrand ?? ''}&brand=${String(selectedBrands ?? '')}&width=${String(selectedWidth)}&height=${String(selectedHeight)}&min_price=${minPrice}&max_price=${maxPrice}&diametr=${String(selectedRadius)}&sort_price=${sortPrice}&season=${selectedSeason}`)
+    await baseUrl.get(`/tyre-filter?search_brand=${query?.sbrand ?? ''}&brand=${String(selectedBrands ?? '')}&width=${String(selectedWidth)}&height=${String(selectedHeight)}&min_price=${minPrice}&max_price=${maxPrice}&diametr=${String(selectedRadius)}&sort_price=${sortPrice}&season=${selectedSeason}&limit=${limit}`)
     .then(res => {
       const {data,status} = res
       if(status>=200 && status<=300 ){
@@ -274,6 +284,8 @@ useEffect(()=>{
           setSortPrice={setSortPrice}
           selectedWidth={selectedWidth}
           selectedRadius={selectedRadius}
+          setLimit={setLimit}
+          limit={limit}
         />
         <Footer/>
     </>

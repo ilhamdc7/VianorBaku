@@ -4,6 +4,7 @@ import Footer from '@/components/Footer/Footer'
 import NewsBody from '@/components/NewsBody/NewsBody'
 import { baseUrl } from '../api/api'
 import BlogsBody from '@/components/BlogsBody/BlogsBody'
+import MobileHeader from '@/components/MobileHeader/MobileHeader'
 
 const index = () => {
 
@@ -21,6 +22,7 @@ useEffect(() =>{
 
   return (
     <>
+    <MobileHeader/>
     <Header/>
     <BlogsBody post={blogs}/>
     <Footer/>

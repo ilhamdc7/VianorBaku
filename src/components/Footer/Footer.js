@@ -1,5 +1,6 @@
 import React from 'react'
 import ScrollTop from '@/pages/scrollTop/scroll'
+import Link from 'next/link'
 
 const Footer = () => {
     return (
@@ -86,45 +87,45 @@ const Footer = () => {
 
                                         <address class="footer-contacts__contacts d-flex flex-column m-0">
 
-                                            <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/">ƏSAS SƏHİFƏ</a>
+                                            <dd class="mb-1 footer-links__item"><Link class="hoovver" style={{ "color": "#9e9e9e" }}
+                                                href="/">ƏSAS SƏHİFƏ</Link>
                                             </dd>
 
-                                            <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/news-list">XƏBƏRLƏR</a>
+                                            <dd class="mb-1 footer-links__item"><Link class="hoovver" style={{ "color": "#9e9e9e" }}
+                                                href="/news">XƏBƏRLƏR</Link>
                                             </dd>
 
-                                            <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/blogs-list">TƏKƏRLƏRİN SINAQ TESTLƏRİ</a>
+                                            <dd class="mb-1 footer-links__item"><Link class="hoovver" style={{ "color": "#9e9e9e" }}
+                                                href="/blog-list">TƏKƏRLƏRİN SINAQ TESTLƏRİ</Link>
                                             </dd>
 
-                                            <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/tyresservices-list">XİDMƏTLƏR</a>
+                                            <dd class="mb-1 footer-links__item"><Link class="hoovver" style={{ "color": "#9e9e9e" }}
+                                                href="/services">XİDMƏTLƏR</Link>
                                             </dd>
 
-                                            <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/brands">MARKALAR</a>
+                                            <dd class="mb-1 footer-links__item"><Link class="hoovver" style={{ "color": "#9e9e9e" }}
+                                                href="/marka">MARKALAR</Link>
                                             </dd>
 
-                                            <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/woman-blog">XANIMLARA ÖZƏL</a>
+                                            <dd class="mb-1 footer-links__item"><Link class="hoovver" style={{ "color": "#9e9e9e" }}
+                                                href="/woman-blog">XANIMLARA ÖZƏL</Link>
                                             </dd>
 
-                                            <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/my-videos/">VİDEO BLOG</a>
+                                            <dd class="mb-1 footer-links__item"><Link class="hoovver" style={{ "color": "#9e9e9e" }}
+                                                href="/my-videos/">VİDEO BLOG</Link>
                                             </dd>
 
-                                            <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/credit-form/">ONLİNE KREDİT MÜRACİƏTİ</a>
+                                            <dd class="mb-1 footer-links__item"><Link class="hoovver" style={{ "color": "#9e9e9e" }}
+                                                href="/credit-form/">ONLİNE KREDİT MÜRACİƏTİ</Link>
                                             </dd>
 
 
-                                            <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/about_us">HAQQIMIZDA</a>
+                                            <dd class="mb-1 footer-links__item"><Link class="hoovver" style={{ "color": "#9e9e9e" }}
+                                                href="/about-us">HAQQIMIZDA</Link>
                                             </dd>
 
-                                            <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/contact">ƏLAQƏ</a>
+                                            <dd class="mb-1 footer-links__item"><Link class="hoovver" style={{ "color": "#9e9e9e" }}
+                                                href="/contact">ƏLAQƏ</Link>
                                             </dd>
 
                                         </address>
@@ -137,39 +138,39 @@ const Footer = () => {
                                         <address class="footer-contacts__contacts d-flex flex-column m-0">
 
                                             <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/tyresservices/?serviceName=AKKUMLYATOR SERVİSİ">AKKUMLYATOR SERVİSİ</a>
+                                                href={'/services/register'}>AKKUMLYATOR SERVİSİ</a>
                                             </dd>
 
                                             <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/tyresservices/?serviceName=TƏKƏRLƏRİN BALANSI">TƏKƏRLƏRİN BALANSI</a>
+                                                href={'/services/register'}>TƏKƏRLƏRİN BALANSI</a>
                                             </dd>
 
                                             <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/tyresservices/?serviceName=RAZVAL XİDMƏTİ">RAZVAL XİDMƏTİ</a>
+                                                href={'/services/register'}>RAZVAL XİDMƏTİ</a>
                                             </dd>
 
                                             <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/tyresservices/?serviceName=TƏKƏRLƏRİN TƏMİRİ">TƏKƏRLƏRİN TƏMİRİ</a>
+                                                href={'/services/register'}>TƏKƏRLƏRİN TƏMİRİ</a>
                                             </dd>
 
                                             <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/tyresservices/?serviceName=YAGDƏYİŞMƏ">YAGDƏYİŞMƏ</a>
+                                                href={'/services/register'}>YAGDƏYİŞMƏ</a>
                                             </dd>
 
                                             <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/tyresservices/?serviceName=DİSKLƏRİN TƏMİRİ">DİSKLƏRİN TƏMİRİ</a>
+                                                href={'/services/register'}>DİSKLƏRİN TƏMİRİ</a>
                                             </dd>
 
                                             <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/tyresservices/?serviceName=ÇİLİNGƏR XİDMƏTLƏRİ">ÇİLİNGƏR XİDMƏTLƏRİ</a>
+                                                href={'/services/register'}>ÇİLİNGƏR XİDMƏTLƏRİ</a>
                                             </dd>
 
                                             <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/tyresservices/?serviceName=FİLTERLƏRİN DƏYİŞDİRİLMƏSİ">FİLTERLƏRİN DƏYİŞDİRİLMƏSİ</a>
+                                                href={'/services/register'}>FİLTERLƏRİN DƏYİŞDİRİLMƏSİ</a>
                                             </dd>
 
                                             <dd class="mb-1 footer-links__item"><a class="hoovver" style={{ "color": "#9e9e9e" }}
-                                                href="/tyresservices/?serviceName=ƏYLƏC SERVİSİ">ƏYLƏC SERVİSİ</a>
+                                                href={'/services/register'}>ƏYLƏC SERVİSİ</a>
                                             </dd>
 
                                         </address>

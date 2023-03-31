@@ -3,6 +3,8 @@ import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import MyVideos from '@/components/MyVideos/MyVideos'
 import { baseUrl } from '../api/api'
+import MobileHeader from '@/components/MobileHeader/MobileHeader'
+
 const index = () => {
     const [videos, setVideos] = useState([])
 
@@ -19,6 +21,7 @@ useEffect(() => {
 
   return (
     <>
+    <MobileHeader/>
         <Header/>
         <MyVideos videos={videos}/>
         <Footer/>

@@ -3,9 +3,12 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { baseUrl } from "../api/api";
 import BlogsDetails from "@/components/BlogsDetails/BlogsDetails";
+import MobileHeader from '@/components/MobileHeader/MobileHeader'
+
 const BlogDetails = ({ blogs }) => {
   return (
     <>
+    <MobileHeader/>
       <Header />
       <BlogsDetails post={blogs} />
       <Footer />
