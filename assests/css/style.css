@@ -22740,7 +22740,7 @@ select.form-control::-ms-expand {
 } */
 
 .block-products-carousel__column:hover {
-  opacity: 0.7;
+  opacity: 1;
   cursor: pointer;
 }
 
@@ -23268,3 +23268,55 @@ body {
     border: 1px solid rgb(242, 89, 0);
   }
 } */
+.descc {
+  display: none;
+  position: absolute;
+  white-space: pre-line;
+  background: #888686e3;
+  font-size: 13px;
+  min-width: 190px;
+  padding: 12px 16px;
+  bottom: 25px;
+  border-radius: 5px;
+  height: fit-content;
+  line-height: 1.3;
+  color: white;
+  text-align: center;
+}
+.descc::after{
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  bottom: -5px;
+  left: 20px;
+  left: 10%;
+  top: 100%;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #888886;
+  clear: both;
+}
+.tag-badge--new:hover .descc,
+.tag-badge--hot:hover .descc{
+  display: block;
+  transition: 0.3s;
+}
+.flag-imgs{
+  position: relative;
+}
+.flag-imgs:hover .descc {
+  display: block;
+  transition: 0.3s;
+}
+.flag-imgs .descc{
+  bottom: 32px;
+  padding: 5px 16px;
+  min-width: 150px;
+  width: fit-content;
+}
+.flag-imgs .descc span{
+  display: block;
+}
