@@ -107,12 +107,17 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                           padding: "10px",
                           backgroundColor: "rgb(242, 89, 0)",
                           height: "100%",
-                          color: "#fff"
+                          color: "#fff",
+                          fontSize:'20px',
+                          fontWeight:700
                         }
                         : {
                           padding: "10px",
                           backgroundColor: "#ededed",
                           height: "100%",
+                          fontSize:'20px',
+                          fontWeight:700
+
                         }
                     }
                     type="button"
@@ -129,12 +134,18 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                           padding: "10px",
                           backgroundColor: "rgb(242, 89, 0)",
                           height: "125%",
-                          color: "#fff"
+                          color: "#fff",
+                          fontSize:'20px',
+                          fontWeight:700
+
                         }
                         : {
                           padding: "10px",
                           backgroundColor: "#ededed",
                           height: "100%",
+                          fontSize:'20px',
+                          fontWeight:700
+
                         }
                     }
                     type="button"
@@ -151,12 +162,17 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                           padding: "10px",
                           backgroundColor: "rgb(242, 89, 0)",
                           height: "125%",
-                          color: "#fff"
+                          color: "#fff",
+                          fontSize:'20px ',
+                          fontWeight:700
+
                         }
                         : {
                           padding: "10px",
                           backgroundColor: "#ededed",
                           height: "100%",
+                          fontSize:'20px ',
+                          fontWeight:700
                         }
                     }
                     type="button"

@@ -9,16 +9,29 @@ import DescriptionCalc from "@/components/DescriptionCalc/DescriptionCalc";
 import AlternativeProductsSlider from "@/components/AlternativeProductsSlider/AlternativeProductsSlider";
 import { baseUrl } from "../api/api";
 import MobileHeader from '@/components/MobileHeader/MobileHeader'
-const Description = ({product}) => {
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/redux/reducers/cartSlice";
+import { notification } from "antd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 
-  console.log(product,'hsaudhuisauidsh')
+const Description = ({product}) => {
+  const [api, contextHolder] = notification.useNotification();
+
+  const openNotification = (placement) => {
+    api.info({
+      message: `Səbətə əlavə olundu`,
+      icon: <FontAwesomeIcon icon={faCheckSquare} />,
+      placement,
+    });
+  };
 
 const [width, setWidth] = useState('')
 const [height, setHeight] = useState('')
 const [diametr, setDiametr] = useState('')
 const [similarTyres, setSimilarTyres] = useState([])
 
-
+const dispatch = useDispatch()
 
  const getSimilarTyres = async() => {
   await baseUrl.get(`/tyre-filter?width=${width}&height=${height}&diametr=${diametr}`)
@@ -37,8 +50,15 @@ useEffect(() => {
   getSimilarTyres()
 },[width, height, diametr])
 
+
+const addToBasket = (data) => {
+  dispatch(addToCart(data));
+  openNotification("topRight");
+};
+
   return (
     <>
+    {contextHolder}
     <MobileHeader/>
       <Header />
       <div class="site__body">
@@ -66,7 +86,34 @@ useEffect(() => {
                       <div class="product-form product__form bg-whi">
                         <ProductInfo product={product} />
                       </div>
-                      <DescriptionServices />
+                          <div class="product__actions">
+                            <div>
+                              {product?.taksitCards?.map((card) => (
+                                <>
+                                <span>{`${card?.taksit} ay taksit`}</span>
+                                <img className="mb-3" width={'65px'} height="35px" style={{margin:'0px 5px'}} src={card?.image} /><br/>
+                                </>
+                              ))}
+                              
+                            </div>
+    
+                            <h5 class="product__title">
+                              {" "}
+                              Taksit kartları ilə alış
+                            </h5>
+                            <div
+                              class="shop-features__item-subtitle"
+                              style={{ "font-size": "16px" }}
+                            >
+                              <img
+                                style={{ height: "8px !important" }}
+                                class="manatt"
+                                src="/static/images/manat.png"
+                              />
+                            </div>
+                            <div class="product__actions-divider"></div>
+                          </div>
+                      {/* <DescriptionServices /> */}
                       <div class="product-form product__form"></div>
                       <DescriptionSpecs product={product}/>
                       <div class="product-form product__form"></div>
@@ -76,6 +123,7 @@ useEffect(() => {
                           <button
                             class="btn btn-primary btn-lg btn-block adding-to-card"
                             data-id="39083"
+                            onClick={() => addToBasket(product)}
                           >
                             Səbətə at
                           </button>
@@ -83,33 +131,6 @@ useEffect(() => {
                         <div class="product__actions-divider"></div>
                       </div>
                       <div class="product-form product__form"></div>
-                      <div class="product__actions">
-                        <div>
-                          {product?.taksitCards?.map((card) => (
-                            <>
-                            <span>{`${card?.taksit} ay taksit`}</span>
-                            <img className="mb-3" width={'65px'} height="35px" style={{margin:'0px 5px'}} src={card?.image} /><br/>
-                            </>
-                          ))}
-                          
-                        </div>
-
-                        <h5 class="product__title">
-                          {" "}
-                          Taksit kartları ilə alış
-                        </h5>
-                        <div
-                          class="shop-features__item-subtitle"
-                          style={{ "font-size": "16px" }}
-                        >
-                          <img
-                            style={{ height: "8px !important" }}
-                            class="manatt"
-                            src="/static/images/manat.png"
-                          />
-                        </div>
-                        <div class="product__actions-divider"></div>
-                      </div>
                     </div>
                   </div>
                   <div class="spec"></div>

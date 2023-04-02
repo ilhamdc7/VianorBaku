@@ -211,10 +211,10 @@ const Product = ({ tire, companie, forSlider }) => {
                       <div class="tag-badge tag-badge--sale">-{companie?.percent_discount}%</div>
                     }
                     <div class="tag-badge tag-badge--new">Taksit
-                      <div class="descc"> Bu məhsul, Birkart, Bolkart, Albalı kart və WorldCard vasitəsilə faizsiz və ilkin ödənişsiz 6 taksitlə əldə edilə bilər.</div>
+                      <div class="descc"> Birkart, Bolkart, Ukart, Tamkart ilə 12 ay taksitə qədər əldə edə bilərsiniz.</div>
                     </div>
                     <div class="tag-badge tag-badge--hot">Kredit
-                      <div class="descc"> Bu məhsul, Birkart, Bolkart taksitlə əldə edilə bilər.</div>
+                      <div class="descc"> Şəxsiyyət vəsiqəsilə 3-18 aya qədər əldə edə bilərsiniz</div>
                     </div>
                   </div>
 
@@ -271,7 +271,7 @@ const Product = ({ tire, companie, forSlider }) => {
                       src={tire?.model?.brend?.country?.flag}
                     />
                     <div className="descc">
-                      <span>MƏNŞƏ:</span> Çin
+                      <span>MƏNŞƏ:</span> {tire?.model?.brend?.country?.name}
                     </div>
                   </div>
                 )}
@@ -283,13 +283,13 @@ const Product = ({ tire, companie, forSlider }) => {
                       src={tire?.executive_country?.flag}
                     />
                     <div className="descc">
-                      <span>MƏNSUBİYYƏT:</span> Çin
+                      <span>MƏNSUBİYYƏT:</span> {tire?.executive_country?.name}
                     </div>
                   </div>
                 )}
               </div>
               <div
-                class="d-flex"
+                class="d-flex mt-2"
                 style={{ marginRight: "15px", flexDirection: "column" }}
               >
                 <span

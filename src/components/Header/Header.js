@@ -19,74 +19,17 @@ const Header = () => {
 
 
   return (
-    <header class=" header-site" style={{ "background-color": "#FFF", "z-index": "10" }}>
-      <div style={{ "background": "#fff", "border-bottom": "1px solid #ebebeb" }}>
-        <div class="container">
-          <div
-            class="d-flex justify-content-between"
-            style={{ "align-items": "center", "height": "50px" }}
-          >
-            <div class="topbar--classic d-flex ">
-              <div class="topbar__item-text ">
-                <Link class="topbar__link first-url" href="/about-us">
-                  HAQQIMIZDA
-                </Link>
-              </div>
-
-              <div class="topbar__item-text ">
-                <Link class="topbar__link first-url" href="/contact">
-                  ƏLAQƏ
-                </Link>
-              </div>
-            </div>
-
-            <div  className={`topbar__menu ${show ? "topbar__menu--open" : ""}`} >
-              <button
-                class="topbar__button topbar__button--has-arrow topbar__menu-button"
-                type="button"
-                onClick={() => setShow(!show)}
-              >
-                <span class="topbar__button-title language-span">AZ</span>
-                <span class="topbar__button-arrow">
-                  <svg width="7px" height="5px">
-                    <path d="M0.280,0.282 C0.645,-0.084 1.238,-0.077 1.596,0.297 L3.504,2.310 L5.413,0.297 C5.770,-0.077 6.363,-0.084 6.728,0.282 C7.080,0.634 7.088,1.203 6.746,1.565 L3.504,5.007 L0.262,1.565 C-0.080,1.203 -0.072,0.634 0.280,0.282 Z" />
-                  </svg>
-                </span>
-              </button>
-              <div class="topbar__menu-body">
-                <a
-                  style={{ " white-space": "nowrap" }}
-                  class="topbar__menu-item language-button"
-                  id=""
-                  href="/"
-                >
-                  <img src="https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg" alt="" />
-                  <span class="choosed-language">Azərbaycanca </span>
-                </a>
-
-                <a
-                  style={{ " white-space": "nowrap" }}
-                  class="topbar__menu-item language-button"
-                  id=""
-                  href="/ru/"
-                >
-                  {/* <img src="/static/flags/ru.gif" alt="" /> */}
-                  <span class="choosed-language">Русский </span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <header class=" header-site" style={{ "z-index": "10" }}>
+      
       <div
         class="container d-flex justify-content-between;"
         style={{ "position": "relative", "align-items": "center", "justify-content": "space-between" }}
       >
         <div class="logo">
           <div class="logo__image">
-            <a href="/" class="logo">
+            <a href="/" class="logo mb-3">
               <img
-                height="70px"
+                height="90px"
                 class="p-1"
                 src="http://www.vianorbaku.az/static/images/vianorLogo.jpg"
                 alt=""
@@ -194,7 +137,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div style={{ "border-top": "1px solid #ebebeb", "height": "50px", "display": "flex", "align-items": "center" }}>
+      <div style={{ "border-top": "1px solid #ebebeb", "height": "50px", "display": "flex", "align-items": "center",backgroundColor: '#f2f2f2' }}>
         <div class="container">
           <div style={{ "align-items": "center" }}>
             <div class="header__navbar-menu">

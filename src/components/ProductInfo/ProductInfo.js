@@ -1,6 +1,7 @@
 import React from "react";
 
 const ProductInfo = ({product}) => {
+
   return (
     <div class="product__info-body">
       <div class="tag-badge tag-badge--sale">-5%</div>
@@ -77,7 +78,7 @@ const ProductInfo = ({product}) => {
           <tr>
             <th>Marka</th>
             <td>
-              <a href="">NANKANG</a>
+              <a>{product?.model?.brend?.title}</a>
             </td>
           </tr>
           <tr>
