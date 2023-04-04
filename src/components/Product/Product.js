@@ -211,10 +211,10 @@ const Product = ({ tire, companie, forSlider }) => {
                       <div class="tag-badge tag-badge--sale">-{companie?.percent_discount}%</div>
                     }
                     <div class="tag-badge tag-badge--new">Taksit
-                      <div class="descc"> Birkart, Bolkart, Ukart, Tamkart ilə 12 ay taksitə qədər əldə edə bilərsiniz.</div>
+                      <div class="descc" style={{textTransform:'none'}}> Birkart, Bolkart, Ukart, Tamkart ilə 12 aya taksitə qədər əldə edə bilərsiniz.</div>
                     </div>
                     <div class="tag-badge tag-badge--hot">Kredit
-                      <div class="descc"> Şəxsiyyət vəsiqəsilə 3-18 aya qədər əldə edə bilərsiniz</div>
+                      <div class="descc" style={{textTransform:'none'}}> Şəxsiyyət vəsiqəsilə 3-18 aya qədər əldə edə bilərsiniz</div>
                     </div>
                   </div>
 
@@ -299,7 +299,7 @@ const Product = ({ tire, companie, forSlider }) => {
                     textAlign: "center",
                   }}
                 >
-                  Mövcuddur : {tire?.stock ?? 0}
+                  Mövcud: {tire?.stock ?? 0}
                 </span>
                 <div style={{ display: "flex" }}>
                   <span

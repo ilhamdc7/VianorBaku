@@ -1,12 +1,15 @@
 import React ,{ useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const [show, setShow] = useState();
   const [sumOfPriceProduct, setSumOfPriceProduct] = useState(null)
   const cart = useSelector(state => state.cart)
   const [searchInput ,setSearchInput] = useState('')
+
+  const router = useRouter()
 
   useEffect(() => {
     setSumOfPriceProduct(null)
@@ -45,6 +48,8 @@ const Header = () => {
             <form
               style={{ "margin": "0 auto" }}
               class="search__body"
+              // onSubmit={() => router.push(`/search?sbrand=${searchInput ?? ''}`)}
+              // action={`/search?sbrand=${searchInput}`}
             >
               <div class="search__shadow"></div>
               <input
@@ -54,7 +59,7 @@ const Header = () => {
                 value={searchInput}
               />
               <Link style={{right:'20px'}} class="search__button search__button--end" href={`/search?sbrand=${searchInput ?? ''}`}>
-                <span  class="search__button-icon">
+                <button class="search__button-icon" type="submit" style={{borderStyle:'none', backgroundColor:'transparent', fill:'black'}}>
                   <svg  width="20" height="20" >
                     <path
                       d="M19.2,17.8c0,0-0.2,0.5-0.5,0.8c-0.4,0.4-0.9,0.6-0.9,0.6s-0.9,0.7-2.8-1.6c-1.1-1.4-2.2-2.8-3.1-3.9C10.9,14.5,9.5,15,8,15
@@ -62,7 +67,7 @@ const Header = () => {
                       c0,2.8,2.2,5,5,5c2.8,0,5-2.2,5-5C13,5.2,10.8,3,8,3z"
                     />
                   </svg>
-                </span>
+                </button>
               </Link>
 
               <div class="search__box"></div>

@@ -26,7 +26,8 @@ const SearchBody = ({
   selectedWidth,
   selectedRadius,
   setLimit,
-  limit
+  limit,
+  emptyTyre
  }) => {
 
 
@@ -448,8 +449,7 @@ const SearchBody = ({
                 </div>
               </div>
             </div>
-              {tyres?.length >= 1 ? 
-              
+            {tyres?.length >= 1 ? 
             <div className="d-flex flex-wrap all-products" style={{ width: '100%' }}>
               <InfiniteScroll 
                 dataLength={limit}
@@ -465,8 +465,14 @@ const SearchBody = ({
               </InfiniteScroll>
             </div>
           :
+          emptyTyre === false && tyres?.length === 0 ?
           <div style={{display:'flex', justifyContent:'center', alignItems:'center', width:'100%'}}>
           <LoaderComponent/>  
+          </div>
+          :
+          emptyTyre === true && tyres?.length === 0 &&
+          <div style={{display:'flex', justifyContent:'center', alignItems:'center', width:'100%'}}>
+          <span>Axtarışınıza uyğun nəticə tapılmadı.</span>
           </div>
           }
             

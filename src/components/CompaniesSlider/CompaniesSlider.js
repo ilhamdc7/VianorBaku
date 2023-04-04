@@ -36,16 +36,7 @@ const CompaniesSlider = ({compaines}) => {
 
 
       const [length, setLength] = useState(3)
-      console.log(length, 'ashduhsuadsh')
-
-      // useEffect(() => {
-      //   compaines?.forEach(element => {
-      //     setLength(element?.products?.length)
-      //   });
-      // },[])
-
-
-      console.log(window.screen, 'asbdsgahyudgsa')
+   
 
   return (
     <>
@@ -54,7 +45,7 @@ const CompaniesSlider = ({compaines}) => {
       <div class="container">
         <div class="section-header">
           <div class="section-header__body">
-            <h2 class="section-header__title"> Yeni gələnlər </h2>
+            <h2 class="section-header__title"> Kompaniyalar </h2>
 
             <div class="section-header__spring"></div>
             
