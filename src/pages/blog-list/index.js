@@ -9,22 +9,23 @@ import MobileHeader from '@/components/MobileHeader/MobileHeader'
 const index = () => {
 
 const [blogs,setBlogs] = useState([])
+const [limit, setLimit] = useState(9)
 
 const getBlogs = async() => {
- baseUrl.get(`/tyre_blog`)
+ baseUrl.get(`/tyre_blog?limit=${limit}`)
  .then(res => setBlogs(res.data.results))
 }
 
 
 useEffect(() =>{
   getBlogs()
-},[])
+},[limit])
 
   return (
     <>
     <MobileHeader/>
     <Header/>
-    <BlogsBody post={blogs}/>
+    <BlogsBody setLimit={setLimit} limit={limit} post={blogs}/>
     <Footer/>
     </>
   )

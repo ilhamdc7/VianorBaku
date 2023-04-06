@@ -2,8 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import InfiniteScroll from "react-infinite-scroll-component";
 
-const BlogsBody = ({ post }) => {
+const BlogsBody = ({ post, setLimit, limit }) => {
 
   return (
     <div class="site__body">
@@ -31,9 +32,16 @@ const BlogsBody = ({ post }) => {
             <div class="blog-view__item blog-view__item-posts">
               <div class="block posts-view">
                 <div class="posts-view__list posts-list posts-list--layout--list">
-                  <div class="posts-list__body row">
+                  <div class="posts-list__body row" style={{overflowX:'hidden'}}>
+                    <InfiniteScroll
+                    className="d-flex flex-wrap"
+                    dataLength={limit}
+                    next={() => setLimit(limit => limit + 6)}
+                    hasMore={post?.length >= limit}
+                    >
+
                     {post?.map((pst) => (
-                      <div class="col-12 col-xl-4 ">
+                      <div class="col-12 col-xl-4 mt-3">
                         <div class="posts-list__item ">
                           <div class="post-card post-card--layout--list">
                             <div class="row">
@@ -85,6 +93,7 @@ const BlogsBody = ({ post }) => {
                         </div>
                       </div>
                     ))}
+                    </InfiniteScroll>
                   </div>
                 </div>
                 {/* <div class="posts-view__pagination">

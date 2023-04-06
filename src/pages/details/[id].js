@@ -115,8 +115,7 @@ const addToBasket = (data) => {
                           </div>
                       {/* <DescriptionServices /> */}
                       <div class="product-form product__form"></div>
-                      <DescriptionSpecs product={product}/>
-                      <div class="product-form product__form"></div>
+                    
 
                       <div class="product__actions">
                         <div class="product__actions-item product__actions-item--addtocart">

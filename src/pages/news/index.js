@@ -9,17 +9,16 @@ const news = () => {
 
 
   const [news, setNews] = useState([])
+  const [limit, setLimit] = useState(9)
 
   const getNews = async() => {
-    await baseUrl.get(`/news`)
+    await baseUrl.get(`/news?limit=${limit}`)
     .then(res => setNews(res.data.results))
   }
 
-
-
   useEffect(() => {
     getNews()
-  },[])
+  },[limit])
 
 
 
@@ -27,7 +26,7 @@ const news = () => {
     <>
     <MobileHeader/>
     <Header/>
-    <NewsBody post={news}/>
+    <NewsBody setLimit={setLimit} limit={limit} post={news}/>
     <Footer/>
     </>
   )

@@ -190,6 +190,8 @@ const Product = ({ tire, companie, forSlider }) => {
               <div
                 style={{ position: "absolute", bottom: "15px", left: "15px" }}
               >
+                {tire?.klass?.name === 'Minik' && 
+                
                 <img
                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAOCAYAAADaOrdAAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABqElEQVQ4Ea3UTygEYRjH8VkhKWKTECVJEgeKgxyk1OaGCwdcxEX2shdEOTk5OGwO2qKUJAfJSZGUAxcJNw7ag/w/SJLk+9M7mpl2dtvapz697/O+78w787yzG7ASRwPDIyjFj1mSbdpv08Zp13Br8rSaEKuf0Q5tYhujP23yCtouHKINaUUZq49xlOCqAcYmPOOV5Noo3zPuSrNcmWWNki/hwzPul6pkG4j4LdC4XWe1hejGKsahMtnzdK0io9YzfkIewzkeoHjHPZ6UBFCNZWhAN/1ELnTganWBfdh0/0JzGk8WNUy+IKxFK+hQJ8PRyP32EdGZ6PBOkclQRVSdbTTZNf8yOyjvQytusI5UZdFDDqMAu9AZqbwXGMSdzkSfq15L0YxrbEIl7Ifm/SKHiU4sQGc6hTgeoSpVIagn129DB6SvR/ksFJfQonJcIVH0MjiPAzM5RHuGqMm1cVg3nUE9ivEGZ7ySqBxB56Cjn0ffeY2+THGu1/3/Q6+nmvZAm7dAv369oV/or0fXqBracA7660kaJcwuYg8x1CFVhFiwhR1MQg/ril/L3k257nSYiwAAAABJRU5ErkJggg=="
                   style={{ width: "35px", display: "inline" }}
@@ -198,6 +200,18 @@ const Product = ({ tire, companie, forSlider }) => {
                   data-placement="top"
                   title="Minik"
                 />
+                }
+                {tire?.klass?.name === 'SUV 4X4' && 
+                
+                <img
+                src="https://www.pngkey.com/png/full/71-719851_car-icons-suv-car.png"
+                style={{ width: "35px", display: "inline" }}
+                  alt=""
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="SUV 4X4"
+                />
+                }
               </div>
             </div>
             <ul class="product-card__info">

@@ -156,14 +156,16 @@ useEffect(()=>{
 
 
 
-  useMount(() => {
-    getFilteredProducts()
-  })
-
+  
   useUpdateEffect(() => {
     getFilteredProducts()
   },[selectedBrands, selectedWidth,selectedHeight,minPrice, maxPrice,selectedRadius, sortPrice, selectedSeason, query?.sbrand,limit])
-
+  
+  useMount(() => {
+    if(query?.sbrand?.length >= 1){
+      getFilteredProducts()
+    }
+  })
 
   const getSelectedBrandsData = (data) =>{
     const results = selectedBrands?.find(item => item === data)
