@@ -61,7 +61,7 @@ const SearchBody = ({
         </div>
       </div>
 
-      <div className="container container--max--xl">
+      <div className="container sidebar-container container--max--xl">
         <div className="w-100 d-flex" >
           {/* <div className="block-split__item block-split__item-sidebar col-auto"> */}
           <div class="sidebar sidebar--offcanvas--mobile" >

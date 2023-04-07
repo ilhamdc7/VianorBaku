@@ -156,61 +156,70 @@ const Product = ({ tire, companie, forSlider }) => {
                 </Link>
               </div>
               {tire?.model?.season?.name === 'Yay' &&
-                <div
-                  style={{ position: "absolute", bottom: "15px", right: "15px" }}
-                >
-                  <FontAwesomeIcon style={{ width: '25px', height: '25px', objectFit: 'contain', color: 'orange' }} icon={faSun} />
-                </div>
+                <>
+                  <div className="season"
+                    style={{ position: "absolute", bottom: "15px", right: "15px" }}
+                  >
+                    <FontAwesomeIcon style={{ width: '25px', height: '25px', objectFit: 'contain', color: 'orange' }} icon={faSun} />
+                    <div className="season-desc-y"> Yay</div>
+                  </div>
+
+                </>
               }
               {tire?.model?.season?.name === 'M+S' &&
-                <div
-                  style={{ position: "absolute", bottom: "15px", right: "15px" }}
-                >
-                  <span>M+S</span>
-                </div>
+                <>
+                  <div className="season"
+                    style={{ position: "absolute", bottom: "15px", right: "15px" }}
+                  >
+                    <span>M+S</span>
+                    <div className="season-desc-ms" > M+S</div>
+                  </div>
+                </>
               }
               {tire?.model?.season?.name === 'Qış' &&
                 <>
-                  <div
-                    style={{ position: "absolute", bottom: "15px", right: "35px" }}
+                  <div className="season"
+                    style={{ position: "absolute", bottom: "15px", right: "15px" }}
                   >
                     <FontAwesomeIcon style={{ width: '25px', height: '25px', objectFit: 'contain', color: '0ECEEC' }} icon={faSnowflake} />
+                    <div className="season-desc-q">Qış</div>
                   </div>
                 </>
               }
               {tire?.model?.season?.name === 'Dörd fəsil' &&
                 <>
-                  <div
-                    style={{ position: "absolute", bottom: "15px", right: "35px" }}
+                  <div className="season"
+                    style={{ position: "absolute", bottom: "15px", right: "15px" }}
                   >
                     <FourSeasonIcon />
+                    <div class="season-desc-df" > Dörd fəsil</div>
                   </div>
                 </>
               }
               <div
                 style={{ position: "absolute", bottom: "15px", left: "15px" }}
               >
-                {tire?.klass?.name === 'Minik' && 
-                
-                <img
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAOCAYAAADaOrdAAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABqElEQVQ4Ea3UTygEYRjH8VkhKWKTECVJEgeKgxyk1OaGCwdcxEX2shdEOTk5OGwO2qKUJAfJSZGUAxcJNw7ag/w/SJLk+9M7mpl2dtvapz697/O+78w787yzG7ASRwPDIyjFj1mSbdpv08Zp13Br8rSaEKuf0Q5tYhujP23yCtouHKINaUUZq49xlOCqAcYmPOOV5Noo3zPuSrNcmWWNki/hwzPul6pkG4j4LdC4XWe1hejGKsahMtnzdK0io9YzfkIewzkeoHjHPZ6UBFCNZWhAN/1ELnTganWBfdh0/0JzGk8WNUy+IKxFK+hQJ8PRyP32EdGZ6PBOkclQRVSdbTTZNf8yOyjvQytusI5UZdFDDqMAu9AZqbwXGMSdzkSfq15L0YxrbEIl7Ifm/SKHiU4sQGc6hTgeoSpVIagn129DB6SvR/ksFJfQonJcIVH0MjiPAzM5RHuGqMm1cVg3nUE9ivEGZ7ySqBxB56Cjn0ffeY2+THGu1/3/Q6+nmvZAm7dAv369oV/or0fXqBracA7660kaJcwuYg8x1CFVhFiwhR1MQg/ril/L3k257nSYiwAAAABJRU5ErkJggg=="
-                  style={{ width: "35px", display: "inline" }}
-                  alt=""
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Minik"
-                />
+                {tire?.klass?.name === 'Minik' &&
+
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAOCAYAAADaOrdAAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABqElEQVQ4Ea3UTygEYRjH8VkhKWKTECVJEgeKgxyk1OaGCwdcxEX2shdEOTk5OGwO2qKUJAfJSZGUAxcJNw7ag/w/SJLk+9M7mpl2dtvapz697/O+78w787yzG7ASRwPDIyjFj1mSbdpv08Zp13Br8rSaEKuf0Q5tYhujP23yCtouHKINaUUZq49xlOCqAcYmPOOV5Noo3zPuSrNcmWWNki/hwzPul6pkG4j4LdC4XWe1hejGKsahMtnzdK0io9YzfkIewzkeoHjHPZ6UBFCNZWhAN/1ELnTganWBfdh0/0JzGk8WNUy+IKxFK+hQJ8PRyP32EdGZ6PBOkclQRVSdbTTZNf8yOyjvQytusI5UZdFDDqMAu9AZqbwXGMSdzkSfq15L0YxrbEIl7Ifm/SKHiU4sQGc6hTgeoSpVIagn129DB6SvR/ksFJfQonJcIVH0MjiPAzM5RHuGqMm1cVg3nUE9ivEGZ7ySqBxB56Cjn0ffeY2+THGu1/3/Q6+nmvZAm7dAv369oV/or0fXqBracA7660kaJcwuYg8x1CFVhFiwhR1MQg/ril/L3k257nSYiwAAAABJRU5ErkJggg=="
+                    style={{ width: "35px", display: "inline" }}
+                    alt=""
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Minik"
+                  />
                 }
-                {tire?.klass?.name === 'SUV 4X4' && 
-                
-                <img
-                src="https://www.pngkey.com/png/full/71-719851_car-icons-suv-car.png"
-                style={{ width: "35px", display: "inline" }}
-                  alt=""
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="SUV 4X4"
-                />
+                {tire?.klass?.name === 'SUV 4X4' &&
+
+                  <img
+                    src="https://www.pngkey.com/png/full/71-719851_car-icons-suv-car.png"
+                    style={{ width: "35px", display: "inline" }}
+                    alt=""
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="SUV 4X4"
+                  />
                 }
               </div>
             </div>
@@ -225,10 +234,10 @@ const Product = ({ tire, companie, forSlider }) => {
                       <div class="tag-badge tag-badge--sale">-{companie?.percent_discount}%</div>
                     }
                     <div class="tag-badge tag-badge--new">Taksit
-                      <div class="descc" style={{textTransform:'none'}}> Birkart, Bolkart, Ukart, Tamkart ilə 12 aya taksitə qədər əldə edə bilərsiniz.</div>
+                      <div class="descc" style={{ textTransform: 'none' }}> Birkart, Bolkart, Ukart, Tamkart ilə 12 aya taksitə qədər əldə edə bilərsiniz.</div>
                     </div>
                     <div class="tag-badge tag-badge--hot">Kredit
-                      <div class="descc" style={{textTransform:'none'}}> Şəxsiyyət vəsiqəsilə 3-18 aya qədər əldə edə bilərsiniz</div>
+                      <div class="descc" style={{ textTransform: 'none' }}> Şəxsiyyət vəsiqəsilə 3-18 aya qədər əldə edə bilərsiniz</div>
                     </div>
                   </div>
 

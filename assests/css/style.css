@@ -198,16 +198,25 @@
   .container {
     max-width: 1000px !important;
   }
+  .sidebar-container.container {
+    max-width: 1150px !important;
+  }
 }
 
 @media (min-width: 1260px) {
   .container {
     max-width: 1300px !important;
   }
+  .sidebar-container.container {
+    max-width: 1300px !important;
+  }
 }
 
 @media (min-width: 1360px) {
   .container {
+    max-width: 1380px !important;
+  }
+  .sidebar-container.container {
     max-width: 1380px !important;
   }
 }
@@ -23283,7 +23292,7 @@ body {
   color: white;
   text-align: center;
 }
-.descc::after{
+.descc::after {
   content: '';
   position: absolute;
   width: 5px;
@@ -23300,23 +23309,90 @@ body {
   clear: both;
 }
 .tag-badge--new:hover .descc,
-.tag-badge--hot:hover .descc{
+.tag-badge--hot:hover .descc {
   display: block;
   transition: 0.3s;
 }
-.flag-imgs{
+.flag-imgs {
   position: relative;
 }
 .flag-imgs:hover .descc {
   display: block;
   transition: 0.3s;
 }
-.flag-imgs .descc{
+.flag-imgs .descc {
   bottom: 32px;
   padding: 5px 16px;
   min-width: 150px;
   width: fit-content;
 }
-.flag-imgs .descc span{
+.flag-imgs .descc span {
   display: block;
+}
+
+.season-desc-y,
+.season-desc-df,
+.season-desc-q,
+.season-desc-ms {
+  display: none;
+  position: absolute;
+  white-space: pre-line;
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 13px;
+  min-width: 90px;
+  width: fit-content;
+  padding: 5px 10px;
+  bottom: 38px;
+  right: -11px;
+  border-radius: 4px;
+  height: fit-content;
+  line-height: 1.3;
+  color: white;
+  text-align: center;
+}
+
+.season-desc-y,
+.season-desc-q {
+  min-width: 50px;
+}
+.season-desc-df {
+  min-width: 80px;
+}
+.season-desc-ms {
+  min-width: 50px;
+}
+.season-desc-y:after,
+.season-desc-df:after,
+.season-desc-q:after,
+.season-desc-ms:after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  bottom: -5px;
+  left: 0px;
+  left: 40%;
+  top: 100%;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid rgba(0, 0, 0, 0.7);
+  clear: both;
+}
+.season-desc-df:after {
+  left: 65%;
+}
+.season:hover .season-desc-y,
+.season:hover .season-desc-q,
+.season:hover .season-desc-ms,
+.season:hover .season-desc-df {
+  display: block;
+  transition: 0.3s;
+}
+
+
+#__next{
+  width: 100%;
+  overflow-x: hidden;
 }
