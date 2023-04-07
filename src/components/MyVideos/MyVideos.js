@@ -1,7 +1,8 @@
 import React from "react";
 import styles from './myVideos.module.css'
+import InfiniteScroll from "react-infinite-scroll-component";
 
-const MyVideos = ({ videos }) => {
+const MyVideos = ({ videos, limit, setLimit }) => {
   return (
     <div class="site__body">
       <div class="block post-view">
@@ -10,7 +11,13 @@ const MyVideos = ({ videos }) => {
             <div class="post-view__item post-view__item-post">
               <div class="post-view__card post">
                 <div class="block-banners__list mt-5 row">
-                {videos?.map((video) => (
+                  <InfiniteScroll
+                  className="d-flex flex-wrap"
+                  dataLength={limit}
+                  hasMore={videos?.length >= limit}
+                  next={() => setLimit(limit => limit + 6)}
+                  >
+                    {videos?.map((video) => (
                       <div className={styles.videoBox}>
                         <iframe
                           width="100%"
@@ -27,6 +34,7 @@ const MyVideos = ({ videos }) => {
                       </div>
                     ))
                   }
+                  </InfiniteScroll>
                 </div>
               </div>
             </div>

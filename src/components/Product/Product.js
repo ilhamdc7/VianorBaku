@@ -221,6 +221,17 @@ const Product = ({ tire, companie, forSlider }) => {
                     title="SUV 4X4"
                   />
                 }
+                {tire?.klass?.name === 'Yük' &&
+
+                  <img
+                    src="https://www.iconpacks.net/icons/1/free-truck-icon-1058-thumb.png"
+                    style={{ width: "35px", display: "inline" }}
+                    alt=""
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Yük"
+                  />
+                }
               </div>
             </div>
             <ul class="product-card__info">

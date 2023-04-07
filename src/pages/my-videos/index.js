@@ -7,23 +7,23 @@ import MobileHeader from '@/components/MobileHeader/MobileHeader'
 
 const index = () => {
     const [videos, setVideos] = useState([])
+    const [limit, setLimit] = useState(9)
 
 const getVideos = async() => {
-    baseUrl.get(`/video_blog`)
+    baseUrl.get(`/video_blog?limit=${limit}`)
     .then(res => setVideos(res.data.results))
 }
 
-    console.log(videos)
 
 useEffect(() => {
     getVideos()
-},[])
+},[limit])
 
   return (
     <>
     <MobileHeader/>
         <Header/>
-        <MyVideos videos={videos}/>
+        <MyVideos limit={limit} setLimit={setLimit} videos={videos}/>
         <Footer/>
     </>
   )

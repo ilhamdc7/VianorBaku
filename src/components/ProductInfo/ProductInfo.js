@@ -4,7 +4,14 @@ const ProductInfo = ({product}) => {
 
   return (
     <div class="product__info-body">
-      <div class="tag-badge tag-badge--sale">-5%</div>
+      {product?.discount && product?.discount_type === 'manat' &&
+      
+      <div class="tag-badge tag-badge--sale">-{product?.discount}m</div>
+      }
+      {product?.discount && product?.discount_type === 'percentage' &&
+      
+      <div class="tag-badge tag-badge--sale">-{product?.discount}%</div>
+      }
 
       <div class="tag-badge tag-badge--new">Taksit</div>
 
