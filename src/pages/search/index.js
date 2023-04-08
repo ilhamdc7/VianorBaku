@@ -156,8 +156,8 @@ useEffect(()=>{
 
 
 useUpdateEffect(() => {
-  router.push(`/search?width=${selectedWidth}`)
-},[selectedWidth])
+  router.push(`/search?width=${selectedWidth}&height=${selectedHeight}&diametr=${selectedRadius}&brand=${selectedBrands}`)
+},[selectedWidth,selectedHeight,selectedRadius,selectedBrands])
   
   useUpdateEffect(() => {
     getFilteredProducts()

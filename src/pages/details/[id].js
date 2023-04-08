@@ -56,6 +56,8 @@ const Description = ({ product }) => {
     openNotification("topRight");
   };
 
+
+  console.log(product?.taksitCards, 'hsaudhsauhd')
   return (
     <>
       {contextHolder}
@@ -92,7 +94,7 @@ const Description = ({ product }) => {
                               <div className="payment-cards">
                                 <span>{`${card?.taksit} ay taksit`}</span>
                                 <img className="mb-3" width={'65px'} height="35px" style={{ margin: '0px 5px' }} src={card?.image} />
-                                <div className="card-name">Albali kart</div>
+                                <div className="card-name">{card?.card}</div>
                                 <br />
                               </div>
                             ))}
