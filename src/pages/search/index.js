@@ -127,7 +127,7 @@ useEffect(()=>{
   const [selectedSeason, setSelectedSeason] = useState('')
 
 
-
+  const router = useRouter()
   const {query} = useRouter()
   useEffect(() => {
     if(query?.brand?.length >= 1){
@@ -155,7 +155,9 @@ useEffect(()=>{
   },[selectedBrands])
 
 
-
+useUpdateEffect(() => {
+  router.push(`/search?width=${selectedWidth}`)
+},[selectedWidth])
   
   useUpdateEffect(() => {
     getFilteredProducts()
