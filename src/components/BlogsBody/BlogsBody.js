@@ -32,67 +32,67 @@ const BlogsBody = ({ post, setLimit, limit }) => {
             <div class="blog-view__item blog-view__item-posts">
               <div class="block posts-view">
                 <div class="posts-view__list posts-list posts-list--layout--list">
-                  <div class="posts-list__body row" style={{overflowX:'hidden'}}>
+                  <div class="posts-list__body row" style={{ overflowX: 'hidden' }}>
                     <InfiniteScroll
-                    className="d-flex flex-wrap"
-                    dataLength={limit}
-                    next={() => setLimit(limit => limit + 6)}
-                    hasMore={post?.length >= limit}
+                      className="d-flex flex-wrap"
+                      dataLength={limit}
+                      next={() => setLimit(limit => limit + 6)}
+                      hasMore={post?.length >= limit}
                     >
 
-                    {post?.map((pst) => (
-                      <div class="col-12 col-xl-4 mt-3">
-                        <div class="posts-list__item ">
-                          <div class="post-card post-card--layout--list">
-                            <div class="row">
-                              <div class="post-card__image  col-12" style={{marginLeft:'auto', marginRight:'auto'}}>
-                                <Link href={`/blog-list/${pst?.id}`} style={{display:'flex', justifyContent:'center',alignItems:'center'}} >
-                                  <img src={pst?.image} alt="" style={{objectFit:'cover'}} width={'410px'} height={'300px'}/>
-                                </Link>
-                              </div>
-                              <div class="post-card__content  col-12">
-                                <div class="post-card__title">
-                                  <h2>
-                                    <a
-                                      class="news-title"
-                                      style={{ textDecoration: "none" }}
-                                      href="/news-detail/139/"
-                                    >
-                                      {pst?.title}
-                                    </a>
-                                  </h2>
-                                </div>
-                                <div
-                                  class="post-card__date"
-                                  style={{ marginLeft: "300px" }}
-                                >
-                                  {pst?.date}
-                                </div>
-
-                                <div class="post-card__excerpt">
-                                  <div class="typography">
-                                    {pst?.short_description}
-                                  </div>
-                                </div>
-                                <div class="post-card__more">
-                                  <Link
-                                    href={`/blog-list/${pst?.id}`}
-                                    class="btn btn-secondary btn-sm"
-                                  >
-                                    Ətraflı
+                      {post?.map((pst) => (
+                        <div class="col-12 col-xl-4 mt-3">
+                          <div class="posts-list__item ">
+                            <div class="post-card post-card--layout--list">
+                              <div class="row">
+                                <div class="post-card__image  col-12" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                                  <Link href={`/blog-list/${pst?.id}`} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <img src={pst?.image} alt="" style={{ objectFit: 'cover' }} width={'410px'} height={'300px'} />
                                   </Link>
-                                  <FontAwesomeIcon
-                                    style={{ marginLeft: "10px" }}
-                                    icon={faEye}
-                                  />
-                                  {pst?.view_count}
+                                </div>
+                                <div class="post-card__content  col-12">
+                                  <div class="post-card__title">
+                                    <h2>
+                                      <a
+                                        class="news-title"
+                                        style={{ textDecoration: "none" }}
+                                        href="/news-detail/139/"
+                                      >
+                                        {pst?.title}
+                                      </a>
+                                    </h2>
+                                  </div>
+                                  <div
+                                    class="post-card__date"
+                                  // style={{ marginLeft: "300px" }}
+                                  >
+                                    {pst?.date}
+                                  </div>
+
+                                  <div class="post-card__excerpt">
+                                    <div class="typography">
+                                      {pst?.short_description}
+                                    </div>
+                                  </div>
+                                  <div class="post-card__more" style={{ marginTop: "10px" }}>
+                                    <Link
+                                      href={`/blog-list/${pst?.id}`}
+                                      class="btn btn-secondary btn-sm"
+                                    >
+                                      Ətraflı
+                                    </Link>
+                                    <FontAwesomeIcon
+                                      style={{ marginLeft: "10px" }}
+                                      icon={faEye}
+                                    />
+                                    {pst?.view_count}
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
                     </InfiniteScroll>
                   </div>
                 </div>

@@ -22899,6 +22899,9 @@ select.form-control {
   margin: 2px;
   width: calc(25% - 6px);
 }
+.all-products .infinite-scroll-component__outerdiv{
+  width: 100%;
+}
 #filter {
   margin-right: 10px;
 }
@@ -23391,8 +23394,7 @@ body {
   transition: 0.3s;
 }
 
-
-#__next{
+#__next {
   width: 100%;
   overflow-x: hidden;
 }
