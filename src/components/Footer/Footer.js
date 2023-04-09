@@ -1,11 +1,12 @@
 import React from 'react'
 import ScrollTop from '@/pages/scrollTop/scroll'
 import Link from 'next/link'
-
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Footer = () => {
     return (
         <>
-            <ScrollTop/>
+            <ScrollTop />
             <div class="section-header__divider"></div>
             <footer class="site__footer">
                 <div class="site-footer">
@@ -47,14 +48,19 @@ const Footer = () => {
                                         <div class="footer-newsletter__social-links social-links">
                                             <ul class="social-links__list">
 
-                                                <li class="social-links__item social-links__item--facebook"><a href="https://www.facebook.com/vianorbaku.az" target="_blank"><i
-                                                    class="fab fa-facebook"></i></a></li>
+                                                <li class="social-links__item social-links__item--facebook">
+                                                    <a href="https://www.facebook.com/vianorbaku.az" target="_blank">
+                                                        <i class="fab fa-facebook"></i>
+                                                    </a>
+                                                </li>
 
                                                 <li class="social-links__item social-links__item--instagram"><a href="https://www.instagram.com/vianorbaku.az/" target="_blank"><i
                                                     class="fab fa-instagram"></i></a></li>
 
-                                                <li class="social-links__item social-links__item--youtube"><a href="https://www.youtube.com/channel/UCF02nJ08PqiFt853clXcOsw/videos" target="_blank"><i
-                                                    class="fab fa-youtube"></i></a></li>
+                                                <li class="social-links__item social-links__item--youtube">
+                                                    <a href="https://www.youtube.com/channel/UCF02nJ08PqiFt853clXcOsw/videos" target="_blank">
+                                                        <i
+                                                            class="fab fa-youtube"></i></a></li>
 
                                             </ul>
                                         </div>
