@@ -2,12 +2,14 @@ import React ,{ useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { baseUrl } from "@/pages/api/api";
 
 const Header = () => {
   const [show, setShow] = useState();
   const [sumOfPriceProduct, setSumOfPriceProduct] = useState(null)
   const cart = useSelector(state => state.cart)
   const [searchInput ,setSearchInput] = useState('')
+  const [mainData ,setMainData] = useState({})
 
   const router = useRouter()
 
@@ -20,6 +22,14 @@ const Header = () => {
     }
   },[cart])
 
+
+  const getMainData = async() => {
+    baseUrl.get(`main`).then(res => setMainData(res?.data))
+  }
+
+  useEffect(() => {
+    getMainData()
+  },[])
 
   return (
     <header class=" header-site" style={{ "z-index": "10" }}>
@@ -34,7 +44,7 @@ const Header = () => {
               <img
                 height="90px"
                 class="p-1"
-                src="http://www.vianorbaku.az/static/images/vianorLogo.jpg"
+                src={mainData?.logo}
                 alt=""
               />
             </a>
