@@ -34,9 +34,14 @@ const CompaniesSlider = ({compaines}) => {
         ],
       };
 
+      const [length, setLength] = useState(4)
 
-      const [length, setLength] = useState(3)
-   
+      useEffect(() => {
+        compaines?.forEach((tyres ) => {
+          setLength(tyres?.products?.length)
+        })
+      },[compaines?.length])
+
 
   return (
     <>
@@ -52,7 +57,7 @@ const CompaniesSlider = ({compaines}) => {
             <div class="section-header__divider"></div>
           </div>
         </div>
-        {length >= 4 && window?.screen?.width >= 1201 || length >= 3 && window?.screen?.width <= 1200 && window?.screen?.width > 800 || length >= 1 && window?.screen?.width <= 800 ?
+        {(length >= 4 && window?.screen?.width >= 1201) || (length >= 3 && window?.screen?.width <= 1200) || (length >= 1 && window?.screen?.width <= 800) ?
         <Slider {...settings} className={styles.slider} >
           {compaines?.map((tyres) => (
             tyres?.products?.map((tyre) => (

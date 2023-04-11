@@ -1,8 +1,6 @@
 import React from 'react'
 import ScrollTop from '@/pages/scrollTop/scroll'
 import Link from 'next/link'
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Footer = () => {
     return (
         <>
