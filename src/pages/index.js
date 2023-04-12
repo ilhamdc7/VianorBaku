@@ -12,9 +12,11 @@ import Footer from "@/components/Footer/Footer"
 import { baseUrl } from "./api/api"
 import CompaniesSlider from "@/components/CompaniesSlider/CompaniesSlider"
 import ScrollTop from "./scrollTop/scroll"
+import LoaderComponent from "@/components/LoaderComponent/LoaderComponent"
 export default function Home() {
 
   const [tires, setTires] = useState([])
+  const [loading, setLoading] = useState(false)
   const [slider, setSlider] = useState([])
   const [width, setWidth] = useState([])
   const [height, setHeight] = useState([])
@@ -25,6 +27,7 @@ export default function Home() {
 
 
 const getTires = async() => {
+  setLoading(true)
   await baseUrl.get(`/tyres?limit=30`)
   .then(res => {
     const {data} = res
@@ -32,8 +35,11 @@ const getTires = async() => {
   })
   await baseUrl.get(`/discount`)
   .then(res => {
-    const {data} = res
-    setDiscountTyres(data)
+    const {data, status} = res
+    if(status >= 200 && status <= 300){
+      setLoading(false)
+      setDiscountTyres(data)
+    }
   })
 }
 
@@ -90,8 +96,12 @@ useEffect(() => {
       <Header/>
       <CalcSlider markas={marka} height={height} radius={radius} width={width} slider={slider}/>
       <OurServices/>
-      {discountTyres?.length >= 1 &&
+      {discountTyres?.length >= 1 && loading === false ?
       <CompaniesSlider compaines={discountTyres}/>
+      : 
+      <div className="d-flex justify-content-center align-items-center w-100" style={{height:'100px'}}>
+        <LoaderComponent/>
+      </div>
       }
       {/* <Banners/> */}
       <NewProductsSlider tires={tires}/>
