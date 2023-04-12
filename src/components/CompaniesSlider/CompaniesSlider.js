@@ -50,7 +50,7 @@ const CompaniesSlider = ({compaines}) => {
       <div class="container">
         <div class="section-header">
           <div class="section-header__body">
-            <h2 class="section-header__title"> Kompaniyalar </h2>
+            <h2 class="section-header__title"> Kampaniyalar </h2>
 
             <div class="section-header__spring"></div>
             
