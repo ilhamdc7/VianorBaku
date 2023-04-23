@@ -32,8 +32,8 @@ const Product = ({ tire, companie, forSlider }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setDate(new Date(companie?.end_date));
-  }, []);
+    setDate(new Date(tire?.companie?.end_date));
+  }, [tire]);
 
   const addToBasket = (data) => {
     dispatch(addToCart(data));
@@ -120,7 +120,7 @@ const Product = ({ tire, companie, forSlider }) => {
             {" "}
           </div>
           {/* If else  */}
-          {companie && (
+          {tire?.companies?.end_date && (
             <div
               style={{
                 height: "40px",
@@ -135,7 +135,7 @@ const Product = ({ tire, companie, forSlider }) => {
                 alignItems: "center",
               }}
             >
-              {companie?.name}
+              Endirim
             </div>
           )}
 
@@ -238,11 +238,11 @@ const Product = ({ tire, companie, forSlider }) => {
               <div class="product-card__name">
                 <div>
                   <div class="product-card__badges">
-                    {companie?.manat_discount >= 1 &&
-                      <div class="tag-badge tag-badge--sale">-{companie?.manat_discount}₼</div>
+                    {tire?.companies?.manat_discount >= 1 &&
+                      <div class="tag-badge tag-badge--sale">-{tire?.companies?.manat_discount}₼</div>
                     }
-                    {companie?.percent_discount >= 1 &&
-                      <div class="tag-badge tag-badge--sale">-{companie?.percent_discount}%</div>
+                    {tire?.companies?.percent_discount >= 1 &&
+                      <div class="tag-badge tag-badge--sale">-{tire?.companies?.percent_discount}%</div>
                     }
                     <div class="tag-badge tag-badge--new">Taksit
                       <div class="descc" style={{ textTransform: 'none' }}> Birkart, Bolkart, Ukart, Tamkart ilə 12 aya qədər taksitlə əldə edə bilərsiniz.</div>
@@ -354,22 +354,22 @@ const Product = ({ tire, companie, forSlider }) => {
 
             <div class="product-card__footer">
               <div class="product-card__prices">
-                {(companie?.manat_discount > 0 ||
-                  companie?.percent_discount > 0) && (
+                {(tire?.companies?.manat_discount > 0 ||
+                  tire?.companies?.percent_discount > 0) && (
                     <span class="d-flex product-card__price product-card__price--current align-items-baseline  discount_pricee ">
                       {tire?.price} <i className="azn">₼</i>
                     </span>
                   )}
 
                 <div class="d-flex product-card__price product-card__price--current align-items-baseline ">
-                  {companie?.manat_discount > 0 &&
-                    tire?.price - companie?.manat_discount}
-                  {companie?.percent_discount > 0
+                  {tire?.companies?.manat_discount > 0 &&
+                    tire?.price - tire?.companies?.manat_discount}
+                  {tire?.companies?.percent_discount > 0
                     ? tire?.price -
-                    (tire?.price * companie?.percent_discount) / 100
+                    (tire?.price * tire?.companies?.percent_discount) / 100
                     : ""}
-                  {companie?.percent_discount === undefined &&
-                    companie?.manat_discount === undefined
+                  {tire?.companies?.percent_discount === null &&
+                    tire?.companies?.manat_discount === null
                     ? tire?.price
                     : ""}
                   <i className="azn">₼</i>
@@ -403,7 +403,7 @@ const Product = ({ tire, companie, forSlider }) => {
             </div>
             <div className="prod-foot">{"YAG ALANA YAGDƏYİŞMƏ PULSUZ"}</div>
             {/* If else */}
-            {companie?.end_date && (
+            {tire?.companies?.end_date && (
               <div class="mytest prod-foot">
                 <DateCountdown dateTo={date} />
               </div>
