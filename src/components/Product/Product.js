@@ -12,7 +12,7 @@ const DateCountdown = dynamic(() => import("react-date-countdown-timer"), {
   ssr: false,
 });
 
-const Product = ({ tire, companie, forSlider }) => {
+const Product = ({ tire, forSlider }) => {
   const [api, contextHolder] = notification.useNotification();
 
   const openNotification = (placement) => {
@@ -28,12 +28,11 @@ const Product = ({ tire, companie, forSlider }) => {
   console.log(tire, 'ksajidhusahd')
 
   const [date, setDate] = useState(null);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setDate(new Date(tire?.companie?.end_date));
-  }, [tire]);
+    setDate(new Date(tire?.companies?.end_date));
+  }, []);
 
   const addToBasket = (data) => {
     dispatch(addToCart(data));
