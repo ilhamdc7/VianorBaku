@@ -106,7 +106,6 @@ const Product = ({ tire, companie, forSlider }) => {
         >
           <div
             style={{
-              height: "40px",
               backgroundColor: "#fff",
               justifyContent: "center",
               color: "#000",

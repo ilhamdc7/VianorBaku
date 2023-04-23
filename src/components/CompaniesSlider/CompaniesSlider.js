@@ -61,7 +61,7 @@ const CompaniesSlider = ({compaines}) => {
         <Slider {...settings} className={styles.slider} >
           {compaines?.map((tyres) => (
             tyres?.products?.map((tyre) => (
-                <Product tire={tyre} companie={tyres?.company}/>
+                <Product tire={tyre}/>
             ))
           ))}
         </Slider>
@@ -70,7 +70,7 @@ const CompaniesSlider = ({compaines}) => {
           <div className='d-flex align-items-center w-100'>
              {compaines?.map((tyres) => (
             tyres?.products?.map((tyre) => (
-                <Product tire={tyre} companie={tyres?.company} forSlider={true}/>
+                <Product tire={tyre} forSlider={true}/>
             ))
           ))}
           </div>
