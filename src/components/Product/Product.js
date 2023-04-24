@@ -7,7 +7,7 @@ import { addToCart } from "@/redux/reducers/cartSlice";
 import { notification } from "antd";
 import dynamic from "next/dynamic";
 import FourSeason from '../../../assests/images/4_seasons.png'
-import { useUpdateEffect } from "ahooks";
+import { useMount, useUpdateEffect } from "ahooks";
 const DateCountdown = dynamic(() => import("react-date-countdown-timer"), {
   loading: () => "Loading...",
   ssr: false,
@@ -29,11 +29,21 @@ const Product = ({ tire, forSlider }) => {
   console.log(tire, 'ksajidhusahd')
 
   const [date, setDate] = useState(null);
+  const [count, setCount] = useState(0);
   const dispatch = useDispatch();
 
-  useUpdateEffect(() => {
-    setDate(new Date(tire?.companies?.end_date));
-  }, [tire?.companies?.end_date]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setCount(1)
+  //     console.log('lalalal')
+  //   }, 1000);
+  // },[])
+
+  // useEffect(() => {
+  //     setDate(new Date(tire?.companies?.end_date));
+  // },[]);
+
+  // console.log(tire?.companies?.end_date, 'sdasdsadsads')
 
   const addToBasket = (data) => {
     dispatch(addToCart(data));
@@ -404,7 +414,7 @@ const Product = ({ tire, forSlider }) => {
             {/* If else */}
             {tire?.companies?.end_date && (
               <div class="mytest prod-foot">
-                <DateCountdown dateTo={date} />
+                <DateCountdown dateTo={new Date(tire?.companies?.end_date)} />
               </div>
             )}
           </div>
