@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { baseUrl } from "@/pages/api/api";
-
+import YukPng from '../../../assests/images/yuk.png'
 
 
 
@@ -114,7 +114,7 @@ const WheelCalculator = () => {
                 </td>
               </tr>
             </table>
-            <img class="w-75 mb-2" src="http://www.vianorbaku.az/static/images/calc.png" />
+            <img class="mb-2" style={{width:'45px'}} src={YukPng.src} />
 
             <table class="m-auto">
               <tr>

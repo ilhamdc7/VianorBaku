@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { baseUrl } from "@/pages/api/api";
+import WheelCalculatorPng from '../../../assests/images/az.png'
 
 const Header = () => {
   const [show, setShow] = useState();
@@ -104,7 +105,7 @@ const Header = () => {
         >
           <img
             style={{ "width": "100px", "position": "absolute" }}
-            src="http://www.vianorbaku.az/static/images/az.png"
+            src={WheelCalculatorPng.src}
           />
         </Link>
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link';
 import { useSelector } from "react-redux";
-
+import WheelCalculatorPng from '../../../assests/images/az.png'
 
 
 const Header = () => {
@@ -66,9 +66,9 @@ const Header = () => {
 
 
 
-                            <a class="d-flex" style={{ "height": "38px", "position": "relative", "width": "100px", "left": "2%", "top": "12%" }} href="http://www.vianorbaku.az/calculator/">
-                                {/* <img style={{ "width": "100px", "position": "absolute;" }} src="/static/images/az.png" /> */}
-                            </a>
+                            <Link class="d-flex" style={{ "height": "38px", "position": "relative", "width": "100px", "left": "2%", "top": "12%" }} href="/wheel-calculator/">
+                                <img style={{ "width": "100px", "position": "absolute;" }} src={WheelCalculatorPng.src} />
+                            </Link>
 
 
                             <div class="mobile-header__indicators">
