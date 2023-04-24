@@ -54,8 +54,6 @@ document.querySelectorAll('.product-card__addtocart-icon').forEach(item => {
         var product_id = item.getAttribute("data-id")
         products = Object.values(products)
         if (!(products.includes(product_id))) {
-            console.log(products)
-            console.log(product_id)
             products.push(product_id)
 
         }
@@ -130,7 +128,6 @@ C9.2,7.8,9.2,8.4,8.8,8.8z" />
             document.querySelector('.mobile-indicator__counter').innerHTML = counter
         },
         error: function(error) {
-            console.log(error)
         }
     })
 }
@@ -154,7 +151,6 @@ $(document).on('click', '.cart-table__remove', function(event) {
     for (i = 0; i < all_prices.length; i++) {
         var tot_price = tot_price + parseInt(all_prices[i].innerHTML);
     }
-    console.log(products.length)
     document.querySelector('.indicator__counter').innerHTML = products.length
     document.querySelector('.total-price').innerHTML = `${tot_price} AZN`
     document.querySelector('.indicator__value').innerHTML = `${tot_price} AZN`
@@ -174,24 +170,11 @@ $(document).on('click', '.dropcart__item-remove', function(event) {
     all_data['product_ids'] = products
     localStorage.setItem('ids', JSON.stringify(products))
 
-    // $(this).closest('.dropcart__item').remove();
     loadAllData(all_data)
-    // var tot_price = 0
-    // var all_prices = document.getElementsByClassName('dropcart__item-price')
-    // for(i=0;i<all_prices.length;i++){
-    //     var tot_price = tot_price + parseInt(all_prices[i].innerHTML);
-    //     }
-    // console.log(products.length)
-    // document.querySelector('.indicator__counter').innerHTML =products.length
-    // document.querySelector('.total-price').innerHTML = `${tot_price} AZN`
-    // document.querySelector('.indicator__value').innerHTML = `${tot_price} AZN`
-    // $(this).parent('.cart-table__remove').remove();
-    // loadAllData(all_data)
 
 })
 
 
 function setCookies(myAry) {
-    console.log(myAry)
     localStorage.setItem('ids', JSON.stringify(myAry));
 }

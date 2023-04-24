@@ -8,8 +8,6 @@ const ScrollTop = () => {
 
 	const onVisbile = () => {
 		const scrolled = document.documentElement.scrollTop
-        console.log('scrolled');
-        console.log(scrolled);
 		if (scrolled >= 600) setVisible(true)
 		else if (scrolled <= 300) setVisible(false)
 	}

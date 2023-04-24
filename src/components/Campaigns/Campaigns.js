@@ -18,7 +18,6 @@ useEffect(() => {
   getServices()
 },[])
 
-console.log(services, 'kakakkakakak')
 
   return (
     <>

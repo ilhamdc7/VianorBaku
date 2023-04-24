@@ -1,8 +1,6 @@
 document.getElementById('search').addEventListener('input', function() {
-    console.log('here')
     var searchInput = document.getElementById('search');
     var inputValue = searchInput.value;
-    console.log(inputValue);
     $.ajax({
 
         url: '/api/v1.0/tyres/searched/',
@@ -13,7 +11,6 @@ document.getElementById('search').addEventListener('input', function() {
         success: function(response) {
             $('.suggestions__group').html('')
             if (inputValue) {
-                console.log()
                 for (let object of response.filtered_tyres) {
                     $('.suggestions__group').append(`<a class="suggestions__item suggestions__product" href="/tyresdetail/${object.id}/">
                     <div class="suggestions__product-image image image--type--product">
@@ -45,18 +42,15 @@ document.getElementById('search').addEventListener('input', function() {
             }
         },
         error: function(error_response) {
-            console.log(error_response);
         }
     })
 });
 
 
 document.getElementById('mobile-search').addEventListener('input', function() {
-    console.log('here')
     var searchInput = document.getElementById('mobile-search');
 
     var inputValue = searchInput.value;
-    console.log(inputValue);
     $.ajax({
 
         url: '/api/v1.0/tyres/searched/',
@@ -76,7 +70,6 @@ document.getElementById('mobile-search').addEventListener('input', function() {
 
         },
         error: function(error_response) {
-            console.log(error_response);
         }
     })
 });

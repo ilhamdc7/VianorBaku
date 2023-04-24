@@ -18,7 +18,6 @@ const WheelCalculator = () => {
   const [secondChangedDiametr, setSecondChangedDiametr] = useState()
   const [results, setResults] = useState()
 
-  console.log(results, 'masudiasghytudfasytdfys')
 
   const compare = async (e) => {
     e.preventDefault()

@@ -17,7 +17,6 @@ const CreditForm = () => {
 
 
     const handleChange = (index, field, value) => {
-        console.log(index, field, value, 'zazaza')
         const checkIndex = family?.find(data => data.id === index)
             if(checkIndex){
                 checkIndex[field] = value
@@ -42,9 +41,6 @@ const CreditForm = () => {
             product_quantity: ''
         }
     }
-
-    console.log(fileFirst, 'nsjdahsd')
-
     const addCountForm = (e) => {
         e.preventDefault()
         setCountForm([...countForm, 'form'])
