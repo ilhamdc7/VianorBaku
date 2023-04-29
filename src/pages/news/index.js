@@ -4,7 +4,7 @@ import Footer from '@/components/Footer/Footer'
 import NewsBody from '@/components/NewsBody/NewsBody'
 import { baseUrl } from '../api/api'
 import MobileHeader from '@/components/MobileHeader/MobileHeader'
-
+import Head from 'next/head'
 const news = () => {
 
 
@@ -24,6 +24,9 @@ const news = () => {
 
   return (
     <>
+    <Head>
+        <title>Vianor təkər mərkəzi</title>
+      </Head>
     <MobileHeader/>
     <Header/>
     <NewsBody setLimit={setLimit} limit={limit} post={news}/>

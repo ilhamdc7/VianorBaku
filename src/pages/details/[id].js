@@ -14,7 +14,7 @@ import { addToCart } from "@/redux/reducers/cartSlice";
 import { notification } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
-
+import Head from "next/head";
 const Description = ({ product }) => {
   const [api, contextHolder] = notification.useNotification();
 
@@ -61,6 +61,9 @@ const Description = ({ product }) => {
   return (
     <>
       {contextHolder}
+      <Head>
+        <title>Vianor təkər mərkəzi</title>
+      </Head>
       <MobileHeader />
       <Header />
       <div class="site__body">

@@ -4,7 +4,7 @@ import Footer from '@/components/Footer/Footer'
 import AboutUs from '@/components/AboutUs/AboutUs'
 import { baseUrl } from '../api/api'
 import MobileHeader from '@/components/MobileHeader/MobileHeader'
-
+import Head from 'next/head'
 const index = () => {
 
 const [about, setAbout] = useState()
@@ -23,6 +23,9 @@ useEffect(() => {
 
   return (
     <>
+    <Head>
+        <title>Vianor təkər mərkəzi</title>
+      </Head>
     <MobileHeader/>
         <Header/>
         <AboutUs about={about}/>

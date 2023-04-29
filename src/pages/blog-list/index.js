@@ -5,6 +5,7 @@ import NewsBody from '@/components/NewsBody/NewsBody'
 import { baseUrl } from '../api/api'
 import BlogsBody from '@/components/BlogsBody/BlogsBody'
 import MobileHeader from '@/components/MobileHeader/MobileHeader'
+import Head from 'next/head'
 
 const index = () => {
 
@@ -23,6 +24,9 @@ useEffect(() =>{
 
   return (
     <>
+   <Head>
+        <title>Vianor təkər mərkəzi</title>
+      </Head>
     <MobileHeader/>
     <Header/>
     <BlogsBody setLimit={setLimit} limit={limit} post={blogs}/>

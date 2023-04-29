@@ -18,10 +18,10 @@ const BlogsBody = ({ post, setLimit, limit }) => {
             name="keywords"
             content="təkər,ucuz teker,radius.az, tekerevi.az, tekerlamei.az, avtoteker.az,qiymet,teker qiymetler,teker,sin,shin,покрышки,шина,зимний шины, летнии шины, демисезонная шина,колеса,диск,балансировка колес,баланс,развал,сход,balans,razval,disk,disk təmiri,disk temiri,satışı,usta,xidmət,nokian,laufenn,blackhawk,toyo,hankook,michelin,continental,bridgestone,yokohama,goodyear,sava,tigar,nexen,kumho,dunlop,maxxis,kapsen,lassa,petlas,sailun,apollo,riken,barum,matador,general,horizon,bazar,teker satışı,teker satisi,disk satisi,tekerevi,radius,vianor,vianorbaku,vianorazerbaycan,vianorazərbaycan,nokianazərbaycan,nokianazerbaycan,nokianbaku,nokianbakı,laufennazərbaycan,laufennazerbaycan,radiusbakı,radiuspluss,socar,topservis,anbar,maya,topdan,lassabakı,lassabaku,lassaazərbaycan,lassaazerbaycan,kaa.az,radius.az,tekerevi.az,topdanteker,tekerstore.az,intersin,fb,instagram,youtube,avtomobil təkəri,avtomobil tekeri,icarə,rentakar,rentacar,nisye,kredit,kredit teker,nisyeteker,köçürmətəkər,təkərmərkəzi,avtomobil təkər mərkəzi,youtube,təkərlər,disklər,yag,yagsatışı,shell,mobil,liquimoly,motul,zapcast,ehtiyat hissesi,avtodetal,stutqart,kaan.az,filter,filtron,işlənmiş təkər,təzə təkər, 195/65 R15, 195 65 15 , 205 55 16, 265 65 17, 285 50 20, 215 55 16, 225 55 16, 175 70 13, 185 65 14 ,mercedes, hyundai, kia , chevrolet, leep, prado,lund cruiser, toyota, corolla,camry,rio,accent,elantra,ford,yük təkəri,cargo,kamaz təkəri,lokomotiv,jinyu,pajero,kiafunclub,audi,volkswagen,range rover, teker satışı, avtoteker,"
           />
-          <title>Ən yeni xəbərlər</title>
+          <title>Ən yeni sınaq testləri</title>
 
           <div class="block-header__body">
-            <h1 class="block-header__title">Ən yeni xəbərlər</h1>
+            <h1 class="block-header__title">Ən yeni sınaq testləri</h1>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import Footer from '@/components/Footer/Footer'
 import Basket from '@/components/Basket/Basket'
 import { useSelector } from 'react-redux'
 import MobileHeader from '@/components/MobileHeader/MobileHeader'
-
+import Head from 'next/head'
 const index = () => {
 
   const cart = useSelector(state => state.cart)
@@ -13,6 +13,9 @@ const index = () => {
 
   return (
     <>
+    <Head>
+        <title>Vianor təkər mərkəzi</title>
+      </Head>
     <MobileHeader/>
     <Header/>
     <Basket cart={cart}/>

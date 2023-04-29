@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import { useDebounce } from 'use-debounce';
 import { useMount, useUpdateEffect } from 'ahooks'
 import MobileHeader from '@/components/MobileHeader/MobileHeader'
+import Head from 'next/head'
 
 import $ from "jquery"
 
@@ -267,7 +268,9 @@ useUpdateEffect(() => {
 
   return (
     <>
-     
+     <Head>
+        <title>Vianor təkər mərkəzi</title>
+      </Head>
         <Header/>
         <MobileHeader/>
         <SearchBody 

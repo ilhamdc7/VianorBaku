@@ -4,12 +4,15 @@ import Footer from '@/components/Footer/Footer'
 import NewsDetail from '@/components/NewsDetail/NewsDetail'
 import { baseUrl } from '../api/api'
 import MobileHeader from '@/components/MobileHeader/MobileHeader'
-
+import Head from 'next/head'
 const NewsDetails = ({news}) => {
 
 
   return (
     <>  
+    <Head>
+        <title>Vianor təkər mərkəzi</title>
+      </Head>
     <MobileHeader/>
         <Header/>
         <NewsDetail post={news}/>

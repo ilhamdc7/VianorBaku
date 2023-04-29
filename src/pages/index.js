@@ -13,6 +13,7 @@ import { baseUrl } from "./api/api"
 import CompaniesSlider from "@/components/CompaniesSlider/CompaniesSlider"
 import ScrollTop from "./scrollTop/scroll"
 import LoaderComponent from "@/components/LoaderComponent/LoaderComponent"
+import Head from "next/head"
 export default function Home() {
 
   const [tires, setTires] = useState([])
@@ -90,6 +91,9 @@ useEffect(() => {
 
   return (
     <>
+     <Head>
+        <title>Vianor təkər mərkəzi</title>
+      </Head>
     <div class="site">
       <MobileHeader/>
       <Header/>

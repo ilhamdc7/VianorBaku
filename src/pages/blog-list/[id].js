@@ -4,10 +4,13 @@ import Footer from "@/components/Footer/Footer";
 import { baseUrl } from "../api/api";
 import BlogsDetails from "@/components/BlogsDetails/BlogsDetails";
 import MobileHeader from '@/components/MobileHeader/MobileHeader'
-
+import Head from "next/head";
 const BlogDetails = ({ blogs }) => {
   return (
     <>
+    <Head>
+        <title>Vianor təkər mərkəzi</title>
+      </Head>
     <MobileHeader/>
       <Header />
       <BlogsDetails post={blogs} />

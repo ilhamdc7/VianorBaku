@@ -4,7 +4,7 @@ import Footer from '@/components/Footer/Footer'
 import MyVideos from '@/components/MyVideos/MyVideos'
 import { baseUrl } from '../api/api'
 import MobileHeader from '@/components/MobileHeader/MobileHeader'
-
+import Head from 'next/head'
 const index = () => {
     const [videos, setVideos] = useState([])
     const [limit, setLimit] = useState(9)
@@ -21,6 +21,9 @@ useEffect(() => {
 
   return (
     <>
+    <Head>
+        <title>Vianor təkər mərkəzi</title>
+      </Head>
     <MobileHeader/>
         <Header/>
         <MyVideos limit={limit} setLimit={setLimit} videos={videos}/>
