@@ -25,7 +25,6 @@ export default function Home() {
   const [marka, setMarka] = useState([])
   const [discountTyres, setDiscountTyres] = useState([])
 
-
 const getTires = async() => {
   setLoading(true)
   await baseUrl.get(`/tyres?limit=30`)

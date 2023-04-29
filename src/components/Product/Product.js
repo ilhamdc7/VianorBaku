@@ -14,7 +14,6 @@ const DateCountdown = dynamic(() => import("react-date-countdown-timer"), {
 
 const Product = ({ tire, forSlider }) => {
   const [api, contextHolder] = notification.useNotification();
-
   const openNotification = (placement) => {
     api.info({
       message: `Səbətə əlavə olundu`,

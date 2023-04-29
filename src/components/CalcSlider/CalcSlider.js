@@ -224,11 +224,12 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                                   width: "100%",
                                   height: "100%",
                                   outline: "none",
+                                  color:'black'
                                 }}
                               >
-                                <option value={""}>En(mm)</option>
+                                <option style={{color:'black'}} value={""}>En(mm)</option>
                                 {width?.map((wth) => (
-                                  <option value={wth?.size}>{wth?.size}</option>
+                                  <option style={{color:'black'}} value={wth?.size}>{wth?.size}</option>
                                 ))}
                               </select>
                             </div>
@@ -243,11 +244,12 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                                   width: "100%",
                                   height: "100%",
                                   outline: "none",
+                                  color:'black'
                                 }}
                               >
-                                <option value={""}>Hündürlük(%)</option>
+                                <option style={{color:'black'}} value={""}>Hündürlük(%)</option>
                                 {height?.map((hgt) => (
-                                  <option value={hgt?.size}>{hgt?.size}</option>
+                                  <option style={{color:'black'}} value={hgt?.size}>{hgt?.size}</option>
                                 ))}
                               </select>
                             </div>
@@ -262,11 +264,12 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                                   width: "100%",
                                   height: "100%",
                                   outline: "none",
+                                  color:'black'
                                 }}
                               >
-                                <option value={""}>Diametr(düym)</option>
+                                <option style={{color:'black'}} value={""}>Diametr(düym)</option>
                                 {radius?.map((rds) => (
-                                  <option value={rds?.size}>{rds?.size}</option>
+                                  <option style={{color:'black'}} value={rds?.size}>{rds?.size}</option>
                                 ))}
                               </select>
                             </div>
@@ -323,13 +326,15 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                                 width: "100%",
                                 height: "100%",
                                 outline: "none",
+                                backgroundColor:'white',
+                                color:'black'
                               }}
                               onChange={(e) => setSelectedMarka(e.target.value)}
                             >
-                              <option value={''}>Marka</option>
+                              <option style={{color:'black', backgroundColor:'white'}} value={''}>Marka</option>
                               {markas?.map((marka) => (
 
-                                <option value={marka?.name}>{marka.name}</option>
+                                <option style={{color:'black', backgroundColor:'white'}} value={marka?.name}>{marka.name}</option>
                               ))}
 
                             </select>
@@ -342,14 +347,16 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                                 width: "100%",
                                 height: "100%",
                                 outline: "none",
+                                backgroundColor:'white',
+                                color:'black'
                               }}
                               value={selectedModel}
                               onChange={(e) => setSelectedModel(e.target.value)}
                             >
-                              <option value={''}>Model</option>
+                              <option style={{color:'black', backgroundColor:'white'}} value={''}>Model</option>
                               {models?.map((model) => (
 
-                                <option value={model?.name}>{model?.name}</option>
+                                <option style={{color:'black', backgroundColor:'white'}} value={model?.name}>{model?.name}</option>
                               ))}
 
                             </select>
@@ -362,13 +369,15 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                                 width: "100%",
                                 height: "100%",
                                 outline: "none",
+                                backgroundColor:'white',
+                                color:'black'
                               }}
                               onChange={(e) => setSelectedYear(e.target.value)}
                               value={selectedYear}
                             >
-                              <option value={''}>Avtomobilin ili</option>
+                              <option style={{color:'black', backgroundColor:'white'}} value={''}>Avtomobilin ili</option>
                               {years?.map((year) => (
-                                <option value={year?.year}>{year?.year}</option>
+                                <option style={{color:'black', backgroundColor:'white'}} value={year?.year}>{year?.year}</option>
                               ))}
 
                             </select>
@@ -381,13 +390,15 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                                 width: "100%",
                                 height: "100%",
                                 outline: "none",
+                                backgroundColor:'white',
+                                color:'black'
                               }}
                               onChange={(e) => setSelectedEngine(e.target.value)}
                               value={selectedEngine}
                             >
-                              <option value={''}>Mühərrik</option>
+                              <option style={{color:'black', backgroundColor:'white'}} value={''}>Mühərrik</option>
                               {engines?.map((engine) => (
-                                <option value={engine?.size}>{engine?.size}</option>
+                                <option style={{color:'black', backgroundColor:'white'}} value={engine?.size}>{engine?.size}</option>
 
                               ))}
 
@@ -457,44 +468,43 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                     }
                 }>
                   <div className="d-flex alig-items-center">
-                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, firstWidth: e.target.value })} placeholder="En" style={{ width: '30%', height: '40px', marginLeft: '3%' }} type={'text'}>
-                      <option value={''}>En</option>
+                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, firstWidth: e.target.value })} placeholder="En" style={{ width: '30%', height: '40px', marginLeft: '3%', backgroundColor:'white', color:'black' }} type={'text'}>
+                      <option style={{color:'black', backgroundColor:'white'}} value={''}>En</option>
                       {width?.map((wdt) => (
-                        <option value={wdt?.size}>{wdt?.size}</option>
+                        <option style={{color:'black', backgroundColor:'white'}} value={wdt?.size}>{wdt?.size}</option>
                       ))}
                     </select>
-                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, firstHeight: e.target.value })} placeholder="Hündürlük" style={{ width: '30%', height: '40px', marginLeft: '3%' }} type={'text'}>
-                      <option value={''}>Hündürlük</option>
+                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, firstHeight: e.target.value })} placeholder="Hündürlük" style={{ width: '30%', height: '40px', marginLeft: '3%', backgroundColor:'white', color:'black' }} type={'text'}>
+                      <option style={{color:'black', backgroundColor:'white'}} value={''}>Hündürlük</option>
                       {height?.map((hgt) => (
-                        <option value={hgt?.size}>{hgt?.size}</option>
+                        <option style={{color:'black', backgroundColor:'white'}} value={hgt?.size}>{hgt?.size}</option>
                       ))}
                     </select>
-                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, firstDiametr: e.target.value })} placeholder="Diametr" style={{ width: '30%', height: '40px', marginLeft: '3%' }} type={'text'}>
-                      <option value={''}>Diametr</option>
+                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, firstDiametr: e.target.value })} placeholder="Diametr" style={{ width: '30%', height: '40px', marginLeft: '3%', backgroundColor:'white', color:'black' }} type={'text'}>
+                      <option style={{color:'black', backgroundColor:'white'}} value={''}>Diametr</option>
                       {radius?.map((rds) => (
 
-                        <option value={rds?.size}>{rds?.size}</option>
+                        <option style={{color:'black', backgroundColor:'white'}} value={rds?.size}>{rds?.size}</option>
                       ))}
                     </select>
                   </div>
                   <div className="d-flex alig-items-center mt-3">
-                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, secondWidth: e.target.value })} placeholder="En" style={{ width: '30%', height: '40px', marginLeft: '3%' }} type={'text'}>
-                      <option value={''}>En</option>
+                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, secondWidth: e.target.value })} placeholder="En" style={{ width: '30%', height: '40px', marginLeft: '3%', backgroundColor:'white', color:'black' }} type={'text'}>
+                      <option style={{color:'black', backgroundColor:'white'}} value={''}>En</option>
                       {width?.map((wdt) => (
-                        <option value={wdt?.size}>{wdt?.size}</option>
+                        <option style={{color:'black', backgroundColor:'white'}} value={wdt?.size}>{wdt?.size}</option>
                       ))}
                     </select>
-                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, secondHeight: e.target.value })} placeholder="Hündürlük" style={{ width: '30%', height: '40px', marginLeft: '3%' }} type={'text'}>
-                      <option value={''}>Hündürlük</option>
+                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, secondHeight: e.target.value })} placeholder="Hündürlük" style={{ width: '30%', height: '40px', marginLeft: '3%', backgroundColor:'white', color:'black' }} type={'text'}>
+                      <option style={{color:'black', backgroundColor:'white'}} value={''}>Hündürlük</option>
                       {height?.map((hgt) => (
-                        <option value={hgt?.size}>{hgt?.size}</option>
+                        <option style={{color:'black', backgroundColor:'white'}} value={hgt?.size}>{hgt?.size}</option>
                       ))}
                     </select>
-                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, secondDiametr: e.target.value })} placeholder="Diametr" style={{ width: '30%', height: '40px', marginLeft: '3%' }} type={'text'}>
-                      <option value={''}>Diametr</option>
+                    <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, secondDiametr: e.target.value })} placeholder="Diametr" style={{ width: '30%', height: '40px', marginLeft: '3%', backgroundColor:'white', color:'black' }} type={'text'}>
+                      <option style={{color:'black', backgroundColor:'white'}} value={''}>Diametr</option>
                       {radius?.map((rds) => (
-
-                        <option value={rds?.size}>{rds?.size}</option>
+                        <option style={{color:'black', backgroundColor:'white'}} value={rds?.size}>{rds?.size}</option>
                       ))}
                     </select>
                   </div>

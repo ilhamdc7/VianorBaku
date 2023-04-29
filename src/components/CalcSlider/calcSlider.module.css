@@ -4,6 +4,11 @@
 
 }
 
+.select-without-night{
+    color: black;
+}
+
+
 @media (max-width:1000px){
     .sliderContainer img{
         /* height: auto; */

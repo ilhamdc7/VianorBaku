@@ -8,14 +8,10 @@ const MPackage = () => {
 
     const [boxes, setBoxes] = useState([])
     const {query} = useRouter()
-    console.log(boxes,'asjsaujujasdhash')
-
-
     const getMPackage = async() => {
         await baseUrl.get(`/mpaket_search/?first_width=${query?.firstWidth}&first_height=${query?.firstHeight}&first_radius=${query?.firstDiametr}&second_width=${query?.secondWidth}&second_height=${query?.secondHeight}&second_radius=${query?.secondDiametr}`)
         .then(res => setBoxes(res.data))
     }
-
 
     useEffect(() => {
        getMPackage()  
