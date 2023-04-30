@@ -230,7 +230,7 @@ const Product = ({ tire, forSlider }) => {
                 <div>
                   <div class="product-card__badges">
                     {tire?.companies?.manat_discount >= 1 &&
-                      <div class="tag-badge tag-badge--sale">-{tire?.companies?.manat_discount}₼</div>
+                      <div class="tag-badge tag-badge--sale">-{(Number(tire?.companies?.manat_discount)/Number(tire?.price)*100).toFixed()}%</div>
                     }
                     {tire?.companies?.percent_discount >= 1 &&
                       <div class="tag-badge tag-badge--sale">-{tire?.companies?.percent_discount}%</div>
@@ -247,7 +247,7 @@ const Product = ({ tire, forSlider }) => {
                     <div class="product__name">
                       <a href="/tyresdetail/38970/">{`${tire?.model?.brend?.title} ${tire?.model?.name}`}</a><br />
                       <b><span style={{ marginLeft: "3%" }}>
-                        {`${tire?.en?.size}/${tire?.hundurluk?.size}${tire?.diametr?.size ? `/R${tire?.diametr?.size}` : ""
+                        {`${tire?.en?.size}${tire?.hundurluk?.size?.includes('R') ? "" : '/' + tire?.hundurluk?.size}${tire?.diametr?.size ? `/R${tire?.diametr?.size}` : ""
                           }`}
                       </span></b>
                       <b><span style={{ marginLeft: "3%" }}>
