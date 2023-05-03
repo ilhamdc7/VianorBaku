@@ -414,28 +414,28 @@ const SearchBody = ({
 
                 <div className=" filter_area">
 
-                  <select onChange={(e) => changeWidth(e.target.value)} className="form-control form-control-sm w-15">
+                  <select value={selectedWidth?.length === 1 && selectedWidth[0]} onChange={(e) => changeWidth(e.target.value)} className="form-control form-control-sm w-15">
                     <option value={''}>En</option>
                     {width?.map((wt) => (
                       <option value={wt.size}>{wt.size}</option>
                     ))}
 
                   </select>
-                  <select onChange={(e) => changeHeight(e.target.value)} className="form-control form-control-sm w-15">
+                  <select value={selectedHeight?.length === 1 && selectedHeight[0]} onChange={(e) => changeHeight(e.target.value)} className="form-control form-control-sm w-15">
                     <option value={''}>Hündürlük</option>
                     {height?.map((hgt) => (
                       <option>{hgt?.size}</option>
                     ))}
                     
                   </select>
-                  <select onChange={(e) => changeRadius(e.target.value)} className="form-control form-control-sm w-15">
+                  <select value={selectedRadius?.length === 1 && selectedRadius[0]} onChange={(e) => changeRadius(e.target.value)} className="form-control form-control-sm w-15">
                     <option value={''}>Radius</option>
                     {radius?.map((rds) => (
                       <option>{rds?.size}</option>
                     ))}
                     
                   </select>
-                  <select onChange={(e) => changeMarka(e.target.value)} className="form-control form-control-sm w-15">
+                  <select value={selectedBrands?.length === 1 && selectedBrands[0]} onChange={(e) => changeMarka(e.target.value)} className="form-control form-control-sm w-15">
                     <option value={''}>Marka</option>
                     {brands?.map((brand) => (
                       <option value={brand?.title}>{brand?.title}</option>

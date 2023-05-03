@@ -130,7 +130,7 @@ const Product = ({ tire, forSlider }) => {
             </div>
           )}
 
-          <div class="product-card product-card--layout--grid">
+          <div class="product-card product-card--layout--grid" style={tire?.companies?.end_date ? {marginTop:'0px'} : {marginTop:'40px'}}>
             <img
               style={{ width: "80%", height: "50px", margin: "10px auto" }}
               src={tire?.model?.brend?.brand_image}
@@ -392,7 +392,7 @@ const Product = ({ tire, forSlider }) => {
               Tooltip on top
             </p> */}
             </div>
-            <div className="prod-foot">{"YAG ALANA YAGDƏYİŞMƏ PULSUZ"}</div>
+            {/* <div className="prod-foot">{"YAG ALANA YAGDƏYİŞMƏ PULSUZ"}</div> */}
             {/* If else */}
             {tire?.companies?.end_date && (
               <div class="mytest prod-foot">
