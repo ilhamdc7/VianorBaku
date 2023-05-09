@@ -37,9 +37,11 @@ const CompaniesSlider = ({compaines}) => {
       const [length, setLength] = useState(4)
 
       useEffect(() => {
+        let length = 0
         compaines?.forEach((tyres ) => {
-          setLength(tyres?.products?.length)
+          length += tyres?.products?.length
         })
+        setLength(length)
       },[compaines?.length])
 
 
@@ -66,7 +68,7 @@ const CompaniesSlider = ({compaines}) => {
           ))}
         </Slider>
         :
-         
+          
           <div className='d-flex align-items-center w-100'>
              {compaines?.map((tyres) => (
             tyres?.products?.map((tyre) => (
