@@ -2,15 +2,17 @@ import React from "react";
 
 const ProductInfo = ({product}) => {
 
+  console.log(product, 'malsduigsayuidg')
+
   return (
     <div class="product__info-body">
-      {product?.discount && product?.discount_type === 'manat' &&
+      {!!product?.companies?.manat_discount &&
       
-      <div class="tag-badge tag-badge--sale">-{product?.discount}m</div>
+      <div class="tag-badge tag-badge--sale">-{product?.companies.discount}m</div>
       }
-      {product?.discount && product?.discount_type === 'percentage' &&
+      {!!product?.companies?.percentage_discount &&
       
-      <div class="tag-badge tag-badge--sale">-{product?.discount}%</div>
+      <div class="tag-badge tag-badge--sale">-{product?.companies.discount}%</div>
       }
 
       <div class="tag-badge tag-badge--new">Taksit</div>
@@ -29,35 +31,32 @@ const ProductInfo = ({product}) => {
       </div>
       <div class="product__prices-stock">
         <div class="product__prices">
-          {product?.discount_type === 'manat'  &&
+          {!!product?.companies?.manat_discount  &&
           <>
           <div class="d-flex product__price product__price--current align-items-baseline  discount_pricee ">
-            {product?.price}
-            <img class="manatt" src="/static/images/manat.png" />
+            {product?.price} ₼
           </div>
-          <span class="d-flex mr-1 discount_font_up">
-          {product?.price - product?.discount}
-
-            <img class="manat" src="/static/images/manat.png" />
+          <span class="d-flex mr-1 discount_font_up mt-3">
+          {product?.price - product?.companies?.manat_discount} ₼
           </span>
           </>
           }
-          {!product?.discount  &&
+          {!product?.companies?.end_date  &&
           
           <span class="d-flex mr-1 discount_font_up">
-          {product?.price}
+          {product?.price} ₼
 
             <img class="manat" src="/static/images/manat.png" />
           </span>
           }
-          {product?.discount_type === 'percentage' && 
+          {!!product?.companies?.percentage_discount && 
           <>
           <div class="d-flex product__price product__price--current align-items-baseline  discount_pricee ">
-            {product?.price}
+            {product?.price} ₼
             <img class="manatt" src="/static/images/manat.png" />
           </div>
           <span class="d-flex mr-1 discount_font_up">
-          {product?.price - (product?.price * product?.discount / 100)}
+          {product?.price - (product?.price * product?.discount / 100)} ₼
 
             <img class="manat" src="/static/images/manat.png" />
           </span>

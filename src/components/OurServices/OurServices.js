@@ -159,7 +159,7 @@ c0.865,1.414,0.61,3.243-0.524,4.383L10.586,4.788C12.12,4.295,13.864,4.903,14.728
                         <div class="block-features__item-info ml-2">
                             {/* <div class="block-features__item-title">Kartmane ilə 1% cashback</div>
                 <div class="block-features__item-subtitle">Bütün ödənişlərdə</div> */}
-                            <div class="block-features__item-title">Tel: (+994) 77 406 10 10</div>
+                            <div class="block-features__item-title">Tel: (077) 406 10 10</div>
                             <div class="block-features__item-subtitle"><a style={{ "color": "#6c757d" }} href="tel:+994774061010">İndi zəng et !</a></div>
 
                         </div>

@@ -14,6 +14,7 @@ import CompaniesSlider from "@/components/CompaniesSlider/CompaniesSlider"
 import ScrollTop from "./scrollTop/scroll"
 import LoaderComponent from "@/components/LoaderComponent/LoaderComponent"
 import Head from "next/head"
+import { Modal } from "antd"
 export default function Home() {
 
   const [tires, setTires] = useState([])
@@ -25,6 +26,9 @@ export default function Home() {
   const [brands, setBrands] = useState([])
   const [marka, setMarka] = useState([])
   const [discountTyres, setDiscountTyres] = useState([])
+  const [modal, setModal] = useState(true)
+
+  console.log(modal, 'kasjudhsyuaigd')
 
 const getTires = async() => {
   setLoading(true)
@@ -88,6 +92,9 @@ useEffect(() => {
 },[])
 
 
+const handleCancel = () => {
+    setModal(false)
+}
 
   return (
     <>
@@ -109,9 +116,12 @@ useEffect(() => {
       {/* <Banners/> */}
       <NewProductsSlider tires={tires}/>
       <Campaigns/>
-      {/* <OutletSlider/>
-      <MarkaSlider brands={brands}/> */}
+      {/* <OutletSlider/> */}
+      <MarkaSlider brands={brands}/>
       <Footer/>
+      <Modal onCancel={handleCancel} open={modal} >
+        <img className="mt-4" src="https://www.bmw-m.com/content/dam/bmw/marketBMW_M/common/topics/magazine-article-pool/2022/wallpaper-update/bmw-m3-toruing-g81-01-gallery.jpg" width={'100%'}/>
+      </Modal>
     </div>
     </>
   )

@@ -30,17 +30,20 @@ const MarkaSlider = ({brands}) => {
           <div class="brands-images">
             <Slider {...settings}>
             {brands?.map((brand)=> (
-
+              
               <Link
                 href={`/search?brand=${brand?.title}`}
                 class="image__body block-brands__item brand d-flex flex-column"
-                style={{ width: "100%", cursor: "pointer" }}
+                style={{ width: "100%", cursor: "pointer", height:'80px' }}
               >
+              <div style={{height:'80px', width:'fit-content', display:'flex', justifyContent:'center',alignItems:'center'}}>
                 <img
                   class="image__tag brand-image"
-                  src={`https://vianor.efgroup.az${brand?.brand_image}`}
+                  src={brand?.brand_image}
+                  style={{objectFit:'contain'}}
                   alt=""
-                />
+                  />
+                  </div>
               </Link>
             ) )}
               

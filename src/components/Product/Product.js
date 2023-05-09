@@ -7,6 +7,7 @@ import { addToCart } from "@/redux/reducers/cartSlice";
 import { notification } from "antd";
 import dynamic from "next/dynamic";
 import FourSeason from '../../../assests/images/4_seasons.png'
+import { Statistic } from 'antd';
 const DateCountdown = dynamic(() => import("react-date-countdown-timer"), {
   loading: () => "Loading...",
   ssr: false,
@@ -23,6 +24,7 @@ const Product = ({ tire, forSlider }) => {
   };
 
 
+  const { Countdown } = Statistic;
 
   const dispatch = useDispatch();
 
@@ -162,8 +164,8 @@ const Product = ({ tire, forSlider }) => {
                   <div className="season"
                     style={{ position: "absolute", bottom: "15px", right: "15px" }}
                   >
-                    <span>M+S</span>
-                    <div className="season-desc-ms" > M+S</div>
+                    <span>Hamısı</span>
+                    <div className="season-desc-ms" > Hamısı</div>
                   </div>
                 </>
               }
@@ -247,7 +249,7 @@ const Product = ({ tire, forSlider }) => {
                     <div class="product__name">
                       <a href="/tyresdetail/38970/">{`${tire?.model?.brend?.title} ${tire?.model?.name}`}</a><br />
                       <b><span style={{ marginLeft: "3%" }}>
-                        {`${tire?.en?.size}${tire?.hundurluk?.size?.includes('R') ? "" : '/' + tire?.hundurluk?.size}${tire?.hundurluk?.size?.includes('R') ? `/R ${tire?.diametr?.size}` : tire?.diametr?.size ? `/R${tire?.diametr?.size}` : ""
+                        {`${tire?.en?.size}${tire?.hundurluk?.size?.includes('R') ? "" : '/' + tire?.hundurluk?.size}${tire?.hundurluk?.size?.includes('R') ? ` R ${tire?.diametr?.size}` : tire?.diametr?.size ? ` R${tire?.diametr?.size}` : ""
                           }`}
                       </span></b>
                       <b><span style={{ marginLeft: "3%" }}>
@@ -396,7 +398,8 @@ const Product = ({ tire, forSlider }) => {
             {/* If else */}
             {tire?.companies?.end_date && (
               <div class="mytest prod-foot">
-                <DateCountdown dateTo={new Date(tire?.companies?.end_date)} />
+                {/* <DateCountdown dateTo={new Date(tire?.companies?.end_date)} /> */}
+                <Countdown format="DD gün: HH:mm:ss" style={{fontWeight:'500', fontSize:'14px'}} value={new Date(tire?.companies?.end_date)}/>
               </div>
             )}
           </div>
