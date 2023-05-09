@@ -19,7 +19,11 @@ const Footer = () => {
                     <div class="site-footer__widgets">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-12 col-6 col-xl-2">
+                            <div class="col-12 col-xl-12">
+                                    <iframe width="100%" height="250px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.77342505136!2d49.909096915850384!3d40.391713979368014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d24606bf59d%3A0xbdd528600852009a!2sNokian%20Tyres%20Baku%20077%20651%201010!5e0!3m2!1saz!2s!4v1628232255692!5m2!1saz!2s"
+                                        frameborder='0' scrolling='no' marginheight='0' marginwidth='0'></iframe>
+                                </div>
+                                <div class="col-md-12 col-6 col-xl-2 mt-5">
                                     <h5 class="footer-contacts__title text-center text-lg-left">Bizimlə əlaqə</h5>
 
                                     <div class="site-footer__widget footer-contacts">
@@ -81,10 +85,7 @@ const Footer = () => {
                                     </div>
 
                                 </div>
-                                <div class="col-12 col-xl-8">
-                                    <iframe width="100%" height="250px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.77342505136!2d49.909096915850384!3d40.391713979368014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d24606bf59d%3A0xbdd528600852009a!2sNokian%20Tyres%20Baku%20077%20651%201010!5e0!3m2!1saz!2s!4v1628232255692!5m2!1saz!2s"
-                                        frameborder='0' scrolling='no' marginheight='0' marginwidth='0'></iframe>
-                                </div>
+                                
                                 <div class="col-12 col-xl-3 mt-5">
                                     <div class="site-footer__widget footer-contacts">
                                         <h5 class="footer-contacts__title text-center text-lg-left ">Vianor</h5>

@@ -2,8 +2,6 @@ import React from "react";
 
 const ProductInfo = ({product}) => {
 
-  console.log(product, 'malsduigsayuidg')
-
   return (
     <div class="product__info-body">
       {!!product?.companies?.manat_discount &&

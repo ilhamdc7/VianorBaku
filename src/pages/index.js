@@ -14,7 +14,8 @@ import CompaniesSlider from "@/components/CompaniesSlider/CompaniesSlider"
 import ScrollTop from "./scrollTop/scroll"
 import LoaderComponent from "@/components/LoaderComponent/LoaderComponent"
 import Head from "next/head"
-import { Modal } from "antd"
+import Modal from 'react-bootstrap/Modal';
+import styles from '../styles/Home.module.css'
 export default function Home() {
 
   const [tires, setTires] = useState([])
@@ -26,9 +27,18 @@ export default function Home() {
   const [brands, setBrands] = useState([])
   const [marka, setMarka] = useState([])
   const [discountTyres, setDiscountTyres] = useState([])
-  const [modal, setModal] = useState(true)
+  const [modal, setModal] = useState(false)
+  const [modalData, setModalData] = useState()
 
   console.log(modal, 'kasjudhsyuaigd')
+
+  const getModalData = async() => {
+    await baseUrl.get(`/popup`)
+    .then(res => {
+      setModal(!!res.data)
+      setModalData(res.data)
+    })
+  }
 
 const getTires = async() => {
   setLoading(true)
@@ -82,6 +92,7 @@ const getBrands = async() => {
 }
 
 useEffect(() => {
+  getModalData()
   getTires()
   getSlider()
   getWidth()
@@ -92,7 +103,9 @@ useEffect(() => {
 },[])
 
 
-const handleCancel = () => {
+
+
+const handleCancel = (e) => {
     setModal(false)
 }
 
@@ -119,8 +132,12 @@ const handleCancel = () => {
       {/* <OutletSlider/> */}
       <MarkaSlider brands={brands}/>
       <Footer/>
-      <Modal onCancel={handleCancel} open={modal} >
-        <img className="mt-4" src="https://www.bmw-m.com/content/dam/bmw/marketBMW_M/common/topics/magazine-article-pool/2022/wallpaper-update/bmw-m3-toruing-g81-01-gallery.jpg" width={'100%'}/>
+      <Modal show={modal} className={styles.modalPop} onBackdropClick={handleCancel}>
+        <span onClick={handleCancel} style={{cursor:'pointer', marginLeft:'95%', marginTop:'10px'}}>x</span>
+        <div className="w-100 mt-4" style={{display:'block'}}>
+        <span style={{marginLeft:'5px'}}>{modalData?.title}</span>
+        <img className="w-100 mt-2" src={modalData?.image} width={'100%'}/>
+        </div>
       </Modal>
     </div>
     </>

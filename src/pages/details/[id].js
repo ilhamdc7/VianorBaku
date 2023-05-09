@@ -57,7 +57,6 @@ const Description = ({ product }) => {
   };
 
 
-  console.log(product?.taksitCards, 'hsaudhsauhd')
   return (
     <>
       {contextHolder}

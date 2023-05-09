@@ -164,8 +164,8 @@ const Product = ({ tire, forSlider }) => {
                   <div className="season"
                     style={{ position: "absolute", bottom: "15px", right: "15px" }}
                   >
-                    <span>Hamısı</span>
-                    <div className="season-desc-ms" > Hamısı</div>
+                    <span>M+S</span>
+                    <div className="season-desc-ms" > M+S</div>
                   </div>
                 </>
               }
