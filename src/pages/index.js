@@ -119,7 +119,7 @@ const handleCancel = () => {
       {/* <OutletSlider/> */}
       <MarkaSlider brands={brands}/>
       <Footer/>
-      <Modal onCancel={handleCancel} open={modal} footer={null}>
+      <Modal onCancel={handleCancel} open={modal} >
         <img className="mt-4" src="https://www.bmw-m.com/content/dam/bmw/marketBMW_M/common/topics/magazine-article-pool/2022/wallpaper-update/bmw-m3-toruing-g81-01-gallery.jpg" width={'100%'}/>
       </Modal>
     </div>
