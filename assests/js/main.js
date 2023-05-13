@@ -100,8 +100,6 @@
                 $('#filter-price__max-input')
             ];
             slider.noUiSlider.on('update', function(values, handle) {
-                console.log("values", values)
-                console.log("handle", titleInput)
                 titleValues[handle].innerHTML = values[handle];
                 titleInput[handle].val(values[handle]);
             });
@@ -452,7 +450,6 @@
 
             productsList.attr('data-layout', $(this).attr('data-layout'));
             productsList.attr('data-with-features', $(this).attr('data-with-features'));
-            // console.log(productsList);
             localStorage.setItem('switcher', $(this).attr('data-layout'));
 
         });

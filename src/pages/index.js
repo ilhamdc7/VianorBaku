@@ -30,7 +30,6 @@ export default function Home() {
   const [modal, setModal] = useState(false)
   const [modalData, setModalData] = useState()
 
-  console.log(modal, 'kasjudhsyuaigd')
 
   const getModalData = async() => {
     await baseUrl.get(`/popup`)
@@ -113,6 +112,7 @@ const handleCancel = (e) => {
     <>
      <Head>
         <title>Vianor təkər mərkəzi</title>
+        <link rel="shortcut icon" href="/vianorLogo.jpg" />
       </Head>
     <div class="site">
       <MobileHeader/>

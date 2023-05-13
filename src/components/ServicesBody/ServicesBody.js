@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 
 const ServicesBody = ({services}) => {
-    console.log(services, 'ashjdiusdsahguidshd')
   return (
     <>
       <div class="container">

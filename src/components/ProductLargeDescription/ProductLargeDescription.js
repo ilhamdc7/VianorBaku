@@ -16,7 +16,6 @@ const ProductLargeDescription = ({ product }) => {
 
  
 
-  console.log(product, 'weqwewew')
 
   // const images = [
   //   {

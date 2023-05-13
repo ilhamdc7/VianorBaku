@@ -86,6 +86,7 @@ const Product = ({ tire, forSlider }) => {
   }
 
 
+
   return (
     <>
       {contextHolder}
@@ -247,10 +248,10 @@ const Product = ({ tire, forSlider }) => {
 
                   <div class="display-flex">
                     <div class="product__name">
-                      <a href="/tyresdetail/38970/">{`${tire?.model?.brend?.title} ${tire?.model?.name}`}</a><br />
+                      <a href="/tyresdetail/38970/">{`${tire?.model?.name}`}</a><br />
                       <b><span style={{ marginLeft: "3%" }}>
                         {`${tire?.en?.size}${tire?.hundurluk?.size?.includes('R') ? "" : '/' + tire?.hundurluk?.size}${tire?.hundurluk?.size?.includes('R') ? ` R ${tire?.diametr?.size}` : tire?.diametr?.size ? ` R${tire?.diametr?.size}` : ""
-                          }`}
+                          } ${tire?.load_index?.name}`}
                       </span></b>
                       <b><span style={{ marginLeft: "3%" }}>
                         {`${tire?.load_index?.name ?? ""}${tire?.speed_index?.name ?? ""

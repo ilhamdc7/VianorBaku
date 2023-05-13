@@ -10,6 +10,8 @@ const index = () => {
     <>
     <Head>
         <title>Vianor təkər mərkəzi</title>
+        <link rel="shortcut icon" href="/vianorLogo.jpg" />
+
       </Head>
     <MobileHeader/>
     <Header/>

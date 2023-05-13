@@ -17,7 +17,7 @@ const MarkaSlider = ({brands}) => {
   return (
     <>
       <div class="block-space block-space--layout--divider-nl"></div>
-      <div class="block brands-imagess  ">
+      <div class="block brands-imagess" style={{backgroundColor:'white'}}>
         <div class="container">
           <div class="section-header">
             <div class="section-header__body">
@@ -27,7 +27,7 @@ const MarkaSlider = ({brands}) => {
               <div class="section-header__divider"></div>
             </div>
           </div>
-          <div class="brands-images">
+          <div class="brands-images" >
             <Slider {...settings}>
             {brands?.map((brand)=> (
               

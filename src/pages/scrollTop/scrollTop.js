@@ -4,8 +4,6 @@ import { faArrowAltCircleUp } from "@fortawesome/free-solid-svg-icons";
 const ScrollTopView = (props) => {
     const { onScroll, onVisbile, visible } = props
 
-    console.log(visible)
-    console.log();
     if (typeof window === 'object') window.addEventListener('scroll', onVisbile)
 
     return (

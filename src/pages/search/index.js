@@ -270,6 +270,8 @@ useUpdateEffect(() => {
     <>
      <Head>
         <title>Vianor təkər mərkəzi</title>
+        <link rel="shortcut icon" href="/vianorLogo.jpg" />
+
       </Head>
         <Header/>
         <MobileHeader/>

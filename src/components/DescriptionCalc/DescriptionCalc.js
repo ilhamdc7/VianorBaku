@@ -10,15 +10,29 @@ const DescriptionCalc = ({product}) => {
   const [monthValue,setMonthValue] = useState(3)
   const [percentageValue,setPercentageValue] = useState(1.111)
   const [quantity,setQuantity] = useState(1)
+  const [creditCalcPrice, setCreditCalcPrice] = useState()
 
   const router = useRouter()
 
   useEffect(() => {
-    if(monthValue > 0, percentageValue > 0){
-      const calculatedPrice = calcCredit(product?.price,percentageValue,monthValue, quantity)
+    if(!!product?.companies?.manat_discount){
+      const price = product?.price - product?.companies?.manat_discount
+      setCreditCalcPrice(price)
+    }else if(!!product?.companies?.percent_discount){
+      const price = product?.price - (product?.price * product?.companies?.percent_discount / 100)
+      setCreditCalcPrice(price?.toFixed())
+    }else{
+      setCreditCalcPrice(product?.price)
+    }
+  },[product?.companies?.manat_discount, product?.companies?.percent_discount])
+
+
+  useEffect(() => {
+    if(monthValue > 0, percentageValue > 0, creditCalcPrice){
+      const calculatedPrice = calcCredit(creditCalcPrice,percentageValue,monthValue, quantity)
       setCalculatedPrice(calculatedPrice)
     }
-  },[monthValue, quantity])
+  },[monthValue, quantity,creditCalcPrice])
 
 
   const handleChangeMonth = (month, percentage) => {
