@@ -144,8 +144,8 @@ const handleCancel = (e) => {
       <Footer/>
       <Modal show={modal && count%3 === 0} className={styles.modalPop} onBackdropClick={handleCancel}>
         <span onClick={handleCancel} style={{cursor:'pointer', marginLeft:'95%', marginTop:'10px'}}>x</span>
-        <div className="w-100 mt-4" style={{display:'block'}}>
-        <span style={{marginLeft:'5px'}}>{modalData?.title}</span>
+        <div className="w-100 mt-4" style={{display:'flex', justifyContent:'center',alignItems:'center',flexWrap:'wrap'}}>
+        <span style={{marginLeft:'5px', fontWeight:600}}>{modalData?.title}</span>
         <img className="w-100 mt-2" src={modalData?.image} width={'100%'}/>
         </div>
       </Modal>
