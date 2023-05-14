@@ -285,7 +285,7 @@ const Product = ({ tire, forSlider }) => {
           </ul> */}
             <div
               class="d-flex "
-              style={{ justifyContent: "space-between", margin: "10px 0" }}
+              style={tire?.companies?.end_date ? {marginBotto:'0px', justifyContent: "space-between"} : {marginTop:'40px',justifyContent: "space-between"}}
             >
               <div
                 class="d-flex "

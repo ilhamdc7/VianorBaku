@@ -16,6 +16,9 @@ import LoaderComponent from "@/components/LoaderComponent/LoaderComponent"
 import Head from "next/head"
 import Modal from 'react-bootstrap/Modal';
 import styles from '../styles/Home.module.css'
+import { useSelector, useDispatch } from "react-redux"
+import { incrementReklam } from "@/redux/reducers/reklamSlice"
+import { useMount } from "ahooks"
 export default function Home() {
 
   const [tires, setTires] = useState([])
@@ -30,6 +33,13 @@ export default function Home() {
   const [modal, setModal] = useState(false)
   const [modalData, setModalData] = useState()
 
+
+  const {count} = useSelector(state => state.reklam)
+  const dispatch = useDispatch()
+
+  useMount(() => {
+    dispatch(incrementReklam())
+  })
 
   const getModalData = async() => {
     await baseUrl.get(`/popup`)
@@ -132,7 +142,7 @@ const handleCancel = (e) => {
       {/* <OutletSlider/> */}
       <MarkaSlider brands={brands}/>
       <Footer/>
-      <Modal show={modal} className={styles.modalPop} onBackdropClick={handleCancel}>
+      <Modal show={modal && count%3 === 0} className={styles.modalPop} onBackdropClick={handleCancel}>
         <span onClick={handleCancel} style={{cursor:'pointer', marginLeft:'95%', marginTop:'10px'}}>x</span>
         <div className="w-100 mt-4" style={{display:'block'}}>
         <span style={{marginLeft:'5px'}}>{modalData?.title}</span>

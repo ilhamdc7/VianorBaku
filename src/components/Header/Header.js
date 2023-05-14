@@ -8,11 +8,12 @@ import WheelCalculatorPng from '../../../assests/images/az.png'
 const Header = () => {
   const [show, setShow] = useState();
   const [sumOfPriceProduct, setSumOfPriceProduct] = useState(null)
-  const cart = useSelector(state => state.cart)
+  const {cart} = useSelector(state => state.cart)
   const [searchInput ,setSearchInput] = useState('')
   const [mainData ,setMainData] = useState({})
 
   const router = useRouter()
+
 
   useEffect(() => {
     setSumOfPriceProduct(null)

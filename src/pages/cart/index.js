@@ -7,7 +7,7 @@ import MobileHeader from '@/components/MobileHeader/MobileHeader'
 import Head from 'next/head'
 const index = () => {
 
-  const cart = useSelector(state => state.cart)
+  const {cart} = useSelector(state => state.cart)
 
 
 

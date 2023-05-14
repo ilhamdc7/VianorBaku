@@ -10,7 +10,7 @@ import { removeAllItem } from '@/redux/reducers/cartSlice'
 const Checkout = () => {
 
 
-    const cart = useSelector(state => state.cart)
+    const {cart} = useSelector(state => state.cart)
     const dispatch = useDispatch()
     const [postInputs, setPostInputs] = useState(getPostInputs())
     const [sumOfPriceProduct, setSumOfPriceProduct] = useState(null)
