@@ -43,7 +43,7 @@ c0.4,0,0.8-0.3,0.8-0.8s-0.3-0.8-0.8-0.8h-2.5v-1.7H28c0.4,0,0.8-0.3,0.8-0.8s-0.3-
                         <div class="block-features__item-info ml-2">
                             <div class="block-features__item-title" style={{ "whiteSpace": "nowrap" }}>Pulsuz çatdırılma</div>
                             <div class="block-features__item-subtitle"><span style={{ "whiteSpace": "nowrap" }} />
-                                399 <img style={{ "height": "8px !important" }} class="manatt ml-0" src="/static/images/manat.png" />dən yuxarı
+                                399 ₼-dan yuxarı
 
                             </div>
                         </div>

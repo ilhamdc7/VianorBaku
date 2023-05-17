@@ -35,7 +35,7 @@ const Product = ({ tire, forSlider }) => {
   };
 
 
-
+console.log(tire, 'ajsdihsuidsad')
 
 
   function FourSeasonIcon() {
@@ -251,7 +251,7 @@ const Product = ({ tire, forSlider }) => {
                       <a href="/tyresdetail/38970/">{`${tire?.model?.name}`}</a><br />
                       <b><span style={{ marginLeft: "3%" }}>
                         {`${tire?.en?.size}${tire?.hundurluk?.size?.includes('R') ? "" : '/' + tire?.hundurluk?.size}${tire?.hundurluk?.size?.includes('R') ? ` R ${tire?.diametr?.size}` : tire?.diametr?.size ? ` R${tire?.diametr?.size}` : ""
-                          } ${tire?.load_index?.name}`}
+                          } `}
                       </span></b>
                       <b><span style={{ marginLeft: "3%" }}>
                         {`${tire?.load_index?.name ?? ""}${tire?.speed_index?.name ?? ""

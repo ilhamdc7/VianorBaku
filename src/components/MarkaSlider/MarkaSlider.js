@@ -9,8 +9,8 @@ const MarkaSlider = ({brands}) => {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: 8,
-        slidesToScroll: 3
+        slidesToShow: 6,
+        slidesToScroll: 3,
       };
 
         
@@ -28,7 +28,7 @@ const MarkaSlider = ({brands}) => {
             </div>
           </div>
           <div class="brands-images" >
-            <Slider {...settings}>
+            <Slider autoplay={true} {...settings}>
             {brands?.map((brand)=> (
               
               <Link
