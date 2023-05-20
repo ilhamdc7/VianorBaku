@@ -2,9 +2,23 @@ import React, {useEffect, useState} from 'react'
 import Product from '../Product/Product'
 import { useRouter } from 'next/router'
 import { baseUrl } from '@/pages/api/api'
+import styles from './mPackage.module.css'
 
 
 const MPackage = () => {
+
+    const [heightList,setHeightList] = useState([])
+    const [widthList,setWidthList] = useState([])
+    const [radiusList,setRadiusList] = useState([])
+
+    const [selectedFirstWidth, setSelectedFirstWidth] = useState()
+    const [selectedSecondWidth, setSelectedSecondWidth] = useState()
+
+    const [selectedFirstHeight, setSelectedFirstHeight] = useState()
+    const [selectedSecondHeight, setSelectedSecondHeight] = useState()
+
+    const [selectedFirstRadius, setSelectedFirstRadius] = useState()
+    const [selectedSecondRadius, setSelectedSecondRadius] = useState()
 
     const [boxes, setBoxes] = useState([])
     const {query} = useRouter()
@@ -13,13 +27,98 @@ const MPackage = () => {
         .then(res => setBoxes(res.data))
     }
 
+    const router = useRouter()
+
+    const getWidth = async() =>{
+        await baseUrl.get(`tyre_width?limit=100000000000000`)
+        .then(res => {
+          const {data} = res
+          setWidthList(data.results)
+        })
+      } 
+    
+      const getHeight = async() => {
+        await baseUrl.get(`tyre_height?limit=100000000000000`)
+        .then(res => setHeightList(res.data.results))
+      }
+    
+      const getRadius = async() => {
+        await baseUrl.get(`/tyre_diametr?limit=100000000000000`)
+        .then(res => setRadiusList(res?.data?.results))
+      }
+
+
+      useEffect(() => {
+        getWidth()
+        getHeight()
+        getRadius()
+      },[])
+
     useEffect(() => {
-       getMPackage()  
+       getMPackage()
+       setSelectedFirstWidth(query?.firstWidth)  
+       setSelectedFirstHeight(query?.firstHeight)  
+       setSelectedFirstRadius(query?.firstDiametr)  
+       setSelectedSecondWidth(query?.secondWidth)  
+       setSelectedSecondHeight(query?.secondHeight)  
+       setSelectedSecondRadius(query?.secondDiametr)  
     },[query])
+
+    useEffect(() => {
+        router.push(`pair?firstWidth=${selectedFirstWidth ?? ''}&firstHeight=${selectedFirstHeight ?? ''}&firstDiametr=${selectedFirstRadius ?? ''}&secondWidth=${selectedSecondWidth ?? ''}&secondHeight=${selectedSecondHeight ?? ''}&secondDiametr=${selectedSecondRadius ?? ''}`)
+    },[selectedFirstWidth,selectedFirstHeight, selectedFirstRadius,selectedSecondWidth,selectedSecondHeight,selectedSecondRadius])
 
   return (
     <>
      <div class="container mt-5">
+
+        <div className={styles.selectRow}>
+            <div className={styles.leftSide}>
+            <select value={selectedFirstWidth} onChange={(e) => setSelectedFirstWidth(e.target.value)} className={styles.select}>
+                <option value={''}>En</option>
+                {widthList?.map((width) => (
+                    <option value={width?.size}>{width?.size}</option>
+                ))}
+            </select>
+            <select value={selectedFirstHeight} onChange={(e) => setSelectedFirstHeight(e.target.value)} className={styles.select}>
+                <option value={''}>Hündürlük</option>
+                {heightList?.map((height) => (
+                    <option value={height?.size}>{height?.size}</option>
+                    ))}
+            </select>
+            <select value={selectedFirstRadius} onChange={(e) => setSelectedFirstRadius(e.target.value)} className={styles.select}>
+                <option value={''}>Radius</option>
+                {radiusList?.map((radius) => (
+
+                <option value={radius?.size}>{radius?.size}</option>
+                ))}
+            </select>
+            
+            </div>
+            <div className={styles.rightSide}>
+            <select value={selectedSecondWidth} onChange={(e) => setSelectedSecondWidth(e.target.value)} className={styles.select}>
+                <option value={''}>En</option>
+                {widthList?.map((width) => (
+                    <option value={width?.size}>{width?.size}</option>
+                ))}
+            </select>
+            <select value={selectedSecondHeight} onChange={(e) => setSelectedSecondHeight(e.target.value)} className={styles.select}>
+                <option value={''}>Hündürlük</option>
+                {heightList?.map((height) => (
+                    <option value={height?.size}>{height?.size}</option>
+                    ))}
+            </select>
+            <select value={selectedSecondRadius} onChange={(e) => setSelectedSecondRadius(e.target.value)} className={styles.select}>
+                <option value={''}>Radius</option>
+                {radiusList?.map((radius) => (
+                    <option value={radius?.size}>{radius?.size}</option>
+                    ))}
+            </select>
+            
+            </div>
+        </div>
+     
+
             <div class="row">
                 {boxes?.length >= 1 ? 
                 boxes?.map((box) => (
