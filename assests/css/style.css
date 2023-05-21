@@ -22912,6 +22912,11 @@ select.form-control {
   background: #f25900 !important;
   color: #fff !important;
 }
+.btn-primary.btn-wp, .btn-primary.btn-wp.disabled, .btn-primary.btn-wp:disabled {
+  border-color: #28D146 !important;
+  background: #28D146 !important;
+  color: #fff !important;
+}
 .btn-secondary,
 .btn-secondary.disabled,
 .btn-secondary:disabled {

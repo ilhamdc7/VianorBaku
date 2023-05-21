@@ -1,9 +1,11 @@
 import React from 'react'
 import ScrollTop from '@/pages/scrollTop/scroll'
+import ScrollWP from '@/pages/ScrollWP/scroll'
 import Link from 'next/link'
 const Footer = () => {
     return (
         <>
+           <ScrollWP />
             <ScrollTop />
             <div class="section-header__divider"></div>
             <footer class="site__footer">
