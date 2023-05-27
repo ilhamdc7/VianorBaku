@@ -37,7 +37,7 @@ const ProductLargeDescription = ({ product }) => {
         class="product-gallery product-gallery--layout--product-full product__gallery"
         data-layout="product-full"
       >
-        <Carousel images={images} />
+        <Carousel shouldMaximizeOnClick={true} images={images} />
       </div>
 
       <div class="product__header">

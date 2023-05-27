@@ -252,18 +252,27 @@ useUpdateEffect(() => {
     await baseUrl.get(`tyre_width?limit=100000000000000`)
     .then(res => {
       const {data} = res
-      setWitdh(data.results)
+      const results = data?.results?.sort((a,b) => Number(a.size) - Number(b.size))
+     setWitdh(results)
     })
   } 
 
   const getHeight = async() => {
     await baseUrl.get(`tyre_height?limit=100000000000000`)
-    .then(res => setHeight(res.data.results))
+    .then(res => {
+      const {data} = res
+      const results = data?.results?.sort((a,b) => b.size - a.size)
+      setHeight(results.reverse())
+    } )
   }
 
   const getRadius = async() => {
     await baseUrl.get(`/tyre_diametr?limit=100000000000000`)
-    .then(res => setRadius(res?.data?.results))
+    .then(res => {
+      const {data} = res
+      const results = data?.results?.sort((a,b) => a.size - a.size)
+      setRadius(results)
+    })
   }
 
   return (

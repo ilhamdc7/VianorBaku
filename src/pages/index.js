@@ -19,6 +19,7 @@ import styles from '../styles/Home.module.css'
 import { useSelector, useDispatch } from "react-redux"
 import { incrementReklam } from "@/redux/reducers/reklamSlice"
 import { useMount } from "ahooks"
+import WhatsappSticky from '../components/WhatsappSticky/WhatsappSticky'
 export default function Home() {
 
   const [tires, setTires] = useState([])
@@ -51,7 +52,7 @@ export default function Home() {
 
 const getTires = async() => {
   setLoading(true)
-  await baseUrl.get(`/tyres?limit=30`)
+  await baseUrl.get(`/new_tyres?limit=30`)
   .then(res => {
     const {data} = res
     setTires(data?.results)
@@ -81,18 +82,30 @@ const getSlider = async() => {
 
 const getWidth = async() => {
   await baseUrl.get(`/tyre_width?limit=100000000`)
-  .then(res => setWidth(res.data.results))
+  .then(res => {
+    const {data} = res
+    const results = data?.results?.sort((a,b) => a.size - b.size)
+    setWidth(results)
+  })
 }
 
 
 const getHeight = async() => {
   await baseUrl.get(`/tyre_height?limit=100000000`)
-  .then(res => setHeight(res.data.results))
+  .then(res => {
+    const {data} = res
+    const results = data?.results?.sort((a,b) => b.size - a.size)
+    setHeight(results.reverse())
+  })
 }
 
 const getRadius = async() => {
   await baseUrl.get(`/tyre_diametr?limit=100000000`)
-  .then(res => setRadius(res.data.results))
+  .then(res => {
+    const {data} = res
+    const results = data?.results?.sort((a,b) => a.size - b.size)
+    setRadius(results)
+  })
 }
 
 const getBrands = async() => {
@@ -150,6 +163,7 @@ const handleCancel = (e) => {
         </div>
       </Modal>
     </div>
+    <WhatsappSticky/>
     </>
   )
 }

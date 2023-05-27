@@ -26,7 +26,7 @@ useEffect(() => {
                     <div class="block-banners__list">
                       {services?.map((service) => (
 
-                <Link href={service?.season?.name !== 'M+S' ? `/search?season=${service?.season?.name}` : 'search?width=null&height=null&diametr=null&brand='} class="block-banners__item block-banners__item--style--one">
+                <Link href={`/search?season=${service?.season?.name}`} class="block-banners__item block-banners__item--style--one">
                     <span class="block-banners__item-image"><img src={service?.image} alt=""/></span>
                     <span class="block-banners__item-image block-banners__item-image--blur">
                       
