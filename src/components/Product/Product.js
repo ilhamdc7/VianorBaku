@@ -357,10 +357,10 @@ console.log(tire, 'ajsdihsuidsad')
 
                 <div class="d-flex product-card__price product-card__price--current align-items-baseline ">
                   {tire?.companies?.manat_discount > 0 &&
-                    tire?.price - tire?.companies?.manat_discount}
+                    (tire?.price - tire?.companies?.manat_discount).toFixed()}
                   {tire?.companies?.percent_discount > 0
-                    ? tire?.price -
-                    (tire?.price * tire?.companies?.percent_discount) / 100
+                    ? (tire?.price -
+                    (tire?.price * tire?.companies?.percent_discount) / 100).toFixed()
                     : ""}
                   {tire?.companies?.percent_discount === null &&
                     tire?.companies?.manat_discount === null

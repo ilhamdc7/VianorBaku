@@ -7,6 +7,7 @@ import { baseUrl } from '../api/api'
 import { useRouter } from 'next/router'
 import { useDebounce } from 'use-debounce';
 import { useMount, useUpdateEffect } from 'ahooks'
+import { isNil } from 'lodash'
 import MobileHeader from '@/components/MobileHeader/MobileHeader'
 import Head from 'next/head'
 
@@ -110,6 +111,7 @@ useEffect(()=>{
 
 
   const [tyres, setTyres] = useState([])
+  const [newTyres, setNewTyres] = useState([])
   const [brands, setBrands] = useState([])
   const [width, setWitdh] = useState([])  
   const [height, setHeight] = useState([])
@@ -232,13 +234,46 @@ useUpdateEffect(() => {
     })
   }
 
+  const sortTyres = () => {
+    if(!!tyres?.length){
+      const newTyresList = tyres?.map((tyre) => {
+        let newTyre = tyre
+        if(!isNil(tyre?.companies?.end_date)){
+          if(!!tyre?.companies?.manat_discount){
+            const newPrice = (tyre?.price - tyre?.companies?.manat_discount).toFixed(2)
+            newTyre["discount_price"] = newPrice
+
+          }else{
+            const newPrice = (tyre?.price - (tyre?.price * tyre?.companies?.percent_discount / 100)).toFixed(2)
+            newTyre["discount_price"] = newPrice
+          }
+          return newTyre
+        }else{
+          newTyre['discount_price'] = tyre?.price
+        }
+        return newTyre
+      })
+      const sortedPrice = newTyresList?.sort((a,b) => Number(a.discount_price) - Number(b.discount_price))
+      setNewTyres(sortedPrice)
+    }
+  }
+
+
+
+  console.log(newTyres, 'hsaugdsad')
+  // const newtyres = tyres?.sort((a,b) => )
+
   useEffect(() => {
     getBrands()
     getWidth()
     getHeight()
     getRadius()
   },[])
+  
 
+  useEffect(() => {
+    sortTyres()
+  },[tyres])
   const getBrands = async() => {
     await baseUrl.get(`/brands?limit=1000000`)
     .then(res => {
@@ -289,7 +324,7 @@ useUpdateEffect(() => {
           setRange={setRange} 
           getSelectedHeightData={getSelectedHeightData} 
           selectedHeight={selectedHeight} 
-          tyres={tyres} 
+          tyres={newTyres} 
           height={height} 
           selectedBrands={selectedBrands} 
           brands={brands} 
