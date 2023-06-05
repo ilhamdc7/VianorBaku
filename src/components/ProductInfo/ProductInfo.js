@@ -47,14 +47,14 @@ const ProductInfo = ({product}) => {
             <img class="manat" src="/static/images/manat.png" />
           </span>
           }
-          {!!product?.companies?.percentage_discount && 
+          {!!product?.companies?.percent_discount && 
           <>
           <div class="d-flex product__price product__price--current align-items-baseline  discount_pricee ">
             {product?.price} ₼
             <img class="manatt" src="/static/images/manat.png" />
           </div>
-          <span class="d-flex mr-1 discount_font_up">
-          {product?.price - (product?.price * product?.discount / 100)} ₼
+          <span class="d-flex mr-1 discount_font_up mt-3">
+          {product?.price - (product?.price * product?.companies?.percent_discount / 100)} ₼
 
             <img class="manat" src="/static/images/manat.png" />
           </span>

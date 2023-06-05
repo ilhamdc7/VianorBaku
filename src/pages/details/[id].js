@@ -57,6 +57,8 @@ const Description = ({ product }) => {
   };
 
 
+  console.log(product, 'kaopsjduhsad')
+
   return (
     <>
       {contextHolder}

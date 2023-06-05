@@ -26,18 +26,25 @@ useEffect(() => {
                     <div class="block-banners__list">
                       {services?.map((service) => (
 
-                <Link href={`/search?season=${service?.season?.name}`} class="block-banners__item block-banners__item--style--one">
-                    <span class="block-banners__item-image"><img src={service?.image} alt=""/></span>
+                <Link href={`/search?season=${service?.season?.name}`} style={{position:'relative'}} class="block-banners__item block-banners__item--style--one">
+                  
+                    <span class="block-banners__item-image">
+                      <img style={{background:'black'}} src={service?.image} alt=""/>
+                    <div style={{zIndex:2, position:'absolute', background:'black', opacity:0.3, width:'100%', height:'100%', top:0, left:0}}/>
+                      
+                      </span>
+                    <div style={{zIndex:3}}>
                     <span class="block-banners__item-image block-banners__item-image--blur">
                       
                             </span>
-                    <span class="block-banners__item-title">{service?.title}</span>
-                    <span class="block-banners__item-details" style={{maxWidth:'300px'}}>
+                    <span class="block-banners__item-title" style={{color: '#f25900', fontWeight:600, fontSize:28}}>{service?.title}</span>
+                    <span class="block-banners__item-details" style={{maxWidth:'300px', fontWeight:600,fontSize:17}}>
                         {service?.description}
                             </span>
                     <span class="block-banners__item-button btn btn-primary btn-sm">
                         İndi al
                             </span> 
+                    </div>
                 </Link>
                       ))}
                 
