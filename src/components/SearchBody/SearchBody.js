@@ -459,7 +459,6 @@ const SearchBody = ({
                 style={{display:'flex', flexWrap:'wrap'}}
               >
               {tyres?.map((tyre) => (
-
                   <Product tire={tyre} />
               ))}
               </InfiniteScroll>

@@ -259,9 +259,11 @@ useUpdateEffect(() => {
   }
 
 
-
-  console.log(newTyres, 'hsaugdsad')
-  // const newtyres = tyres?.sort((a,b) => )
+  useEffect(() => {
+    if(tyres.length === 0){
+      setNewTyres([])
+    }
+  },[tyres])
 
   useEffect(() => {
     getBrands()
