@@ -68,20 +68,24 @@ const Contact = () => {
                                     <div class="col-12 col-lg-6 pb-4 pb-lg-0">
                                         <div class="mr-1">
 
-                                            <h4 class="contact-us__header card-title">Ünvanımız</h4>
+                                            <h4 class="contact-us__header card-title">Ünvanımız:</h4>
                                             <div class="contact-us__address">
                                                 <p>
-                                                    Babək pr.38  E-mail: info@vianorbaku.az
+                                                    Babək pr.38  
+
+                                                </p>
+                                                <p>
+                                                    E-mail: info@vianorbaku.az
 
                                                 </p>
 
 
                                                 <p>
-                                                     İş saatları 9:00 - 20:00
+                                                     İş saatları: 9:00 - 20:00
 
                                                 </p>
                                                 <p>
-                                                    Telefon nömrəsİ  +994 12 424-07-53 +994 77 406-10-10
+                                                    Telefon nömrəsi:  +994 (12) 424 07 53 <span style={{marginLeft:'20px'}}>+994 (77) 406 10 10</span>
 
 
                                                 </p>
@@ -91,7 +95,7 @@ const Contact = () => {
                                     </div>
                                     <div class="col-12 col-lg-6">
                                         <div class="ml-1">
-                                            <h4 class="contact-us__header card-title">Bizə bir mesaj buraxın</h4>
+                                            <h4 class="contact-us__header card-title">Bizə yazın</h4>
                                             <form class="contact-form" onSubmit={handleSubmit} method="POST">
                                                 <div class="form-row">
                                                     <input type="hidden" name="csrfmiddlewaretoken" value="bmfS0xps6YVo5QYbR8bpWIO2tNnFIdubB1njqGTSRaETSJ2d7ESSqMfhBOz5IAAF"/>
@@ -131,7 +135,7 @@ const Contact = () => {
                                                 <div class="form-group ">
                                                     <span style={{"display": "none;"}} id="msg">Mesajınız uğurla göndərildi. Müraciətiniz üçün təşəkkür edirik</span>
                                                     <div class="g-recaptcha" data-sitekey="6LdOyPEcAAAAAEHDyQcoHzGdjLRksTVVKQlT6kdj"></div>
-                                                    <button type="submit" style={{"position": "relative"}} class="btn btn-primary">
+                                                    <button type="submit" style={{"position": "relative"}} class="btn btn-primary mt-4">
                                                         <span  disabled type="button">Mesaj göndər</span>
                                                     </button>
                                                 </div>

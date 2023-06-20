@@ -69,7 +69,6 @@ const CreditForm = () => {
         e.preventDefault()
         baseUrl.post(`apply/`, {
             ...postInputs,
-            family: family,
             file_first: fileFirst
         },
         ).then(res => {
@@ -334,71 +333,11 @@ const CreditForm = () => {
                                             </label>
                                                     <input onChange={(e) => setPostInputs({...postInputs, second_relation: e.target.value})} type="text" name="relation" class="form-control" id="form-name" required/>
                                                 </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="form-name">Nömrə 3
-                                                <span style={{"color": "red"}}>*</span>
-                                            </label>
-                                                    <input onChange={(e) => setPostInputs({...postInputs, third_number: e.target.value})} type="tel" placeholder="[XXX] -XXX -XX -XX" name="phone-number" class="form-control" id="form-name" required/>
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="form-name">Tip
-                                                <span style={{"color": "red"}}>*</span>
-                                            </label>
-                                                    <select onChange={(e) => setPostInputs({...postInputs, third_type: e.target.value})} name="phone-type" class="form-control" required>
-                                                <option>
-                                                </option>
-                                                <option value={'Ev'}>Ev
-                                                </option>
-                                                <option value={'Mobil'}>Mobil
-                                                </option>
-                                            </select>
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="form-name">Sahibi
-                                                <span style={{"color": "red"}}>*</span>
-                                            </label>
-                                                    <input onChange={(e) => setPostInputs({...postInputs, third_owner: e.target.value})} type="text" name="owner" class="form-control" id="form-name" required/>
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="form-name">Qohumluq əlaqəsi
-                                                <span style={{"color": "red"}}>*</span>
-                                            </label>
-                                                    <input onChange={(e) => setPostInputs({...postInputs, third_relation: e.target.value})} type="text" name="relation" class="form-control" id="form-name" required/>
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="form-name">Nömrə 4
-                                                <span style={{"color": "red"}}>*</span>
-                                            </label>
-                                                    <input onChange={(e) => setPostInputs({...postInputs, fourth_number: e.target.value})} type="tel" placeholder="[XXX] -XXX -XX -XX" name="phone-number" class="form-control" id="form-name" required/>
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="form-name">Tip
-                                                <span style={{"color": "red"}}>*</span>
-                                            </label>
-                                                    <select onChange={(e) => setPostInputs({...postInputs, fourth_type: e.target.value})} name="phone-type" class="form-control" required>
-                                                <option>
-                                                </option>
-                                                <option value={'Ev'}>Ev
-                                                </option>
-                                                <option value={'Mobil'}>Mobil
-                                                </option>
-                                            </select>
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="form-name">Sahibi
-                                                <span style={{"color": "red"}}>*</span>
-                                            </label>
-                                                    <input onChange={(e) => setPostInputs({...postInputs, fourth_owner: e.target.value})} type="text" name="owner" class="form-control" id="form-name" required/>
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="form-name">Qohumluq əlaqəsi
-                                                <span style={{"color": "red"}}>*</span>
-                                            </label>
-                                                    <input onChange={(e) => setPostInputs({...postInputs, fourth_relation: e.target.value})} type="text" name="relation" class="form-control" id="form-name" required/>
-                                                </div>
+                                                
+                                                
 
                                             </div>
-                                            <label style={{"fontWeight": "700","color": "#fc5800","fontSize": "24px", "fontStyle": "italic"}}>Ailə üzvü</label>
+                                            {/* <label style={{"fontWeight": "700","color": "#fc5800","fontSize": "24px", "fontStyle": "italic"}}>Ailə üzvü</label>
                                             <button onClick={(e) => addCountForm(e)} style={{"outline":"none","float": "right","background": "transparent", "border": "none", "color": "#fc5800","fontSize": "24px"}} class="add-button">Ailə üzvlərini əlavə et +</button>
                                             <div class="repeat">
                                                 {countForm?.map((fml,index) => (
@@ -438,7 +377,7 @@ const CreditForm = () => {
                                                 </div>
                                                 ))}
 
-                                            </div>
+                                            </div> */}
                                             <label style={{"fontWeight": "700","color": "#fc5800","fontSize": "24px", "fontStyle": "italic"}}>Faktiki Kredit</label>
                                             <div class="form-row">
                                                 <div class="form-group col-md-4">
