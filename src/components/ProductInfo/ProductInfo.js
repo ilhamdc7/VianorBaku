@@ -54,7 +54,7 @@ const ProductInfo = ({product}) => {
             <img class="manatt" src="/static/images/manat.png" />
           </div>
           <span class="d-flex mr-1 discount_font_up mt-3">
-          {product?.price - (product?.price * product?.companies?.percent_discount / 100)} ₼
+          {(product?.price - (product?.price * product?.companies?.percent_discount / 100)).toFixed()} ₼
 
             <img class="manat" src="/static/images/manat.png" />
           </span>
