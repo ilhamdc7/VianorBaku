@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import styles from "./calcSlider.module.css";
 import { baseUrl } from "@/pages/api/api";
 import { useRouter } from "next/router";
+import LoaderComponent from "@/components/LoaderComponent/LoaderComponent"
 
 const CalcSlider = ({ slider, width, height, radius, markas }) => {
   const [filterBy, setFilterBy] = useState("forTire");
@@ -93,6 +94,7 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
         <div class="row">
           <div class="col-lg-4 col-12" style={{ height: "450px" }}>
             <div class="my-container pr-0 ">
+            
               <div
                 class="bg-grey resp-for-slide"
                 style={{ border: "1px solid grey !important" }}
@@ -214,80 +216,91 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                           class="row justify-content-around"
                           style={{ position: "relative" }}
                         >
-                          <div class="col-lg-6 col-12 filter-inputs">
-                            <div style={{ width: "100%", height: "40px" }}>
-                              <select
-                                onChange={(e) =>
-                                  setSelectedWidth(e.target.value)
-                                }
-                                style={{
-                                  width: "100%",
-                                  height: "100%",
-                                  outline: "none",
-                                  color:'black'
-                                }}
-                              >
-                                <option style={{color:'black'}} value={""}>En(mm)</option>
-                                {width?.map((wth) => (
-                                  <option style={{color:'black'}} value={wth?.size}>{wth?.size}</option>
-                                ))}
-                              </select>
-                            </div>
-                          </div>
-                          <div class="col-lg-6  col-12 filter-inputs">
-                            <div style={{ width: "100%", height: "40px" }}>
-                              <select
-                                onChange={(e) =>
-                                  setSelectedHeight(e.target.value)
-                                }
-                                style={{
-                                  width: "100%",
-                                  height: "100%",
-                                  outline: "none",
-                                  color:'black'
-                                }}
-                              >
-                                <option style={{color:'black'}} value={""}>Hündürlük(%)</option>
-                                {height?.map((hgt) => (
-                                  <option style={{color:'black'}} value={hgt?.size}>{hgt?.size}</option>
-                                ))}
-                              </select>
-                            </div>
-                          </div>
-                          <div class="col-lg-6  col-12 filter-inputs">
-                            <div style={{ width: "100%", height: "40px" }}>
-                              <select
-                                onChange={(e) =>
-                                  setSelectedRadius(e.target.value)
-                                }
-                                style={{
-                                  width: "100%",
-                                  height: "100%",
-                                  outline: "none",
-                                  color:'black'
-                                }}
-                              >
-                                <option style={{color:'black'}} value={""}>Diametr(düym)</option>
-                                {radius?.map((rds) => (
-                                  <option style={{color:'black'}} value={rds?.size}>{rds?.size}</option>
-                                ))}
-                              </select>
-                            </div>
-                          </div>
+                            {!!width.length && !!height.length && !!radius.length ? 
+                              <>
+                              <div class="col-lg-6 col-12 filter-inputs">
+                                <div style={{ width: "100%", height: "40px" }}>
+                                  <select
+                                    onChange={(e) =>
+                                      setSelectedWidth(e.target.value)
+                                    }
+                                    style={{
+                                      width: "100%",
+                                      height: "100%",
+                                      outline: "none",
+                                      color:'black'
+                                    }}
+                                  >
+                                    <option style={{color:'black'}} value={""}>En(mm)</option>
+                                    {width?.map((wth) => (
+                                      <option style={{color:'black'}} value={wth?.size}>{wth?.size}</option>
+                                    ))}
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-lg-6  col-12 filter-inputs">
+                                <div style={{ width: "100%", height: "40px" }}>
+                                  <select
+                                    onChange={(e) =>
+                                      setSelectedHeight(e.target.value)
+                                    }
+                                    style={{
+                                      width: "100%",
+                                      height: "100%",
+                                      outline: "none",
+                                      color:'black'
+                                    }}
+                                  >
+                                    <option style={{color:'black'}} value={""}>Hündürlük(%)</option>
+                                    {height?.map((hgt) => (
+                                      <option style={{color:'black'}} value={hgt?.size}>{hgt?.size}</option>
+                                    ))}
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-lg-6  col-12 filter-inputs">
+                                <div style={{ width: "100%", height: "40px" }}>
+                                  <select
+                                    onChange={(e) =>
+                                      setSelectedRadius(e.target.value)
+                                    }
+                                    style={{
+                                      width: "100%",
+                                      height: "100%",
+                                      outline: "none",
+                                      color:'black'
+                                    }}
+                                  >
+                                    <option style={{color:'black'}} value={""}>Diametr(düym)</option>
+                                    {radius?.map((rds) => (
+                                      <option style={{color:'black'}} value={rds?.size}>{rds?.size}</option>
+                                    ))}
+                                  </select>
+                                </div>
+                              </div>
 
-                          <div class="col-lg-6  col-12 filter-inputs">
-                            <Link
-                              href={`/search?width=${selectedWidth}&height=${selectedHeight}&diametr=${selectedRadius}`}
-                              className="tyres_filter_a"
-                            >
-                              <button
-                                class="block-finder__form-control block-finder__form-control--button tyres_filter "
-                                style={{ width: "100%" }}
-                              >
-                                Axtar
-                              </button>
-                            </Link>
-                          </div>
+                              <div class="col-lg-6  col-12 filter-inputs">
+                                <Link
+                                  href={`/search?width=${selectedWidth}&height=${selectedHeight}&diametr=${selectedRadius}`}
+                                  className="tyres_filter_a"
+                                >
+                                  <button
+                                    class="block-finder__form-control block-finder__form-control--button tyres_filter "
+                                    style={{ width: "100%" }}
+                                  >
+                                    Axtar
+                                  </button>
+                                </Link>
+                              </div> 
+                              </>
+                              :
+                              <div className="d-flex justify-content-center align-items-center">
+                                <LoaderComponent/>
+                              </div>
+                            }
+
+
+
                         </div>
                       </div>
                     </form>
@@ -467,6 +480,8 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                       flexDirection: "column",
                     }
                 }>
+                  {!!width.length && !!height.length && !!radius.length ? 
+                  <>
                   <div className="d-flex alig-items-center">
                     <select onChange={(e) => setMPackageInputs({ ...mPackageInputs, firstWidth: e.target.value })} placeholder="En" style={{ width: '30%', height: '40px', marginLeft: '3%', backgroundColor:'white', color:'black' }} type={'text'}>
                       <option style={{color:'black', backgroundColor:'white'}} value={''}>En</option>
@@ -508,6 +523,13 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
                       ))}
                     </select>
                   </div>
+                  </>  
+                  :
+                  <div className="d-flex justify-content-center align-items-center">
+                    <LoaderComponent/>
+                  </div>
+                }
+
                   <button onClick={handleSearchMPackage} className="m-search">Axtar</button>
                 </div>
               </div>
