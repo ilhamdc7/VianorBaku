@@ -35,8 +35,6 @@ const Product = ({ tire, forSlider }) => {
   };
 
 
-console.log(tire, 'ajsdihsuidsad')
-
 
   function FourSeasonIcon() {
     return (

@@ -20,7 +20,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { incrementReklam } from "@/redux/reducers/reklamSlice"
 import { useMount } from "ahooks"
 import WhatsappSticky from '../components/WhatsappSticky/WhatsappSticky'
-export default function Home({slider, mainData}) {
+export default function Home({slider, propHeight, propRadius, propWidth}) {
 
   const [tires, setTires] = useState([])
   const [loading, setLoading] = useState(false)
@@ -73,6 +73,12 @@ const getMarka = async() => {
 }
 
 
+useEffect(() => {
+  setWidth(propWidth?.sort((a,b) => a.size - b.size) ?? [])
+  setHeight(propHeight?.sort((a,b) => b.size - a.size).reverse() ?? [])
+  setRadius(propRadius?.sort((a,b) => a.size - b.size) ?? [])
+},[propHeight,propWidth,propRadius])
+
 
 // const getSlider = async() => {
 //   await baseUrl.get(`/slider?limit=100000000`)
@@ -80,33 +86,33 @@ const getMarka = async() => {
 // }
 
 
-const getWidth = async() => {
-  await baseUrl.get(`/tyre_width?limit=100000000`)
-  .then(res => {
-    const {data} = res
-    const results = data?.results?.sort((a,b) => a.size - b.size)
-    setWidth(results)
-  })
-}
+// const getWidth = async() => {
+//   await baseUrl.get(`/tyre_width?limit=100000000`)
+//   .then(res => {
+//     const {data} = res
+//     const results = data?.results?.sort((a,b) => a.size - b.size)
+//     setWidth(results)
+//   })
+// }
 
 
-const getHeight = async() => {
-  await baseUrl.get(`/tyre_height?limit=100000000`)
-  .then(res => {
-    const {data} = res
-    const results = data?.results?.sort((a,b) => b.size - a.size)
-    setHeight(results.reverse())
-  })
-}
+// const getHeight = async() => {
+//   await baseUrl.get(`/tyre_height?limit=100000000`)
+//   .then(res => {
+//     const {data} = res
+//     const results = data?.results?.sort((a,b) => b.size - a.size)
+//     setHeight(results.reverse())
+//   })
+// }
 
-const getRadius = async() => {
-  await baseUrl.get(`/tyre_diametr?limit=100000000`)
-  .then(res => {
-    const {data} = res
-    const results = data?.results?.sort((a,b) => a.size - b.size)
-    setRadius(results)
-  })
-}
+// const getRadius = async() => {
+//   await baseUrl.get(`/tyre_diametr?limit=100000000`)
+//   .then(res => {
+//     const {data} = res
+//     const results = data?.results?.sort((a,b) => a.size - b.size)
+//     setRadius(results)
+//   })
+// }
 
 const getBrands = async() => {
   await baseUrl.get(`/brands?limit=100000000`)
@@ -117,9 +123,9 @@ useEffect(() => {
   getModalData()
   getTires()
   // getSlider()
-  getWidth()
-  getHeight()
-  getRadius()
+  // getWidth()
+  // getHeight()
+  // getRadius()
   getBrands()
   getMarka()
 },[])
@@ -139,7 +145,7 @@ const handleCancel = (e) => {
       </Head>
     <div class="site">
       <MobileHeader/>
-      <Header mainData={mainData}/>
+      <Header/>
       <CalcSlider markas={marka} height={height} radius={radius} width={width} slider={slider}/>
       <OurServices/>
       {discountTyres?.length >= 1 && loading === false ?
@@ -173,12 +179,18 @@ const handleCancel = (e) => {
 export async function getStaticProps() {
   const res = await fetch('https://vianor.efgroup.az/slider?limit=100000000');
   const slider = await res.json();
-  const resMain = await fetch(`https://vianor.efgroup.az/main`)
-  const mainData = await resMain.json() 
+  const resWidth = await fetch(`https://vianor.efgroup.az/tyre_width?limit=100000000`)
+  const propWidth = await resWidth.json()
+  const resHeight = await fetch(`https://vianor.efgroup.az/tyre_height?limit=100000000`)
+  const propHeight = await resHeight.json()
+  const resRadius = await fetch(`https://vianor.efgroup.az/tyre_diametr?limit=100000000`)
+  const propRadius = await resRadius.json()
   return {
     props: {
       slider: slider?.results,
-      mainData
+      propWidth: propWidth?.results,
+      propHeight: propHeight?.results,
+      propRadius: propRadius?.results
     },
     revalidate: 10
   };

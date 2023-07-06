@@ -56,9 +56,6 @@ const Description = ({ product }) => {
     openNotification("topRight");
   };
 
-
-  console.log(product, 'kaopsjduhsad')
-
   return (
     <>
       {contextHolder}
