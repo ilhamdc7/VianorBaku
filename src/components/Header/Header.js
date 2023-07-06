@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 import { baseUrl } from "@/pages/api/api";
 import WheelCalculatorPng from '../../../assests/images/az.png'
 
-const Header = () => {
+const Header = ({mainData}) => {
   const [show, setShow] = useState();
   const [sumOfPriceProduct, setSumOfPriceProduct] = useState(null)
   const {cart} = useSelector(state => state.cart)
   const [searchInput ,setSearchInput] = useState('')
-  const [mainData ,setMainData] = useState({})
+  // const [mainData ,setMainData] = useState({})
 
   const router = useRouter()
 
@@ -25,13 +25,13 @@ const Header = () => {
   },[cart])
 
 
-  const getMainData = async() => {
-    baseUrl.get(`main`).then(res => setMainData(res?.data))
-  }
+  // const getMainData = async() => {
+  //   baseUrl.get(`main`).then(res => setMainData(res?.data))
+  // }
 
-  useEffect(() => {
-    getMainData()
-  },[])
+  // useEffect(() => {
+  //   getMainData()
+  // },[])
 
   return (
     <header class=" header-site" style={{ "z-index": "10" }}>

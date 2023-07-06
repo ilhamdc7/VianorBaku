@@ -20,11 +20,11 @@ import { useSelector, useDispatch } from "react-redux"
 import { incrementReklam } from "@/redux/reducers/reklamSlice"
 import { useMount } from "ahooks"
 import WhatsappSticky from '../components/WhatsappSticky/WhatsappSticky'
-export default function Home() {
+export default function Home({slider, mainData}) {
 
   const [tires, setTires] = useState([])
   const [loading, setLoading] = useState(false)
-  const [slider, setSlider] = useState([])
+  // const [slider, setSlider] = useState([])
   const [width, setWidth] = useState([])
   const [height, setHeight] = useState([])
   const [radius, setRadius] = useState([])
@@ -74,10 +74,10 @@ const getMarka = async() => {
 
 
 
-const getSlider = async() => {
-  await baseUrl.get(`/slider?limit=100000000`)
-  .then(res => setSlider(res.data.results))
-}
+// const getSlider = async() => {
+//   await baseUrl.get(`/slider?limit=100000000`)
+//   .then(res => setSlider(res.data.results))
+// }
 
 
 const getWidth = async() => {
@@ -116,7 +116,7 @@ const getBrands = async() => {
 useEffect(() => {
   getModalData()
   getTires()
-  getSlider()
+  // getSlider()
   getWidth()
   getHeight()
   getRadius()
@@ -139,7 +139,7 @@ const handleCancel = (e) => {
       </Head>
     <div class="site">
       <MobileHeader/>
-      <Header/>
+      <Header mainData={mainData}/>
       <CalcSlider markas={marka} height={height} radius={radius} width={width} slider={slider}/>
       <OurServices/>
       {discountTyres?.length >= 1 && loading === false ?
@@ -155,15 +155,31 @@ const handleCancel = (e) => {
       {/* <OutletSlider/> */}
       <MarkaSlider brands={brands}/>
       <Footer/>
-      <Modal show={modal && count%3 === 0} className={styles.modalPop} onBackdropClick={handleCancel}>
+      {/* <Modal show={modal && count%3 === 0} className={styles.modalPop} onBackdropClick={handleCancel}>
         <span onClick={handleCancel} style={{cursor:'pointer', marginLeft:'95%', marginTop:'10px'}}>x</span>
         <div className="w-100 mt-4" style={{display:'flex', justifyContent:'center',alignItems:'center',flexWrap:'wrap'}}>
         <span style={{marginLeft:'5px', fontWeight:600}}>{modalData?.title}</span>
         <img className="w-100 mt-2" src={modalData?.image} width={'100%'}/>
         </div>
-      </Modal>
+      </Modal> */}
     </div>
     <WhatsappSticky/>
     </>
   )
+}
+
+
+
+export async function getStaticProps() {
+  const res = await fetch('https://vianor.efgroup.az/slider?limit=100000000');
+  const slider = await res.json();
+  const resMain = await fetch(`https://vianor.efgroup.az/main`)
+  const mainData = await resMain.json() 
+  return {
+    props: {
+      slider: slider?.results,
+      mainData
+    },
+    revalidate: 10
+  };
 }
