@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare, faSnowflake, faSun } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheckSquare,
+  faSnowflake,
+  faSun,
+} from "@fortawesome/free-solid-svg-icons";
 import { addToCart } from "@/redux/reducers/cartSlice";
 import { notification } from "antd";
 import dynamic from "next/dynamic";
-import FourSeason from '../../../assests/images/4_seasons.png'
-import { Statistic } from 'antd';
+import FourSeason from "../../../assests/images/4_seasons.png";
+import { Statistic } from "antd";
 const DateCountdown = dynamic(() => import("react-date-countdown-timer"), {
   loading: () => "Loading...",
   ssr: false,
@@ -23,18 +27,14 @@ const Product = ({ tire, forSlider }) => {
     });
   };
 
-
   const { Countdown } = Statistic;
 
   const dispatch = useDispatch();
-
 
   const addToBasket = (data) => {
     dispatch(addToCart(data));
     openNotification("topRight");
   };
-
-
 
   function FourSeasonIcon() {
     return (
@@ -42,7 +42,7 @@ const Product = ({ tire, forSlider }) => {
         xmlns="http://www.w3.org/2000/svg"
         width="256px"
         height="256"
-        style={{ zoom: '0.1' }}
+        style={{ zoom: "0.1" }}
         fillRule="evenodd"
         clipRule="evenodd"
         imageRendering="optimizeQuality"
@@ -83,15 +83,13 @@ const Product = ({ tire, forSlider }) => {
     );
   }
 
-
-
   return (
     <>
       {contextHolder}
       <div
         class="block-products-carousel__column single_product"
         id="card-hover"
-        style={forSlider && { width: '280px', marginLeft: '10px' }}
+        style={forSlider && { width: "280px", marginLeft: "10px" }}
       >
         <div
           class="block-products-carousel__cell"
@@ -116,7 +114,7 @@ const Product = ({ tire, forSlider }) => {
             <div
               style={{
                 height: "40px",
-                backgroundColor: "#f25900",
+                backgroundColor: tire?.companies?.color,
                 justifyContent: "center",
                 color: "#000",
                 display: "flex",
@@ -127,11 +125,18 @@ const Product = ({ tire, forSlider }) => {
                 alignItems: "center",
               }}
             >
-              Endirim
+              {tire?.companies?.type}
             </div>
           )}
 
-          <div class="product-card product-card--layout--grid" style={tire?.companies?.end_date ? {marginTop:'0px'} : {marginTop:'40px'}}>
+          <div
+            class="product-card product-card--layout--grid"
+            style={
+              tire?.companies?.end_date
+                ? { marginTop: "0px" }
+                : { marginTop: "40px" }
+            }
+          >
             <img
               style={{ width: "80%", height: "50px", margin: "10px auto" }}
               src={tire?.model?.brend?.brand_image}
@@ -147,52 +152,86 @@ const Product = ({ tire, forSlider }) => {
                   />
                 </Link>
               </div>
-              {tire?.model?.season?.name === 'Yay' &&
+              {tire?.model?.season?.name === "Yay" && (
                 <>
-                  <div className="season"
-                    style={{ position: "absolute", bottom: "15px", right: "15px" }}
+                  <div
+                    className="season"
+                    style={{
+                      position: "absolute",
+                      bottom: "15px",
+                      right: "15px",
+                    }}
                   >
-                    <FontAwesomeIcon style={{ width: '25px', height: '25px', objectFit: 'contain', color: 'orange' }} icon={faSun} />
+                    <FontAwesomeIcon
+                      style={{
+                        width: "25px",
+                        height: "25px",
+                        objectFit: "contain",
+                        color: "orange",
+                      }}
+                      icon={faSun}
+                    />
                     <div className="season-desc-y"> Yay</div>
                   </div>
-
                 </>
-              }
-              {tire?.model?.season?.name === 'M+S' &&
+              )}
+              {tire?.model?.season?.name === "M+S" && (
                 <>
-                  <div className="season"
-                    style={{ position: "absolute", bottom: "15px", right: "15px" }}
+                  <div
+                    className="season"
+                    style={{
+                      position: "absolute",
+                      bottom: "15px",
+                      right: "15px",
+                    }}
                   >
                     <span>M+S</span>
-                    <div className="season-desc-ms" > M+S</div>
+                    <div className="season-desc-ms"> M+S</div>
                   </div>
                 </>
-              }
-              {tire?.model?.season?.name === 'Qış' &&
+              )}
+              {tire?.model?.season?.name === "Qış" && (
                 <>
-                  <div className="season"
-                    style={{ position: "absolute", bottom: "15px", right: "15px" }}
+                  <div
+                    className="season"
+                    style={{
+                      position: "absolute",
+                      bottom: "15px",
+                      right: "15px",
+                    }}
                   >
-                    <FontAwesomeIcon style={{ width: '25px', height: '25px', objectFit: 'contain', color: '0ECEEC' }} icon={faSnowflake} />
+                    <FontAwesomeIcon
+                      style={{
+                        width: "25px",
+                        height: "25px",
+                        objectFit: "contain",
+                        color: "0ECEEC",
+                      }}
+                      icon={faSnowflake}
+                    />
                     <div className="season-desc-q">Qış</div>
                   </div>
                 </>
-              }
-              {tire?.model?.season?.name === 'Dörd fəsil' &&
+              )}
+              {tire?.model?.season?.name === "Dörd fəsil" && (
                 <>
-                  <div className="season"
-                    style={{ position: "absolute", bottom: "15px", right: "15px" }}
+                  <div
+                    className="season"
+                    style={{
+                      position: "absolute",
+                      bottom: "15px",
+                      right: "15px",
+                    }}
                   >
                     <FourSeasonIcon />
-                    <div class="season-desc-df" > Dörd fəsil</div>
+                    <div class="season-desc-df"> Dörd fəsil</div>
                   </div>
                 </>
-              }
+              )}
               <div
                 style={{ position: "absolute", bottom: "15px", left: "15px" }}
               >
-                {tire?.klass?.name === 'Minik' &&
-
+                {tire?.klass?.name === "Minik" && (
                   <img
                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAOCAYAAADaOrdAAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABqElEQVQ4Ea3UTygEYRjH8VkhKWKTECVJEgeKgxyk1OaGCwdcxEX2shdEOTk5OGwO2qKUJAfJSZGUAxcJNw7ag/w/SJLk+9M7mpl2dtvapz697/O+78w787yzG7ASRwPDIyjFj1mSbdpv08Zp13Br8rSaEKuf0Q5tYhujP23yCtouHKINaUUZq49xlOCqAcYmPOOV5Noo3zPuSrNcmWWNki/hwzPul6pkG4j4LdC4XWe1hejGKsahMtnzdK0io9YzfkIewzkeoHjHPZ6UBFCNZWhAN/1ELnTganWBfdh0/0JzGk8WNUy+IKxFK+hQJ8PRyP32EdGZ6PBOkclQRVSdbTTZNf8yOyjvQytusI5UZdFDDqMAu9AZqbwXGMSdzkSfq15L0YxrbEIl7Ifm/SKHiU4sQGc6hTgeoSpVIagn129DB6SvR/ksFJfQonJcIVH0MjiPAzM5RHuGqMm1cVg3nUE9ivEGZ7ySqBxB56Cjn0ffeY2+THGu1/3/Q6+nmvZAm7dAv369oV/or0fXqBracA7660kaJcwuYg8x1CFVhFiwhR1MQg/ril/L3k257nSYiwAAAABJRU5ErkJggg=="
                     style={{ width: "35px", display: "inline" }}
@@ -201,9 +240,8 @@ const Product = ({ tire, forSlider }) => {
                     data-placement="top"
                     title="Minik"
                   />
-                }
-                {tire?.klass?.name === 'SUV 4X4' &&
-
+                )}
+                {tire?.klass?.name === "SUV 4X4" && (
                   <img
                     src="https://www.pngkey.com/png/full/71-719851_car-icons-suv-car.png"
                     style={{ width: "35px", display: "inline" }}
@@ -212,9 +250,8 @@ const Product = ({ tire, forSlider }) => {
                     data-placement="top"
                     title="SUV 4X4"
                   />
-                }
-                {tire?.klass?.name === 'Yük' &&
-
+                )}
+                {tire?.klass?.name === "Yük" && (
                   <img
                     src="https://www.iconpacks.net/icons/1/free-truck-icon-1058-thumb.png"
                     style={{ width: "35px", display: "inline" }}
@@ -223,38 +260,72 @@ const Product = ({ tire, forSlider }) => {
                     data-placement="top"
                     title="Yük"
                   />
-                }
+                )}
               </div>
             </div>
             <ul class="product-card__info">
               <div class="product-card__name">
                 <div>
                   <div class="product-card__badges">
-                    {tire?.companies?.manat_discount >= 1 &&
-                      <div class="tag-badge tag-badge--sale">-{(Number(tire?.companies?.manat_discount)/Number(tire?.price)*100).toFixed()}%</div>
-                    }
-                    {tire?.companies?.percent_discount >= 1 &&
-                      <div class="tag-badge tag-badge--sale">-{tire?.companies?.percent_discount}%</div>
-                    }
-                    <div class="tag-badge tag-badge--new">Taksit
-                      <div class="descc" style={{ textTransform: 'none' }}> Birkart, Bolkart, Ukart, Tamkart ilə 12 aya qədər taksitlə əldə edə bilərsiniz.</div>
+                    {tire?.companies?.manat_discount >= 1 && (
+                      <div class="tag-badge tag-badge--sale">
+                        -
+                        {(
+                          (Number(tire?.companies?.manat_discount) /
+                            Number(tire?.price)) *
+                          100
+                        ).toFixed()}
+                        %
+                      </div>
+                    )}
+                    {tire?.companies?.percent_discount >= 1 && (
+                      <div class="tag-badge tag-badge--sale">
+                        -{tire?.companies?.percent_discount}%
+                      </div>
+                    )}
+                    <div class="tag-badge tag-badge--new">
+                      Taksit
+                      <div class="descc" style={{ textTransform: "none" }}>
+                        {" "}
+                        Birkart, Bolkart, Ukart, Tamkart ilə 12 aya qədər
+                        taksitlə əldə edə bilərsiniz.
+                      </div>
                     </div>
-                    <div class="tag-badge tag-badge--hot">Kredit
-                      <div class="descc" style={{ textTransform: 'none' }}> Şəxsiyyət vəsiqəsilə 3-18 aya qədər əldə edə bilərsiniz</div>
+                    <div class="tag-badge tag-badge--hot">
+                      Kredit
+                      <div class="descc" style={{ textTransform: "none" }}>
+                        {" "}
+                        Şəxsiyyət vəsiqəsilə 3-18 aya qədər əldə edə bilərsiniz
+                      </div>
                     </div>
                   </div>
 
                   <div class="display-flex">
                     <div class="product__name">
-                      <a href="/tyresdetail/38970/">{`${tire?.model?.name}`}</a><br />
-                      <b><span style={{ marginLeft: "3%" }}>
-                        {`${tire?.en?.size}${tire?.hundurluk?.size?.includes('R') ? "" : '/' + tire?.hundurluk?.size}${tire?.hundurluk?.size?.includes('R') ? ` R ${tire?.diametr?.size}` : tire?.diametr?.size ? ` R${tire?.diametr?.size}` : ""
+                      <a href="/tyresdetail/38970/">{`${tire?.model?.name}`}</a>
+                      <br />
+                      <b>
+                        <span style={{ marginLeft: "3%" }}>
+                          {`${tire?.en?.size}${
+                            tire?.hundurluk?.size?.includes("R")
+                              ? ""
+                              : "/" + tire?.hundurluk?.size
+                          }${
+                            tire?.hundurluk?.size?.includes("R")
+                              ? ` R ${tire?.diametr?.size}`
+                              : tire?.diametr?.size
+                              ? ` R${tire?.diametr?.size}`
+                              : ""
                           } `}
-                      </span></b>
-                      <b><span style={{ marginLeft: "3%" }}>
-                        {`${tire?.load_index?.name ?? ""}${tire?.speed_index?.name ?? ""
+                        </span>
+                      </b>
+                      <b>
+                        <span style={{ marginLeft: "3%" }}>
+                          {`${tire?.load_index?.name ?? ""}${
+                            tire?.speed_index?.name ?? ""
                           }`}
-                      </span></b>
+                        </span>
+                      </b>
                     </div>
                   </div>
                 </div>
@@ -283,7 +354,11 @@ const Product = ({ tire, forSlider }) => {
           </ul> */}
             <div
               class="d-flex "
-              style={tire?.companies?.end_date ? {marginBotto:'0px', justifyContent: "space-between"} : {marginTop:'40px',justifyContent: "space-between"}}
+              style={
+                tire?.companies?.end_date
+                  ? { marginBotto: "0px", justifyContent: "space-between" }
+                  : { marginTop: "40px", justifyContent: "space-between" }
+              }
             >
               <div
                 class="d-flex "
@@ -348,20 +423,22 @@ const Product = ({ tire, forSlider }) => {
               <div class="product-card__prices">
                 {(tire?.companies?.manat_discount > 0 ||
                   tire?.companies?.percent_discount > 0) && (
-                    <span class="d-flex product-card__price product-card__price--current align-items-baseline  discount_pricee ">
-                      {tire?.price} <i className="azn">₼</i>
-                    </span>
-                  )}
+                  <span class="d-flex product-card__price product-card__price--current align-items-baseline  discount_pricee ">
+                    {tire?.price} <i className="azn">₼</i>
+                  </span>
+                )}
 
                 <div class="d-flex product-card__price product-card__price--current align-items-baseline ">
                   {tire?.companies?.manat_discount > 0 &&
                     (tire?.price - tire?.companies?.manat_discount).toFixed()}
                   {tire?.companies?.percent_discount > 0
-                    ? (tire?.price -
-                    (tire?.price * tire?.companies?.percent_discount) / 100).toFixed()
+                    ? (
+                        tire?.price -
+                        (tire?.price * tire?.companies?.percent_discount) / 100
+                      ).toFixed()
                     : ""}
                   {tire?.companies?.percent_discount === null &&
-                    tire?.companies?.manat_discount === null
+                  tire?.companies?.manat_discount === null
                     ? tire?.price
                     : ""}
                   <i className="azn">₼</i>
@@ -396,9 +473,18 @@ const Product = ({ tire, forSlider }) => {
             {/* <div className="prod-foot">{"YAG ALANA YAGDƏYİŞMƏ PULSUZ"}</div> */}
             {/* If else */}
             {tire?.companies?.end_date && (
-              <div class="mytest prod-foot">
+              <div
+                class="mytest prod-foot"
+                style={{
+                  backgroundColor: tire?.companies?.color ?? "transparent",
+                }}
+              >
                 {/* <DateCountdown dateTo={new Date(tire?.companies?.end_date)} /> */}
-                <Countdown format="DD gün: HH:mm:ss" style={{fontWeight:'500', fontSize:'14px'}} value={new Date(tire?.companies?.end_date)}/>
+                <Countdown
+                  format="DD gün: HH:mm:ss"
+                  style={{ fontWeight: "500", fontSize: "14px" }}
+                  value={new Date(tire?.companies?.end_date)}
+                />
               </div>
             )}
           </div>
