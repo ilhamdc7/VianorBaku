@@ -11,6 +11,8 @@ const CompaniesSlider = ({ compaines, title }) => {
     speed: 800,
     slidesToShow: 4,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
     responsive: [
       {
         breakpoint: 1200,

@@ -1,18 +1,17 @@
 import React from "react";
 import Product from "../Product/Product";
 import Slider from "react-slick";
-import styles from './newProductSlider.module.css'
-
+import styles from "./newProductSlider.module.css";
 
 const NewProductsSlider = ({ tires }) => {
-
-
   const settings = {
     dots: false,
     infinite: true,
     speed: 800,
     slidesToShow: 4,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
     responsive: [
       {
         breakpoint: 1200,
@@ -35,7 +34,6 @@ const NewProductsSlider = ({ tires }) => {
     ],
   };
 
-
   return (
     <>
       <div class="block-space block-space--layout--divider-nl"></div>
@@ -50,7 +48,7 @@ const NewProductsSlider = ({ tires }) => {
               <div class="section-header__divider"></div>
             </div>
           </div>
-          <Slider {...settings} className={styles.slider} >
+          <Slider {...settings} className={styles.slider}>
             {tires?.map((tire) => (
               <Product tire={tire} />
             ))}

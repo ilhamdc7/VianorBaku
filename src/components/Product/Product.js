@@ -36,6 +36,8 @@ const Product = ({ tire, forSlider }) => {
     openNotification("topRight");
   };
 
+  console.log(tire, "jyhgyugsad");
+
   function FourSeasonIcon() {
     return (
       <svg
@@ -125,7 +127,7 @@ const Product = ({ tire, forSlider }) => {
                 alignItems: "center",
               }}
             >
-              {tire?.companies?.type}
+              {tire?.companies?.type?.name}
             </div>
           )}
 
@@ -476,15 +478,20 @@ const Product = ({ tire, forSlider }) => {
               <div
                 class="mytest prod-foot"
                 style={{
-                  backgroundColor: tire?.companies?.color ?? "transparent",
+                  backgroundColor:
+                    tire?.companies?.color?.color ?? "transparent",
                 }}
               >
                 {/* <DateCountdown dateTo={new Date(tire?.companies?.end_date)} /> */}
-                <Countdown
-                  format="DD gün: HH:mm:ss"
-                  style={{ fontWeight: "500", fontSize: "14px" }}
-                  value={new Date(tire?.companies?.end_date)}
-                />
+                {!!tire?.companies?.bottom_text ? (
+                  <h4>{tire?.companies?.bottom_text}</h4>
+                ) : (
+                  <Countdown
+                    format="DD gün: HH:mm:ss"
+                    style={{ fontWeight: "500", fontSize: "14px" }}
+                    value={new Date(tire?.companies?.end_date)}
+                  />
+                )}
               </div>
             )}
           </div>
