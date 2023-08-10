@@ -116,7 +116,7 @@ const Product = ({ tire, forSlider }) => {
             <div
               style={{
                 height: "40px",
-                backgroundColor: tire?.companies?.color,
+                backgroundColor: tire?.companies?.color?.color,
                 justifyContent: "center",
                 color: "#000",
                 display: "flex",
@@ -480,6 +480,8 @@ const Product = ({ tire, forSlider }) => {
                 style={{
                   backgroundColor:
                     tire?.companies?.color?.color ?? "transparent",
+                  fontWeight: "500",
+                  fontSize: "14px",
                 }}
               >
                 {/* <DateCountdown dateTo={new Date(tire?.companies?.end_date)} /> */}
