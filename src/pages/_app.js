@@ -20,12 +20,12 @@ export default function App({ Component, pageProps }) {
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-83CDTNYEX7"
         ></Script>
-        <Script id="google-analytics">
+        <Script>
           {`window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-83CDTNYEX7');`}
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-83CDTNYEX7')`}
         </Script>
         <Script
           dangerouslySetInnerHTML={{
