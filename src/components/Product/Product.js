@@ -193,24 +193,24 @@ const Product = ({ tire, forSlider }) => {
                     right: "0",
                     width: "0",
                     height: "0",
-                    borderTop: "90px solid #f25800",
-                    borderLeft: "90px solid transparent",
+                    borderTop: "82px solid #f25800",
+                    borderLeft: "82px solid transparent",
                     zIndex: "3",
                   }}
                 >
                   <div
                     style={{
                       position: "absolute",
-                      top: "-79px",
-                      right: "6px",
+                      top: "-72px",
+                      right: "5px",
                       color: "#fff",
                       textAlign: "center",
                       lineHeight: "1.1",
                       fontWeight: "700",
                     }}
                   >
-                    <div style={{ fontSize: "12px" }}>Klass</div>
-                    <div style={{ fontSize: "20px", lineHeight: "1" }}>
+                    <div style={{ fontSize: "11px" }}>Klass</div>
+                    <div style={{ fontSize: "18px", lineHeight: "1" }}>
                       {ribbonValue}
                     </div>
                   </div>
