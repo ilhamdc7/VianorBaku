@@ -35,8 +35,39 @@ const Product = ({ tire, forSlider }) => {
     dispatch(addToCart(data));
     openNotification("topRight");
   };
+  const rNote = tire?.r_note ?? tire?.model?.r_note;
+  const textBadges = [tire?.ev ?? tire?.model?.ev, tire?.rf ?? tire?.model?.rf]
+    .filter((item) => typeof item === "string" && item.trim() !== "");
+  const homologationLogos = [
+    tire?.homologasiya ?? tire?.model?.homologasiya ?? tire?.homologation,
+    tire?.homologasiya_two ??
+      tire?.model?.homologasiya_two ??
+      tire?.homologation_two,
+  ].filter((item) => item?.logo);
+  const hasExtraInfoBlock =
+    textBadges.length > 0 || homologationLogos.length > 0;
+  const klassName = tire?.klass?.name ?? "";
+  const klassNameLower = klassName.toLowerCase();
+  const ribbonValue =
+    typeof rNote === "string" && rNote.trim() !== "" ? rNote.trim() : "";
 
-  console.log(tire, "jyhgyugsad");
+  const klassIcon =
+    klassNameLower.includes("minik") || klassNameLower.includes("d klass")
+      ? {
+          src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAOCAYAAADaOrdAAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABqElEQVQ4Ea3UTygEYRjH8VkhKWKTECVJEgeKgxyk1OaGCwdcxEX2shdEOTk5OGwO2qKUJAfJSZGUAxcJNw7ag/w/SJLk+9M7mpl2dtvapz697/O+78w787yzG7ASRwPDIyjFj1mSbdpv08Zp13Br8rSaEKuf0Q5tYhujP23yCtouHKINaUUZq49xlOCqAcYmPOOV5Noo3zPuSrNcmWWNki/hwzPul6pkG4j4LdC4XWe1hejGKsahMtnzdK0io9YzfkIewzkeoHjHPZ6UBFCNZWhAN/1ELnTganWBfdh0/0JzGk8WNUy+IKxFK+hQJ8PRyP32EdGZ6PBOkclQRVSdbTTZNf8yOyjvQytusI5UZdFDDqMAu9AZqbwXGMSdzkSfq15L0YxrbEIl7Ifm/SKHiU4sQGc6hTgeoSpVIagn129DB6SvR/ksFJfQonJcIVH0MjiPAzM5RHuGqMm1cVg3nUE9ivEGZ7ySqBxB56Cjn0ffeY2+THGu1/3/Q6+nmvZAm7dAv369oV/or0fXqBracA7660kaJcwuYg8x1CFVhFiwhR1MQg/ril/L3k257nSYiwAAAABJRU5ErkJggg==",
+          title: "Minik",
+        }
+      : klassNameLower.includes("suv")
+      ? {
+          src: "https://www.pngkey.com/png/full/71-719851_car-icons-suv-car.png",
+          title: "SUV 4X4",
+        }
+      : klassNameLower.includes("yük")
+      ? {
+          src: "https://www.iconpacks.net/icons/1/free-truck-icon-1058-thumb.png",
+          title: "Yük",
+        }
+      : null;
 
   function FourSeasonIcon() {
     return (
@@ -154,6 +185,51 @@ const Product = ({ tire, forSlider }) => {
                   />
                 </Link>
               </div>
+              {ribbonValue && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "0",
+                    right: "0",
+                    width: "0",
+                    height: "0",
+                    borderTop: "90px solid #f25800",
+                    borderLeft: "90px solid transparent",
+                    zIndex: "3",
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "-79px",
+                      right: "6px",
+                      color: "#fff",
+                      textAlign: "center",
+                      lineHeight: "1.1",
+                      fontWeight: "700",
+                    }}
+                  >
+                    <div style={{ fontSize: "12px" }}>Klass</div>
+                    <div style={{ fontSize: "20px", lineHeight: "1" }}>
+                      {ribbonValue}
+                    </div>
+                  </div>
+                </div>
+              )}
+              {klassIcon && (
+                <div
+                  style={{ position: "absolute", bottom: "15px", left: "15px", zIndex: 2 }}
+                >
+                  <img
+                    src={klassIcon.src}
+                    style={{ width: "35px", display: "inline" }}
+                    alt={klassIcon.title}
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title={klassIcon.title}
+                  />
+                </div>
+              )}
               {tire?.model?.season?.name === "Yay" && (
                 <>
                   <div
@@ -230,40 +306,6 @@ const Product = ({ tire, forSlider }) => {
                   </div>
                 </>
               )}
-              <div
-                style={{ position: "absolute", bottom: "15px", left: "15px" }}
-              >
-                {tire?.klass?.name === "Minik" && (
-                  <img
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAOCAYAAADaOrdAAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABqElEQVQ4Ea3UTygEYRjH8VkhKWKTECVJEgeKgxyk1OaGCwdcxEX2shdEOTk5OGwO2qKUJAfJSZGUAxcJNw7ag/w/SJLk+9M7mpl2dtvapz697/O+78w787yzG7ASRwPDIyjFj1mSbdpv08Zp13Br8rSaEKuf0Q5tYhujP23yCtouHKINaUUZq49xlOCqAcYmPOOV5Noo3zPuSrNcmWWNki/hwzPul6pkG4j4LdC4XWe1hejGKsahMtnzdK0io9YzfkIewzkeoHjHPZ6UBFCNZWhAN/1ELnTganWBfdh0/0JzGk8WNUy+IKxFK+hQJ8PRyP32EdGZ6PBOkclQRVSdbTTZNf8yOyjvQytusI5UZdFDDqMAu9AZqbwXGMSdzkSfq15L0YxrbEIl7Ifm/SKHiU4sQGc6hTgeoSpVIagn129DB6SvR/ksFJfQonJcIVH0MjiPAzM5RHuGqMm1cVg3nUE9ivEGZ7ySqBxB56Cjn0ffeY2+THGu1/3/Q6+nmvZAm7dAv369oV/or0fXqBracA7660kaJcwuYg8x1CFVhFiwhR1MQg/ril/L3k257nSYiwAAAABJRU5ErkJggg=="
-                    style={{ width: "35px", display: "inline" }}
-                    alt=""
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="Minik"
-                  />
-                )}
-                {tire?.klass?.name === "SUV 4X4" && (
-                  <img
-                    src="https://www.pngkey.com/png/full/71-719851_car-icons-suv-car.png"
-                    style={{ width: "35px", display: "inline" }}
-                    alt=""
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="SUV 4X4"
-                  />
-                )}
-                {tire?.klass?.name === "Yük" && (
-                  <img
-                    src="https://www.iconpacks.net/icons/1/free-truck-icon-1058-thumb.png"
-                    style={{ width: "35px", display: "inline" }}
-                    alt=""
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="Yük"
-                  />
-                )}
-              </div>
             </div>
             <ul class="product-card__info">
               <div class="product-card__name">
@@ -303,7 +345,7 @@ const Product = ({ tire, forSlider }) => {
                   </div>
 
                   <div class="display-flex">
-                    <div class="product__name">
+                    <div class="product__name" style={{ height: "auto", minHeight: "50px" }}>
                       <a href="/tyresdetail/38970/">{`${tire?.model?.name}`}</a>
                       <br />
                       <b>
@@ -359,13 +401,48 @@ const Product = ({ tire, forSlider }) => {
               style={
                 tire?.companies?.end_date
                   ? { marginBotto: "0px", justifyContent: "space-between" }
-                  : { marginTop: "40px", justifyContent: "space-between" }
+                  : {
+                      marginTop: hasExtraInfoBlock ? "16px" : "0px",
+                      justifyContent: "space-between",
+                    }
               }
             >
               <div
                 class="d-flex "
-                style={{ marginLeft: "15px", alignItems: "flex-end" }}
+                style={{
+                  marginLeft: "15px",
+                  alignItems: "flex-start",
+                  flexDirection: "column",
+                  gap: "8px",
+                }}
               >
+                {textBadges.length > 0 && (
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                    {textBadges.map((badge, index) => (
+                      <span
+                        key={`${badge}-${index}`}
+                        style={{
+                          backgroundColor: /^ev/i.test(badge) ? "#2eaf4a" : "#fff",
+                          border: /^ev/i.test(badge)
+                            ? "1px solid #2eaf4a"
+                            : "1px solid #d2d2d2",
+                          borderRadius: "999px",
+                          fontSize: "12px",
+                          fontWeight: "700",
+                          color: /^ev/i.test(badge) ? "#fff" : "#222",
+                          minWidth: "44px",
+                          textAlign: "center",
+                          padding: "3px 10px",
+                          lineHeight: "1.25",
+                          boxShadow: "0 1px 2px rgba(0,0,0,0.08)",
+                        }}
+                      >
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                <div className="d-flex" style={{ alignItems: "flex-end" }}>
                 {tire?.model?.brend?.country?.flag && (
                   <div className="flag-imgs">
                     <img
@@ -390,10 +467,75 @@ const Product = ({ tire, forSlider }) => {
                     </div>
                   </div>
                 )}
+                </div>
+                {homologationLogos.length > 0 && (
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    {homologationLogos.map((item, index) => (
+                      <div
+                        key={`${item?.name || "homolog"}-${index}`}
+                        style={{ position: "relative" }}
+                      >
+                        <img
+                          src={item?.logo}
+                          alt={item?.name || "homologasiya"}
+                          onMouseEnter={(e) => {
+                            const tooltip = e.currentTarget.nextElementSibling;
+                            if (tooltip) tooltip.style.opacity = "1";
+                          }}
+                          onMouseLeave={(e) => {
+                            const tooltip = e.currentTarget.nextElementSibling;
+                            if (tooltip) tooltip.style.opacity = "0";
+                          }}
+                          style={{
+                            width: "40px",
+                            height: "28px",
+                            objectFit: "contain",
+                            background: "#fff",
+                            border: "1px solid #d9d9d9",
+                            borderRadius: "6px",
+                            padding: "3px",
+                            boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                            cursor: "pointer",
+                          }}
+                        />
+                        <span
+                          style={{
+                            position: "absolute",
+                            left: "50%",
+                            bottom: "calc(100% + 6px)",
+                            transform: "translateX(-50%)",
+                            backgroundColor: "#222",
+                            color: "#fff",
+                            fontSize: "11px",
+                            whiteSpace: "nowrap",
+                            padding: "4px 7px",
+                            borderRadius: "4px",
+                            opacity: 0,
+                            pointerEvents: "none",
+                            transition: "opacity 0.15s ease-in-out",
+                            zIndex: 9,
+                          }}
+                        >
+                          {item?.name || "Homologasiya"}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
               <div
                 class="d-flex mt-2"
-                style={{ marginRight: "15px", flexDirection: "column" }}
+                style={{
+                  marginRight: "15px",
+                  flexDirection: "column",
+                  marginTop: textBadges.length > 0 ? "34px" : "10px",
+                }}
               >
                 <span
                   style={{
