@@ -310,7 +310,7 @@ const Product = ({ tire, forSlider }) => {
             <ul class="product-card__info">
               <div class="product-card__name">
                 <div>
-                  <div class="product-card__badges">
+                  <div class="product-card__badges" style={{ top: "12%" }}>
                     {tire?.companies?.manat_discount >= 1 && (
                       <div class="tag-badge tag-badge--sale">
                         -
