@@ -191,7 +191,7 @@ const Footer = () => {
                                 <div class="site-footer__copyright w-100">
                                     <div class="">
                                         <div class="row">
-                                            <div class="col-7"> Copyright © 2022 Vianorbaku.az </div>
+                                            <div class="col-7"> Copyright © 2026 Vianorbaku.az </div>
                                             <div class="col-5" style={{ "textAlign": "end" }}>
                                             </div>
                                         </div>
