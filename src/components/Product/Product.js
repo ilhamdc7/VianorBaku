@@ -401,10 +401,7 @@ const Product = ({ tire, forSlider }) => {
               style={
                 tire?.companies?.end_date
                   ? { marginBotto: "0px", justifyContent: "space-between" }
-                  : {
-                      marginTop: hasExtraInfoBlock ? "16px" : "0px",
-                      justifyContent: "space-between",
-                    }
+                  : { marginTop: "16px", justifyContent: "space-between" }
               }
             >
               <div
@@ -414,151 +411,145 @@ const Product = ({ tire, forSlider }) => {
                   alignItems: "flex-start",
                   flexDirection: "column",
                   gap: "8px",
+                  flex: 1,
                 }}
               >
-                {textBadges.length > 0 && (
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                    {textBadges.map((badge, index) => (
-                      <span
-                        key={`${badge}-${index}`}
-                        style={{
-                          backgroundColor: /^ev/i.test(badge) ? "#2eaf4a" : "#fff",
-                          border: /^ev/i.test(badge)
-                            ? "1px solid #2eaf4a"
-                            : "1px solid #d2d2d2",
-                          borderRadius: "999px",
-                          fontSize: "12px",
-                          fontWeight: "700",
-                          color: /^ev/i.test(badge) ? "#fff" : "#222",
-                          minWidth: "44px",
-                          textAlign: "center",
-                          padding: "3px 10px",
-                          lineHeight: "1.25",
-                          boxShadow: "0 1px 2px rgba(0,0,0,0.08)",
-                        }}
-                      >
-                        {badge}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                <div className="d-flex" style={{ alignItems: "flex-end" }}>
-                {tire?.model?.brend?.country?.flag && (
-                  <div className="flag-imgs">
-                    <img
-                      alt={`${tire?.model?.brend?.country?.name}`}
-                      class="mr-2 flag-img"
-                      src={tire?.model?.brend?.country?.flag}
-                    />
-                    <div className="descc">
-                      <span>MƏNŞƏ:</span> {tire?.model?.brend?.country?.name}
-                    </div>
-                  </div>
-                )}
-                {tire?.executive_country?.flag && (
-                  <div className="flag-imgs">
-                    <img
-                      alt={`${tire?.executive_country?.name}`}
-                      class="mr-2 flag-img"
-                      src={tire?.executive_country?.flag}
-                    />
-                    <div className="descc">
-                      <span>MƏNSUBİYYƏT:</span> {tire?.executive_country?.name}
-                    </div>
-                  </div>
-                )}
-                </div>
-                {homologationLogos.length > 0 && (
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "10px",
-                      alignItems: "center",
-                    }}
-                  >
-                    {homologationLogos.map((item, index) => (
-                      <div
-                        key={`${item?.name || "homolog"}-${index}`}
-                        style={{ position: "relative" }}
-                      >
-                        <img
-                          src={item?.logo}
-                          alt={item?.name || "homologasiya"}
-                          onMouseEnter={(e) => {
-                            const tooltip = e.currentTarget.nextElementSibling;
-                            if (tooltip) tooltip.style.opacity = "1";
-                          }}
-                          onMouseLeave={(e) => {
-                            const tooltip = e.currentTarget.nextElementSibling;
-                            if (tooltip) tooltip.style.opacity = "0";
-                          }}
-                          style={{
-                            width: "40px",
-                            height: "28px",
-                            objectFit: "contain",
-                            background: "#fff",
-                            border: "1px solid #d9d9d9",
-                            borderRadius: "6px",
-                            padding: "3px",
-                            boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-                            cursor: "pointer",
-                          }}
-                        />
-                        <span
-                          style={{
-                            position: "absolute",
-                            left: "50%",
-                            bottom: "calc(100% + 6px)",
-                            transform: "translateX(-50%)",
-                            backgroundColor: "#222",
-                            color: "#fff",
-                            fontSize: "11px",
-                            whiteSpace: "nowrap",
-                            padding: "4px 7px",
-                            borderRadius: "4px",
-                            opacity: 0,
-                            pointerEvents: "none",
-                            transition: "opacity 0.15s ease-in-out",
-                            zIndex: 9,
-                          }}
-                        >
-                          {item?.name || "Homologasiya"}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <div
-                class="d-flex mt-2"
-                style={{
-                  marginRight: "15px",
-                  flexDirection: "column",
-                  marginTop: textBadges.length > 0 ? "34px" : "10px",
-                }}
-              >
-                <span
+                <div
                   style={{
-                    fontSize: "12px",
-                    color: "#000",
-                    textAlign: "center",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "6px",
+                    minHeight: "34px",
+                    alignItems: "center",
                   }}
                 >
-                  Mövcud: {tire?.stock ?? 0}
-                </span>
-                <div style={{ display: "flex" }}>
+                  {textBadges.map((badge, index) => (
+                    <span
+                      key={`${badge}-${index}`}
+                      style={{
+                        backgroundColor: /^ev/i.test(badge) ? "#2eaf4a" : "#fff",
+                        border: /^ev/i.test(badge)
+                          ? "1px solid #2eaf4a"
+                          : "1px solid #d2d2d2",
+                        borderRadius: "999px",
+                        fontSize: "12px",
+                        fontWeight: "700",
+                        color: /^ev/i.test(badge) ? "#fff" : "#222",
+                        minWidth: "44px",
+                        textAlign: "center",
+                        padding: "3px 10px",
+                        lineHeight: "1.25",
+                        boxShadow: "0 1px 2px rgba(0,0,0,0.08)",
+                      }}
+                    >
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+                <div
+                  className="d-flex"
+                  style={{
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    width: "100%",
+                    minHeight: "34px",
+                  }}
+                >
+                  <div className="d-flex" style={{ alignItems: "flex-end" }}>
+                    {tire?.model?.brend?.country?.flag && (
+                      <div className="flag-imgs">
+                        <img
+                          alt={`${tire?.model?.brend?.country?.name}`}
+                          class="mr-2 flag-img"
+                          src={tire?.model?.brend?.country?.flag}
+                        />
+                        <div className="descc">
+                          <span>MƏNŞƏ:</span> {tire?.model?.brend?.country?.name}
+                        </div>
+                      </div>
+                    )}
+                    {tire?.executive_country?.flag && (
+                      <div className="flag-imgs">
+                        <img
+                          alt={`${tire?.executive_country?.name}`}
+                          class="mr-2 flag-img"
+                          src={tire?.executive_country?.flag}
+                        />
+                        <div className="descc">
+                          <span>MƏNSUBİYYƏT:</span> {tire?.executive_country?.name}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                   <span
-                    style={{ visibility: "hidden" }}
-                    value="4"
-                    class="stock"
+                    style={{
+                      fontSize: "12px",
+                      color: "#000",
+                      textAlign: "center",
+                      marginRight: "15px",
+                    }}
                   >
-                    4
+                    Mövcud: {tire?.stock ?? 0}
                   </span>
-                  {/* <button class="count_change change2">-</button>
-                  <span id="change_count" class="mr-2 ml-2 count_change_span">
-                    1
-                  </span>
-                  <button class="count_change  change">+</button> */}
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "10px",
+                    alignItems: "center",
+                    minHeight: "40px",
+                  }}
+                >
+                  {homologationLogos.map((item, index) => (
+                    <div
+                      key={`${item?.name || "homolog"}-${index}`}
+                      style={{ position: "relative" }}
+                    >
+                      <img
+                        src={item?.logo}
+                        alt={item?.name || "homologasiya"}
+                        onMouseEnter={(e) => {
+                          const tooltip = e.currentTarget.nextElementSibling;
+                          if (tooltip) tooltip.style.opacity = "1";
+                        }}
+                        onMouseLeave={(e) => {
+                          const tooltip = e.currentTarget.nextElementSibling;
+                          if (tooltip) tooltip.style.opacity = "0";
+                        }}
+                        style={{
+                          width: "40px",
+                          height: "28px",
+                          objectFit: "contain",
+                          background: "#fff",
+                          border: "1px solid #d9d9d9",
+                          borderRadius: "6px",
+                          padding: "3px",
+                          boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                          cursor: "pointer",
+                        }}
+                      />
+                      <span
+                        style={{
+                          position: "absolute",
+                          left: "50%",
+                          bottom: "calc(100% + 6px)",
+                          transform: "translateX(-50%)",
+                          backgroundColor: "#222",
+                          color: "#fff",
+                          fontSize: "11px",
+                          whiteSpace: "nowrap",
+                          padding: "4px 7px",
+                          borderRadius: "4px",
+                          opacity: 0,
+                          pointerEvents: "none",
+                          transition: "opacity 0.15s ease-in-out",
+                          zIndex: 9,
+                        }}
+                      >
+                        {item?.name || "Homologasiya"}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
