@@ -21,8 +21,9 @@ import { incrementReklam } from "@/redux/reducers/reklamSlice";
 import { useMount } from "ahooks";
 import WhatsappSticky from "../components/WhatsappSticky/WhatsappSticky";
 export default function Home({ slider, propHeight, propRadius, propWidth }) {
+  const FETCH_LIMIT = 5000;
   const [tires, setTires] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [discountLoading, setDiscountLoading] = useState(true);
   const [actionTyres, setActionTyres] = useState([]);
   // const [slider, setSlider] = useState([])
   const [width, setWidth] = useState([]);
@@ -48,30 +49,43 @@ export default function Home({ slider, propHeight, propRadius, propWidth }) {
     });
   };
 
-  const getTires = async () => {
-    setLoading(true);
-    await baseUrl.get(`/new_tyres?limit=30`).then((res) => {
-      const { data } = res;
-      setTires(data?.results);
-    });
-    await baseUrl.get(`/discount`).then((res) => {
-      const { data, status } = res;
-      if (status >= 200 && status <= 300) {
-        setLoading(false);
-        setDiscountTyres(data);
+  const getNewTyres = async () => {
+    try {
+      const res = await baseUrl.get(`/new_tyres?limit=30`);
+      setTires(res?.data?.results ?? []);
+    } catch (e) {
+      setTires([]);
+    }
+  };
+
+  const getActionTyres = async () => {
+    try {
+      const res = await baseUrl.get(`/aksiya`);
+      if (res?.status >= 200 && res?.status <= 300) {
+        setActionTyres(res?.data ?? []);
       }
-    });
-    await baseUrl.get(`/aksiya`).then((res) => {
-      const { data, status } = res;
-      if (status >= 200 && status <= 300) {
-        setActionTyres(data);
+    } catch (e) {
+      setActionTyres([]);
+    }
+  };
+
+  const getDiscountTyres = async () => {
+    setDiscountLoading(true);
+    try {
+      const res = await baseUrl.get(`/discount`);
+      if (res?.status >= 200 && res?.status <= 300) {
+        setDiscountTyres(res?.data ?? []);
+        setDiscountLoading(false);
       }
-    });
+    } catch (e) {
+      // Keep loader visible and retry in background until data arrives.
+      setTimeout(getDiscountTyres, 5000);
+    }
   };
 
   const getMarka = async () => {
     await baseUrl
-      .get(`/markas?limit=100000000`)
+      .get(`/markas?limit=${FETCH_LIMIT}`)
       .then((res) => setMarka(res.data.results));
   };
 
@@ -115,13 +129,15 @@ export default function Home({ slider, propHeight, propRadius, propWidth }) {
 
   const getBrands = async () => {
     await baseUrl
-      .get(`/brands?limit=100000000`)
+      .get(`/brands?limit=${FETCH_LIMIT}`)
       .then((res) => setBrands(res.data));
   };
 
   useEffect(() => {
     getModalData();
-    getTires();
+    getNewTyres();
+    getActionTyres();
+    getDiscountTyres();
     // getSlider()
     // getWidth()
     // getHeight()
@@ -154,7 +170,7 @@ export default function Home({ slider, propHeight, propRadius, propWidth }) {
         {actionTyres?.length >= 1 && (
           <CompaniesSlider title={"Aksiyalar"} compaines={actionTyres} />
         )}
-        {discountTyres?.length >= 1 && loading === false ? (
+        {discountTyres?.length >= 1 && discountLoading === false ? (
           <CompaniesSlider title={"Kampaniyalar"} compaines={discountTyres} />
         ) : (
           <div

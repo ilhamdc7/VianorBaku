@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import styles from "./newProductSlider.module.css";
 
 const NewProductsSlider = ({ tires }) => {
+  const MAX_RENDERED_PRODUCTS = 24;
+  const visibleTires = (tires || []).slice(0, MAX_RENDERED_PRODUCTS);
   const settings = {
     dots: false,
     infinite: true,
@@ -48,11 +50,19 @@ const NewProductsSlider = ({ tires }) => {
               <div class="section-header__divider"></div>
             </div>
           </div>
-          <Slider {...settings} className={styles.slider}>
-            {tires?.map((tire) => (
-              <Product tire={tire} />
-            ))}
-          </Slider>
+          {visibleTires.length >= 4 ? (
+            <Slider {...settings} className={styles.slider}>
+              {visibleTires.map((tire, index) => (
+                <Product key={tire?.id || `new-${index}`} tire={tire} />
+              ))}
+            </Slider>
+          ) : (
+            <div className="d-flex align-items-center w-100">
+              {visibleTires.map((tire, index) => (
+                <Product key={tire?.id || `new-static-${index}`} tire={tire} forSlider={true} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>

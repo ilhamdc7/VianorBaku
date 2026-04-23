@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import LoaderComponent from "@/components/LoaderComponent/LoaderComponent"
 
 const CalcSlider = ({ slider, width, height, radius, markas }) => {
+  const FETCH_LIMIT = 5000;
   const [filterBy, setFilterBy] = useState("forTire");
   const [selectedWidth, setSelectedWidth] = useState(null);
   const [selectedHeight, setSelectedHeight] = useState(null);
@@ -47,22 +48,17 @@ const CalcSlider = ({ slider, width, height, radius, markas }) => {
   }, [selectedMarka])
 
 
-  useEffect(() => {
-    getYears()
-  }, [selectedModel])
-
-
   const getYears = async () => {
-    await baseUrl.get(`/years?limit=100000000`)
+    await baseUrl.get(`/years?limit=${FETCH_LIMIT}`)
       .then(res => setYears(res.data.results))
   }
 
   useEffect(() => {
-    getEngines()
+    Promise.all([getYears(), getEngines()]);
   }, [])
 
   const getEngines = async () => {
-    await baseUrl.get(`engines?limit=100000000`)
+    await baseUrl.get(`engines?limit=${FETCH_LIMIT}`)
       .then(res => setEngines(res.data.results))
   }
 

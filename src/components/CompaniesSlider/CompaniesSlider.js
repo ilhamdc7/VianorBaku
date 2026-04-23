@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import Product from "../Product/Product";
 import Slider from "react-slick";
 import styles from "./companiesSlider.module.css";
-import { shuffle } from "lodash";
 
 const CompaniesSlider = ({ compaines, title }) => {
+  const MAX_RENDERED_PRODUCTS = 24;
   const settings = {
     dots: false,
     infinite: true,
@@ -35,7 +35,10 @@ const CompaniesSlider = ({ compaines, title }) => {
     ],
   };
 
-  const [length, setLength] = useState(4);
+  const [length, setLength] = useState(0);
+  const flattenedProducts =
+    compaines?.flatMap((group) => group?.products || []) || [];
+  const visibleProducts = flattenedProducts.slice(0, MAX_RENDERED_PRODUCTS);
 
   useEffect(() => {
     let length = 0;
@@ -59,21 +62,21 @@ const CompaniesSlider = ({ compaines, title }) => {
               <div class="section-header__divider"></div>
             </div>
           </div>
-          {(length >= 4 && window?.screen?.width >= 1201) ||
-          (length >= 3 && window?.screen?.width <= 1200) ||
-          (length >= 1 && window?.screen?.width <= 800) ? (
+          {visibleProducts.length >= 4 ? (
             <Slider {...settings} className={styles.slider}>
-              {compaines?.map((tyres) =>
-                tyres?.products?.map((tyre) => <Product tire={tyre} />)
-              )}
+              {visibleProducts.map((tyre, index) => (
+                <Product key={tyre?.id || `${title}-${index}`} tire={tyre} />
+              ))}
             </Slider>
           ) : (
             <div className="d-flex align-items-center w-100">
-              {compaines?.map((tyres) =>
-                tyres?.products?.map((tyre) => (
-                  <Product tire={tyre} forSlider={true} />
-                ))
-              )}
+              {visibleProducts.map((tyre, index) => (
+                <Product
+                  key={tyre?.id || `${title}-static-${index}`}
+                  tire={tyre}
+                  forSlider={true}
+                />
+              ))}
             </div>
           )}
         </div>
