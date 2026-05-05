@@ -85,7 +85,7 @@ const Contact = () => {
 
                                                 </p>
                                                 <p>
-                                                    Telefon nömrəsi:  +994 (12) 424 07 53 <span style={{marginLeft:'20px'}}>+994 (77) 406 10 10</span>
+                                                    Telefon nömrəsi:  +994 (12) 424 07 53 <span style={{marginLeft:'20px'}}>+994 (77) 499 10 10</span>
 
 
                                                 </p>

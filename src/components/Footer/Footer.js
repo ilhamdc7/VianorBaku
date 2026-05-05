@@ -35,7 +35,7 @@ const Footer = () => {
 
                                                 <dd style={{ "whiteSpace": "nowrap" }}>+994 12 424-07-53</dd>
 
-                                                <dd style={{ "whiteSpace": "nowrap" }}>+994 77 406-10-10</dd>
+                                                <dd style={{ "whiteSpace": "nowrap" }}>+994 77 499-10-10</dd>
 
 
                                             </dl>
