@@ -104,16 +104,18 @@ const ProductInfo = ({product}) => {
       </div>
       <div class="product__meta">
         <table>
-          <tr>
-            <th>Marka</th>
-            <td>
-              <a>{product?.model?.brend?.title}</a>
-            </td>
-          </tr>
-          <tr>
-            <th>Ölkə</th>
-            <td> {product?.model?.brend?.country?.name}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <th>Marka</th>
+              <td>
+                <a>{product?.model?.brend?.title}</a>
+              </td>
+            </tr>
+            <tr>
+              <th>Ölkə</th>
+              <td> {product?.model?.brend?.country?.name}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
       <div class="d-flex">

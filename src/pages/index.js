@@ -18,12 +18,34 @@ import Modal from "react-bootstrap/Modal";
 import styles from "../styles/Home.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { incrementReklam } from "@/redux/reducers/reklamSlice";
-import { useMount } from "ahooks";
 import WhatsappSticky from "../components/WhatsappSticky/WhatsappSticky";
-export default function Home({ slider, propHeight, propRadius, propWidth }) {
+import { persistor } from "@/redux/store/store";
+
+const API_URL = "https://api.vianorbaku.az";
+// The campaigns slider only renders this many products (see CompaniesSlider).
+const MAX_DISCOUNT_PRODUCTS = 24;
+
+// /discount's limit applies per campaign, so trim the flattened total as well
+// to exactly what the slider shows.
+const trimDiscountGroups = (groups) => {
+  let remaining = MAX_DISCOUNT_PRODUCTS;
+  return (groups ?? []).map((group) => {
+    const products = (group?.products ?? []).slice(0, remaining);
+    remaining -= products.length;
+    return { ...group, products };
+  });
+};
+
+export default function Home({
+  slider,
+  propHeight,
+  propRadius,
+  propWidth,
+  propDiscountTyres,
+}) {
   const FETCH_LIMIT = 5000;
   const [tires, setTires] = useState([]);
-  const [discountLoading, setDiscountLoading] = useState(true);
+  const [discountLoading, setDiscountLoading] = useState(!propDiscountTyres);
   const [actionTyres, setActionTyres] = useState([]);
   // const [slider, setSlider] = useState([])
   const [width, setWidth] = useState([]);
@@ -31,23 +53,28 @@ export default function Home({ slider, propHeight, propRadius, propWidth }) {
   const [radius, setRadius] = useState([]);
   const [brands, setBrands] = useState([]);
   const [marka, setMarka] = useState([]);
-  const [discountTyres, setDiscountTyres] = useState([]);
+  const [discountTyres, setDiscountTyres] = useState(propDiscountTyres ?? []);
   const [modal, setModal] = useState(false);
   const [modalData, setModalData] = useState();
 
   const { count } = useSelector((state) => state.reklam);
   const dispatch = useDispatch();
 
-  useMount(() => {
-    dispatch(incrementReklam());
-  });
-
-  const getModalData = async () => {
-    await baseUrl.get(`/popup`).then((res) => {
-      setModal(!!res.data);
-      setModalData(res.data);
+  // Count the visit only after the persisted state is restored, otherwise
+  // rehydration would overwrite the increment.
+  useEffect(() => {
+    if (persistor.getState().bootstrapped) {
+      dispatch(incrementReklam());
+      return;
+    }
+    const unsubscribe = persistor.subscribe(() => {
+      if (persistor.getState().bootstrapped) {
+        unsubscribe();
+        dispatch(incrementReklam());
+      }
     });
-  };
+    return unsubscribe;
+  }, []);
 
   const getNewTyres = async () => {
     try {
@@ -72,9 +99,9 @@ export default function Home({ slider, propHeight, propRadius, propWidth }) {
   const getDiscountTyres = async () => {
     setDiscountLoading(true);
     try {
-      const res = await baseUrl.get(`/discount`);
+      const res = await baseUrl.get(`/discount?limit=${MAX_DISCOUNT_PRODUCTS}`);
       if (res?.status >= 200 && res?.status <= 300) {
-        setDiscountTyres(res?.data ?? []);
+        setDiscountTyres(trimDiscountGroups(res?.data));
         setDiscountLoading(false);
       }
     } catch (e) {
@@ -134,10 +161,13 @@ export default function Home({ slider, propHeight, propRadius, propWidth }) {
   };
 
   useEffect(() => {
-    getModalData();
+    // The popup modal is disabled below, so /popup is no longer requested.
     getNewTyres();
     getActionTyres();
-    getDiscountTyres();
+    // Normally provided by getStaticProps; fetch here only if that failed.
+    if (!propDiscountTyres) {
+      getDiscountTyres();
+    }
     // getSlider()
     // getWidth()
     // getHeight()
@@ -199,27 +229,33 @@ export default function Home({ slider, propHeight, propRadius, propWidth }) {
   );
 }
 
+const fetchJson = async (path) => {
+  try {
+    const res = await fetch(`${API_URL}${path}`);
+    return await res.json();
+  } catch (e) {
+    return null;
+  }
+};
+
 export async function getStaticProps() {
-  const res = await fetch("https://api.vianorbaku.az/slider?limit=100000000");
-  const slider = await res.json();
-  const resWidth = await fetch(
-    `https://api.vianorbaku.az/tyre_width?limit=100000000`
-  );
-  const propWidth = await resWidth.json();
-  const resHeight = await fetch(
-    `https://api.vianorbaku.az/tyre_height?limit=100000000`
-  );
-  const propHeight = await resHeight.json();
-  const resRadius = await fetch(
-    `https://api.vianorbaku.az/tyre_diametr?limit=100000000`
-  );
-  const propRadius = await resRadius.json();
+  const [slider, propWidth, propHeight, propRadius, discount] =
+    await Promise.all([
+      fetchJson(`/slider?limit=100000000`),
+      fetchJson(`/tyre_width?limit=100000000`),
+      fetchJson(`/tyre_height?limit=100000000`),
+      fetchJson(`/tyre_diametr?limit=100000000`),
+      fetchJson(`/discount?limit=${MAX_DISCOUNT_PRODUCTS}`),
+    ]);
   return {
     props: {
-      slider: slider?.results,
-      propWidth: propWidth?.results,
-      propHeight: propHeight?.results,
-      propRadius: propRadius?.results,
+      slider: slider?.results ?? [],
+      propWidth: propWidth?.results ?? [],
+      propHeight: propHeight?.results ?? [],
+      propRadius: propRadius?.results ?? [],
+      propDiscountTyres: Array.isArray(discount)
+        ? trimDiscountGroups(discount)
+        : null,
     },
     revalidate: 10,
   };

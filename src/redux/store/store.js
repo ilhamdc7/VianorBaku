@@ -20,4 +20,6 @@ export const store = configureStore({
   middleware: [thunk]
 })
 
-export const persistor = persistStore(store)
+// Rehydration is started from _app after the first render, so the server HTML and
+// the client's hydration render both use the initial state and match.
+export const persistor = persistStore(store, { manualPersist: true })

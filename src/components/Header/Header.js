@@ -5,12 +5,16 @@ import { useRouter } from "next/router";
 import { baseUrl } from "@/pages/api/api";
 import WheelCalculatorPng from "../../../assests/images/az.png";
 
+// Header remounts on every page; keep /main for the session so the logo
+// doesn't disappear and get re-requested on each navigation.
+let cachedMainData = null;
+
 const Header = () => {
   const [show, setShow] = useState();
   const [sumOfPriceProduct, setSumOfPriceProduct] = useState(null);
   const { cart } = useSelector((state) => state.cart);
   const [searchInput, setSearchInput] = useState("");
-  const [mainData, setMainData] = useState({});
+  const [mainData, setMainData] = useState(cachedMainData ?? {});
 
   const router = useRouter();
 
@@ -27,11 +31,16 @@ const Header = () => {
   }, [cart]);
 
   const getMainData = async () => {
-    baseUrl.get(`main`).then((res) => setMainData(res?.data));
+    baseUrl.get(`main`).then((res) => {
+      cachedMainData = res?.data;
+      setMainData(res?.data);
+    });
   };
 
   useEffect(() => {
-    getMainData();
+    if (!cachedMainData) {
+      getMainData();
+    }
   }, []);
 
   return (
@@ -169,12 +178,14 @@ const Header = () => {
                 <ul class="dropcart__list"></ul>
                 <div class="dropcart__totals">
                   <table>
-                    <tr>
-                      <th>Ümumi</th>
-                      <td class="total-price align-items-baseline">
-                        {/* 0 <img class="manatt" src="/static/images/manat.png" />{" "} */}
-                      </td>
-                    </tr>
+                    <tbody>
+                      <tr>
+                        <th>Ümumi</th>
+                        <td class="total-price align-items-baseline">
+                          {/* 0 <img class="manatt" src="/static/images/manat.png" />{" "} */}
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
                 </div>
                 <div class="dropcart__actions">

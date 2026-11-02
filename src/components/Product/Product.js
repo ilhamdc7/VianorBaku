@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo } from "react";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,24 +11,73 @@ import { addToCart } from "@/redux/reducers/cartSlice";
 import { notification } from "antd";
 import dynamic from "next/dynamic";
 import FourSeason from "../../../assests/images/4_seasons.png";
-import { Statistic } from "antd";
+import CampaignCountdown from "./CampaignCountdown";
 const DateCountdown = dynamic(() => import("react-date-countdown-timer"), {
   loading: () => "Loading...",
   ssr: false,
 });
 
-const Product = ({ tire, forSlider }) => {
-  const [api, contextHolder] = notification.useNotification();
-  const openNotification = (placement) => {
-    api.info({
-      message: `Səbətə əlavə olundu`,
-      icon: <FontAwesomeIcon icon={faCheckSquare} />,
-      placement,
-    });
-  };
+// One shared notification instead of a separate holder per product card.
+const openNotification = (placement) => {
+  notification.info({
+    message: `Səbətə əlavə olundu`,
+    icon: <FontAwesomeIcon icon={faCheckSquare} />,
+    placement,
+  });
+};
 
-  const { Countdown } = Statistic;
+function FourSeasonIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="256px"
+      height="256"
+      style={{ zoom: "0.1" }}
+      fillRule="evenodd"
+      clipRule="evenodd"
+      imageRendering="optimizeQuality"
+      shapeRendering="geometricPrecision"
+      textRendering="geometricPrecision"
+    >
+      <path
+        fill="#f90"
+        d="M123.5-.5h8c1.644.816 2.81 2.15 3.5 4a462.27 462.27 0 010 43c-5 5.333-10 5.333-15 0a462.27 462.27 0 010-43c.69-1.85 1.856-3.184 3.5-4z"
+        opacity="0.98"
+      ></path>
+      <path
+        fill="#f90"
+        d="M39.5 34.5c3.15-.289 6.15.211 9 1.5L74 61.5c3.553 10.074.053 14.574-10.5 13.5L35 46.5c-1.526-5.261-.026-9.261 4.5-12z"
+        opacity="0.958"
+      ></path>
+      <path
+        fill="#f90"
+        d="M208.5 34.5c9.104-1.062 12.938 2.938 11.5 12A514.302 514.302 0 01193.5 74c-10.074 3.553-14.574.053-13.5-10.5a390.544 390.544 0 0128.5-29z"
+        opacity="0.962"
+      ></path>
+      <path
+        fill="#00abf7"
+        d="M131.5 255.5h-8a27.241 27.241 0 01-3.5-5l-1-34A816.97 816.97 0 0095.5 230c-6.743 1.799-10.743-.701-12-7.5.333-2.51 1.333-4.677 3-6.5a1552.334 1552.334 0 0032.5-18.5 504.815 504.815 0 00-.5-55 3302.481 3302.481 0 00-47.5 27l-1 39c-2.435 4.724-6.269 6.224-11.5 4.5-1.833-.5-3-1.667-3.5-3.5a308.649 308.649 0 00-2.5-29 622.713 622.713 0 01-26 14.5c-3.292.936-6.292.436-9-1.5-.826-.951-.992-1.951-.5-3a4945.307 4945.307 0 0155.5-33 94.235 94.235 0 0012-5.5c1.563-.759 2.563-1.926 3-3.5a4633.574 4633.574 0 0079-45 42.494 42.494 0 0011-5.5c1.563-.759 2.563-1.926 3-3.5a2706.013 2706.013 0 0056.5-32 3.942 3.942 0 012 1c1.098 4.005.265 7.505-2.5 10.5l-28 16c8.75 4.79 17.25 9.957 25.5 15.5 3.215 9.08.048 13.247-9.5 12.5a958.743 958.743 0 01-32-18.5 2146.144 2146.144 0 00-48 27.5 1726.057 1726.057 0 0048 28.5 758.053 758.053 0 0132-18.5c9.548-.747 12.715 3.42 9.5 12.5a309.79 309.79 0 00-24.5 15.5l26 15c3.712 2.602 4.878 6.102 3.5 10.5-2.226 4.361-5.726 5.861-10.5 4.5l-27-15.5-2.5 30c-2.513 3.712-6.013 4.878-10.5 3.5-2.602-.935-4.102-2.768-4.5-5.5a3646.49 3646.49 0 010-38l-48-28a542.165 542.165 0 00.5 57 337.45 337.45 0 0133.5 20c1.664 8.666-1.836 12.5-10.5 11.5a271.95 271.95 0 01-23.5-13.5l-1 35a20.673 20.673 0 01-3.5 4z"
+        opacity="0.948"
+      ></path>
+      <path
+        fill="#fe9900"
+        d="M180.5 94.5c-.437 1.574-1.437 2.741-3 3.5a42.494 42.494 0 01-11 5.5c-17.2-22.704-38.533-27.537-64-14.5-20.738 16.02-25.738 35.853-15 59.5-.437 1.574-1.437 2.741-3 3.5a94.235 94.235 0 01-12 5.5c-14.043-30.399-8.71-56.899 16-79.5 26.571-18.19 52.905-17.857 79 1 5.297 4.455 9.63 9.621 13 15.5z"
+        opacity="0.954"
+      ></path>
+      <path
+        fill="#f90"
+        d="M-.5 131.5v-8c1.582-2.47 3.915-3.97 7-4.5a342.33 342.33 0 0137 0c6.464 1.756 8.63 5.923 6.5 12.5l-3.5 3.5a462.27 462.27 0 01-43 0 19.564 19.564 0 00-4-3.5z"
+        opacity="0.947"
+      ></path>
+    </svg>
+  );
+}
 
+// lazyImages is only for grids: carousels clip off-screen slides, so lazy images
+// there would load only after sliding into view.
+const Product = ({ tire, forSlider, lazyImages }) => {
+  const imageLoading = lazyImages ? "lazy" : undefined;
+  const imageDecoding = lazyImages ? "async" : undefined;
   const dispatch = useDispatch();
 
   const addToBasket = (data) => {
@@ -69,56 +118,9 @@ const Product = ({ tire, forSlider }) => {
         }
       : null;
 
-  function FourSeasonIcon() {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="256px"
-        height="256"
-        style={{ zoom: "0.1" }}
-        fillRule="evenodd"
-        clipRule="evenodd"
-        imageRendering="optimizeQuality"
-        shapeRendering="geometricPrecision"
-        textRendering="geometricPrecision"
-      >
-        <path
-          fill="#f90"
-          d="M123.5-.5h8c1.644.816 2.81 2.15 3.5 4a462.27 462.27 0 010 43c-5 5.333-10 5.333-15 0a462.27 462.27 0 010-43c.69-1.85 1.856-3.184 3.5-4z"
-          opacity="0.98"
-        ></path>
-        <path
-          fill="#f90"
-          d="M39.5 34.5c3.15-.289 6.15.211 9 1.5L74 61.5c3.553 10.074.053 14.574-10.5 13.5L35 46.5c-1.526-5.261-.026-9.261 4.5-12z"
-          opacity="0.958"
-        ></path>
-        <path
-          fill="#f90"
-          d="M208.5 34.5c9.104-1.062 12.938 2.938 11.5 12A514.302 514.302 0 01193.5 74c-10.074 3.553-14.574.053-13.5-10.5a390.544 390.544 0 0128.5-29z"
-          opacity="0.962"
-        ></path>
-        <path
-          fill="#00abf7"
-          d="M131.5 255.5h-8a27.241 27.241 0 01-3.5-5l-1-34A816.97 816.97 0 0095.5 230c-6.743 1.799-10.743-.701-12-7.5.333-2.51 1.333-4.677 3-6.5a1552.334 1552.334 0 0032.5-18.5 504.815 504.815 0 00-.5-55 3302.481 3302.481 0 00-47.5 27l-1 39c-2.435 4.724-6.269 6.224-11.5 4.5-1.833-.5-3-1.667-3.5-3.5a308.649 308.649 0 00-2.5-29 622.713 622.713 0 01-26 14.5c-3.292.936-6.292.436-9-1.5-.826-.951-.992-1.951-.5-3a4945.307 4945.307 0 0155.5-33 94.235 94.235 0 0012-5.5c1.563-.759 2.563-1.926 3-3.5a4633.574 4633.574 0 0079-45 42.494 42.494 0 0011-5.5c1.563-.759 2.563-1.926 3-3.5a2706.013 2706.013 0 0056.5-32 3.942 3.942 0 012 1c1.098 4.005.265 7.505-2.5 10.5l-28 16c8.75 4.79 17.25 9.957 25.5 15.5 3.215 9.08.048 13.247-9.5 12.5a958.743 958.743 0 01-32-18.5 2146.144 2146.144 0 00-48 27.5 1726.057 1726.057 0 0048 28.5 758.053 758.053 0 0132-18.5c9.548-.747 12.715 3.42 9.5 12.5a309.79 309.79 0 00-24.5 15.5l26 15c3.712 2.602 4.878 6.102 3.5 10.5-2.226 4.361-5.726 5.861-10.5 4.5l-27-15.5-2.5 30c-2.513 3.712-6.013 4.878-10.5 3.5-2.602-.935-4.102-2.768-4.5-5.5a3646.49 3646.49 0 010-38l-48-28a542.165 542.165 0 00.5 57 337.45 337.45 0 0133.5 20c1.664 8.666-1.836 12.5-10.5 11.5a271.95 271.95 0 01-23.5-13.5l-1 35a20.673 20.673 0 01-3.5 4z"
-          opacity="0.948"
-        ></path>
-        <path
-          fill="#fe9900"
-          d="M180.5 94.5c-.437 1.574-1.437 2.741-3 3.5a42.494 42.494 0 01-11 5.5c-17.2-22.704-38.533-27.537-64-14.5-20.738 16.02-25.738 35.853-15 59.5-.437 1.574-1.437 2.741-3 3.5a94.235 94.235 0 01-12 5.5c-14.043-30.399-8.71-56.899 16-79.5 26.571-18.19 52.905-17.857 79 1 5.297 4.455 9.63 9.621 13 15.5z"
-          opacity="0.954"
-        ></path>
-        <path
-          fill="#f90"
-          d="M-.5 131.5v-8c1.582-2.47 3.915-3.97 7-4.5a342.33 342.33 0 0137 0c6.464 1.756 8.63 5.923 6.5 12.5l-3.5 3.5a462.27 462.27 0 01-43 0 19.564 19.564 0 00-4-3.5z"
-          opacity="0.947"
-        ></path>
-      </svg>
-    );
-  }
 
   return (
     <>
-      {contextHolder}
       <div
         class="block-products-carousel__column single_product"
         id="card-hover"
@@ -171,6 +173,8 @@ const Product = ({ tire, forSlider }) => {
             }
           >
             <img
+              loading={imageLoading}
+              decoding={imageDecoding}
               style={{ width: "80%", height: "50px", margin: "10px auto" }}
               src={tire?.model?.brend?.brand_image}
             />
@@ -179,6 +183,8 @@ const Product = ({ tire, forSlider }) => {
               <div class="image image--type--product">
                 <Link class="image__body" href={`/details/${tire?.id}`}>
                   <img
+                    loading={imageLoading}
+                    decoding={imageDecoding}
                     class="image__tag"
                     src={tire?.model?.model_image[0]?.tyre_images}
                     alt=""
@@ -221,6 +227,8 @@ const Product = ({ tire, forSlider }) => {
                   style={{ position: "absolute", bottom: "15px", left: "15px", zIndex: 2 }}
                 >
                   <img
+                    loading={imageLoading}
+                    decoding={imageDecoding}
                     src={klassIcon.src}
                     style={{ width: "35px", display: "inline" }}
                     alt={klassIcon.title}
@@ -459,6 +467,8 @@ const Product = ({ tire, forSlider }) => {
                     {tire?.model?.brend?.country?.flag && (
                       <div className="flag-imgs">
                         <img
+                          loading={imageLoading}
+                          decoding={imageDecoding}
                           alt={`${tire?.model?.brend?.country?.name}`}
                           class="mr-2 flag-img"
                           src={tire?.model?.brend?.country?.flag}
@@ -471,6 +481,8 @@ const Product = ({ tire, forSlider }) => {
                     {tire?.executive_country?.flag && (
                       <div className="flag-imgs">
                         <img
+                          loading={imageLoading}
+                          decoding={imageDecoding}
                           alt={`${tire?.executive_country?.name}`}
                           class="mr-2 flag-img"
                           src={tire?.executive_country?.flag}
@@ -506,6 +518,8 @@ const Product = ({ tire, forSlider }) => {
                       style={{ position: "relative" }}
                     >
                       <img
+                        loading={imageLoading}
+                        decoding={imageDecoding}
                         src={item?.logo}
                         alt={item?.name || "homologasiya"}
                         onMouseEnter={(e) => {
@@ -621,8 +635,7 @@ const Product = ({ tire, forSlider }) => {
                 {!!tire?.companies?.bottom_text ? (
                   <h4>{tire?.companies?.bottom_text}</h4>
                 ) : (
-                  <Countdown
-                    format="DD gün: HH:mm:ss"
+                  <CampaignCountdown
                     style={{ fontWeight: "500", fontSize: "14px" }}
                     value={new Date(tire?.companies?.end_date)}
                   />
@@ -636,4 +649,4 @@ const Product = ({ tire, forSlider }) => {
   );
 };
 
-export default Product;
+export default memo(Product);

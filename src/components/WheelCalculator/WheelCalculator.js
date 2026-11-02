@@ -58,120 +58,124 @@ const WheelCalculator = () => {
               <b> Avtomobilinizin təkər ölçüsü </b>
             </label>
             <table class="m-auto">
-              <tr>
-                <td>
-                  <div class="">
-                    <select
-                      name="width"
-                      class="block-finder__form-control block-finder__form-control--select"
-                      style={{ "fontSize": "28px" }}
-                      onChange={(e) => setChangedWidth(e.target.value)}
-                    >
-                      <option value={''}>En</option>
-                      {width?.map((wdt) => (
-                        <option value={wdt?.size}>{wdt?.size}</option>
-                      ))}
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="">
+                      <select
+                        name="width"
+                        class="block-finder__form-control block-finder__form-control--select"
+                        style={{ "fontSize": "28px" }}
+                        onChange={(e) => setChangedWidth(e.target.value)}
+                      >
+                        <option value={''}>En</option>
+                        {width?.map((wdt) => (
+                          <option value={wdt?.size}>{wdt?.size}</option>
+                        ))}
 
 
-                    </select>
-                  </div>
-                </td>
+                      </select>
+                    </div>
+                  </td>
 
-                <td>&nbsp;/&nbsp;</td>
+                  <td>&nbsp;/&nbsp;</td>
 
-                <td>
-                  <div class="">
-                    <select
-                      name="height"
-                      class="block-finder__form-control block-finder__form-control--select"
-                      style={{ "fontSize": "28px" }}
-                      onChange={(e) => setChangedHeight(e.target.value)}
-                    >
-                      <option value={''}>Hündürlük</option>
-                      {height?.map((hgt) => (
-                        <option value={hgt?.size}>{hgt?.size}</option>
-                      ))}
-                    </select>
-                  </div>
-                </td>
+                  <td>
+                    <div class="">
+                      <select
+                        name="height"
+                        class="block-finder__form-control block-finder__form-control--select"
+                        style={{ "fontSize": "28px" }}
+                        onChange={(e) => setChangedHeight(e.target.value)}
+                      >
+                        <option value={''}>Hündürlük</option>
+                        {height?.map((hgt) => (
+                          <option value={hgt?.size}>{hgt?.size}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </td>
 
-                <td>&nbsp;R&nbsp;</td>
+                  <td>&nbsp;R&nbsp;</td>
 
-                <td>
-                  <div class="">
-                    <select
-                      name="radius"
-                      class="block-finder__form-control block-finder__form-control--select"
-                      style={{ "fontSize": "28px" }}
-                      onChange={(e) => setChangedDiametr(e.target.value)}
-                    >
-                      <option value={''}>Diametr</option>
-                      {diametr?.map((dmt) => (
-                        <option value={dmt?.size}>{dmt?.size}</option>
-                      ))}
-                    </select>
-                  </div>
-                </td>
-              </tr>
+                  <td>
+                    <div class="">
+                      <select
+                        name="radius"
+                        class="block-finder__form-control block-finder__form-control--select"
+                        style={{ "fontSize": "28px" }}
+                        onChange={(e) => setChangedDiametr(e.target.value)}
+                      >
+                        <option value={''}>Diametr</option>
+                        {diametr?.map((dmt) => (
+                          <option value={dmt?.size}>{dmt?.size}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
             <img class="mb-2" style={{width:'45px'}} src={YukPng.src} />
 
             <table class="m-auto">
-              <tr>
-                <td>
-                  <div class="">
-                    <select
-                      name="width"
-                      class="block-finder__form-control block-finder__form-control--select"
-                      style={{ "fontSize": "28px" }}
-                      onChange={(e) => setSecondChangedWidth(e.target.value)}
-                    >
-                      <option value={''}>En</option>
-                      {width?.map((wdt) => (
-                        <option value={wdt?.size}>{wdt?.size}</option>
-                      ))}
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="">
+                      <select
+                        name="width"
+                        class="block-finder__form-control block-finder__form-control--select"
+                        style={{ "fontSize": "28px" }}
+                        onChange={(e) => setSecondChangedWidth(e.target.value)}
+                      >
+                        <option value={''}>En</option>
+                        {width?.map((wdt) => (
+                          <option value={wdt?.size}>{wdt?.size}</option>
+                        ))}
 
 
-                    </select>
-                  </div>
-                </td>
+                      </select>
+                    </div>
+                  </td>
 
-                <td>&nbsp;/&nbsp;</td>
+                  <td>&nbsp;/&nbsp;</td>
 
-                <td>
-                  <div class="">
-                    <select
-                      name="height"
-                      class="block-finder__form-control block-finder__form-control--select"
-                      style={{ "fontSize": "28px" }}
-                      onChange={(e) => setSecondChangedHeight(e.target.value)}
-                    >
-                      <option value={''}>Hündürlük</option>
-                      {height?.map((hgt) => (
-                        <option value={hgt?.size}>{hgt?.size}</option>
-                      ))}
-                    </select>
-                  </div>
-                </td>
+                  <td>
+                    <div class="">
+                      <select
+                        name="height"
+                        class="block-finder__form-control block-finder__form-control--select"
+                        style={{ "fontSize": "28px" }}
+                        onChange={(e) => setSecondChangedHeight(e.target.value)}
+                      >
+                        <option value={''}>Hündürlük</option>
+                        {height?.map((hgt) => (
+                          <option value={hgt?.size}>{hgt?.size}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </td>
 
-                <td>&nbsp;R&nbsp;</td>
+                  <td>&nbsp;R&nbsp;</td>
 
-                <td>
-                  <div class="">
-                    <select
-                      name="radius"
-                      class="block-finder__form-control block-finder__form-control--select"
-                      style={{ "fontSize": "28px" }}
-                      onChange={(e) => setSecondChangedDiametr(e.target.value)}
-                    >
-                      <option value={''}>Diametr</option>
-                      {diametr?.map((dmt) => (
-                        <option value={dmt?.size}>{dmt?.size}</option>
-                      ))}
-                    </select>
-                  </div>
-                </td>
-              </tr>
+                  <td>
+                    <div class="">
+                      <select
+                        name="radius"
+                        class="block-finder__form-control block-finder__form-control--select"
+                        style={{ "fontSize": "28px" }}
+                        onChange={(e) => setSecondChangedDiametr(e.target.value)}
+                      >
+                        <option value={''}>Diametr</option>
+                        {diametr?.map((dmt) => (
+                          <option value={dmt?.size}>{dmt?.size}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
             <label style={{ "color": "#f25900", "fontSize": "16px" }}>
               <b> Yeni təkərlərin ölçüsü </b>

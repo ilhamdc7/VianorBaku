@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.bundle.min";
 import Head from "next/head";
@@ -8,11 +7,18 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import { Provider } from "react-redux";
 import { store, persistor } from "../redux/store/store";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { PersistGate } from "redux-persist/integration/react";
+import { useEffect } from "react";
 import ScrollTop from "./scrollTop/scroll";
 
 config.autoAddCss = false;
 export default function App({ Component, pageProps }) {
+  // PersistGate rendered nothing until localStorage was restored, which made every
+  // server-rendered page empty. Pages now render immediately and the cart fills in
+  // right after mount.
+  useEffect(() => {
+    persistor.persist();
+  }, []);
+
   return (
     <>
       <Head>
@@ -38,9 +44,7 @@ export default function App({ Component, pageProps }) {
         ></Script>
       </Head>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <Component {...pageProps} />
-        </PersistGate>
+        <Component {...pageProps} />
       </Provider>
     </>
   );
