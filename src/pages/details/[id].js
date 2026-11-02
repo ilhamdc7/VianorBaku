@@ -162,7 +162,16 @@ export default Description;
 
 export async function getServerSideProps(context) {
   const { id } = context.query
-  const { data } = await baseUrl.get(`/tyres_detail/${id}/`)
+  let data
+  try {
+    ({ data } = await baseUrl.get(`/tyres_detail/${id}/`))
+  } catch (e) {
+    // The API answers a missing/unpublished product with 500 (404 planned); show "not found".
+    if (e?.response?.status === 404 || e?.response?.status === 500) {
+      return { notFound: true }
+    }
+    throw e
+  }
   return {
     props: {
       product: data

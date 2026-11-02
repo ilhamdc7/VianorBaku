@@ -1,8 +1,12 @@
 import React,{useState, useEffect} from "react";
 import Product from "../Product/Product";
-import Slider from "@mui/material/Slider";
+import dynamic from "next/dynamic";
 import InfiniteScroll from "react-infinite-scroll-component";
 import LoaderComponent from "../LoaderComponent/LoaderComponent";
+
+// MUI's emotion styles are injected inline during SSR and break hydration,
+// so the price slider renders on the client only.
+const Slider = dynamic(() => import("@mui/material/Slider"), { ssr: false });
 
 const SearchBody = ({ 
   radius,
@@ -25,8 +29,8 @@ const SearchBody = ({
   setSortPrice,
   selectedWidth,
   selectedRadius,
-  setLimit,
-  limit,
+  loadMore,
+  hasMore,
   emptyTyre
  }) => {
 
@@ -452,14 +456,14 @@ const SearchBody = ({
             {tyres?.length >= 1 ? 
             <div className="d-flex flex-wrap all-products" style={{ width: '100%' }}>
               <InfiniteScroll 
-                dataLength={limit}
-                next={() => setLimit(limit => limit + 40)}
-                hasMore={true || false}
+                dataLength={tyres.length}
+                next={loadMore}
+                hasMore={hasMore}
                 // loader={<h3>Loading...</h3>}
                 style={{display:'flex', flexWrap:'wrap'}}
               >
-              {tyres?.map((tyre) => (
-                  <Product tire={tyre} />
+              {tyres?.map((tyre, index) => (
+                  <Product key={tyre?.id ?? index} tire={tyre} lazyImages />
               ))}
               </InfiniteScroll>
             </div>
