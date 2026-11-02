@@ -2,5 +2,5 @@ import axios from "axios";
 
 
 export const baseUrl = axios.create({
-  baseURL: `https://vianor.efgroup.az`,
+  baseURL: `https://api.vianorbaku.az`,
 });

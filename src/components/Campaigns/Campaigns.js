@@ -8,7 +8,7 @@ const Campaigns = () => {
   const [services, setServices] = useState([])
 
   const getServices = async() => {
-    await baseUrl.get(`https://vianor.efgroup.az/services_home_page/`)
+    await baseUrl.get(`https://api.vianorbaku.az/services_home_page/`)
     .then(res => {
       setServices(res.data)
     })
