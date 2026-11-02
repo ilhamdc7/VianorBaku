@@ -200,18 +200,18 @@ export default function Home({ slider, propHeight, propRadius, propWidth }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("https://vianor.efgroup.az/slider?limit=100000000");
+  const res = await fetch("https://api.vianorbaku.az/slider?limit=100000000");
   const slider = await res.json();
   const resWidth = await fetch(
-    `https://vianor.efgroup.az/tyre_width?limit=100000000`
+    `https://api.vianorbaku.az/tyre_width?limit=100000000`
   );
   const propWidth = await resWidth.json();
   const resHeight = await fetch(
-    `https://vianor.efgroup.az/tyre_height?limit=100000000`
+    `https://api.vianorbaku.az/tyre_height?limit=100000000`
   );
   const propHeight = await resHeight.json();
   const resRadius = await fetch(
-    `https://vianor.efgroup.az/tyre_diametr?limit=100000000`
+    `https://api.vianorbaku.az/tyre_diametr?limit=100000000`
   );
   const propRadius = await resRadius.json();
   return {

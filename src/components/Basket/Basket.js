@@ -81,7 +81,7 @@ const Basket = ({cart}) => {
                         <a href="product-full.html" class="image__body">
                           <img
                             class="image__tag"
-                            src={tire?.model?.model_image[0]?.tyre_images.slice(0,6) !== '/media' ? tire?.model?.model_image[0]?.tyre_images : `https://vianor.efgroup.az${tire?.model?.model_image[0]?.tyre_images}`}
+                            src={tire?.model?.model_image[0]?.tyre_images.slice(0,6) !== '/media' ? tire?.model?.model_image[0]?.tyre_images : `https://api.vianorbaku.az${tire?.model?.model_image[0]?.tyre_images}`}
                             alt=""
                           />
                         </a>
